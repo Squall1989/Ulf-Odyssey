@@ -20,13 +20,13 @@ namespace Ulf
 
         private void MoveActionCancel(InputAction.CallbackContext context)
         {
-            Debug.Log("Canceled: " + context.ReadValue<float>());
+            //Debug.Log("Canceled: " + context.ReadValue<float>());
             OnMove?.Invoke((int)context.ReadValue<float>());
         }
 
         private void MoveActionStart(InputAction.CallbackContext context)
         {
-            Debug.Log("Started: " + context.ReadValue<float>());
+            //Debug.Log("Started: " + context.ReadValue<float>());
             OnMove?.Invoke((int)context.ReadValue<float>());
             
         }
