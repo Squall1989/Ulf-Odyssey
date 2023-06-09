@@ -1,5 +1,3 @@
-using Assets.Scripts.Controllers;
-using System;
 using UnityEngine;
 
 namespace Ulf

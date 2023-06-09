@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Interfaces;
-using UnityEngine;
+using System;
 
-namespace Assets.Scripts.Controllers
+namespace Ulf
 {
     public class CircleMove : IMovable
     {
@@ -9,6 +9,12 @@ namespace Assets.Scripts.Controllers
         private float radius;
         private float speedLinear;
         private float currDegree;
+
+        private (float x, float y) position;
+
+        public float Degree => currDegree;
+
+        public (float x, float y) Position => position;
 
         public void SetDeltaTime(float delta)
         {
@@ -21,15 +27,13 @@ namespace Assets.Scripts.Controllers
             currDegree = startDegree;
         }
 
-        public (float x, float y) Move(int direct)
+        public void Move(int direct)
         {
             float speedRadial = direct * speedLinear * deltaTime / radius;
-            float newDegree = (currDegree + speedRadial) / 180 * Mathf.PI;
+            currDegree = (currDegree + speedRadial) / 180 * (float)Math.PI;
 
-            float planetPosX = radius * Mathf.Sin(newDegree);
-            float planetPosY = radius * Mathf.Cos(newDegree);
-
-            return (planetPosX, planetPosY);
+            position.x = radius * (float)Math.Sin(currDegree);
+            position.y = radius * (float)Math.Cos(currDegree);
         }
     }
 }
