@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Interfaces;
 using System;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
 {
@@ -10,11 +11,11 @@ namespace Ulf
         private float speedLinear;
         private float currDegree;
 
-        private (float x, float y) position;
+        private Vector2 position;
 
         public float Degree => currDegree;
 
-        public (float x, float y) Position => position;
+        public Vector2 Position => position;
 
         public void SetDeltaTime(float delta)
         {
