@@ -1,12 +1,19 @@
+using Assets.Scripts.Interfaces;
+
 namespace Ulf
 {
     public class Unit
     {
-        private Movement movement;
+        private IMovable movable;
+        private IAttackable attackable;
 
-        public Unit()
+        public IMovable Movable => movable;
+        public IAttackable Attackable => attackable;
+
+        public Unit(IMovable movable, IAttackable attackable)
         {
-            movement = new Movement();
+            this.movable = movable;
+            this.attackable = attackable;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Ulf
 {
     public interface IRound
     {
-        public void NewMovable(IMovable movable, float startDegree);
-        public void RmMovable(IMovable movable);
+        void NewUnit(Unit unit, float startDegree);
+        void RmUnit(Unit unit);
     }
 }

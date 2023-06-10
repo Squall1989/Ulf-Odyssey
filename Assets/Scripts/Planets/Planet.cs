@@ -1,36 +1,38 @@
-
 using Assets.Scripts.Interfaces;
 using System.Collections.Generic;
-using Zenject;
+using System.Linq;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
 {
     public class Planet : IRound
     {
         private float radius;
-        private List<IMovable> movables;
+        private List<Unit> units;
 
         public Planet(float radius)
         {
             this.radius = radius;
-            movables = new List<IMovable>();
+            units = new List<Unit>();
         }
 
-        [Inject]
-        public void Init(IRegister<IRound> registerPlanet)
+        public virtual void NewUnit(Unit unit, float startDegree)
         {
-            registerPlanet.Record(this);
+            units.Add(unit);
+            unit.Movable.ToLand(radius, startDegree);
         }
 
-        public virtual void NewMovable(IMovable movable, float startDegree)
+        public void RmUnit(Unit unit)
         {
-            movables.Add(movable);
-            movable.ToLand(radius, startDegree);
+            units.Remove(unit);
         }
 
-        public void RmMovable(IMovable movable)
+        public IEnumerable<IMovable> GetAttackables(AttackableType attackableType, Vector2 pos, float interestDist)
         {
-            movables.Remove(movable);
+
+            return units.Where(unit => unit.Attackable.AttackableType == attackableType
+                    && (unit.Movable.Position - pos).magnitude <= interestDist)
+                    .Select(unit => unit.Movable);
         }
     }
 }

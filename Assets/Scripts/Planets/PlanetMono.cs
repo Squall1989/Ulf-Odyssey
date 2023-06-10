@@ -5,6 +5,8 @@ namespace Ulf
     {
         [SerializeField] private UnitMono[] startUnits;
 
+        Planet planet;
+
         CircleCollider2D planetCollider;
 
         private void Awake()
@@ -14,8 +16,14 @@ namespace Ulf
         // Start is called before the first frame update
         void Start()
         {
-
+            planet = new Planet(planetCollider.radius);
         }
 
+
+        private void OnValidate()
+        {
+            SceneHub sceneHub = FindObjectOfType<SceneHub>();
+            sceneHub.UpdateScene(this);
+        }
     }
 }
