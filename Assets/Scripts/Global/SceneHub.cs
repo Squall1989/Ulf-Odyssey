@@ -10,10 +10,22 @@ public class SceneHub : MonoBehaviour
 {
     [SerializeField] SceneScriptable sceneScriptable;
 
+    public static SceneHub Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void UpdateScene(PlanetMono planet)
     {
         if(!sceneScriptable.planets.Contains(planet))
             sceneScriptable.planets.Add(planet);
         EditorUtility.SetDirty(sceneScriptable);
+    }
+
+    public void InstantiateScene()
+    {
+
     }
 }

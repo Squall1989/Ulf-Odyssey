@@ -8,24 +8,28 @@ public class NPCharacter
     private Unit unit;
     private AgrType agrType;
 
-    public NPCharacter(Planet planet, Unit unit, CharacterStruct character)
+    public Unit Unit => unit;
+
+    public NPCharacter(Unit unit, CharacterStruct character)
     {
-        this.planet = planet;
+        planet = unit.Planet;
         this.character = character;
         this.unit = unit;
         agrType = character.startAgr;
+
+        UpdateAction();
     }
 
     private async void UpdateAction()
     {
-        while (unit.Attackable.IsAlive)
-        {
-            if(agrType == AgrType.agressive)
-            {
-                CheckTargets();
-                await Task.Delay(1500);
-            }
-        }
+        //while (unit.Attackable.IsAlive)
+        //{
+        //    if(agrType == AgrType.agressive)
+        //    {
+        //        CheckTargets();
+        //        await Task.Delay(1500);
+        //    }
+        //}
     }
 
     private void CheckTargets()
