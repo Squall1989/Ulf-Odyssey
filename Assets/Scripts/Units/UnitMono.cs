@@ -8,6 +8,7 @@ namespace Ulf
 
         protected Unit unit;
         
+        public Unit Unit => unit;
 
         // Start is called before the first frame update
         void Start()
@@ -15,5 +16,10 @@ namespace Ulf
 
         }
 
+
+        public void Init(Planet planet)
+        {
+            unit = new Unit(planet, movement.CircleMove, null);
+        }
     }
 }

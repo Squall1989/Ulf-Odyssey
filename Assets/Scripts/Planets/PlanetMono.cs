@@ -1,4 +1,7 @@
+using Assets.Scripts.Interfaces;
 using UnityEngine;
+using Zenject;
+
 namespace Ulf
 {
     public class PlanetMono : MonoBehaviour
@@ -17,6 +20,17 @@ namespace Ulf
         void Start()
         {
             planet = new Planet(planetCollider.radius);
+        }
+
+        [Inject]
+        private void InstUnits(IRegister<Unit> unitsRegister)
+        {
+            foreach (UnitMono unitPref in startUnits)
+            {
+               var _unit = Instantiate(unitPref, gameObject.transform);
+                _unit.Init(planet);
+                unitsRegister.Record(_unit.Unit);
+            }
         }
 
 

@@ -4,11 +4,13 @@ namespace Ulf
 {
     public class Movement : MonoBehaviour
     {
-        CircleMove circleMove;
+        private CircleMove circleMove;
+        public CircleMove CircleMove => circleMove;
+
 
         private void Start()
         {
-
+            circleMove = new CircleMove();
         }
 
         private void Update()
