@@ -1,19 +1,19 @@
-using System;
 using UnityEngine;
 
 namespace Ulf
 {
     public class Movement : MonoBehaviour
     {
+        CircleMove circleMove;
 
         private void Start()
         {
 
         }
 
-        private void MoveDirect(int direct)
+        private void Update()
         {
-
+            circleMove.SetDeltaTime(Time.deltaTime);
         }
     }
 }
