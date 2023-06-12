@@ -1,7 +1,5 @@
 using Zenject;
 using UnityEngine;
-using System;
-using System.Xml.Linq;
 
 namespace Ulf
 {
