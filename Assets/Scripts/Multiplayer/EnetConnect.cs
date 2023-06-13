@@ -82,17 +82,13 @@ public class EnetConnect : MonoBehaviour
                 break;
         }
     }
-
+    
     private void SendPacket()
     {
         Packet packet = default(Packet);
         byte[] data = Encoding.UTF8.GetBytes("hello");
 
         packet.Create(data);
-        peer.Send(0, ref packet);
-        peer.Send(0, ref packet);
-        peer.Send(0, ref packet);
-        peer.Send(0, ref packet);
         peer.Send(0, ref packet);
     }
 
