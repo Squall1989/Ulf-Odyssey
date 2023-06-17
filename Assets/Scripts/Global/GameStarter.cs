@@ -12,12 +12,17 @@ namespace Ulf
         public Action<GameType> OnGameType;
 
         [Inject] GameOptions gameOptions;
+        [Inject] EnetConnect connect;
 
         public void SetupSingle()
         {
             gameOptions.SetGameType(GameType.single);
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        }
 
+        public void SetupMultipleer()
+        {
+            connect.InitConnect();
         }
     }
 }

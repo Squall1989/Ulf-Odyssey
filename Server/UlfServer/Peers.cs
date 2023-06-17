@@ -42,6 +42,7 @@ namespace UlfServer
             else
             {
                 peerList.Add(peer, player);
+                Console.WriteLine("Player added, name: " + player.Name);
             }
         }
 

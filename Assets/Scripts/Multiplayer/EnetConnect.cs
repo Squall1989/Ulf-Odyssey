@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ENet;
-using UnityEditor.PackageManager;
 using System;
 using EventType = ENet.EventType;
 using Event = ENet.Event;
 using System.Text;
 using System.Threading.Tasks;
+using UlfServer;
+using MsgPck;
 
 public class EnetConnect : MonoBehaviour
 {
@@ -23,15 +22,18 @@ public class EnetConnect : MonoBehaviour
     Host client = new Host();
     private bool isOnline = true;
 
+    public Action<Packet> OnPacket;
+
     // Start is called before the first frame update
     void Start()
     {
-        ENet.Library.Initialize();
-        InitConnect();
+        
     }
 
-    private void InitConnect()
+    public void InitConnect()
     {
+        ENet.Library.Initialize();
+        
         Address address = new Address();
 
         address.SetHost(ip);
@@ -67,8 +69,6 @@ public class EnetConnect : MonoBehaviour
 
             case EventType.Connect:
                 Console.WriteLine("Client connected - ID: " + netEvent.Peer.ID + ", IP: " + netEvent.Peer.IP);
-
-                SendPacket();
                 break;
 
             case EventType.Disconnect:
@@ -79,22 +79,20 @@ public class EnetConnect : MonoBehaviour
                 break;
             case EventType.Receive:
                 Console.WriteLine("Packet received from - ID: " + netEvent.Peer.ID + ", IP: " + netEvent.Peer.IP + ", Channel ID: " + netEvent.ChannelID + ", Data length: " + netEvent.Packet.Length);
+                OnPacket?.Invoke(netEvent.Packet);
                 break;
         }
     }
-    
-    private void SendPacket()
-    {
-        Packet packet = default(Packet);
-        byte[] data = Encoding.UTF8.GetBytes("hello");
 
-        packet.Create(data);
-        peer.Send(0, ref packet);
-    }
+
 
     private void OnDestroy()
     {
         ENet.Library.Deinitialize();
     }
 
+    public void Send(byte channel, ref Packet packet)
+    {
+        peer.Send(channel, ref packet);
+    }
 }

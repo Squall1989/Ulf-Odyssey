@@ -2,6 +2,8 @@
 using System.IO;
 using MsgPck;
 using Event = ENet.Event;
+using System;
+using ENet;
 
 namespace UlfServer
 {
@@ -11,15 +13,16 @@ namespace UlfServer
         {
             using (var byteStream = new MemoryStream())
             {
+
                 MessagePackSerializer.Serialize(byteStream, thisObj);
                 return byteStream.ToArray();
             }
         }
-        public static T Deserialize<T>(ref Event netEvent) where T : IUnionMsg
+        public static T Deserialize<T>(Packet packet) where T : IUnionMsg
         {
             byte[] buffer = new byte[1024];
 
-            netEvent.Packet.CopyTo(buffer);
+            packet.CopyTo(buffer);
 
             using (var byteStream = new MemoryStream(buffer))
             {

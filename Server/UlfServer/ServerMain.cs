@@ -17,6 +17,8 @@ namespace UlfServer
         private Lobbies lobbies;
         private Host host;
 
+        private MessageSender messageSender = new MessageSender();
+
         public ServerMain()
         {
             Library.Initialize();
@@ -26,7 +28,8 @@ namespace UlfServer
         {
             host = new Host();
             peers = new Peers();
-            lobbies = new Lobbies();    
+            lobbies = new Lobbies();
+            lobbies.OnLobbyUpdate += messageSender.UpdateLobby;
             address.Port = port;
 
             int channelCount = Enum.GetValues(typeof(ChannelType)).Length;
@@ -79,21 +82,20 @@ namespace UlfServer
 
         private void PacketRead(Packet packet)
         {
-            packet.Dispose();
-
-            var readData = Reader.Deserialize<IUnionMsg>(ref netEvent);
-
-            switch(readData)
+            var readData = Reader.Deserialize<IUnionMsg>(packet);
+            switch (readData)
             {
                 case LobbyClientMsg x:
                     var player = peers.GetPlayer(netEvent.Peer);
-                    
                     lobbies.PlayerAction(x, player);
                     break;
                 case PlayerMsg x:
                     peers.SetPlayer(netEvent.Peer, x);
                     break;
             }
+
+            packet.Dispose();
+
         }
     }
 

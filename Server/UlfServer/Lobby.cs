@@ -1,5 +1,7 @@
 ﻿
+using MsgPck;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace UlfServer
 {
@@ -14,6 +16,11 @@ namespace UlfServer
         {
             OwnerId = ownerId;
             LobbyId = lobbyId;
+        }
+
+        public IEnumerable<PlayerServer> GetPlayers()
+        {
+            return _players;
         }
 
         public void EnterLobby(PlayerServer player)
