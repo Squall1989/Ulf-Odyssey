@@ -1,21 +1,22 @@
-﻿using System;
+﻿// Copyright (c) All contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Linq.Expressions;
 using System.Reflection;
 
 namespace MessagePack.Internal
 {
-    public static class ExpressionUtility
+    internal static class ExpressionUtility
     {
-        // Method
-
-        static MethodInfo GetMethodInfoCore(LambdaExpression expression)
+        private static MethodInfo GetMethodInfoCore(LambdaExpression expression)
         {
             if (expression == null)
             {
                 throw new ArgumentNullException("expression");
             }
 
-            return (expression.Body as MethodCallExpression).Method;
+            return ((MethodCallExpression)expression.Body).Method;
         }
 
         /// <summary>
@@ -60,29 +61,25 @@ namespace MessagePack.Internal
             return GetMethodInfoCore(expression);
         }
 
-        // Property
-
-        static MemberInfo GetMemberInfoCore<T>(Expression<T> source)
+        private static MemberInfo GetMemberInfoCore<T>(Expression<T> source)
         {
             if (source == null)
             {
                 throw new ArgumentNullException("source");
             }
 
-            var memberExpression = source.Body as MemberExpression;
+            var memberExpression = (MemberExpression)source.Body;
             return memberExpression.Member;
         }
 
         public static PropertyInfo GetPropertyInfo<T, TR>(Expression<Func<T, TR>> expression)
         {
-            return GetMemberInfoCore(expression) as PropertyInfo;
+            return (PropertyInfo)GetMemberInfoCore(expression);
         }
-
-        // Field
 
         public static FieldInfo GetFieldInfo<T, TR>(Expression<Func<T, TR>> expression)
         {
-            return GetMemberInfoCore(expression) as FieldInfo;
+            return (FieldInfo)GetMemberInfoCore(expression);
         }
     }
 }
