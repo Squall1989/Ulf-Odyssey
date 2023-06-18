@@ -2,11 +2,11 @@
 
 namespace Ulf
 {
-    public class InteractHub
+    public abstract class InteractHub
     {
-        IRegister<IMovable> _registerMovable;
-        IRegister<IControl> _registerControl;
-        IRegister<IRound> _registerRound;
+        protected IRegister<IMovable> _registerMovable;
+        protected IRegister<IControl> _registerControl;
+        protected IRegister<IRound> _registerRound;
 
         public InteractHub(IRegister<IMovable> registerMovable, IRegister<IControl> registerControl, IRegister<IRound> registerRound)
         {

@@ -9,10 +9,10 @@ namespace UlfServer
     {
         List<PlayerServer> _players = new List<PlayerServer>();
         
-        public ulong OwnerId { get; private set; }
-        public uint LobbyId { get; private set; }
+        public int OwnerId { get; private set; }
+        public int LobbyId { get; private set; }
 
-        public Lobby(ulong ownerId, uint lobbyId)
+        public Lobby(int ownerId, int lobbyId)
         {
             OwnerId = ownerId;
             LobbyId = lobbyId;

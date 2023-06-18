@@ -1,5 +1,6 @@
 ﻿using ENet;
 using MsgPck;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace UlfServer
         public void UpdateLobby(Lobby lobby)
         {
             var players = lobby.GetPlayers();
-            var playerMsgList = players.Select(p => new PlayerMsg() { Name = p.Name }).ToList();
+            var playerMsgList = players.Select(p => new PlayerMsg() { Name = p.Name, Id = p.Id }).ToList();
             LobbyServerMsg lobbyMsg = new LobbyServerMsg() { playerList = playerMsgList, isOwner = false };
 
             foreach(var p in players)
@@ -30,6 +31,12 @@ namespace UlfServer
 
                 PreparePacket(lobbyMsg, p.Peer);
             }
+        }
+
+        internal void SendPlayerId(PlayerServer playerServer)
+        {
+            PlayerMsg playerMsg = new PlayerMsg() { Id = playerServer.Id, Name = playerServer.Name };
+            PreparePacket(playerMsg, playerServer.Peer);
         }
     }
 }

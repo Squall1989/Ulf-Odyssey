@@ -48,3 +48,5 @@ FMODStudioSettings.asset
 .vs/Ulf_git/v15/Browse.VC.opendb
 Assets/Scripts/Non_Behaviour.meta
 Assets/etc.meta
+*.dwlt
+*.dwlt

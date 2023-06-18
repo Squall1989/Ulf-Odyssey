@@ -91,6 +91,7 @@ namespace UlfServer
                     break;
                 case PlayerMsg x:
                     peers.SetPlayer(netEvent.Peer, x);
+                    messageSender.SendPlayerId(peers.GetPlayer(netEvent.Peer));
                     break;
             }
 

@@ -20,7 +20,7 @@ namespace Ulf
             SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
 
-        public void SetupMultipleer()
+        public void SetupMultiplayer()
         {
             connect.InitConnect();
         }

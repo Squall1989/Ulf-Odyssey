@@ -23,6 +23,7 @@ public class EnetConnect : MonoBehaviour
     private bool isOnline = true;
 
     public Action<Packet> OnPacket;
+    public Action OnConnect;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,7 @@ public class EnetConnect : MonoBehaviour
 
             case EventType.Connect:
                 Console.WriteLine("Client connected - ID: " + netEvent.Peer.ID + ", IP: " + netEvent.Peer.IP);
+                OnConnect?.Invoke();
                 break;
 
             case EventType.Disconnect:

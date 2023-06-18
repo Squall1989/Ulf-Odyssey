@@ -15,6 +15,8 @@ namespace MsgPck
     {
         [Key(0)]
         public string Name { get; set; }
+        [Key(1)]
+        public int Id { get; set; }
     }
 
     public enum ActionType
@@ -32,7 +34,7 @@ namespace MsgPck
         [Key(0)]
         public ActionType playerAction;
         [Key(1)]
-        public uint lobbyId;
+        public int lobbyId;
     }
 
     [MessagePackObject]

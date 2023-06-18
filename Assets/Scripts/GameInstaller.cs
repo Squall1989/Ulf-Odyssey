@@ -21,6 +21,10 @@ namespace Ulf
                 var NPCBeh = new NPCBehaviours();
                 Container.Bind<IRegister<Unit>>().FromInstance(NPCBeh).AsCached();
             }
+            else if(gameType == GameType.online)
+            {
+
+            }
         }
     }
 }

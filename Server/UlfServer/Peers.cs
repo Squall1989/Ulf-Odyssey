@@ -9,14 +9,14 @@ namespace UlfServer
     public class Peers
     {
         private Dictionary<Peer, PlayerServer> peerList;
-        private ulong nextPlayerId = 0;
+        private int nextPlayerId = 0;
 
         public Peers()
         {            
             peerList = new Dictionary<Peer, PlayerServer>();
         }
 
-        public ulong NextPlayerId => nextPlayerId++;
+        public int NextPlayerId => nextPlayerId++;
 
         public void Add(Peer peer)
         {

@@ -10,7 +10,7 @@ namespace UlfServer
     {
         List<Lobby> lobbies;
 
-        private uint nextLobbyId = 0;
+        private int nextLobbyId = 0;
 
         public Action<Lobby> OnLobbyUpdate;
 
@@ -43,7 +43,7 @@ namespace UlfServer
 
         }
 
-        private void Enter(PlayerServer player, uint lobbyId)
+        private void Enter(PlayerServer player, int lobbyId)
         {
             Lobby lobby = lobbies.FirstOrDefault(p => p.LobbyId == lobbyId);
             if(lobby != null)

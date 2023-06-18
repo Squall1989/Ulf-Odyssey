@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using UlfServer;
-using UnityEngine.InputSystem.LowLevel;
 
 namespace Ulf
 {
@@ -14,12 +13,13 @@ namespace Ulf
         private EnetConnect connect;
 
         public Action<List<PlayerMsg>> OnLobbyUpdate;
+        public Action<int> OnPlayerIdSet;
 
         public MessageSender(EnetConnect connect)
         {
             this.connect = connect;
             connect.OnPacket += PacketRead;
-            SendName("Maxim");
+            connect.OnConnect += () => SendName("Maxim");
         }
 
         public void PreparePacket<T>(T message) where T : IUnionMsg
@@ -50,10 +50,10 @@ namespace Ulf
             switch (readData)
             {
                 case LobbyServerMsg x:
-
+                    OnLobbyUpdate?.Invoke(x.playerList);
                     break;
                 case PlayerMsg x:
-
+                    OnPlayerIdSet?.Invoke(x.Id);
                     break;
             }
 
