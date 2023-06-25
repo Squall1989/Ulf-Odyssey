@@ -3,21 +3,28 @@ using ENet;
 using MsgPck;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using UlfServer;
+using Zenject;
 
 namespace Ulf
 {
     public class MessageSender
     {
-        private EnetConnect connect;
+        LazyInject<EnetConnect> injectConnect;
+        EnetConnect connect;
 
         public Action<List<PlayerMsg>> OnLobbyUpdate;
-        public Action<int> OnPlayerIdSet;
+        public Action<int, string> OnPlayerIdSet;
 
-        public MessageSender(EnetConnect connect)
+        public MessageSender(LazyInject<EnetConnect> injectConnect)
         {
-            this.connect = connect;
+            this.injectConnect = injectConnect;
+        }
+
+        public void Init()
+        {
+            connect = injectConnect.Value;
+            connect.InitConnect();
             connect.OnPacket += PacketRead;
             connect.OnConnect += () => SendName("Maxim");
         }
@@ -53,7 +60,7 @@ namespace Ulf
                     OnLobbyUpdate?.Invoke(x.playerList);
                     break;
                 case PlayerMsg x:
-                    OnPlayerIdSet?.Invoke(x.Id);
+                    OnPlayerIdSet?.Invoke(x.Id, x.Name);
                     break;
             }
 

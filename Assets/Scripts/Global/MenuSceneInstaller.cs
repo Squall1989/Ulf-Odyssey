@@ -5,13 +5,10 @@ using Zenject;
 
 public class MenuSceneInstaller : MonoInstaller
 {
-    [SerializeField] private EnetConnect connect;
-    [SerializeField] private GameStarter starter;
+    [SerializeField] LobbyControl panelLobby;
 
     public override void InstallBindings()
     {
-        Container.Bind<EnetConnect>().FromComponentInNewPrefab(connect).AsSingle();
-        Container.Bind<GameStarter>().FromComponentInNewPrefab(starter).AsCached();
-        Container.Bind<MessageSender>().FromNew().AsSingle();
+        Container.Bind<LobbyControl>().FromComponentInNewPrefab(panelLobby).AsCached();
     }
 }

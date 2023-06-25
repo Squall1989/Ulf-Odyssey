@@ -3,46 +3,44 @@ using System;
 using System.Collections.Generic;
 using Ulf;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject panelGame;
-    [SerializeField] LobbyControl panelLobby;
-    [SerializeField] Button createButton, multiplayerButton;
+    [SerializeField] Button singleButton, multiplayerButton;
 
-    [Inject] MessageSender sender;
-    [Inject] GameStarter starter;
+    [Inject] GameOptions gameOptions;
+    [Inject] LobbyControl panelLobby;
 
     // Start is called before the first frame update
     void Start()
     {
-        createButton.onClick.AddListener(CreateLobby);
+        panelLobby.transform.parent = transform;
+        (panelLobby.transform as RectTransform).anchoredPosition = Vector3.zero;
+        panelLobby.CreateButton.onClick.AddListener(CreateLobby);
         multiplayerButton.onClick.AddListener(SwitchToMultiplayer);
-        sender.OnLobbyUpdate += UpdateLobby;
+        singleButton.onClick.AddListener(SwitchToSingle);
     }
 
-    private void UpdateLobby(List<PlayerMsg> playerList)
+    private void SwitchToSingle()
     {
-        panelLobby.EnterLobby(true);
-        createButton.gameObject.SetActive(false);
-
-        foreach (PlayerMsg playerMsg in playerList)
-        {
-            panelLobby.NewPlayer(playerMsg.Name, playerMsg.Id);
-        }
+        ActivatePanel(false);
+        gameOptions.SetGameType(GameType.single);
+        SceneManager.LoadScene("GameScene");
     }
 
     private void SwitchToMultiplayer()
     {
         ActivatePanel(true);
-        starter.SetupMultiplayer();
+        gameOptions.SetGameType(GameType.online);
     }
 
     private void CreateLobby()
     {
-        sender.CreateLobby();
+        panelLobby.CreateLobby();
     }
 
     public void ActivatePanel(bool isActivateLobby)

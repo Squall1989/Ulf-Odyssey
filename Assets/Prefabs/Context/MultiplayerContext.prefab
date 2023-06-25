@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &761117285088007575
+--- !u!1 &4614711388004500499
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3462296739552375505}
-  - component: {fileID: 8590117956407545666}
+  - component: {fileID: 3649170426366194389}
+  - component: {fileID: 8166527618729820966}
   m_Layer: 0
-  m_Name: GameStarter
+  m_Name: MultiplayerContext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3462296739552375505
+--- !u!4 &3649170426366194389
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761117285088007575}
+  m_GameObject: {fileID: 4614711388004500499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 645.2337, y: 633.28705, z: -17.053082}
+  m_LocalPosition: {x: 517.77673, y: 796.1429, z: 2.5295365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8590117956407545666
+--- !u!114 &8166527618729820966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761117285088007575}
+  m_GameObject: {fileID: 4614711388004500499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca8e3852c2b11648bb5ff364acf34ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 339dc84cfc576844cad1f5c1153c14d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 0}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+  connect: {fileID: 7759534782539185593, guid: 85dce4e6034f719428de4e610ffe8b42, type: 3}

@@ -48,6 +48,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 990872083471263268}
+  - {fileID: 8166527618729820966, guid: 481b68383722d7141b0aa1414003a8b3, type: 3}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -74,4 +75,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd8dfa27510d8046bf65a8019233ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStarter: {fileID: 0}

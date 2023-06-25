@@ -1,6 +1,7 @@
 using Ulf;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 /// <summary>
 /// Editor helping script
@@ -9,6 +10,7 @@ using UnityEngine;
 public class SceneHub : MonoBehaviour
 {
     [SerializeField] SceneScriptable sceneScriptable;
+    [Inject] IGame game;
 
     public static SceneHub Instance;
 
