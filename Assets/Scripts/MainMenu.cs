@@ -11,15 +11,13 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject panelGame;
     [SerializeField] Button singleButton, multiplayerButton;
+    [SerializeField] LobbyControl panelLobby;
 
     [Inject] GameOptions gameOptions;
-    [Inject] LobbyControl panelLobby;
 
     // Start is called before the first frame update
     void Start()
     {
-        panelLobby.transform.parent = transform;
-        (panelLobby.transform as RectTransform).anchoredPosition = Vector3.zero;
         panelLobby.CreateButton.onClick.AddListener(CreateLobby);
         multiplayerButton.onClick.AddListener(SwitchToMultiplayer);
         singleButton.onClick.AddListener(SwitchToSingle);

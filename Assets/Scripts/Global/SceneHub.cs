@@ -23,7 +23,7 @@ public class SceneHub : MonoBehaviour
     {
         if(!sceneScriptable.planets.Contains(planet))
             sceneScriptable.planets.Add(planet);
-        EditorUtility.SetDirty(sceneScriptable);
+        //EditorUtility.SetDirty(sceneScriptable);
     }
 
     public void InstantiateScene()
