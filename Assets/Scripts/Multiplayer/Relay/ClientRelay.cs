@@ -64,7 +64,7 @@ public class ClientRelay
         }
     }
 
-    private void Update()
+    public void Update()
     {
         UpdatePlayer();
     }
