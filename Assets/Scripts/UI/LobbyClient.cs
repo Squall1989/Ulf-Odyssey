@@ -1,6 +1,8 @@
 using ENet;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.Burst.Intrinsics.X86.Avx;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class LobbyClient : MonoBehaviour
 {
@@ -15,9 +17,4 @@ public class LobbyClient : MonoBehaviour
         joinButton.onClick.AddListener(() => clientRelay.Join(JoinCodeInput.text));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

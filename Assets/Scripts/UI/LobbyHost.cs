@@ -9,6 +9,7 @@ public class LobbyHost : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI codeText;
     [SerializeField] private Button startHostButton;
     [SerializeField] private TMPro.TextMeshProUGUI logText;
+    private HostRelay host;
 
     private async void Start()
     {
@@ -16,11 +17,16 @@ public class LobbyHost : MonoBehaviour
         await auth.AuthenticatingAPlayer();
 
         startHostButton.onClick.AddListener(() => {
-            HostRelay host = new HostRelay();
+            host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
             host.OnCodeGenerate += (code) => codeText.text = code;
             host.StartAllocate();
             startHostButton.onClick.RemoveAllListeners();
         });
+    }
+
+    private void Update()
+    {
+        host.Update();
     }
 }
