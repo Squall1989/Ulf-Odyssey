@@ -33,7 +33,7 @@ namespace Ulf
             hostDriver = NetworkDriver.Create(settings);
 
             // Bind to the Relay server.
-            if (hostDriver.Bind(NetworkEndPoint.AnyIpv4) != 0)
+            if (hostDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
             {
                 OnLog?.Invoke("Host client failed to bind");
             }
