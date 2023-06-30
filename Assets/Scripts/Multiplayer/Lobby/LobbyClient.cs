@@ -33,4 +33,17 @@ public class LobbyQuerry
             }
     }
 
+    public async void JoinLobby(Lobby lobby)
+    {
+        try
+        {
+            await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id);
+
+        }
+        catch (LobbyServiceException e)
+        {
+            throw new System.Exception("lobby join exception: " + e);
+        }
+    }
+
 }
