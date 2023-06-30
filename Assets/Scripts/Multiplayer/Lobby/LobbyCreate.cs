@@ -3,18 +3,17 @@ using ENet;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 
-public class LobbyCreate
+public class LobbyCreate : LobbyCommon
 {
-
     public async Task<Lobby> Create()
     {
         string lobbyName = "Max lobby";
         int maxPlayers = 4;
         CreateLobbyOptions options = new CreateLobbyOptions();
         options.IsPrivate = false;
-        var lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+        currentLobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+        Subscribe();
 
-
-        return lobby;
+        return currentLobby;
     }
 }

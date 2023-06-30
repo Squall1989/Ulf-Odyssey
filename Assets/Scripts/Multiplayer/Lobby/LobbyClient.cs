@@ -6,9 +6,8 @@ using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 
-public class LobbyClient
+public class LobbyClient : LobbyCommon
 {
-    private Lobby currentLobby;
 
     public Task<QueryResponse> GetLobbies()
     {
@@ -43,6 +42,7 @@ public class LobbyClient
 
             await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id);
             currentLobby = lobby;
+            Subscribe();
         }
         catch (LobbyServiceException e)
         {
@@ -63,7 +63,7 @@ public class LobbyClient
         };
 
          var dataObj = new PlayerDataObject(visibility: PlayerDataObject.VisibilityOptions.Member,
-                    value:  "Hello");
+                    value: message);
 
         dataCurr.Add("message", dataObj);
 
