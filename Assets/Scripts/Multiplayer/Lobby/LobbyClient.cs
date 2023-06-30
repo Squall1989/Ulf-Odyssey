@@ -2,11 +2,14 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 
-public class LobbyQuerry
+public class LobbyClient
 {
+    private Lobby currentLobby;
+
     public Task<QueryResponse> GetLobbies()
     {
         try
@@ -37,8 +40,9 @@ public class LobbyQuerry
     {
         try
         {
-            await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id);
 
+            await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id);
+            currentLobby = lobby;
         }
         catch (LobbyServiceException e)
         {
@@ -46,4 +50,25 @@ public class LobbyQuerry
         }
     }
 
+    public async void SendMessage(string message)
+    {
+        string playerId = AuthenticationService.Instance.PlayerId;
+
+        Dictionary<string, PlayerDataObject> dataCurr = new Dictionary<string, PlayerDataObject>();
+        UpdatePlayerOptions updateOptions = new UpdatePlayerOptions
+        {
+            Data = dataCurr,
+            AllocationId = null,
+            ConnectionInfo = null
+        };
+
+         var dataObj = new PlayerDataObject(visibility: PlayerDataObject.VisibilityOptions.Member,
+                    value:  "Hello");
+
+        dataCurr.Add("message", dataObj);
+
+
+        currentLobby = await LobbyService.Instance.UpdatePlayerAsync(currentLobby.Id, playerId, updateOptions);
+
+    }
 }
