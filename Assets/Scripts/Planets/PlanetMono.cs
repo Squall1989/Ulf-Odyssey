@@ -7,6 +7,7 @@ namespace Ulf
     public class PlanetMono : MonoBehaviour
     {
         [SerializeField] private UnitMono[] startUnits;
+        [SerializeField] private ElementType elementType;
 
         Planet planet;
 
@@ -19,7 +20,7 @@ namespace Ulf
         // Start is called before the first frame update
         void Start()
         {
-            planet = new Planet(planetCollider.radius);
+            planet = new Planet(planetCollider.radius, elementType);
         }
 
         [Inject]

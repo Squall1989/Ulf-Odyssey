@@ -7,19 +7,21 @@ namespace Ulf
 {
     public class Planet : IRound
     {
-        private float radius;
+        private float _radius;
+        private ElementType _element;
         private List<Unit> units;
 
-        public Planet(float radius)
+        public Planet(float radius, ElementType element)
         {
-            this.radius = radius;
+            _radius = radius;
+            _element = element;
             units = new List<Unit>();
         }
 
         public virtual void NewUnit(Unit unit, float startDegree)
         {
             units.Add(unit);
-            unit.Movable.ToLand(radius, startDegree);
+            unit.Movable.ToLand(_radius, startDegree);
         }
 
         public void RmUnit(Unit unit)
@@ -27,6 +29,7 @@ namespace Ulf
             units.Remove(unit);
         }
 
+        /*
         public IEnumerable<IMovable> GetAttackables(AttackableType attackableType, Vector2 pos, float interestDist)
         {
 
@@ -34,5 +37,6 @@ namespace Ulf
                     && (unit.Movable.Position - pos).magnitude <= interestDist)
                     .Select(unit => unit.Movable);
         }
+        */
     }
 }

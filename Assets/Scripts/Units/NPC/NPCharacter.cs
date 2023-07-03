@@ -34,7 +34,7 @@ public class NPCharacter
 
     private void CheckTargets()
     {
-        var movables = planet.GetAttackables(AttackableType.player, unit.Movable.Position, character.interactDist);
+        //var movables = planet.GetAttackables(AttackableType.player, unit.Movable.Position, character.interactDist);
         
     }
 }
