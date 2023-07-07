@@ -4,12 +4,13 @@ namespace Ulf
 {
     public class UnitMono : MonoBehaviour
     {
-        [SerializeField] private Movement movement;
+        [SerializeField] private MovementMono movement;
         [SerializeField] private CreateUnitStruct unitStruct;
 
-        protected Unit unit;
+        protected Unit _unit;
         
-        public Unit Unit => unit;
+        public Unit Unit => _unit;
+        public CreateUnitStruct UnitStruct => unitStruct;
 
         // Start is called before the first frame update
         void Start()
@@ -18,9 +19,10 @@ namespace Ulf
         }
 
 
-        public void Init(Planet planet)
+        public void Init(Planet planet, (float, float) freeArc)
         {
-            unit = new Unit(planet, unitStruct, movement.CircleMove);
+            _unit = new Unit(planet.Element, unitStruct);
+            movement.Init(planet, unitStruct, freeArc);
         }
     }
 }

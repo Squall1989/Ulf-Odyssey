@@ -3,7 +3,6 @@ using Ulf;
 
 public class NPCharacter 
 {
-    private Planet planet;
     private CharacterStruct character;
     private Unit unit;
     private AgrType agrType;
@@ -12,7 +11,6 @@ public class NPCharacter
 
     public NPCharacter(Unit unit, CharacterStruct character)
     {
-        planet = unit.Planet;
         this.character = character;
         this.unit = unit;
         agrType = character.startAgr;

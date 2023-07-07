@@ -1,21 +1,19 @@
+using System;
 using Assets.Scripts.Interfaces;
 
 namespace Ulf
 {
     public class Unit
     {
-        private Planet planet;
-        private IMovable movable;
+        private CircleMove _movement;
         private Health _health;
 
-        public IMovable Movable => movable;
-        public Planet Planet => planet;
+        public CircleMove Movement => _movement;
 
-        public Unit(Planet planet, CreateUnitStruct unitStruct, IMovable circleMove)
+        public Unit(ElementType elementType, CreateUnitStruct unitStruct)
         {
-            this.planet = planet;
-            this.movable = circleMove;
-            _health = new Health(unitStruct.Health, unitStruct.Element);
+
+            _health = new Health(unitStruct.Health, elementType);
         }
     }
 }

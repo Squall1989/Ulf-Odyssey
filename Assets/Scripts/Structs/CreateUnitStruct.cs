@@ -2,6 +2,12 @@
 public struct CreateUnitStruct 
 {
     public int Health;
-    public ElementType Element;
-
+    public float MoveSpeed;
+}
+[System.Serializable]
+public struct CreatePlanetStruct
+{
+    public CreateUnitStruct[] createUnits;
+    public ElementType ElementType;
+    
 }

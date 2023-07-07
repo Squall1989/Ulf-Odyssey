@@ -5,7 +5,7 @@ namespace Ulf
 {
     public class NPUnit : Unit
     {
-        public NPUnit(Planet planet, CreateUnitStruct unitStruct, IMovable circleMove) : base(planet, unitStruct, circleMove)
+        public NPUnit(ElementType elementType, CreateUnitStruct unitStruct) : base(elementType, unitStruct)
         {
         }
     }

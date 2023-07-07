@@ -2,19 +2,19 @@
 
 namespace Ulf
 {
-    public class RegisterPlanet : IRegister<IRound>
+    public class RegisterPlanet : IRegister<Planet>
     {
-        int count = 0;
-        private Dictionary<int, IRound> roundDict = new(); // planets, bridges
+        int countPlanet = 0;
+        private Dictionary<int, Planet> planetDict = new(); // planets, bridges
 
-        public IRound GetComponent(int guid)
+        public Planet GetComponent(int guid)
         {
-            return roundDict[guid];
+            return planetDict[guid];
         }
 
-        public void Record(IRound component)
+        public void Record(Planet component)
         {
-            roundDict.Add(count++, component);
+            planetDict.Add(countPlanet++, component);
         }
     }
 }

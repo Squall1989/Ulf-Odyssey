@@ -17,15 +17,20 @@ namespace Ulf
 
         public Vector2 Position => position;
 
+        public CircleMove(float speed)
+        {
+            speedLinear = speed;
+        }
+
         public void SetDeltaTime(float delta)
         {
             deltaTime = delta;
         }
 
-        public void ToLand(float radius, float startDegree)
+        public void ToLand(float radius, float startAngle)
         {
             this.radius = radius;
-            currDegree = startDegree;
+            currDegree = startAngle;
         }
 
         public void Move(int direct)
@@ -35,6 +40,9 @@ namespace Ulf
 
             position.x = radius * (float)Math.Sin(currDegree);
             position.y = radius * (float)Math.Cos(currDegree);
+
+            if (currDegree >= 360f)
+                currDegree -= 360f;
         }
     }
 }

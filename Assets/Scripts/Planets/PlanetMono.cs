@@ -1,4 +1,4 @@
-using Assets.Scripts.Interfaces;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -16,29 +16,34 @@ namespace Ulf
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
             planet = new Planet(planetCollider.radius, elementType);
         }
 
-        [Inject]
         private void InstUnits(IRegister<Unit> unitsRegister)
         {
-            foreach (UnitMono unitPref in startUnits)
+            float arcPerUnit = 360f / startUnits.Length;
+            for (int u = 0; u < startUnits.Length; u++)
             {
-               var _unit = Instantiate(unitPref, gameObject.transform);
-                _unit.Init(planet);
-                unitsRegister.Record(_unit.Unit);
+                var _unitMono = Instantiate(startUnits[u], gameObject.transform);
+                (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit +1));
+                _unitMono.Init(planet, freeArc);
+                unitsRegister.Record(_unitMono.Unit);
             }
         }
 
+        public CreatePlanetStruct GeneratePlanetStruct()
+        {
+            return new()
+            {
+                 ElementType = elementType,
+                 createUnits = startUnits.Select(unit => unit.UnitStruct).ToArray()
+            };
+        }
 
         private void OnValidate()
         {
-            SceneHub sceneHub = FindObjectOfType<SceneHub>();
-            sceneHub.UpdateScene(this);
+            //SceneHub sceneHub = FindObjectOfType<SceneHub>();
+            //sceneHub.UpdateScene(this);
         }
     }
 }
