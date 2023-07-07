@@ -1,4 +1,7 @@
 using ENet;
+using System;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
@@ -19,6 +22,15 @@ public class LobbyClientUI : MonoBehaviour
 
     private async void QueryLobbies()
     {
+        try
+        {
+            await UnityServices.InitializeAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
         LobbyClient lobbyQuerry = new();
         var querry = await lobbyQuerry.GetLobbies();
 
@@ -29,6 +41,7 @@ public class LobbyClientUI : MonoBehaviour
         var firstLobby = LobbyEnum.Current;
 
         lobbyQuerry.JoinLobby(firstLobby);
+        lobbyQuerry.SendMessage("Hello!!!!!!!");
     }
 
 

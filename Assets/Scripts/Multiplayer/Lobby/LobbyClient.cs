@@ -11,27 +11,27 @@ public class LobbyClient : LobbyCommon
 
     public Task<QueryResponse> GetLobbies()
     {
-        try
-        {
-            QueryLobbiesOptions options = new QueryLobbiesOptions();
-            options.Count = 25;
-
-
-            // Order by newest lobbies first
-            options.Order = new List<QueryOrder>()
+            try
             {
-                new QueryOrder(
-                    asc: false,
-                    field: QueryOrder.FieldOptions.Created)
-            };
+                QueryLobbiesOptions options = new QueryLobbiesOptions();
+                options.Count = 25;
 
-            return Lobbies.Instance.QueryLobbiesAsync(options);
 
-            //...
+                // Order by newest lobbies first
+                options.Order = new List<QueryOrder>()
+                {
+                    new QueryOrder(
+                        asc: false,
+                        field: QueryOrder.FieldOptions.Created)
+                };
+
+                return Lobbies.Instance.QueryLobbiesAsync(options);
+
+                //...
             }
             catch (LobbyServiceException e)
             {
-            throw new System.Exception("error: " + e);
+                throw new System.Exception("error: " + e);
             }
     }
 
@@ -42,7 +42,7 @@ public class LobbyClient : LobbyCommon
 
             await LobbyService.Instance.JoinLobbyByIdAsync(lobby.Id);
             currentLobby = lobby;
-            Subscribe();
+            //Subscribe();
         }
         catch (LobbyServiceException e)
         {

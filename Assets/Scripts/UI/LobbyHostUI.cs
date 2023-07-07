@@ -16,22 +16,27 @@ public class LobbyHostUI : MonoBehaviour
 
 
 
-    private async void Start()
+    private void Start()
+    {
+        startHostButton.onClick.AddListener(() => HostLobbyStart());
+
+        
+    }
+
+    private async void HostLobbyStart()
     {
         try
         {
             await UnityServices.InitializeAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
         catch (Exception e)
         {
             Debug.LogException(e);
         }
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
         LobbyCreate lobbyHost = new();
         var lobby = await lobbyHost.Create();
         Debug.Log("lobby created: " + lobby.Name);
-
-        
     }
 
 }
