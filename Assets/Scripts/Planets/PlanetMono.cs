@@ -13,6 +13,9 @@ namespace Ulf
 
         CircleCollider2D planetCollider;
 
+        public ElementType ElementType => elementType;
+        public float Size => GetComponent<CircleCollider2D>().radius;
+
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();
@@ -31,14 +34,7 @@ namespace Ulf
             }
         }
 
-        public CreatePlanetStruct GeneratePlanetStruct()
-        {
-            return new()
-            {
-                 ElementType = elementType,
-                 createUnits = startUnits.Select(unit => unit.UnitStruct).ToArray()
-            };
-        }
+        
 
         private void OnValidate()
         {

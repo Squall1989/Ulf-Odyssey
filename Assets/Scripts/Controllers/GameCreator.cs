@@ -10,7 +10,7 @@ namespace Ulf
     /// </summary>
     public class GameCreator : MonoBehaviour
     {
-        [SerializeField] protected PlanetMono planetMono;
+        [Inject] protected AllPlanetsScriptable planetsContainer;
         [Inject] protected SceneGenerator sceneGenerator;
 
         void Start()
@@ -23,9 +23,16 @@ namespace Ulf
         {
             foreach(var planetStruct in planetStructs)
             {
+                var prefab = planetsContainer.GetPlanet(planetStruct);
+                if (prefab == null) 
+                {
+                    Debug.LogError($"Planet prefab with size {planetStruct.planetSize} and element {planetStruct.ElementType} is NULL!!!");
+                    continue;
+                }
+
                 Planet planet = new Planet(planetStruct.planetSize, planetStruct.ElementType);
 
-                var planetNew = Instantiate(planetMono, planetStruct.planetPos, Quaternion.identity);
+                var planetNew = Instantiate(prefab, planetStruct.planetPos, Quaternion.identity);
             }
         }
     }

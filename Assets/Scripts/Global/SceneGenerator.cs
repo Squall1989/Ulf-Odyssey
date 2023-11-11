@@ -15,15 +15,19 @@ namespace Ulf
         //private AllUnitsScriptable allUnits;
         private int nextId;
 
+        private float bridgeSize = 5f;
+
         protected IGame _game;
         protected AllUnitsScriptable _allUnits;
+        private AllPlanetsScriptable _allPlanets;
 
         public List<CreatePlanetStruct> PlanetList => planetList;
 
-        public SceneGenerator(IGame game, AllUnitsScriptable allUnits)
+        public SceneGenerator(IGame game, AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets)
         {
             _game = game;
             _allUnits = allUnits;
+            _allPlanets = allPlanets;
             Generate();
         }
 
@@ -56,13 +60,13 @@ namespace Ulf
             }
         }
 
-        private Vector3 RandomPlanetPos()
+        private Vector3 RandomPlanetPos(float size)
         {
             Vector3 rndPos = new Vector3();
             while (!checkPlanetsPos())
             {
-                int x = UnityEngine.Random.Range(-50, 50);
-                int y = UnityEngine.Random.Range(-50, 50);
+                int x = UnityEngine.Random.Range(-60, 60);
+                int y = UnityEngine.Random.Range(-60, 60);
                 rndPos = new Vector3(x, y, 0);
             }
 
@@ -72,7 +76,7 @@ namespace Ulf
             {
                 foreach(var planet in planetList)
                 {
-                    if((planet.planetPos - rndPos).magnitude < planet.planetSize) 
+                    if((planet.planetPos - rndPos).magnitude < planet.planetSize + size + bridgeSize) 
                         return false;
                 }
 
@@ -82,8 +86,10 @@ namespace Ulf
 
         private CreatePlanetStruct GeneratePlanet(ElementType elementType)
         {
-            Vector3 pos = RandomPlanetPos();
-            int size = new Random().Next(0, 4);
+            var elementSizes = _allPlanets.GetSizes(elementType);
+
+            int sizeNum = new Random().Next(0, elementSizes.Length);
+            Vector3 pos = RandomPlanetPos(elementSizes[sizeNum]);
             int unitCount = new Random().Next(1, 10);
             var availableUnits = _allUnits.AllUnits.Where(u => u.ElementType == elementType);
 
@@ -99,7 +105,7 @@ namespace Ulf
                 createUnits = units.ToArray(),
                 ElementType = elementType,
                 planetId = nextId++,
-                planetSize = size,
+                planetSize = elementSizes[sizeNum],
                 planetPos = pos,
             };
         }

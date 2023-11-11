@@ -17,7 +17,7 @@ public struct CreatePlanetStruct
 
     public CreateUnitStruct[] createUnits;
     public ElementType ElementType;
-    public int planetSize;
+    public float planetSize;
     public Vector3 planetPos;
 }
 [System.Serializable]

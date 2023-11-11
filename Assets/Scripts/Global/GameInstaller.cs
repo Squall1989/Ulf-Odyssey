@@ -14,7 +14,8 @@ namespace Ulf
             Container.Bind<GameOptions>().FromInstance(options).AsSingle();
             options.OnGameTypeChange += SetGameType;
 
-            Container.Bind<AllUnitsScriptable>().FromScriptableObjectResource("/").AsSingle();
+            Container.Bind<AllUnitsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
+            Container.Bind<AllPlanetsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
 
         }
 

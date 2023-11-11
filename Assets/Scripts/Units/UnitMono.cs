@@ -18,13 +18,13 @@ namespace Ulf
             movement.Init(planet, unitStruct, freeArc);
         }
 
-        protected void OnValidate()
-        {
-            if (unitStruct.View.LastIndexOf(" ") == -1)
-                return;
-            var unitLoader = Resources.Load<AllUnitsScriptable>("Units");
-            unitStruct.View.TrimEnd();
-            unitLoader.AddUnit(unitStruct);
-        }
+        //protected void OnValidate()
+        //{
+        //    if (unitStruct.View.LastIndexOf(" ") == -1)
+        //        return;
+        //    var unitLoader = Resources.Load<AllUnitsScriptable>("Units");
+        //    unitStruct.View.TrimEnd();
+        //    unitLoader.AddUnit(unitStruct);
+        //}
     }
 }
