@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using Vector3 = UnityEngine.Vector3;
 [System.Serializable]
 public struct CreateUnitStruct 
 {
@@ -18,6 +18,7 @@ public struct CreatePlanetStruct
     public CreateUnitStruct[] createUnits;
     public ElementType ElementType;
     public int planetSize;
+    public Vector3 planetPos;
 }
 [System.Serializable]
 public struct BridgePositionStruct

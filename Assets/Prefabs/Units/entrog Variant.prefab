@@ -88,7 +88,7 @@ MonoBehaviour:
   unitStruct:
     View: 'entrog '
     ElementType: 0
-    Health: 2
+    Health: 1
     MoveSpeed: 1.5
 --- !u!114 &5325269441799377016
 MonoBehaviour:

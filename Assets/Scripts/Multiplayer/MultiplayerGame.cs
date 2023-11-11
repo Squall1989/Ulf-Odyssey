@@ -2,6 +2,7 @@
 using MsgPck;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Zenject;
 
 namespace Ulf
@@ -18,6 +19,11 @@ namespace Ulf
         {
             this.sender = sender;   
             sender.OnPlayerIdSet += RegisterOurPlayer;
+        }
+
+        public Task<(int from, int limit)> GetPlanetsLimit()
+        {
+            throw new NotImplementedException();
         }
 
         public void RegisterPlayer(int id, string name)
