@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using Ulf;
 using System.Linq;
+using System;
 
 [CreateAssetMenu(fileName = "Units", menuName = "ScriptableObjects/Units", order = 2)]
 public class AllUnitsScriptable : ScriptableObject
@@ -11,6 +12,19 @@ public class AllUnitsScriptable : ScriptableObject
     [SerializeField] private UnitMono[] unitsMono;
 
     public IEnumerable<CreateUnitStruct> AllUnits => unitsMono.Select(p => p.UnitStruct);
+    public UnitMono[] AllUnitsMono => unitsMono;
+
+    internal UnitMono[] GetUnits(CreateUnitStruct[] createUnits)
+    {
+        UnitMono[] units = new UnitMono[createUnits.Length];
+
+        for(int i = 0; i < createUnits.Length; i++)
+        {
+            units[i] = unitsMono.First(p => p.UnitStruct.View == createUnits[i].View);
+        }
+
+        return units;
+    }
 
     //public void AddUnit(CreateUnitStruct unitStruct)
     //{

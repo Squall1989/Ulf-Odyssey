@@ -11,11 +11,12 @@ namespace Ulf
         private float speedLinear;
         private float currDegree;
 
-        private Vector2 position;
+        private Vector2 _planetPos;
+        private Vector2 _position;
 
         public float Degree => currDegree;
 
-        public Vector2 Position => position;
+        public Vector2 Position => _position;
 
         public CircleMove(float speed)
         {
@@ -27,8 +28,9 @@ namespace Ulf
             deltaTime = delta;
         }
 
-        public void ToLand(float radius, float startAngle)
+        public void ToLand(Vector2 pos, float radius, float startAngle)
         {
+            _planetPos = pos;
             this.radius = radius;
             currDegree = startAngle;
         }
@@ -38,8 +40,9 @@ namespace Ulf
             float speedRadial = direct * speedLinear * deltaTime / radius;
             currDegree = (currDegree + speedRadial) / 180 * (float)Math.PI;
 
-            position.x = radius * (float)Math.Sin(currDegree);
-            position.y = radius * (float)Math.Cos(currDegree);
+            _position.x = radius * (float)Math.Sin(currDegree);
+            _position.y = radius * (float)Math.Cos(currDegree);
+            _position += _planetPos;
 
             if (currDegree >= 360f)
                 currDegree -= 360f;

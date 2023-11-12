@@ -6,12 +6,12 @@ namespace Ulf
 {
     public class PlanetMono : MonoBehaviour
     {
-        [SerializeField] private UnitMono[] startUnits;
+        //[SerializeField] private UnitMono[] startUnits;
         [SerializeField] private ElementType elementType;
 
-        Planet planet;
+        private Planet planet;
 
-        CircleCollider2D planetCollider;
+        private CircleCollider2D planetCollider;
 
         public ElementType ElementType => elementType;
         public float Size => GetComponent<CircleCollider2D>().radius;
@@ -19,18 +19,18 @@ namespace Ulf
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();
-            planet = new Planet(planetCollider.radius, elementType);
+            planet = new Planet(planetCollider.radius, elementType, transform.position);
         }
 
-        private void InstUnits(IRegister<Unit> unitsRegister)
+        public void InstUnits(UnitMono[] unitsMono)
         {
-            float arcPerUnit = 360f / startUnits.Length;
-            for (int u = 0; u < startUnits.Length; u++)
+            float arcPerUnit = 360f / unitsMono.Length;
+            for (int u = 0; u < unitsMono.Length; u++)
             {
-                var _unitMono = Instantiate(startUnits[u], gameObject.transform);
+                var _unitMono = Instantiate(unitsMono[u], gameObject.transform);
                 (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit +1));
                 _unitMono.Init(planet, freeArc);
-                unitsRegister.Record(_unitMono.Unit);
+                //unitsRegister.Record(_unitMono.Unit);
             }
         }
 

@@ -10,6 +10,6 @@ namespace Assets.Scripts.Interfaces
 
         void Move(int direct);
 
-        void ToLand(float radius, float startDegree);
+        void ToLand(Vector2 pos, float radius, float startDegree);
     }
 }

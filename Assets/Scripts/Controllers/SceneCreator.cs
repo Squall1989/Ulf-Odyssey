@@ -13,9 +13,6 @@ namespace Ulf
             }
         }
 
-        protected void PopulatePlanet(Planet planet)
-        {
 
-        }
     }
 }

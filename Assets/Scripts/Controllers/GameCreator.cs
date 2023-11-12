@@ -11,6 +11,7 @@ namespace Ulf
     public class GameCreator : MonoBehaviour
     {
         [Inject] protected AllPlanetsScriptable planetsContainer;
+        [Inject] protected AllUnitsScriptable unitsContainer;
         [Inject] protected SceneGenerator sceneGenerator;
 
         void Start()
@@ -30,9 +31,10 @@ namespace Ulf
                     continue;
                 }
 
-                Planet planet = new Planet(planetStruct.planetSize, planetStruct.ElementType);
-
                 var planetNew = Instantiate(prefab, planetStruct.planetPos, Quaternion.identity);
+
+                var units = unitsContainer.GetUnits(planetStruct.createUnits);
+                planetNew.InstUnits(units);
             }
         }
     }
