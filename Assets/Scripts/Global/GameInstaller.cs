@@ -64,10 +64,11 @@ namespace Ulf
 
         private void SetupHost()
         {
-            var host = new HostRelay();
+            HostRelay host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
             host.StartAllocate();
-            Container.Bind<HostRelay>().FromInstance(host).AsCached();
+            Container.Bind<HostRelay>().FromInstance(host).AsSingle();
         }
+
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.Networking.Transport;
 using Unity.Networking.Transport.Relay;
@@ -16,12 +17,13 @@ namespace Ulf
         private NetworkDriver hostDriver;
         private string joinCode;
 
+        private bool isActive;
+
         public Action<string> OnCodeGenerate;
         public Action<string> OnLog;
 
         public HostRelay()
         {
-
         }
 
         public void BindHost()
@@ -60,7 +62,7 @@ namespace Ulf
 
         public async void StartAllocate()
         {
-
+            isActive = true;
             OnLog?.Invoke("Host - Creating an allocation. Upon success, I have 10 seconds to BIND to the Relay server that I've allocated.");
 
             // Determine region to use (user-selected or auto-select/QoS)
@@ -89,7 +91,8 @@ namespace Ulf
             {
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(hostAllocation.AllocationId);
                 OnLog?.Invoke("Host - Got join code: " + joinCode);
-                OnCodeGenerate?.Invoke(joinCode);
+                //OnCodeGenerate?.Invoke(joinCode);
+                Update();
             }
             catch (RelayServiceException ex)
             {
@@ -97,9 +100,13 @@ namespace Ulf
             }
         }
 
-        public void Update()
+        public async void Update()
         {
-            UpdateHost();
+            while (isActive)
+            {
+                UpdateHost();
+                await Task.Delay(500);
+            }
         }
 
         void UpdateHost()
@@ -186,6 +193,11 @@ namespace Ulf
                     hostDriver.EndSend(writer);
                 }
             }
+        }
+
+        public void StopHost()
+        {
+            isActive = false;
         }
     }
 }
