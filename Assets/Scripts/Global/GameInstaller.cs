@@ -2,6 +2,8 @@ using Zenject;
 using UnityEngine;
 using static Zenject.CheatSheet;
 using System;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 
 namespace Ulf
 {
@@ -34,7 +36,9 @@ namespace Ulf
                     Container.Bind<IGame>().To<SinglePlayerGame>().AsCached();
                     break;
                 case GameType.online:
-                    handlerConnect.OnHostStart += SetupConnect;
+                    SetupServices();
+                    handlerConnect.OnHostStart += (ishost) => SetupHost();
+                    handlerConnect.OnGetClientCode += SetupClient;
                     Container.Bind<IGame>().To<MultiplayerGame>().AsCached();
 
                     break;
@@ -43,23 +47,19 @@ namespace Ulf
             
         }
 
-        private void SetupConnect(bool isHhost)
+        
+
+        private async void SetupServices()
         {
-            if(isHhost)
-            {
-                SetupHost();
-            }
-            else
-            {
-                SetupClient();
-            }
+            await UnityServices.InitializeAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
 
-        private void SetupClient()
+        private void SetupClient(string code)
         {
             var client = new ClientRelay();
             client.OnLog += (log) => Debug.Log(log);
-            handlerConnect.OnGetClientCode += (code) => client.Join(code);
+            client.Join(code);
         }
 
         private void SetupHost()

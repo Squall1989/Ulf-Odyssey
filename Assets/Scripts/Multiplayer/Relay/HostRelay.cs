@@ -60,8 +60,6 @@ namespace Ulf
 
         public async void StartAllocate()
         {
-            await UnityServices.InitializeAsync();
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
             OnLog?.Invoke("Host - Creating an allocation. Upon success, I have 10 seconds to BIND to the Relay server that I've allocated.");
 
