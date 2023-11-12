@@ -39,12 +39,12 @@ namespace Ulf
             hostDriver = NetworkDriver.Create(settings);
 
             // Bind to the Relay server.
-            if (hostDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
-            {
-                OnLog?.Invoke("Host client failed to bind");
-            }
-            else
-            {
+            //if (hostDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
+            //{
+            //    OnLog?.Invoke("Host client failed to bind");
+            //}
+            //else
+            //{
                 if (hostDriver.Listen() != 0)
                 {
                     OnLog?.Invoke("Host client failed to listen");
@@ -53,7 +53,7 @@ namespace Ulf
                 {
                     OnLog?.Invoke("Host client bound to Relay server");
                 }
-            }
+            //}
 
             JoinCode();
         }
