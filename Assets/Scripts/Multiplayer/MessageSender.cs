@@ -10,23 +10,21 @@ namespace Ulf
 {
     public class MessageSender
     {
-        LazyInject<EnetConnect> injectConnect;
-        EnetConnect connect;
+        EnetConnect _connect;
 
         public Action<List<PlayerMsg>> OnLobbyUpdate;
         public Action<int, string> OnPlayerIdSet;
 
-        public MessageSender(LazyInject<EnetConnect> injectConnect)
+        public MessageSender(EnetConnect injectConnect)
         {
-            this.injectConnect = injectConnect;
+            _connect = injectConnect;
         }
 
         public void Init()
         {
-            connect = injectConnect.Value;
-            connect.InitConnect();
-            connect.OnPacket += PacketRead;
-            connect.OnConnect += () => SendName("Maxim");
+            _connect.InitConnect();
+            _connect.OnPacket += PacketRead;
+            _connect.OnConnect += () => SendName("Maxim");
         }
 
         public void PreparePacket<T>(T message) where T : IUnionMsg
@@ -36,7 +34,7 @@ namespace Ulf
             byte[] data = Reader.Serialize<IUnionMsg>(message);
 
             packet.Create(data);
-            connect.Send(0, ref packet);
+            _connect.Send(0, ref packet);
         }
 
         public void SendName(string name)

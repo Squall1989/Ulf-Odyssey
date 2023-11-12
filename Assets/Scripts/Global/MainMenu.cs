@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
 
     private void CreateLobby()
     {
-        panelLobby.CreateLobby();
+
     }
 
     public void ActivatePanel(bool isActivateLobby)

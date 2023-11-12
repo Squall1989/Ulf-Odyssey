@@ -12,7 +12,6 @@ public class LobbyControl : MonoBehaviour
 {
     [SerializeField] protected GameObject playerListGO;
     [SerializeField] protected Button createButton;
-    [Inject] MessageSender sender;
     
     private List<TextMeshProUGUI> playersTMPro;
     private Dictionary<int, string> playersDict;
@@ -24,13 +23,8 @@ public class LobbyControl : MonoBehaviour
     {
         playersTMPro = playerListGO.GetComponentsInChildren<TextMeshProUGUI>().ToList();
         playersTMPro.ForEach(x => x.enabled = false);
-        sender.OnLobbyUpdate += UpdateLobby;
     }
 
-    private void OnEnable()
-    {
-        sender.Init();
-    }
 
     private void UpdateLobby(List<PlayerMsg> playerList)
     {
@@ -78,8 +72,4 @@ public class LobbyControl : MonoBehaviour
         }
     }
 
-    internal void CreateLobby()
-    {
-        sender.CreateLobby();
-    }
 }

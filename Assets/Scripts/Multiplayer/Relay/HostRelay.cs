@@ -2,6 +2,8 @@ using System;
 using Unity.Collections;
 using Unity.Networking.Transport;
 using Unity.Networking.Transport.Relay;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 
@@ -17,6 +19,10 @@ namespace Ulf
         public Action<string> OnCodeGenerate;
         public Action<string> OnLog;
 
+        public HostRelay()
+        {
+
+        }
 
         public void BindHost()
         {
@@ -54,6 +60,9 @@ namespace Ulf
 
         public async void StartAllocate()
         {
+            await UnityServices.InitializeAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
             OnLog?.Invoke("Host - Creating an allocation. Upon success, I have 10 seconds to BIND to the Relay server that I've allocated.");
 
             // Determine region to use (user-selected or auto-select/QoS)

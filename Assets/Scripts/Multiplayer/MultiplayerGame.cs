@@ -12,14 +12,12 @@ namespace Ulf
         protected (int id, string name) controlledPlayer;
         protected Dictionary<int, string> _players = new Dictionary<int, string>();
 
-        MessageSender sender;
 
-        [Inject] 
-        public MultiplayerGame(MessageSender sender)
+        public MultiplayerGame()
         {
-            this.sender = sender;   
-            sender.OnPlayerIdSet += RegisterOurPlayer;
+            //sender.OnPlayerIdSet += RegisterOurPlayer;
         }
+
 
         public Task<(int from, int limit)> GetPlanetsLimit()
         {
