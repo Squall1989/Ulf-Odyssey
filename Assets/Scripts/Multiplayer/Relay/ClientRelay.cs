@@ -29,16 +29,16 @@ public class ClientRelay
         playerDriver = NetworkDriver.Create(settings);
 
         // Bind to the Relay server.
-        //if (playerDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
-        //{
-        //    OnLog?.Invoke("Player client failed to bind");
-        //}
-        //else
-        //{
-        //    OnLog?.Invoke("Player client bound to Relay server");
+        if (playerDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
+        {
+            OnLog?.Invoke("Player client failed to bind");
+        }
+        else
+        {
+            OnLog?.Invoke("Player client bound to Relay server");
             clientConnection = playerDriver.Connect();
 
-        //}
+        }
     }
 
     public async void Join(string JoinCodeInput)
