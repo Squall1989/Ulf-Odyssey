@@ -4,6 +4,7 @@ using Unity.Collections;
 using System;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using System.Threading.Tasks;
 
 public class ClientRelay 
 {
@@ -13,7 +14,7 @@ public class ClientRelay
     private JoinAllocation playerAllocation;
 
     public Action<string> OnLog;
-
+    private bool isActive;
 
     public void BindPlayer()
     {
@@ -37,7 +38,7 @@ public class ClientRelay
         {
             OnLog?.Invoke("Player client bound to Relay server");
             clientConnection = playerDriver.Connect();
-
+            Update();
         }
     }
 
@@ -64,9 +65,13 @@ public class ClientRelay
         }
     }
 
-    public void Update()
+    public async void Update()
     {
-        UpdatePlayer();
+        while (isActive)
+        {
+            UpdatePlayer();
+            await Task.Delay(500);
+        }
     }
 
     void UpdatePlayer()

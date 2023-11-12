@@ -24,7 +24,6 @@ namespace Ulf
 
         public HostRelay()
         {
-            Update();
         }
 
         public void BindHost()
@@ -93,6 +92,7 @@ namespace Ulf
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(hostAllocation.AllocationId);
                 OnLog?.Invoke("Host - Got join code: " + joinCode);
                 //OnCodeGenerate?.Invoke(joinCode);
+                Update();
             }
             catch (RelayServiceException ex)
             {
