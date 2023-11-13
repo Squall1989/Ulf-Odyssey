@@ -52,7 +52,8 @@ public class ClientRelay
         // Input join code in the respective input field first.
         if (String.IsNullOrEmpty(JoinCodeInput))
         {
-            OnLog?.Invoke("Please input a join code.");
+            OnLog?.Invoke("Try connect to random lobby...");
+            QuickJoinLobby();
             return;
         }
 
@@ -134,12 +135,17 @@ public class ClientRelay
                 new QueryFilter(
                     field: QueryFilter.FieldOptions.MaxPlayers,
                     op: QueryFilter.OpOptions.GE,
-                    value: "10")
+                    value: "4")
             };
 
             var lobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
-            OnLog?.Invoke("Lobby joined code: " + lobby.Data["code"].Value);
+            var code = lobby.Data["code"].Value;
+            OnLog?.Invoke("Lobby joined code: " + code);
 
+            if (!string.IsNullOrEmpty(code))
+            {
+                Join(code);
+            }
             // ...
         }
         catch (LobbyServiceException e)
