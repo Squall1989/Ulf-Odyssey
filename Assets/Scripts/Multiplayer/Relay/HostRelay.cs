@@ -5,6 +5,8 @@ using Unity.Networking.Transport;
 using Unity.Networking.Transport.Relay;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using Unity.Services.Lobbies.Models;
+using Unity.Services.Lobbies;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 
@@ -92,6 +94,7 @@ namespace Ulf
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(hostAllocation.AllocationId);
                 OnLog?.Invoke("Host - Got join code: " + joinCode);
                 //OnCodeGenerate?.Invoke(joinCode);
+                CreateLobby(joinCode);
                 Update();
             }
             catch (RelayServiceException ex)
@@ -198,6 +201,21 @@ namespace Ulf
         public void StopHost()
         {
             isActive = false;
+        }
+
+        private async void CreateLobby(string code)
+        {
+
+            string lobbyName = "new lobby";
+            int maxPlayers = 4;
+            CreateLobbyOptions options = new CreateLobbyOptions();
+            options.IsPrivate = false;
+            options.Data = new System.Collections.Generic.Dictionary<string, DataObject>();
+            DataObject data = new(DataObject.VisibilityOptions.Public, code);
+            options.Data.Add("code", data);
+
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+            OnLog?.Invoke("Lobby created: " + lobby.LobbyCode);
         }
     }
 }

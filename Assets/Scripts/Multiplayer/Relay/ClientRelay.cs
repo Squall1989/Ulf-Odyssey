@@ -5,6 +5,9 @@ using System;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
 
 public class ClientRelay 
 {
@@ -38,6 +41,8 @@ public class ClientRelay
         {
             OnLog?.Invoke("Player client bound to Relay server");
             clientConnection = playerDriver.Connect();
+            isActive = true;
+            QuickJoinLobby();
             Update();
         }
     }
@@ -109,6 +114,37 @@ public class ClientRelay
                     clientConnection = default(NetworkConnection);
                     break;
             }
+        }
+    }
+
+    public void StopClient()
+    {
+        isActive = false;
+    }
+
+    private async void QuickJoinLobby()
+    {
+        try
+        {
+            // Quick-join a random lobby with a maximum capacity of 10 or more players.
+            QuickJoinLobbyOptions options = new QuickJoinLobbyOptions();
+
+            options.Filter = new List<QueryFilter>()
+            {
+                new QueryFilter(
+                    field: QueryFilter.FieldOptions.MaxPlayers,
+                    op: QueryFilter.OpOptions.GE,
+                    value: "10")
+            };
+
+            var lobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
+            OnLog?.Invoke("Lobby joined code: " + lobby.Data["code"].Value);
+
+            // ...
+        }
+        catch (LobbyServiceException e)
+        {
+            OnLog?.Invoke(e.Message);
         }
     }
 }
