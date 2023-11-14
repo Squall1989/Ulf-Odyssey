@@ -11,10 +11,11 @@ namespace Ulf
     {
         protected (int id, string name) controlledPlayer;
         protected Dictionary<int, string> _players = new Dictionary<int, string>();
+        private INetworkable _networker;
 
-
-        public MultiplayerGame()
+        public MultiplayerGame(INetworkable networker)
         {
+            _networker = networker;
             //sender.OnPlayerIdSet += RegisterOurPlayer;
         }
 

@@ -1,6 +1,14 @@
 using System.Collections.Generic;
 using Vector3 = UnityEngine.Vector3;
 [System.Serializable]
+public struct SnapshotUnitStruct
+{
+    public CreateUnitStruct createUnit;
+    public float angle;
+    public int health;
+}
+
+[System.Serializable]
 public struct CreateUnitStruct 
 {
     public string View;
@@ -11,8 +19,6 @@ public struct CreateUnitStruct
 [System.Serializable]
 public struct CreatePlanetStruct
 {
-    public const int maxSize = 4;
-
     public int planetId;
 
     public CreateUnitStruct[] createUnits;

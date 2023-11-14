@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using Unity.Entities.UniversalDelegates;
 
-public class ClientRelay 
+public class ClientRelay : INetworkable
 {
 
-    private NetworkDriver playerDriver;
+    private NetworkDriver clientDriver;
     private NetworkConnection clientConnection;
     private JoinAllocation playerAllocation;
 
     public Action<string> OnLog;
     private bool isActive;
+
+    public Action<string> OnReceive { get; set; }
 
     public void BindPlayer()
     {
@@ -30,17 +33,17 @@ public class ClientRelay
         settings.WithRelayParameters(ref relayServerData);
 
         // Create the Player's NetworkDriver from the NetworkSettings object.
-        playerDriver = NetworkDriver.Create(settings);
+        clientDriver = NetworkDriver.Create(settings);
 
         // Bind to the Relay server.
-        if (playerDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
+        if (clientDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
         {
             OnLog?.Invoke("Player client failed to bind");
         }
         else
         {
             OnLog?.Invoke("Player client bound to Relay server");
-            clientConnection = playerDriver.Connect();
+            clientConnection = clientDriver.Connect();
             isActive = true;
             QuickJoinLobby();
             Update();
@@ -76,25 +79,25 @@ public class ClientRelay
         while (isActive)
         {
             UpdatePlayer();
-            await Task.Delay(500);
+            await Task.Delay(100);
         }
     }
 
     void UpdatePlayer()
     {
         // Skip update logic if the Player isn't yet bound.
-        if (!playerDriver.IsCreated || !playerDriver.Bound)
+        if (!clientDriver.IsCreated || !clientDriver.Bound)
         {
             return;
         }
 
         // This keeps the binding to the Relay server alive,
         // preventing it from timing out due to inactivity.
-        playerDriver.ScheduleUpdate().Complete();
+        clientDriver.ScheduleUpdate().Complete();
 
         // Resolve event queue.
         NetworkEvent.Type eventType;
-        while ((eventType = clientConnection.PopEvent(playerDriver, out var stream)) != NetworkEvent.Type.Empty)
+        while ((eventType = clientConnection.PopEvent(clientDriver, out var stream)) != NetworkEvent.Type.Empty)
         {
             switch (eventType)
             {
@@ -102,6 +105,7 @@ public class ClientRelay
                 case NetworkEvent.Type.Data:
                     FixedString32Bytes msg = stream.ReadFixedString32();
                     OnLog?.Invoke($"Player received msg: {msg}");
+                    OnReceive?.Invoke(msg.ToString());
                     break;
 
                 // Handle Connect events.
@@ -151,6 +155,16 @@ public class ClientRelay
         catch (LobbyServiceException e)
         {
             OnLog?.Invoke(e.Message);
+        }
+    }
+
+    public void Send(string message)
+    {
+        if (clientDriver.BeginSend(clientConnection, out var writer) == 0)
+        {
+            // Send the message. Aside from FixedString32, many different types can be used.
+            writer.WriteFixedString32(message);
+            clientDriver.EndSend(writer);
         }
     }
 }

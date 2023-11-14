@@ -12,7 +12,7 @@ using Unity.Services.Relay.Models;
 
 namespace Ulf
 {
-    public class HostRelay 
+    public class HostRelay : INetworkable
     {
         private NativeList<NetworkConnection> serverConnections;
         private Allocation hostAllocation;
@@ -23,6 +23,8 @@ namespace Ulf
 
         public Action<string> OnCodeGenerate;
         public Action<string> OnLog;
+
+        public Action<string> OnReceive { get ; set; }
 
         public HostRelay()
         {
@@ -162,6 +164,7 @@ namespace Ulf
                         case NetworkEvent.Type.Data:
                             FixedString32Bytes msg = stream.ReadFixedString32();
                             OnLog?.Invoke($"Server received msg: {msg}");
+                            OnReceive?.Invoke(msg.ToString());
                             //hostLatestMessageReceived = msg.ToString();
                             break;
 
@@ -217,5 +220,12 @@ namespace Ulf
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
             OnLog?.Invoke("Lobby created: " + lobby.LobbyCode);
         }
+
+        public void Send(string message)
+        {
+            SendMessage(message);
+        }
+
+        
     }
 }

@@ -18,7 +18,7 @@ public class NPCharacter
         UpdateAction();
     }
 
-    private async void UpdateAction()
+    private void UpdateAction()
     {
         //while (unit.Attackable.IsAlive)
         //{

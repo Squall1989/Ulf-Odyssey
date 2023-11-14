@@ -32,7 +32,7 @@ namespace Ulf
                 }
 
                 var planetNew = Instantiate(prefab, planetStruct.planetPos, Quaternion.identity);
-
+                planetNew.Init(planetStruct);
                 var units = unitsContainer.GetUnits(planetStruct.createUnits);
                 planetNew.InstUnits(units);
             }
