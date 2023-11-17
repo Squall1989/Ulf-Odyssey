@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        panelLobby.CreateButton.onClick.AddListener(CreateLobby);
+        //panelLobby.CreateButton.onClick.AddListener(CreateLobby);
         multiplayerButton.onClick.AddListener(SwitchToMultiplayer);
         singleButton.onClick.AddListener(SwitchToSingle);
     }

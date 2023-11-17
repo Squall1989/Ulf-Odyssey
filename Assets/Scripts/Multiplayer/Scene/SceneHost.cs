@@ -1,18 +1,26 @@
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Zenject;
 
 namespace Ulf
 {
-
-    public class SceneHost
+    /// <summary>
+    /// Units interaction
+    /// </summary>
+    public class SceneHost : ISceneProxy
     {
-        protected List<Unit> units = new List<Unit>();
-        protected List<Planet> planets = new List<Planet>();
 
-        public SceneHost(int planetCount, int unitCount) 
+        int planetCount = 10;
+        protected List<Unit> units = new List<Unit>();
+        protected List<Planet> planets;
+
+        private SceneGenerator _sceneGenerator;
+
+        public SceneHost(SceneGenerator sceneGenerator) 
         {
+            _sceneGenerator = sceneGenerator;
             planets = new List<Planet>(planetCount);
-            units = new List<Unit>(unitCount);
         }
 
         public void Add(Unit unit)
@@ -24,5 +32,20 @@ namespace Ulf
         {
             planets.Add(planet);
         }
+
+        public Task<SnapSceneStruct> GetSceneStruct()
+        {
+            var planetsSnapshot = new SnapPlanetStruct[planets.Count];
+            for (int i = 0; i < planets.Count; i++)
+            {
+                planetsSnapshot[i] = planets[i].GetSnapshot();
+            }
+
+            return Task.FromResult(new SnapSceneStruct()
+            {
+                snapPlanets = planetsSnapshot,
+            });
+        }
+
     }
 }

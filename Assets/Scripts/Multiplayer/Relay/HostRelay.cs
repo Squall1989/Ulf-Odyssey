@@ -9,10 +9,11 @@ using Unity.Services.Lobbies.Models;
 using Unity.Services.Lobbies;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using MsgPck;
 
 namespace Ulf
 {
-    public class HostRelay : INetworkable
+    public class HostRelay : RelayBase, INetworkable
     {
         private NativeList<NetworkConnection> serverConnections;
         private Allocation hostAllocation;
@@ -28,6 +29,7 @@ namespace Ulf
 
         public HostRelay()
         {
+
         }
 
         public void BindHost()
@@ -226,6 +228,9 @@ namespace Ulf
             SendMessage(message);
         }
 
-        
+        public void RegisterHandler<T>(Action<T> callback)
+        {
+            SetHandler(callback);
+        }
     }
 }

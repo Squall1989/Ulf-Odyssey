@@ -1,4 +1,5 @@
 using Assets.Scripts.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vector2 = UnityEngine.Vector2;
@@ -23,6 +24,16 @@ namespace Ulf
         public void RmUnit(Unit unit)
         {
             units.Remove(unit);
+        }
+
+        internal SnapPlanetStruct GetSnapshot()
+        {
+            return new SnapPlanetStruct()
+            {
+                createPlanet = _planetStruct,
+                snapUnits = units.Select(u => u.GetSnapshot()).ToArray(),
+                
+            };
         }
 
         /*

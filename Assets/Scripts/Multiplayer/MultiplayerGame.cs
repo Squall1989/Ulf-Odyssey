@@ -9,33 +9,25 @@ namespace Ulf
 {
     public class MultiplayerGame : IGame
     {
-        protected (int id, string name) controlledPlayer;
-        protected Dictionary<int, string> _players = new Dictionary<int, string>();
+        protected int controlledPlayerId;
+        protected List<PlayerData> _players = new ();
+        private bool _isHost;
         private INetworkable _networker;
+        private ISceneProxy _sceneProxy;
 
-        public MultiplayerGame(INetworkable networker)
+        public MultiplayerGame(INetworkable networker, ISceneProxy sceneProxy, bool isHost)
         {
+            _isHost = isHost;
             _networker = networker;
+            _sceneProxy = sceneProxy;
             //sender.OnPlayerIdSet += RegisterOurPlayer;
         }
 
-
-        public Task<(int from, int limit)> GetPlanetsLimit()
+        public void RegisterPlayer(PlayerData playerData)
         {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterPlayer(int id, string name)
-        {
-
-            _players.Add(id, name);
+            _players.Add(playerData);
             
         }
 
-        private void RegisterOurPlayer(int id, string name)
-        {
-            controlledPlayer.name = name;
-            controlledPlayer.id = id;
-        }
     }
 }

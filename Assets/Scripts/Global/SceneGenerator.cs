@@ -17,27 +17,24 @@ namespace Ulf
 
         private float bridgeSize = 5f;
 
-        protected IGame _game;
         protected AllUnitsScriptable _allUnits;
         private AllPlanetsScriptable _allPlanets;
 
         public List<CreatePlanetStruct> PlanetList => planetList;
 
-        public SceneGenerator(IGame game, AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets)
+        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets)
         {
-            _game = game;
             _allUnits = allUnits;
             _allPlanets = allPlanets;
-            Generate();
+            Generate(10);
         }
 
-        protected async void Generate()
+        protected void Generate(int limit)
         {
-            var result = await _game.GetPlanetsLimit();
 
-            nextId = result.from;
-            planetList = new(result.limit);
-            for (int p = 0; p < result.limit; p++)
+            nextId = 0;
+            planetList = new(limit);
+            for (int p = 0; p < limit; p++)
             {
                 planetList.Add(GeneratePlanet(ElementType.wood));
             }

@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
-using Unity.Entities.UniversalDelegates;
+using MsgPck;
+using Ulf;
 
-public class ClientRelay : INetworkable
+public class ClientRelay : RelayBase, INetworkable
 {
 
     private NetworkDriver clientDriver;
@@ -166,5 +167,11 @@ public class ClientRelay : INetworkable
             writer.WriteFixedString32(message);
             clientDriver.EndSend(writer);
         }
+    }
+
+
+    public void RegisterHandler<T>(Action<T> callback)
+    {
+        SetHandler(callback);
     }
 }
