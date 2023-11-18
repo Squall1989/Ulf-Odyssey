@@ -32,14 +32,12 @@ namespace Ulf
             switch (options.GameType)
             {
                 case GameType.single:
-                    Container.Bind<SinglePlayerGame>().FromNew().AsCached();
-                    Container.Bind<IGame>().To<SinglePlayerGame>().AsCached();
+
                     break;
                 case GameType.online:
                     SetupServices();
                     handlerConnect.OnHostStart += (ishost) => SetupHost();
                     handlerConnect.OnGetClientCode += SetupClient;
-                    Container.Bind<IGame>().To<MultiplayerGame>().AsCached();
 
                     break;
             }
@@ -60,6 +58,9 @@ namespace Ulf
             var client = new ClientRelay();
             client.OnLog += (log) => Debug.Log(log);
             client.Join(code);
+
+            Container.Bind<INetworkable>().To<ClientRelay>().FromInstance(client).AsCached();
+
         }
 
         private void SetupHost()
@@ -67,7 +68,7 @@ namespace Ulf
             HostRelay host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
             host.StartAllocate();
-            Container.Bind<HostRelay>().FromInstance(host).AsSingle();
+            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsCached();
         }
 
     }

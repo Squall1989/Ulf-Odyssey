@@ -19,7 +19,11 @@ namespace Ulf
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();
-            planet = new Planet(planetCollider.radius, elementType, transform.position);
+        }
+
+        public void Init(CreatePlanetStruct planetStruct)
+        {
+            planet = new(planetStruct);
         }
 
         public void InstUnits(UnitMono[] unitsMono)

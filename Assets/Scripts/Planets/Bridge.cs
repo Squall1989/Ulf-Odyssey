@@ -8,7 +8,7 @@ namespace Ulf
     {
         private float startDeg, endDeg;
 
-        public Bridge(Vector2 pos, float radius, float startDeg, float endDeg) : base( radius, default, pos)
+        public Bridge(Vector2 pos, float radius, float startDeg, float endDeg) : base(new CreatePlanetStruct() { planetPos = pos, planetSize = radius})
         {
             this.startDeg = startDeg;
             this.endDeg = endDeg;

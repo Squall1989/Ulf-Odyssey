@@ -12,11 +12,11 @@ namespace Ulf
     {
         [Inject] protected AllPlanetsScriptable planetsContainer;
         [Inject] protected AllUnitsScriptable unitsContainer;
-        [Inject] protected SceneGenerator sceneGenerator;
+        [Inject] protected ISceneProxy sceneProxy;
 
         void Start()
         {
-            InstPlanets(sceneGenerator.PlanetList);
+            //InstPlanets(sceneGenerator.PlanetList);
         }
 
 
@@ -32,7 +32,7 @@ namespace Ulf
                 }
 
                 var planetNew = Instantiate(prefab, planetStruct.planetPos, Quaternion.identity);
-
+                planetNew.Init(planetStruct);
                 var units = unitsContainer.GetUnits(planetStruct.createUnits);
                 planetNew.InstUnits(units);
             }
