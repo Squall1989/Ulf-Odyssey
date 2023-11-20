@@ -10,6 +10,7 @@ using Unity.Services.Lobbies;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using MsgPck;
+using UlfServer;
 
 namespace Ulf
 {
@@ -133,7 +134,7 @@ namespace Ulf
             {
                 if (!serverConnections[i].IsCreated)
                 {
-                    OnLog?.Invoke("Stale connection removed");
+                    OnLog?.Invoke("connection removed: " + serverConnections[i].GetConnectionId());
                     serverConnections.RemoveAt(i);
                     --i;
                 }
@@ -146,9 +147,11 @@ namespace Ulf
                 // Adds the requesting Player to the serverConnections list.
                 // This also sends a Connect event back the requesting Player,
                 // as a means of acknowledging acceptance.
-                OnLog?.Invoke("Accepted an incoming connection.");
+                int connectionId = incomingConnection.GetConnectionId();
+                OnLog?.Invoke("Accepted an incoming connection: " + connectionId);
                 serverConnections.Add(incomingConnection);
-                SendMessage("Hello!!!!!!!!");
+
+                
             }
 
             // Process events from all connections.
@@ -164,6 +167,7 @@ namespace Ulf
                     {
                         // Handle Relay events.
                         case NetworkEvent.Type.Data:
+                            
                             FixedString32Bytes msg = stream.ReadFixedString32();
                             OnLog?.Invoke($"Server received msg: {msg}");
                             OnReceive?.Invoke(msg.ToString());
@@ -180,7 +184,17 @@ namespace Ulf
             }
         }
 
-        public void SendMessage(string msg)
+        protected override void SendTo(NativeArray<byte> bytes, NetworkConnection connection)
+        {
+            if (hostDriver.BeginSend(connection, out var writer) == 0)
+            {
+                // Send the message. Aside from FixedString32, many different types can be used.
+                writer.WriteBytes(bytes);
+                hostDriver.EndSend(writer);
+            }
+        }
+
+        protected override void SendToAll(NativeArray<byte> bytes)
         {
             if (serverConnections.Length == 0)
             {
@@ -197,7 +211,7 @@ namespace Ulf
                 if (hostDriver.BeginSend(serverConnections[i], out var writer) == 0)
                 {
                     // Send the message. Aside from FixedString32, many different types can be used.
-                    writer.WriteFixedString32(msg);
+                    writer.WriteBytes(bytes);
                     hostDriver.EndSend(writer);
                 }
             }
@@ -223,14 +237,5 @@ namespace Ulf
             OnLog?.Invoke("Lobby created: " + lobby.LobbyCode);
         }
 
-        public void Send(string message)
-        {
-            SendMessage(message);
-        }
-
-        public void RegisterHandler<T>(Action<T> callback)
-        {
-            SetHandler(callback);
-        }
     }
 }

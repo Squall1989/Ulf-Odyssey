@@ -13,28 +13,31 @@ namespace Ulf
         [Inject] protected AllPlanetsScriptable planetsContainer;
         [Inject] protected AllUnitsScriptable unitsContainer;
         [Inject] protected ISceneProxy sceneProxy;
+        [Inject] protected ConnectHandler connectHandler;
 
-        void Start()
+        async void Start()
         {
-            //InstPlanets(sceneGenerator.PlanetList);
+           var scene = await sceneProxy.GetSceneStruct();
+            InstPlanets(scene.snapPlanets);
         }
 
 
-        private void InstPlanets(List<CreatePlanetStruct> planetStructs)
+        private void InstPlanets(SnapPlanetStruct[] planetStructs)
         {
-            foreach(var planetStruct in planetStructs)
+            foreach (var planetStruct in planetStructs)
             {
-                var prefab = planetsContainer.GetPlanet(planetStruct);
-                if (prefab == null) 
+                var prefab = planetsContainer.GetPlanet(planetStruct.createPlanet);
+                if (prefab == null)
                 {
-                    Debug.LogError($"Planet prefab with size {planetStruct.planetSize} and element {planetStruct.ElementType} is NULL!!!");
+                    Debug.LogError($"Planet prefab with size {planetStruct.createPlanet.planetSize} and element {planetStruct.createPlanet.ElementType} is NULL!!!");
                     continue;
                 }
 
-                var planetNew = Instantiate(prefab, planetStruct.planetPos, Quaternion.identity);
-                planetNew.Init(planetStruct);
-                var units = unitsContainer.GetUnits(planetStruct.createUnits);
-                planetNew.InstUnits(units);
+                var planetNew = Instantiate(prefab, planetStruct.createPlanet.planetPos, Quaternion.identity);
+                planetNew.Init(planetStruct.createPlanet);
+                var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
+
+                planetNew.InstUnits(units, planetStruct.snapUnits);
             }
         }
     }

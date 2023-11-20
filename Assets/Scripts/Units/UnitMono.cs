@@ -12,9 +12,10 @@ namespace Ulf
         public Unit Unit => _unit;
         public CreateUnitStruct UnitStruct => unitStruct;
 
-        public void Init(Planet planet, (float, float) freeArc)
+        public void Init(Planet planet, float freeArc)
         {
             _unit = new Unit(planet.Element, unitStruct);
+
             movement.Init(planet, unitStruct, freeArc);
         }
 

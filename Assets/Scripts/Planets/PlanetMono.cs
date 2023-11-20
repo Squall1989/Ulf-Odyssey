@@ -26,14 +26,12 @@ namespace Ulf
             planet = new(planetStruct);
         }
 
-        public void InstUnits(UnitMono[] unitsMono)
+        public void InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits)
         {
-            float arcPerUnit = 360f / unitsMono.Length;
             for (int u = 0; u < unitsMono.Length; u++)
             {
                 var _unitMono = Instantiate(unitsMono[u], gameObject.transform);
-                (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit +1));
-                _unitMono.Init(planet, freeArc);
+                _unitMono.Init(planet, snapUnits[u].angle);
                 //unitsRegister.Record(_unitMono.Unit);
             }
         }
