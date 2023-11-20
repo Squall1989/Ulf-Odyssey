@@ -2,8 +2,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Extensions;
-using Zenject;
 using Vector3 = UnityEngine.Vector3;
+using Random = UnityEngine.Random;
+using UnityEngine;
 
 namespace Ulf
 {
@@ -29,7 +30,7 @@ namespace Ulf
             Generate(10);
         }
 
-        protected void Generate(int limit)
+         void Generate(int limit)
         {
 
             nextId = 0;
@@ -46,8 +47,8 @@ namespace Ulf
             bridgeList = new();
             foreach(var planet in planetList)
             {
-                float bridgeAngle = new Random().Next(15, 90);
-                bool left = new Random().Next(1, 2) % 2 == 0;
+                float bridgeAngle = Random.Range(15, 90);
+                bool left = Random.Range(1, 2) % 2 == 0;
                 bridgeList.Add(new BridgePositionStruct()
                 {
                     angleStart = bridgeAngle,
@@ -62,8 +63,8 @@ namespace Ulf
             Vector3 rndPos = new Vector3();
             while (!checkPlanetsPos())
             {
-                int x = UnityEngine.Random.Range(-60, 60);
-                int y = UnityEngine.Random.Range(-60, 60);
+                int x = Random.Range(-60, 60);
+                int y = Random.Range(-60, 60);
                 rndPos = new Vector3(x, y, 0);
             }
 
@@ -85,9 +86,9 @@ namespace Ulf
         {
             var elementSizes = _allPlanets.GetSizes(elementType);
 
-            int sizeNum = new Random().Next(0, elementSizes.Length);
+            int sizeNum = Random.Range(0, elementSizes.Length);
             Vector3 pos = RandomPlanetPos(elementSizes[sizeNum]);
-            int unitCount = new Random().Next(1, 10);
+            int unitCount = Random.Range(1, 10);
             var availableUnits = _allUnits.AllUnits.Where(u => u.ElementType == elementType);
 
             List<CreateUnitStruct> units = new(unitCount);
@@ -105,6 +106,29 @@ namespace Ulf
                 planetSize = elementSizes[sizeNum],
                 planetPos = pos,
             };
+        }
+
+        public SnapUnitStruct[] StartSnapUnits(CreateUnitStruct[] createUnits)
+        {
+            float arcPerUnit = 360f / createUnits.Length;
+            SnapUnitStruct[] snapUnits = new SnapUnitStruct[createUnits.Length];
+            for (int u = 0; u < createUnits.Length; u++)
+            {
+                (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit + 1));
+                float startAngle = new System.Random().Next((int)freeArc.Item1, (int)freeArc.Item2);
+
+                snapUnits[u] = new SnapUnitStruct()
+                {
+                    createUnit = createUnits[u],
+                    angle = startAngle,
+                    health = createUnits[u].Health,
+                };
+
+                //unitsRegister.Record(_unitMono.Unit);
+            }
+
+            return snapUnits;
+
         }
     }
 }

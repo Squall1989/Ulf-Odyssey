@@ -9,16 +9,24 @@ using Ulf;
 /// </summary>
 public class SceneClient : ISceneProxy
 {
+    private string _playerId;
     private INetworkable _networkable;
 
-    public SceneClient(INetworkable networkable)
+    public SceneClient(INetworkable networkable, string playerId)
     {
+        _playerId = playerId;
         _networkable = networkable;
     }
 
     public Task<SnapSceneStruct> GetSceneStruct()
     {
         _networkable.RegisterHandler<SceneSnapMsg>(SceneReceived);
+        var playerData = new PlayerData()
+        {
+             isReady = true,
+              playerId = _playerId,
+        };
+        _networkable.Send(new PlayerReadyMsg() { playerData = playerData });
         
         SceneSnapMsg result = null;
 

@@ -6,11 +6,10 @@ namespace Ulf
     {
         private CircleMove _circleMove;
 
-        public void Init(Planet planet, CreateUnitStruct unitStruct, (float angleFrom, float angleTo) freeArc)
+        public void Init(Planet planet, CreateUnitStruct unitStruct, float angle)
         {
             _circleMove = new(unitStruct.MoveSpeed);
-            float startAngle = new System.Random().Next((int)freeArc.angleFrom, (int)freeArc.angleTo);
-            _circleMove.ToLand(planet.Position, planet.Radius, startAngle);
+            _circleMove.ToLand(planet.Position, planet.Radius, angle);
             _circleMove.Move(0);
             transform.position = _circleMove.Position;
         }

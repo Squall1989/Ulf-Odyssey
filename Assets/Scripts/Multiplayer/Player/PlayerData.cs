@@ -1,7 +1,6 @@
 [System.Serializable]
 public struct PlayerData
 {
-    public int Id; 
-    public string Name;
+    public string playerId;
     public bool isReady;
 }

@@ -9,25 +9,23 @@ namespace Ulf
 {
     public class MultiplayerGame : IGame
     {
-        protected int controlledPlayerId;
-        protected List<PlayerData> _players = new ();
-        private bool _isHost;
         private INetworkable _networker;
         private ISceneProxy _sceneProxy;
 
-        public MultiplayerGame(INetworkable networker, ISceneProxy sceneProxy, bool isHost)
+        public MultiplayerGame(INetworkable networker, ISceneProxy sceneProxy)
         {
-            _isHost = isHost;
             _networker = networker;
             _sceneProxy = sceneProxy;
             //sender.OnPlayerIdSet += RegisterOurPlayer;
+            SetupHandlers();
         }
 
-        public void RegisterPlayer(PlayerData playerData)
+
+        protected void SetupHandlers()
         {
-            _players.Add(playerData);
-            
+
         }
+
 
     }
 }

@@ -4,6 +4,7 @@ using static Zenject.CheatSheet;
 using System;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using UnityEngine.SceneManagement;
 
 namespace Ulf
 {
@@ -51,6 +52,9 @@ namespace Ulf
         {
             await UnityServices.InitializeAsync();
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+            string playerId = AuthenticationService.Instance.PlayerId;
+            Container.Bind<string>().WithId("playerId").FromInstance(playerId).AsCached();
         }
 
         private void SetupClient(string code)
@@ -69,6 +73,10 @@ namespace Ulf
             host.OnLog += (log) => Debug.Log(log);
             host.StartAllocate();
             Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsCached();
+            Container.Bind<MultiplayerHost>().FromNew().AsCached();
+
+            SceneManager.LoadScene("GameScene");
+
         }
 
     }

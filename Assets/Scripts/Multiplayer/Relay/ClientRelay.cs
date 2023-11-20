@@ -159,19 +159,24 @@ public class ClientRelay : RelayBase, INetworkable
         }
     }
 
-    public void Send(string message)
+
+    protected override void SendToAll(NativeArray<byte> bytes)
     {
         if (clientDriver.BeginSend(clientConnection, out var writer) == 0)
         {
             // Send the message. Aside from FixedString32, many different types can be used.
-            writer.WriteFixedString32(message);
+            writer.WriteBytes(bytes);
             clientDriver.EndSend(writer);
         }
     }
 
-
-    public void RegisterHandler<T>(Action<T> callback)
+    protected override void SendTo(NativeArray<byte> bytes, NetworkConnection connection)
     {
-        SetHandler(callback);
+        if (clientDriver.BeginSend(connection, out var writer) == 0)
+        {
+            // Send the message. Aside from FixedString32, many different types can be used.
+            writer.WriteBytes(bytes);
+            clientDriver.EndSend(writer);
+        }
     }
 }

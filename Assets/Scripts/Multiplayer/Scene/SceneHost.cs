@@ -11,16 +11,14 @@ namespace Ulf
     public class SceneHost : ISceneProxy
     {
 
-        int planetCount = 10;
         protected List<Unit> units = new List<Unit>();
         protected List<Planet> planets;
-
         private SceneGenerator _sceneGenerator;
 
         public SceneHost(SceneGenerator sceneGenerator) 
         {
             _sceneGenerator = sceneGenerator;
-            planets = new List<Planet>(planetCount);
+            planets = new List<Planet>();
         }
 
         public void Add(Unit unit)
@@ -35,16 +33,37 @@ namespace Ulf
 
         public Task<SnapSceneStruct> GetSceneStruct()
         {
-            var planetsSnapshot = new SnapPlanetStruct[planets.Count];
-            for (int i = 0; i < planets.Count; i++)
+            if (planets.Count == 0)
             {
-                planetsSnapshot[i] = planets[i].GetSnapshot();
-            }
+                var planetsCreate = _sceneGenerator.PlanetList;
+                SnapPlanetStruct[] planetsSnapshot = new SnapPlanetStruct[planetsCreate.Count];
+                for (int i = 0; i < planetsCreate.Count; i++)
+                {
+                    planetsSnapshot[i] = new SnapPlanetStruct()
+                    {
+                        createPlanet = planetsCreate[i],
+                        snapUnits = _sceneGenerator.StartSnapUnits(planetsCreate[i].createUnits),
+                    };
+                }
 
-            return Task.FromResult(new SnapSceneStruct()
+                return Task.FromResult(new SnapSceneStruct()
+                {
+                    snapPlanets = planetsSnapshot,
+                });
+            }
+            else
             {
-                snapPlanets = planetsSnapshot,
-            });
+                SnapPlanetStruct[] planetsSnapshot = new SnapPlanetStruct[planets.Count];
+                for (int i = 0; i < planets.Count; i++)
+                {
+                    planetsSnapshot[i] = planets[i].GetSnapshot();
+                }
+                
+                return Task.FromResult(new SnapSceneStruct()
+                {
+                    snapPlanets = planetsSnapshot,
+                });
+            }
         }
 
     }

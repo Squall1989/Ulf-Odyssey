@@ -19,7 +19,8 @@ namespace MsgPck
     [MessagePackObject]
     public class PlayerReadyMsg : IUnionMsg
     {
-
+        [Key(0)]
+        public PlayerData playerData { get; set; }
     }
 
 }

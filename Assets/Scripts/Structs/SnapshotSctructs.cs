@@ -10,6 +10,7 @@ namespace Ulf
     [System.Serializable]
     public struct SnapUnitStruct
     {
+
         public CreateUnitStruct createUnit;
         public float angle;
         public int health;
