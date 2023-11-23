@@ -65,6 +65,7 @@ namespace Ulf
 
             Container.Bind<INetworkable>().To<ClientRelay>().FromInstance(client).AsCached();
 
+            SceneManager.LoadScene("GameScene");
         }
 
         private void SetupHost()
