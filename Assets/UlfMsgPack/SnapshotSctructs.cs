@@ -1,13 +1,17 @@
+using MessagePack;
+
 namespace Ulf
 {
-    [System.Serializable]
+    [MessagePackObject]
     public struct SnapPlanetStruct
     {
+        [Key(0)]
         public CreatePlanetStruct createPlanet;
+        [Key(1)]
         public SnapUnitStruct[] snapUnits;
     }
 
-    [System.Serializable]
+    [MessagePackFormatter(typeof(SnapUnitStruct))]
     public struct SnapUnitStruct
     {
 
@@ -17,10 +21,5 @@ namespace Ulf
     }
 
 
-    [System.Serializable]
-    public struct SnapSceneStruct
-    {
-        public SnapPlanetStruct[] snapPlanets;
-    }
 
 }

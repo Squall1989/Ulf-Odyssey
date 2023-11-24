@@ -54,7 +54,7 @@ namespace Ulf
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
             string playerId = AuthenticationService.Instance.PlayerId;
-            Container.Bind<string>().WithId("playerId").FromInstance(playerId).AsCached();
+            Container.Bind<string>().FromInstance(playerId).AsCached();
         }
 
         private void SetupClient(string code)

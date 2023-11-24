@@ -42,7 +42,7 @@ namespace Ulf
 
         public void Send<T>(T message) where T : IUnionMsg
         {
-            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize(message), Allocator.None);
+            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize(message), Allocator.Temp);
             SendToAll(bytes);
         }
 
