@@ -18,12 +18,24 @@ public class SceneClient : ISceneProxy
         _playerId = playerId;
         _networkable = networkable;
         _networkable.RegisterHandler<SnapSceneStruct>(SceneReceived);
+        
     }
 
     public async Task<SnapSceneStruct> GetSceneStruct()
     {
 
-        while(currScene ==  null)
+        while(!_networkable.IsConnected)
+        {
+            await Task.Yield();
+        }
+
+        _networkable.Send(new PlayerData()
+        {
+            isReady = true,
+            playerId = _playerId,
+        });
+
+        while (currScene ==  null)
         {
             await Task.Yield();
         };

@@ -1,24 +1,18 @@
 ﻿using MessagePack;
 using System.IO;
 using MsgPck;
-using Event = ENet.Event;
-using System;
-using ENet;
-
 namespace UlfServer
 {
     internal class Reader
     {
-        public static byte[] Serialize<T>(T thisObj) where T : IUnionMsg
-        {
-            using (var byteStream = new MemoryStream())
-            {
 
-                MessagePackSerializer.Serialize(byteStream, thisObj);
-                return byteStream.ToArray();
-            }
+        public static byte[] Serialize<T>(T thisObj) 
+        {
+            byte[] bytes = MessagePackSerializer.Serialize(thisObj);
+
+            return bytes;
         }
-        public static T Deserialize<T>(byte[] buffer) where T : IUnionMsg
+        public static T Deserialize<T>(byte[] buffer)
         {
 
             using (var byteStream = new MemoryStream(buffer))

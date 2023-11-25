@@ -22,11 +22,14 @@ namespace Ulf
         private string joinCode;
 
         private bool isActive;
+        private bool isConnected;
 
         public Action<string> OnCodeGenerate;
         public Action<string> OnLog;
 
         public Action<string> OnReceive { get ; set; }
+
+        public bool IsConnected => isConnected;
 
         public HostRelay()
         {
@@ -151,7 +154,7 @@ namespace Ulf
                 OnLog?.Invoke("Accepted an incoming connection: " + connectionId);
                 serverConnections.Add(incomingConnection);
 
-                
+                isConnected = true;
             }
 
             // Process events from all connections.
@@ -178,6 +181,7 @@ namespace Ulf
                         case NetworkEvent.Type.Disconnect:
                             OnLog?.Invoke("Server received disconnect from client");
                             serverConnections[i] = default(NetworkConnection);
+                            CheckConnections();
                             break;
                     }
                 }
@@ -217,6 +221,19 @@ namespace Ulf
                     hostDriver.EndSend(writer);
                 }
             }
+        }
+
+        private bool CheckConnections()
+        {
+            foreach (var connection in serverConnections)
+            {
+                if(connection.IsCreated)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void StopHost()

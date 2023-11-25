@@ -21,8 +21,11 @@ public class ClientRelay : RelayBase, INetworkable
     public Action OnJoined;
     public Action<string> OnLog;
     private bool isActive;
+    private bool isConnected;
 
     public Action<string> OnReceive { get; set; }
+
+    public bool IsConnected => isConnected;
 
     public void BindPlayer()
     {
@@ -106,8 +109,8 @@ public class ClientRelay : RelayBase, INetworkable
             {
                 // Handle Relay events.
                 case NetworkEvent.Type.Data:
-                    FixedString32Bytes msg = stream.ReadFixedString32();
-                    OnLog?.Invoke($"Player received msg: {msg}");
+                    //FixedString32Bytes msg = stream.ReadFixedString32();
+                    //OnLog?.Invoke($"Player received msg: {msg}");
                     Read(stream);
 
                     break;
@@ -115,12 +118,14 @@ public class ClientRelay : RelayBase, INetworkable
                 // Handle Connect events.
                 case NetworkEvent.Type.Connect:
                     OnLog?.Invoke("Player connected to the Host");
+                    isConnected = true;
                     break;
 
                 // Handle Disconnect events.
                 case NetworkEvent.Type.Disconnect:
                     OnLog?.Invoke("Player got disconnected from the Host");
                     clientConnection = default(NetworkConnection);
+                    isConnected = false;
                     break;
             }
         }
