@@ -55,7 +55,7 @@ namespace Ulf
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
             string playerId = AuthenticationService.Instance.PlayerId;
-            Container.Bind<string>().FromInstance(playerId).AsCached();
+            Container.Bind<string>().FromInstance(playerId).AsSingle();
         }
 
         private async void SetupClient(string code)
@@ -65,7 +65,7 @@ namespace Ulf
             client.Join(code);
             client.OnJoined += () => SceneManager.LoadScene("GameScene");
             
-            Container.Bind<INetworkable>().To<ClientRelay>().FromInstance(client).AsCached();
+            Container.Bind<INetworkable>().To<ClientRelay>().FromInstance(client).AsSingle();
         }
 
         private void SetupHost()
@@ -73,8 +73,7 @@ namespace Ulf
             HostRelay host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
             host.StartAllocate();
-            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsCached();
-            Container.Bind<MultiplayerHost>().FromNew().AsCached();
+            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsSingle();
 
             SceneManager.LoadScene("GameScene");
 

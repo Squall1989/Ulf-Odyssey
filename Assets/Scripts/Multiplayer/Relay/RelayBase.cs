@@ -51,18 +51,18 @@ namespace Ulf
 
         public void Send<T>(T message, NetworkConnection connection) where T : IUnionMsg
         {
-            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize<IUnionMsg>(message), Allocator.None);
+            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize<IUnionMsg>(message), Allocator.Temp);
             SendTo(bytes, connection);
         }
 
-        protected void Read(DataStreamReader stream)
+        protected void Read(DataStreamReader stream, NetworkConnection connection)
         {
             NativeArray<byte> bytes = new NativeArray<byte>(stream.Length, Allocator.Temp);
             stream.ReadBytes(bytes);
 
             var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
 
-            callbacksDict[msg.GetType()]?.Invoke(msg);
+            callbacksConnectDict[msg.GetType()]?.Invoke(msg, connection);
         }
 
 

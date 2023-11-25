@@ -11,12 +11,15 @@ namespace Ulf
         public SnapUnitStruct[] snapUnits;
     }
 
-    [MessagePackFormatter(typeof(SnapUnitStruct))]
+    [MessagePackObject]
     public struct SnapUnitStruct
     {
 
+        [Key(0)]
         public CreateUnitStruct createUnit;
+        [Key(1)]
         public float angle;
+        [Key(2)]
         public int health;
     }
 

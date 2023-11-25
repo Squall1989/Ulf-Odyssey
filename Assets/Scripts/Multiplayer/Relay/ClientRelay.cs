@@ -111,7 +111,7 @@ public class ClientRelay : RelayBase, INetworkable
                 case NetworkEvent.Type.Data:
                     //FixedString32Bytes msg = stream.ReadFixedString32();
                     //OnLog?.Invoke($"Player received msg: {msg}");
-                    Read(stream);
+                    Read(stream, clientConnection);
 
                     break;
 

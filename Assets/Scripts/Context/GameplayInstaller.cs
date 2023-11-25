@@ -45,7 +45,8 @@ namespace Ulf
         private void BindHost()
         {
             Container.Bind<SceneGenerator>().FromNew().AsSingle();
-            Container.Bind<ISceneProxy>().To<SceneHost>().FromNew().AsCached();
+            Container.Bind<ISceneProxy>().To<SceneHost>().AsSingle();
+            Container.Bind<MultiplayerHost>().AsSingle().NonLazy();
         }
 
         private void BindClient()

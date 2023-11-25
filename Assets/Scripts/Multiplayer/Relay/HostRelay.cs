@@ -170,7 +170,7 @@ namespace Ulf
                     {
                         // Handle Relay events.
                         case NetworkEvent.Type.Data:
-                            Read(stream);
+                            Read(stream, serverConnections[i]);
                             //hostLatestMessageReceived = msg.ToString();
                             break;
 

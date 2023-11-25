@@ -6,12 +6,12 @@ using Unity.Networking.Transport;
 
 public class MultiplayerHost 
 {
-    private SceneHost _sceneHost;
+    private ISceneProxy _sceneHost;
     private INetworkable _networkable;
     protected Dictionary<string, PlayerData> _players = new();
     protected Dictionary<NetworkConnection, string> _connetions = new();
 
-    public MultiplayerHost(INetworkable networkable, SceneHost sceneHost) 
+    public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost) 
     {
         _sceneHost = sceneHost;
         _networkable = networkable;
