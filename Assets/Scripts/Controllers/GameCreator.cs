@@ -17,7 +17,7 @@ namespace Ulf
 
         async void Start()
         {
-           var scene = await sceneProxy.GetSceneStruct();
+            var scene = await sceneProxy.GetSceneStruct();
             InstPlanets(scene.snapPlanets);
         }
 

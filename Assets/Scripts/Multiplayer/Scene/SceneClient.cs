@@ -11,40 +11,28 @@ public class SceneClient : ISceneProxy
 {
     private string _playerId;
     private INetworkable _networkable;
+    private SnapSceneStruct currScene;
 
     public SceneClient(INetworkable networkable, string playerId)
     {
         _playerId = playerId;
         _networkable = networkable;
+        _networkable.RegisterHandler<SnapSceneStruct>(SceneReceived);
     }
 
-    public Task<SnapSceneStruct> GetSceneStruct()
+    public async Task<SnapSceneStruct> GetSceneStruct()
     {
-        _networkable.RegisterHandler<SnapSceneStruct>(SceneReceived);
-        var playerData = new PlayerData()
+
+        while(currScene ==  null)
         {
-             isReady = true,
-              playerId = _playerId,
+            await Task.Yield();
         };
-        _networkable.Send(playerData);
 
-        SnapSceneStruct result = null;
+        return currScene;
+    }
 
-        Task.Run(async delegate
-        {
-            while(result == null)
-            {
-                await Task.Yield();
-            }
-
-        });
-
-        return Task.FromResult(result);
-
-
-        void SceneReceived(SnapSceneStruct msg)
-        {
-           result = msg;
-        }
+    void SceneReceived(SnapSceneStruct msg)
+    {
+        currScene = msg;
     }
 }
