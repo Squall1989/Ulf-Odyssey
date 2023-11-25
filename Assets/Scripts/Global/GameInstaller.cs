@@ -5,6 +5,7 @@ using System;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 namespace Ulf
 {
@@ -57,15 +58,14 @@ namespace Ulf
             Container.Bind<string>().FromInstance(playerId).AsCached();
         }
 
-        private void SetupClient(string code)
+        private async void SetupClient(string code)
         {
             var client = new ClientRelay();
             client.OnLog += (log) => Debug.Log(log);
             client.Join(code);
-
+            client.OnJoined += () => SceneManager.LoadScene("GameScene");
+            
             Container.Bind<INetworkable>().To<ClientRelay>().FromInstance(client).AsCached();
-
-            SceneManager.LoadScene("GameScene");
         }
 
         private void SetupHost()

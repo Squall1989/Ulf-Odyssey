@@ -18,6 +18,7 @@ public class ClientRelay : RelayBase, INetworkable
     private NetworkConnection clientConnection;
     private JoinAllocation playerAllocation;
 
+    public Action OnJoined;
     public Action<string> OnLog;
     private bool isActive;
 
@@ -47,6 +48,7 @@ public class ClientRelay : RelayBase, INetworkable
             clientConnection = clientDriver.Connect();
             isActive = true;
             QuickJoinLobby();
+            OnJoined?.Invoke();
             Update();
         }
     }
@@ -106,7 +108,8 @@ public class ClientRelay : RelayBase, INetworkable
                 case NetworkEvent.Type.Data:
                     FixedString32Bytes msg = stream.ReadFixedString32();
                     OnLog?.Invoke($"Player received msg: {msg}");
-                    OnReceive?.Invoke(msg.ToString());
+                    Read(stream);
+
                     break;
 
                 // Handle Connect events.

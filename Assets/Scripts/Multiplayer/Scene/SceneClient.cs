@@ -30,12 +30,17 @@ public class SceneClient : ISceneProxy
 
         SnapSceneStruct result = null;
 
-        while(result == null)
+        Task.Run(async delegate
         {
-            Task.Delay(100);
-        }
+            while(result == null)
+            {
+                await Task.Yield();
+            }
+
+        });
 
         return Task.FromResult(result);
+
 
         void SceneReceived(SnapSceneStruct msg)
         {

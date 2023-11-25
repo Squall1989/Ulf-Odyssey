@@ -18,11 +18,8 @@ namespace UlfServer
                 return byteStream.ToArray();
             }
         }
-        public static T Deserialize<T>(Packet packet) where T : IUnionMsg
+        public static T Deserialize<T>(byte[] buffer) where T : IUnionMsg
         {
-            byte[] buffer = new byte[1024];
-
-            packet.CopyTo(buffer);
 
             using (var byteStream = new MemoryStream(buffer))
             {

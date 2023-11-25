@@ -1,8 +1,10 @@
 
 using ENet;
+using MessagePack;
 using MsgPck;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UlfServer;
 using Zenject;
 
@@ -49,21 +51,11 @@ namespace Ulf
         //    PreparePacket(lobbyMsg);
         //}
 
-        //private void PacketRead(Packet packet)
-        //{
-        //    var readData = Reader.Deserialize<IUnionMsg>(packet);
-        //    switch (readData)
-        //    {
-        //        case LobbyServerMsg x:
-        //            OnLobbyUpdate?.Invoke(x.playerList);
-        //            break;
-        //        case PlayerMsg x:
-        //            OnPlayerIdSet?.Invoke(x.Id, x.Name);
-        //            break;
-        //    }
-
-        //    packet.Dispose();
-
-        //}
+        public T Deserialize<T>(byte[] bytes)
+        {
+            MessagePackReader reader = new MessagePackReader(bytes);
+            var msg = MessagePackSerializer.Deserialize<T>(ref reader);
+            return msg;
+        }
     }
 }

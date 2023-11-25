@@ -170,7 +170,7 @@ namespace Ulf
                             
                             FixedString32Bytes msg = stream.ReadFixedString32();
                             OnLog?.Invoke($"Server received msg: {msg}");
-                            OnReceive?.Invoke(msg.ToString());
+                            Read(stream);
                             //hostLatestMessageReceived = msg.ToString();
                             break;
 
@@ -183,6 +183,8 @@ namespace Ulf
                 }
             }
         }
+
+
 
         protected override void SendTo(NativeArray<byte> bytes, NetworkConnection connection)
         {
