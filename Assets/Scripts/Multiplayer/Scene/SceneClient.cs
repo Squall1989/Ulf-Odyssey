@@ -29,7 +29,7 @@ public class SceneClient : ISceneProxy
             await Task.Yield();
         }
 
-        _networkable.Send(new PlayerData()
+        _networkable.Send<IUnionMsg>(new PlayerData()
         {
             isReady = true,
             playerId = _playerId,

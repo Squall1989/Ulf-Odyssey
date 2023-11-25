@@ -1,3 +1,4 @@
+using MessagePack;
 using MsgPck;
 using System;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using System.Threading.Tasks;
 using UlfServer;
 using Unity.Collections;
 using Unity.Networking.Transport;
+using Unity.VisualScripting;
 
 namespace Ulf
 {
@@ -43,13 +45,13 @@ namespace Ulf
 
         public void Send<T>(T message) where T : IUnionMsg
         {
-            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize(message), Allocator.Temp);
+            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize<IUnionMsg>(message), Allocator.Temp);
             SendToAll(bytes);
         }
 
         public void Send<T>(T message, NetworkConnection connection) where T : IUnionMsg
         {
-            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize(message), Allocator.None);
+            NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize<IUnionMsg>(message), Allocator.None);
             SendTo(bytes, connection);
         }
 
@@ -58,7 +60,7 @@ namespace Ulf
             NativeArray<byte> bytes = new NativeArray<byte>(stream.Length, Allocator.Temp);
             stream.ReadBytes(bytes);
 
-            var msg = Reader.Deserialize<IUnionMsg>(bytes.ToArray());
+            var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
 
             callbacksDict[msg.GetType()]?.Invoke(msg);
         }

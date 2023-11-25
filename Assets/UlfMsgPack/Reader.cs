@@ -14,11 +14,8 @@ namespace UlfServer
         }
         public static T Deserialize<T>(byte[] buffer)
         {
-
-            using (var byteStream = new MemoryStream(buffer))
-            {
-                return MessagePackSerializer.Deserialize<T>(byteStream);
-            }
+            return MessagePackSerializer.Deserialize<T>(buffer);
+            
         }
     }
 }

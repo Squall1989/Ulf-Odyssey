@@ -170,9 +170,6 @@ namespace Ulf
                     {
                         // Handle Relay events.
                         case NetworkEvent.Type.Data:
-                            
-                            FixedString32Bytes msg = stream.ReadFixedString32();
-                            OnLog?.Invoke($"Server received msg: {msg}");
                             Read(stream);
                             //hostLatestMessageReceived = msg.ToString();
                             break;
