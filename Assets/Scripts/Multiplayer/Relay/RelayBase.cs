@@ -65,7 +65,15 @@ namespace Ulf
             OnLog?.Invoke("Message type: " + msg.GetType());
             callbacksConnectDict[msg.GetType()]?.Invoke(msg, connection);
         }
+        protected void Read(DataStreamReader stream)
+        {
+            NativeArray<byte> bytes = new NativeArray<byte>(stream.Length, Allocator.Temp);
+            stream.ReadBytes(bytes);
 
+            var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
+
+            callbacksDict[msg.GetType()]?.Invoke(msg);
+        }
 
         protected abstract void SendToAll(NativeArray<byte> bytes);
         protected abstract void SendTo(NativeArray<byte> bytes, NetworkConnection connection);
