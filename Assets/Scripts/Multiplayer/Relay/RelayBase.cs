@@ -16,6 +16,7 @@ namespace Ulf
         protected delegate void UnionDelegate(IUnionMsg message);
         protected Dictionary<Type, UnionConnectDelegate> callbacksConnectDict = new ();
         protected Dictionary<Type, UnionDelegate> callbacksDict = new ();
+        public Action<string> OnLog;
 
         public virtual void RegisterHandler<T>(Action<T> callback)
         {
@@ -61,7 +62,7 @@ namespace Ulf
             stream.ReadBytes(bytes);
 
             var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
-
+            OnLog?.Invoke("Message type: " + msg.GetType());
             callbacksConnectDict[msg.GetType()]?.Invoke(msg, connection);
         }
 

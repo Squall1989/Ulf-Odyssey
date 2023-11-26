@@ -2,6 +2,7 @@
 
 using MsgPck;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ulf;
 /// <summary>
@@ -11,7 +12,8 @@ public class SceneClient : ISceneProxy
 {
     private string _playerId;
     private INetworkable _networkable;
-    private SnapSceneStruct currScene;
+    private int totalPlanetCount = 999;
+    private List<SnapPlanetStruct> planetSnaps = new();
 
     public SceneClient(INetworkable networkable, string playerId)
     {
@@ -21,7 +23,7 @@ public class SceneClient : ISceneProxy
         
     }
 
-    public async Task<SnapSceneStruct> GetSceneStruct()
+    public async Task<List<SnapPlanetStruct>> GetSceneStruct()
     {
 
         while(!_networkable.IsConnected)
@@ -35,16 +37,17 @@ public class SceneClient : ISceneProxy
             playerId = _playerId,
         });
 
-        while (currScene ==  null)
+        while (planetSnaps.Count < totalPlanetCount)
         {
             await Task.Yield();
         };
 
-        return currScene;
+        return planetSnaps;
     }
 
     void SceneReceived(SnapSceneStruct msg)
     {
-        currScene = msg;
+        totalPlanetCount = msg.totalCount;
+        planetSnaps.Add(msg.snapPlanet);
     }
 }

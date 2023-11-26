@@ -14,7 +14,11 @@ namespace MsgPck
     public class SnapSceneStruct : IUnionMsg
     {
         [Key(0)]
-        public SnapPlanetStruct[] snapPlanets;
+        public int totalCount;
+        [Key(1)]
+        public int currentCount;
+        [Key(2)]
+        public SnapPlanetStruct snapPlanet;
     }
     [MessagePackObject]
     public struct PlayerData : IUnionMsg

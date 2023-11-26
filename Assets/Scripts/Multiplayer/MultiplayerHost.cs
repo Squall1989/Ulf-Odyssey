@@ -27,10 +27,15 @@ public class MultiplayerHost
         _players.Add(id, msg);
 
         var sceneStruct = await _sceneHost.GetSceneStruct();
-        var sceneMsg = new SnapSceneStruct()
-        { 
-              snapPlanets = sceneStruct.snapPlanets,
-        };
-        _networkable.Send(sceneMsg, connection);
+
+        for (int i = 0; i < sceneStruct.Count; i++)
+        {
+            _networkable.Send(new SnapSceneStruct()
+            {
+                 totalCount = sceneStruct.Count,
+                 currentCount = i,
+                 snapPlanet = sceneStruct[i]
+            }, connection);
+        }
     }
 }

@@ -19,7 +19,6 @@ public class ClientRelay : RelayBase, INetworkable
     private JoinAllocation playerAllocation;
 
     public Action OnJoined;
-    public Action<string> OnLog;
     private bool isActive;
     private bool isConnected;
 
@@ -172,7 +171,6 @@ public class ClientRelay : RelayBase, INetworkable
     {
         if (clientDriver.BeginSend(clientConnection, out var writer) == 0)
         {
-            // Send the message. Aside from FixedString32, many different types can be used.
             writer.WriteBytes(bytes);
             clientDriver.EndSend(writer);
         }
@@ -182,7 +180,6 @@ public class ClientRelay : RelayBase, INetworkable
     {
         if (clientDriver.BeginSend(connection, out var writer) == 0)
         {
-            // Send the message. Aside from FixedString32, many different types can be used.
             writer.WriteBytes(bytes);
             clientDriver.EndSend(writer);
         }

@@ -51,17 +51,17 @@ namespace MessagePack.Resolvers
             {
                 { typeof(global::Ulf.CreatePlanetStruct[]), 0 },
                 { typeof(global::Ulf.CreateUnitStruct[]), 1 },
-                { typeof(global::Ulf.SnapPlanetStruct[]), 2 },
-                { typeof(global::Ulf.SnapUnitStruct[]), 3 },
-                { typeof(global::ElementType), 4 },
-                { typeof(global::MsgPck.IUnionMsg), 5 },
-                { typeof(global::MsgPck.PlayerData), 6 },
-                { typeof(global::MsgPck.SnapSceneStruct), 7 },
-                { typeof(global::Ulf.BridgePositionStruct), 8 },
-                { typeof(global::Ulf.CreatePlanetStruct), 9 },
-                { typeof(global::Ulf.CreateSceneStruct), 10 },
-                { typeof(global::Ulf.CreateUnitStruct), 11 },
-                { typeof(global::Ulf.SnapPlanetStruct), 12 },
+                { typeof(global::Ulf.SnapUnitStruct[]), 2 },
+                { typeof(global::ElementType), 3 },
+                { typeof(global::MsgPck.IUnionMsg), 4 },
+                { typeof(global::MsgPck.PlayerData), 5 },
+                { typeof(global::MsgPck.SnapSceneStruct), 6 },
+                { typeof(global::Ulf.BridgePositionStruct), 7 },
+                { typeof(global::Ulf.CreatePlanetStruct), 8 },
+                { typeof(global::Ulf.CreateSceneStruct), 9 },
+                { typeof(global::Ulf.CreateUnitStruct), 10 },
+                { typeof(global::Ulf.SnapPlanetStruct), 11 },
+                { typeof(global::Ulf.SnapUnitStruct), 12 },
             };
         }
 
@@ -77,17 +77,17 @@ namespace MessagePack.Resolvers
             {
                 case 0: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreatePlanetStruct>();
                 case 1: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreateUnitStruct>();
-                case 2: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.SnapPlanetStruct>();
-                case 3: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.SnapUnitStruct>();
-                case 4: return new MessagePack.Formatters.ElementTypeFormatter();
-                case 5: return new MessagePack.Formatters.MsgPck.IUnionMsgFormatter();
-                case 6: return new MessagePack.Formatters.MsgPck.PlayerDataFormatter();
-                case 7: return new MessagePack.Formatters.MsgPck.SnapSceneStructFormatter();
-                case 8: return new MessagePack.Formatters.Ulf.BridgePositionStructFormatter();
-                case 9: return new MessagePack.Formatters.Ulf.CreatePlanetStructFormatter();
-                case 10: return new MessagePack.Formatters.Ulf.CreateSceneStructFormatter();
-                case 11: return new MessagePack.Formatters.Ulf.CreateUnitStructFormatter();
-                case 12: return new MessagePack.Formatters.Ulf.SnapPlanetStructFormatter();
+                case 2: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.SnapUnitStruct>();
+                case 3: return new MessagePack.Formatters.ElementTypeFormatter();
+                case 4: return new MessagePack.Formatters.MsgPck.IUnionMsgFormatter();
+                case 5: return new MessagePack.Formatters.MsgPck.PlayerDataFormatter();
+                case 6: return new MessagePack.Formatters.MsgPck.SnapSceneStructFormatter();
+                case 7: return new MessagePack.Formatters.Ulf.BridgePositionStructFormatter();
+                case 8: return new MessagePack.Formatters.Ulf.CreatePlanetStructFormatter();
+                case 9: return new MessagePack.Formatters.Ulf.CreateSceneStructFormatter();
+                case 10: return new MessagePack.Formatters.Ulf.CreateUnitStructFormatter();
+                case 11: return new MessagePack.Formatters.Ulf.SnapPlanetStructFormatter();
+                case 12: return new MessagePack.Formatters.Ulf.SnapUnitStructFormatter();
                 default: return null;
             }
         }
@@ -319,16 +319,24 @@ namespace MessagePack.Formatters.MsgPck
 
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::MsgPck.SnapSceneStruct value, global::MessagePack.MessagePackSerializerOptions options)
         {
+            if (value == null)
+            {
+                writer.WriteNil();
+                return;
+            }
+
             global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
-            writer.WriteArrayHeader(1);
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.SnapPlanetStruct[]>(formatterResolver).Serialize(ref writer, value.snapPlanets, options);
+            writer.WriteArrayHeader(3);
+            writer.Write(value.totalCount);
+            writer.Write(value.currentCount);
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.SnapPlanetStruct>(formatterResolver).Serialize(ref writer, value.snapPlanet, options);
         }
 
         public global::MsgPck.SnapSceneStruct Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (reader.TryReadNil())
             {
-                throw new global::System.InvalidOperationException("typecode is null, struct not supported");
+                return null;
             }
 
             options.Security.DepthStep(ref reader);
@@ -341,7 +349,13 @@ namespace MessagePack.Formatters.MsgPck
                 switch (i)
                 {
                     case 0:
-                        ____result.snapPlanets = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.SnapPlanetStruct[]>(formatterResolver).Deserialize(ref reader, options);
+                        ____result.totalCount = reader.ReadInt32();
+                        break;
+                    case 1:
+                        ____result.currentCount = reader.ReadInt32();
+                        break;
+                    case 2:
+                        ____result.snapPlanet = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.SnapPlanetStruct>(formatterResolver).Deserialize(ref reader, options);
                         break;
                     default:
                         reader.Skip();
@@ -615,6 +629,54 @@ namespace MessagePack.Formatters.Ulf
                         break;
                     case 1:
                         ____result.snapUnits = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.SnapUnitStruct[]>(formatterResolver).Deserialize(ref reader, options);
+                        break;
+                    default:
+                        reader.Skip();
+                        break;
+                }
+            }
+
+            reader.Depth--;
+            return ____result;
+        }
+    }
+
+    public sealed class SnapUnitStructFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.SnapUnitStruct>
+    {
+
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.SnapUnitStruct value, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
+            writer.WriteArrayHeader(3);
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.CreateUnitStruct>(formatterResolver).Serialize(ref writer, value.createUnit, options);
+            writer.Write(value.angle);
+            writer.Write(value.health);
+        }
+
+        public global::Ulf.SnapUnitStruct Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (reader.TryReadNil())
+            {
+                throw new global::System.InvalidOperationException("typecode is null, struct not supported");
+            }
+
+            options.Security.DepthStep(ref reader);
+            global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
+            var length = reader.ReadArrayHeader();
+            var ____result = new global::Ulf.SnapUnitStruct();
+
+            for (int i = 0; i < length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        ____result.createUnit = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.CreateUnitStruct>(formatterResolver).Deserialize(ref reader, options);
+                        break;
+                    case 1:
+                        ____result.angle = reader.ReadSingle();
+                        break;
+                    case 2:
+                        ____result.health = reader.ReadInt32();
                         break;
                     default:
                         reader.Skip();

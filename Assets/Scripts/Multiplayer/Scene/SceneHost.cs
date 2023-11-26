@@ -1,6 +1,7 @@
 
 using MsgPck;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Zenject;
 
@@ -32,7 +33,7 @@ namespace Ulf
             planets.Add(planet);
         }
 
-        public Task<SnapSceneStruct> GetSceneStruct()
+        public Task<List<SnapPlanetStruct>> GetSceneStruct()
         {
             if (planets.Count == 0)
             {
@@ -47,10 +48,10 @@ namespace Ulf
                     };
                 }
 
-                return Task.FromResult(new SnapSceneStruct()
-                {
-                    snapPlanets = planetsSnapshot,
-                });
+                return Task.FromResult(
+                
+                    planetsSnapshot.ToList()
+                );
             }
             else
             {
@@ -60,10 +61,9 @@ namespace Ulf
                     planetsSnapshot[i] = planets[i].GetSnapshot();
                 }
                 
-                return Task.FromResult(new SnapSceneStruct()
-                {
-                    snapPlanets = planetsSnapshot,
-                });
+                return Task.FromResult(
+                    planetsSnapshot.ToList()
+                );
             }
         }
 

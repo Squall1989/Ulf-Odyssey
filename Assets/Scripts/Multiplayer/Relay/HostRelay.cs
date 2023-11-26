@@ -26,6 +26,7 @@ namespace Ulf
 
         public Action<string> OnCodeGenerate;
         public Action<string> OnLog;
+        //private NetworkPipeline myPipeline;
 
         public Action<string> OnReceive { get ; set; }
 
@@ -49,6 +50,7 @@ namespace Ulf
 
             // Create the Host's NetworkDriver from the NetworkSettings.
             hostDriver = NetworkDriver.Create(settings);
+            //myPipeline = hostDriver.CreatePipeline(typeof(FragmentationPipelineStage), typeof(ReliableSequencedPipelineStage));
 
             // Bind to the Relay server.
             if (hostDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
@@ -153,7 +155,6 @@ namespace Ulf
                 int connectionId = incomingConnection.GetConnectionId();
                 OnLog?.Invoke("Accepted an incoming connection: " + connectionId);
                 serverConnections.Add(incomingConnection);
-
                 isConnected = true;
             }
 
@@ -191,8 +192,9 @@ namespace Ulf
         {
             if (hostDriver.BeginSend(connection, out var writer) == 0)
             {
-                // Send the message. Aside from FixedString32, many different types can be used.
                 writer.WriteBytes(bytes);
+                //var maxPayloadSize = writer.Capacity;
+
                 hostDriver.EndSend(writer);
             }
         }

@@ -18,11 +18,11 @@ namespace Ulf
         async void Start()
         {
             var scene = await sceneProxy.GetSceneStruct();
-            InstPlanets(scene.snapPlanets);
+            InstPlanets(scene);
         }
 
 
-        private void InstPlanets(SnapPlanetStruct[] planetStructs)
+        private void InstPlanets(List<SnapPlanetStruct> planetStructs)
         {
             foreach (var planetStruct in planetStructs)
             {
