@@ -26,10 +26,11 @@ namespace Ulf
                     if (handlerConnect.IsHost)
                     {
                         BindHost();
+                        BindMultiplayerHost();
                     }
                     else
                     {
-                        BindClient();
+                        BindMultiplayerClient();
                     }
 
                     Container.Bind<IGame>().To<MultiplayerGame>().FromNew().AsCached();
@@ -46,12 +47,18 @@ namespace Ulf
         {
             Container.Bind<SceneGenerator>().FromNew().AsSingle();
             Container.Bind<ISceneProxy>().To<SceneHost>().AsSingle();
+            Container.Bind(typeof(IUnitsProxy), typeof(ITickable)).To<UnitsBehaviour>().FromNew().AsSingle();
+        }
+
+        private void BindMultiplayerHost()
+        {
             Container.Bind<MultiplayerHost>().AsSingle().NonLazy();
         }
 
-        private void BindClient()
+        private void BindMultiplayerClient()
         {
             Container.Bind<ISceneProxy>().To<SceneClient>().FromNew().AsCached();
+            Container.Bind<UnitsController>().FromNew().AsSingle();
         }
     }
 }

@@ -5,6 +5,7 @@ using Extensions;
 using Vector3 = UnityEngine.Vector3;
 using Random = UnityEngine.Random;
 using UnityEngine;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 namespace Ulf
 {
@@ -14,7 +15,8 @@ namespace Ulf
         private List<CreatePlanetStruct> planetList;
         private List<BridgePositionStruct> bridgeList;
         //private AllUnitsScriptable allUnits;
-        private int nextId;
+        private int planetNextId;
+        private int unitNextId;
 
         private float bridgeSize = 5f;
 
@@ -30,10 +32,10 @@ namespace Ulf
             Generate(10);
         }
 
-         void Generate(int limit)
+        void Generate(int limit)
         {
 
-            nextId = 0;
+            planetNextId = 0;
             planetList = new(limit);
             for (int p = 0; p < limit; p++)
             {
@@ -95,14 +97,20 @@ namespace Ulf
             
             for(int i = 0; i < unitCount; i++)
             {
-                units.Add(availableUnits.RandomElement());
+                var defaultUnit = availableUnits.RandomElement();
+                CreateUnitStruct createUnit = new CreateUnitStruct()
+                {
+                     View = defaultUnit.View,
+                     Guid = unitNextId++,
+                };
+                units.Add(createUnit);
             }
 
             return new CreatePlanetStruct()
             {
                 createUnits = units.ToArray(),
                 ElementType = elementType,
-                planetId = nextId++,
+                planetId = planetNextId++,
                 planetSize = elementSizes[sizeNum],
                 planetPos = pos,
             };

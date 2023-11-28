@@ -13,6 +13,7 @@ namespace Ulf
 
         private Vector2 _planetPos;
         private Vector2 _position;
+        private int _direct;
 
         public float Degree => currDegree;
 
@@ -26,6 +27,20 @@ namespace Ulf
         public void SetDeltaTime(float delta)
         {
             deltaTime = delta;
+            Move();
+        }
+
+        private void Move()
+        {
+            float speedRadial = _direct * speedLinear * deltaTime / radius;
+            currDegree += speedRadial;// / 180 * (float)Math.PI;
+
+            _position.x = radius * (float)Math.Sin(currDegree);
+            _position.y = radius * (float)Math.Cos(currDegree);
+            _position += _planetPos;
+
+            if (currDegree >= 360f)
+                currDegree -= 360f;
         }
 
         public void ToLand(Vector2 pos, float radius, float startAngle)
@@ -35,17 +50,9 @@ namespace Ulf
             currDegree = startAngle;
         }
 
-        public void Move(int direct)
+        public void SetMoveDirect(int direct)
         {
-            float speedRadial = direct * speedLinear * deltaTime / radius;
-            currDegree = (currDegree + speedRadial) / 180 * (float)Math.PI;
-
-            _position.x = radius * (float)Math.Sin(currDegree);
-            _position.y = radius * (float)Math.Cos(currDegree);
-            _position += _planetPos;
-
-            if (currDegree >= 360f)
-                currDegree -= 360f;
+            _direct = direct;
         }
     }
 }

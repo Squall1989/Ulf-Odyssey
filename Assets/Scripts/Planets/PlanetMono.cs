@@ -26,12 +26,13 @@ namespace Ulf
             planet = new(planetStruct);
         }
 
-        public void InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits)
+        public void InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits, IUnitsProxy unitsProxy)
         {
             for (int u = 0; u < unitsMono.Length; u++)
             {
                 var _unitMono = Instantiate(unitsMono[u], gameObject.transform);
-                _unitMono.Init(planet, snapUnits[u].angle);
+                _unitMono.Init(planet, snapUnits[u].createUnit, snapUnits[u].angle);
+                unitsProxy.Add(_unitMono.Unit);
                 //unitsRegister.Record(_unitMono.Unit);
             }
         }

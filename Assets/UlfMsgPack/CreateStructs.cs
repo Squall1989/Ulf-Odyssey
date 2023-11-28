@@ -4,17 +4,24 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Ulf
 {
+    [System.Serializable]
+    public struct DefaultUnitStruct
+    {
+        public string View;
+        public ElementType ElementType;
+        public int Health;
+        public float MoveSpeed;
+    }
+
     [MessagePackObject]
     public struct CreateUnitStruct
     {
         [Key(0)] 
         public string View;
         [Key(1)]
-        public ElementType ElementType;
-        [Key(2)] 
+        public int Guid;
+        [Key(2)]
         public int Health;
-        [Key(3)] 
-        public float MoveSpeed;
     }
     [MessagePackObject]
     public struct CreatePlanetStruct

@@ -88,6 +88,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 5325269441799377016}
+  defaultUnit:
+    View: entrog
+    ElementType: 0
+    Health: 2
+    MoveSpeed: 1.5
 --- !u!114 &5325269441799377016
 MonoBehaviour:
   m_ObjectHideFlags: 0

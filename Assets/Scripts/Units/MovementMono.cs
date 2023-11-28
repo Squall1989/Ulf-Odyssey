@@ -6,17 +6,20 @@ namespace Ulf
     {
         private CircleMove _circleMove;
 
-        public void Init(Planet planet, CreateUnitStruct unitStruct, float angle)
+        public CircleMove CircleMove => _circleMove;
+
+        public void Init(Planet planet, DefaultUnitStruct unitStruct, float angle)
         {
             _circleMove = new(unitStruct.MoveSpeed);
             _circleMove.ToLand(planet.Position, planet.Radius, angle);
-            _circleMove.Move(0);
+            _circleMove.SetMoveDirect(0);
             transform.position = _circleMove.Position;
         }
 
         private void Update()
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
+            transform.position = _circleMove.Position;
         }
     }
 }

@@ -11,7 +11,7 @@ public class AllUnitsScriptable : ScriptableObject
 {
     [SerializeField] private UnitMono[] unitsMono;
 
-    public IEnumerable<CreateUnitStruct> AllUnits => unitsMono.Select(p => p.UnitStruct);
+    public IEnumerable<DefaultUnitStruct> AllUnits => unitsMono.Select(p => p.DefaultUnit);
     public UnitMono[] AllUnitsMono => unitsMono;
 
     internal UnitMono[] GetUnits(CreateUnitStruct[] createUnits)
@@ -20,7 +20,7 @@ public class AllUnitsScriptable : ScriptableObject
 
         for(int i = 0; i < createUnits.Length; i++)
         {
-            units[i] = unitsMono.First(p => p.UnitStruct.View == createUnits[i].View);
+            units[i] = unitsMono.First(p => p.DefaultUnit.View == createUnits[i].View);
         }
 
         return units;

@@ -201,7 +201,7 @@ namespace Ulf
 
         protected override void SendToAll(NativeArray<byte> bytes)
         {
-            if (serverConnections.Length == 0)
+            if (!isConnected)
             {
                 OnLog?.Invoke("No players connected to send messages to.");
                 return;

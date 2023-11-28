@@ -7,6 +7,7 @@ namespace MsgPck
 {
     [Union(0, typeof(SnapSceneStruct))]
     [Union(1, typeof(PlayerData))]
+    [Union(2, typeof(ActionData))]
     public interface IUnionMsg
     { }
 
@@ -28,5 +29,12 @@ namespace MsgPck
         [Key(1)]
         public bool isReady;
     }
-
+    [MessagePackObject]
+    public struct ActionData : IUnionMsg
+    {
+        [Key(0)]
+        public int guid;
+        [Key(1)]
+        public INextAction action;
+    }
 }

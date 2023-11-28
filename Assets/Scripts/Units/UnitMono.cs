@@ -5,18 +5,18 @@ namespace Ulf
     public class UnitMono : MonoBehaviour
     {
         [SerializeField] private MovementMono movement;
-        [SerializeField] private CreateUnitStruct unitStruct;
+        [SerializeField] private DefaultUnitStruct defaultUnit;
 
         protected Unit _unit;
         
         public Unit Unit => _unit;
-        public CreateUnitStruct UnitStruct => unitStruct;
+        public DefaultUnitStruct DefaultUnit => defaultUnit;
 
-        public void Init(Planet planet, float freeArc)
+        public void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
-            _unit = new Unit(planet.Element, unitStruct);
+            movement.Init(planet, defaultUnit, freeArc);
+            _unit = new Unit(planet.Element, createUnit, defaultUnit, movement.CircleMove);
 
-            movement.Init(planet, unitStruct, freeArc);
         }
 
         //protected void OnValidate()

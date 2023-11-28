@@ -7,14 +7,18 @@ namespace Ulf
     {
         private CircleMove _movement;
         private CreateUnitStruct _unitStruct;
+        private DefaultUnitStruct _defaultUnit;
         private Health _health;
 
+        public int GUID => _unitStruct.Guid;
         public CircleMove Movement => _movement;
 
-        public Unit(ElementType elementType, CreateUnitStruct unitStruct)
+        public Unit(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, CircleMove circleMove)
         {
+            _defaultUnit = defaultUnit;
             _unitStruct = unitStruct;
-            _health = new Health(unitStruct.Health, elementType);
+            _health = new Health(defaultUnit.Health, elementType);
+            _movement = circleMove;
         }
 
         internal SnapUnitStruct GetSnapshot()

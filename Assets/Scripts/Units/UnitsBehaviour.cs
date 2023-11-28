@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Zenject;
 using Time = UnityEngine.Time;
 using Random = UnityEngine.Random;
+using MsgPck;
+using System;
 
 namespace Ulf
 {
@@ -10,11 +12,12 @@ namespace Ulf
     {
         protected List<Unit> units = new();
         protected Dictionary<Unit, BehaviourUnitStruct> unitsBehaviourDict = new();
-        private INetworkable _networkable;
 
-        public UnitsBehaviour(INetworkable networkable) 
+        public Action<int, INextAction> OnUnitAction;
+
+        public UnitsBehaviour() 
         {
-            _networkable = networkable;
+
         }
 
         public void Add(Unit unit)
@@ -27,21 +30,37 @@ namespace Ulf
         {
             foreach (Unit unit in units)
             {
-                unitsBehaviourDict[unit].timer.RemainingTime -= Time.time;
+                unitsBehaviourDict[unit].timer.RemainingTime -= Time.deltaTime;
             }
+        }
+
+        private void ActionTime(Unit unit)
+        {
+            OnUnitAction?.Invoke(unit.GUID, unitsBehaviourDict[unit].nextAction);
+
+            unitsBehaviourDict[unit].nextAction.DoAction(unit);
+            unitsBehaviourDict[unit] = GetNextAction(unit);
         }
 
         private BehaviourUnitStruct GetNextAction(Unit unit)
         {
-            int direct = Random.Range(-1, 1);
+            // left[-1] right[+1] stay[0]
+            int direct = Random.Range(-1, 2);
+
             int time = Random.Range(3, 10);
+            var timer = new Timer(time);
+            timer.OnTimeOver += () =>
+            {
+                ActionTime(unit);
+            };
 
             return new BehaviourUnitStruct()
             {
                 nextAction = new MovementAction() { direction = direct },
-                timer = new Timer(time),
+                timer = timer,
             };
         }
+            
     }
 
 

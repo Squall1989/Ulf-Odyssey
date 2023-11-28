@@ -13,6 +13,7 @@ namespace Ulf
         [Inject] protected AllPlanetsScriptable planetsContainer;
         [Inject] protected AllUnitsScriptable unitsContainer;
         [Inject] protected ISceneProxy sceneProxy;
+        [Inject] protected IUnitsProxy unitsProxy;
         [Inject] protected ConnectHandler connectHandler;
 
         async void Start()
@@ -37,7 +38,7 @@ namespace Ulf
                 planetNew.Init(planetStruct.createPlanet);
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
 
-                planetNew.InstUnits(units, planetStruct.snapUnits);
+                planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
             }
         }
     }

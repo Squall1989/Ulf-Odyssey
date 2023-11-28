@@ -8,7 +8,7 @@ namespace Assets.Scripts.Interfaces
 
         Vector2 Position { get; }
 
-        void Move(int direct);
+        void SetMoveDirect(int direct);
 
         void ToLand(Vector2 pos, float radius, float startDegree);
     }
