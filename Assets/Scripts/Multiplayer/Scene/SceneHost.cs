@@ -23,15 +23,6 @@ namespace Ulf
             planets = new List<Planet>();
         }
 
-        public void Add(Unit unit)
-        {
-            units.Add(unit);
-        }
-
-        public void Add(Planet planet)
-        {
-            planets.Add(planet);
-        }
 
         public Task<List<SnapPlanetStruct>> GetSceneStruct()
         {

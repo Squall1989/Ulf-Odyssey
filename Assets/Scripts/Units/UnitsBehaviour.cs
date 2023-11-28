@@ -44,8 +44,7 @@ namespace Ulf
 
         private BehaviourUnitStruct GetNextAction(Unit unit)
         {
-            // left[-1] right[+1] stay[0]
-            int direct = Random.Range(-1, 2);
+
 
             int time = Random.Range(3, 10);
             var timer = new Timer(time);
@@ -54,13 +53,24 @@ namespace Ulf
                 ActionTime(unit);
             };
 
+            // Conditions for next action
+
+
             return new BehaviourUnitStruct()
             {
-                nextAction = new MovementAction() { direction = direct },
+                nextAction = RandMovement(),
                 timer = timer,
             };
         }
             
+        private MovementAction RandMovement()
+        {
+
+            // left[-1] right[+1] stay[0]
+            int direct = Random.Range(-1, 2);
+
+            return new MovementAction() { direction = direct };
+        }
     }
 
 

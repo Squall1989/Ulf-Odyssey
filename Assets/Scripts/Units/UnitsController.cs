@@ -22,7 +22,8 @@ namespace Ulf
             var unit = _units.FirstOrDefault(p => p.GUID == action.guid);
             if (unit == null) 
             {
-                throw new Exception("Unit is NULL!!!");
+                //throw new Exception("Unit is NULL!!!");
+                return;
             }
             
             action.action.DoAction(unit);

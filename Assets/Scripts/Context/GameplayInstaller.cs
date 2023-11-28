@@ -58,7 +58,7 @@ namespace Ulf
         private void BindMultiplayerClient()
         {
             Container.Bind<ISceneProxy>().To<SceneClient>().FromNew().AsCached();
-            Container.Bind<UnitsController>().FromNew().AsSingle();
+            Container.Bind<IUnitsProxy>().To<UnitsController>().FromNew().AsSingle();
         }
     }
 }
