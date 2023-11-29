@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Ulf
 {
@@ -20,6 +21,14 @@ namespace Ulf
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
             transform.position = _circleMove.Position;
+            LookAtPlanet(_circleMove.PlanetPosition);
+        }
+
+        private void LookAtPlanet(Vector3 planetPos)
+        {
+            Vector3 relative = -transform.InverseTransformPoint(planetPos);
+            float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+            transform.Rotate(0, 0, -angle);
         }
     }
 }

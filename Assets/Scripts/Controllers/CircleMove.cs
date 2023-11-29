@@ -17,6 +17,7 @@ namespace Ulf
 
         public float Degree => currDegree;
 
+        public Vector2 PlanetPosition => _planetPos;
         public Vector2 Position => _position;
 
         public CircleMove(float speed)
@@ -48,6 +49,15 @@ namespace Ulf
             _planetPos = pos;
             this.radius = radius;
             currDegree = startAngle;
+        }
+
+        public void SetAngle(float angle)
+        {
+            if(angle != currDegree)
+            {
+
+            }
+            currDegree = angle;
         }
 
         public void SetMoveDirect(int direct)

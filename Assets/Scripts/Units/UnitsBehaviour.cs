@@ -58,19 +58,22 @@ namespace Ulf
 
             return new BehaviourUnitStruct()
             {
-                nextAction = RandMovement(),
+                nextAction = RandMovement(unit),
                 timer = timer,
             };
         }
             
-        private MovementAction RandMovement()
+        private MovementAction RandMovement(Unit unit)
         {
 
             // left[-1] right[+1] stay[0]
             int direct = Random.Range(-1, 2);
 
-            return new MovementAction() { direction = direct };
+            return new MovementAction() { 
+                direction = direct,
+            };
         }
+
     }
 
 
