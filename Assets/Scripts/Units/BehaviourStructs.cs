@@ -7,10 +7,10 @@ namespace Ulf
         public BehaviourUnitStruct(Timer timer, INextAction nextAction)
         {
             this.timer = timer;
-            this.nextAction = nextAction;
+            this.prevAction = nextAction;
         }
 
-        public INextAction nextAction;
+        public INextAction prevAction;
         public Timer timer;
     }
     [MessagePackObject]
@@ -18,10 +18,14 @@ namespace Ulf
     {
         [Key(0)]
         public int direction;
+        [Key(1)]
+        public float fromAngle;
 
         public void DoAction(Unit unit)
         {
             unit.Movement.SetMoveDirect(direction);
+            // ToDo: smooth angle set
+            unit.Movement.SetAngle(fromAngle);
         }
     }
 

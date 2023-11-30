@@ -23,7 +23,7 @@ namespace Ulf
         public void Add(Unit unit)
         {
             units.Add(unit);
-            unitsBehaviourDict.Add(unit, GetNextAction(unit));
+            ActionTime(unit);
         }
 
         public void Tick()
@@ -36,10 +36,11 @@ namespace Ulf
 
         private void ActionTime(Unit unit)
         {
-            OnUnitAction?.Invoke(unit.GUID, unitsBehaviourDict[unit].nextAction);
-
-            unitsBehaviourDict[unit].nextAction.DoAction(unit);
             unitsBehaviourDict[unit] = GetNextAction(unit);
+            unitsBehaviourDict[unit].prevAction.DoAction(unit);
+
+            OnUnitAction?.Invoke(unit.GUID, unitsBehaviourDict[unit].prevAction);
+
         }
 
         private BehaviourUnitStruct GetNextAction(Unit unit)
@@ -58,7 +59,7 @@ namespace Ulf
 
             return new BehaviourUnitStruct()
             {
-                nextAction = RandMovement(unit),
+                prevAction = RandMovement(unit),
                 timer = timer,
             };
         }
@@ -71,6 +72,7 @@ namespace Ulf
 
             return new MovementAction() { 
                 direction = direct,
+                fromAngle = unit.Movement.Degree,
             };
         }
 

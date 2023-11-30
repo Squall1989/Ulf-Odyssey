@@ -757,8 +757,9 @@ namespace MessagePack.Formatters.Ulf
 
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.MovementAction value, global::MessagePack.MessagePackSerializerOptions options)
         {
-            writer.WriteArrayHeader(1);
+            writer.WriteArrayHeader(2);
             writer.Write(value.direction);
+            writer.Write(value.fromAngle);
         }
 
         public global::Ulf.MovementAction Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -778,6 +779,9 @@ namespace MessagePack.Formatters.Ulf
                 {
                     case 0:
                         ____result.direction = reader.ReadInt32();
+                        break;
+                    case 1:
+                        ____result.fromAngle = reader.ReadSingle();
                         break;
                     default:
                         reader.Skip();
