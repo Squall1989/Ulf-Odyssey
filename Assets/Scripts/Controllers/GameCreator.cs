@@ -39,6 +39,8 @@ namespace Ulf
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
 
                 planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
+
+                sceneProxy.AddPlanet(planetNew.Planet);
             }
         }
     }

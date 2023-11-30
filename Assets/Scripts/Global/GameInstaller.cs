@@ -65,7 +65,7 @@ namespace Ulf
             client.Join(code);
             client.OnJoined += () => SceneManager.LoadScene("GameScene");
             
-            Container.Bind<INetworkable>().To<ClientRelay>().FromInstance(client).AsSingle();
+            Container.Rebind<INetworkable>().To<ClientRelay>().FromInstance(client).AsTransient();
         }
 
         private void SetupHost()
@@ -73,7 +73,7 @@ namespace Ulf
             HostRelay host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
             host.StartAllocate();
-            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsSingle();
+            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsCached();
 
             SceneManager.LoadScene("GameScene");
 

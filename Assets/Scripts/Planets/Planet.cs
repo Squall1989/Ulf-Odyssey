@@ -21,6 +21,12 @@ namespace Ulf
             units = new List<Unit>(planetStruct.createUnits.Length);
         }
 
+        public void AddUnit(Unit unit) 
+        {
+            units.Add(unit);
+        }
+
+
         public void RmUnit(Unit unit)
         {
             units.Remove(unit);

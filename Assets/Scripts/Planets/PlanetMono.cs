@@ -16,6 +16,8 @@ namespace Ulf
         public ElementType ElementType => elementType;
         public float Size => GetComponent<CircleCollider2D>().radius;
 
+        public Planet Planet => planet;
+
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();

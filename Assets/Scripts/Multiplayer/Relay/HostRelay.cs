@@ -11,6 +11,7 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using MsgPck;
 using UlfServer;
+using UnityEngine;
 
 namespace Ulf
 {
@@ -28,7 +29,7 @@ namespace Ulf
         public Action<string> OnLog;
         //private NetworkPipeline myPipeline;
 
-        public Action<string> OnReceive { get ; set; }
+        public Action<string> OnReceive { get; set; }
 
         public bool IsConnected => isConnected;
 
@@ -91,7 +92,7 @@ namespace Ulf
             // Initialize NetworkConnection list for the server (Host).
             // This list object manages the NetworkConnections which represent connected players.
             serverConnections = new NativeList<NetworkConnection>(maxConnections, Allocator.Persistent);
-        
+
             BindHost();
         }
 
@@ -226,7 +227,7 @@ namespace Ulf
         {
             foreach (var connection in serverConnections)
             {
-                if(connection.IsCreated)
+                if (connection.IsCreated)
                 {
                     return true;
                 }
@@ -252,8 +253,22 @@ namespace Ulf
             options.Data.Add("code", data);
 
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+
             OnLog?.Invoke("Lobby created: " + lobby.LobbyCode);
+
+            HeartbeatLobbyCoroutine(lobby.Id, 10);
         }
 
+
+        async void HeartbeatLobbyCoroutine(string lobbyId, int waitTimeSeconds)
+        {
+            await Task.Delay(waitTimeSeconds * 1000);
+
+            while (true)
+            {
+                await LobbyService.Instance.SendHeartbeatPingAsync(lobbyId);
+                await Task.Delay(waitTimeSeconds * 1000);
+            }
+        }
     }
 }

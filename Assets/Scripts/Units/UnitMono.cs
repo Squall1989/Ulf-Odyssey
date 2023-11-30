@@ -16,7 +16,7 @@ namespace Ulf
         {
             movement.Init(planet, defaultUnit, freeArc);
             _unit = new Unit(planet.Element, createUnit, defaultUnit, movement.CircleMove);
-
+            planet.AddUnit(_unit);
         }
 
         //protected void OnValidate()

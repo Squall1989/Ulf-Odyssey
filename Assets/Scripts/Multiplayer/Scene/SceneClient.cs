@@ -14,6 +14,7 @@ public class SceneClient : ISceneProxy
     private INetworkable _networkable;
     private int totalPlanetCount = 999;
     private List<SnapPlanetStruct> planetSnaps = new();
+    private List<Planet> planets = new();
 
     public SceneClient(INetworkable networkable, string playerId)
     {
@@ -21,6 +22,11 @@ public class SceneClient : ISceneProxy
         _networkable = networkable;
         _networkable.RegisterHandler<SnapSceneStruct>(SceneReceived);
         
+    }
+
+    public void AddPlanet(Planet planet)
+    {
+        planets.Add(planet);
     }
 
     public async Task<List<SnapPlanetStruct>> GetSceneStruct()

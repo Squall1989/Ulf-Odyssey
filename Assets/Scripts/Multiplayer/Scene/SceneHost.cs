@@ -13,16 +13,18 @@ namespace Ulf
     public class SceneHost : ISceneProxy
     {
 
-        protected List<Unit> units = new List<Unit>();
-        protected List<Planet> planets;
+        protected List<Planet> planets = new();
         private SceneGenerator _sceneGenerator;
 
         public SceneHost(SceneGenerator sceneGenerator) 
         {
             _sceneGenerator = sceneGenerator;
-            planets = new List<Planet>();
         }
 
+        public void AddPlanet(Planet planet)
+        {
+            planets.Add(planet);
+        }
 
         public Task<List<SnapPlanetStruct>> GetSceneStruct()
         {

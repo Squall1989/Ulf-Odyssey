@@ -6,5 +6,5 @@ using Ulf;
 public interface ISceneProxy
 {
     Task<List<SnapPlanetStruct>> GetSceneStruct();
-
+    void AddPlanet(Planet planet);
 }
