@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3932485606642476706
+--- !u!1 &8037781457670172293
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 51400515797892162}
-  - component: {fileID: 7759534782539185593}
+  - component: {fileID: 9198088518811922868}
+  - component: {fileID: 575494219828045365}
   m_Layer: 0
-  m_Name: Connect
+  m_Name: SteamHost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &51400515797892162
+--- !u!4 &9198088518811922868
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3932485606642476706}
+  m_GameObject: {fileID: 8037781457670172293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.799696, y: 7.1537056, z: 0}
+  m_LocalPosition: {x: 1.7536559, y: 6.006714, z: 1.0488557}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7759534782539185593
+--- !u!114 &575494219828045365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3932485606642476706}
+  m_GameObject: {fileID: 8037781457670172293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e7136a8df3fcf498c312e4aa17d233, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b95720f9e2e4cc4290f265e74273b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ip: 127.0.0.1
-  port: 7777

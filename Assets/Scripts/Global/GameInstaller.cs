@@ -38,8 +38,8 @@ namespace Ulf
                     break;
                 case GameType.online:
                     SetupServices();
-                    handlerConnect.OnHostStart += (ishost) => SetupHost();
-                    handlerConnect.OnGetClientCode += SetupClient;
+                    handlerConnect.OnHostStart += (ishost) => SetupSteamHost();
+                    handlerConnect.OnGetClientCode += (code) => SetupSteamClient();
 
                     break;
             }
@@ -58,7 +58,21 @@ namespace Ulf
             Container.Bind<string>().FromInstance(playerId).AsSingle();
         }
 
-        private async void SetupClient(string code)
+        protected void SetupSteamClient()
+        {
+            Container.Rebind<INetworkable>().To<SteamClient>().FromComponentInNewPrefabResource("Steam/SteamClient").AsTransient();
+
+            SceneManager.LoadScene("GameScene");
+        }
+
+        protected void SetupSteamHost()
+        {
+            Container.Rebind<INetworkable>().To<SteamHost>().FromComponentInNewPrefabResource("Steam/SteamHost").AsTransient();
+
+            SceneManager.LoadScene("GameScene");
+        }
+
+        private void SetupUnityClient(string code)
         {
             var client = new ClientRelay();
             client.OnLog += (log) => Debug.Log(log);
@@ -68,7 +82,7 @@ namespace Ulf
             Container.Rebind<INetworkable>().To<ClientRelay>().FromInstance(client).AsTransient();
         }
 
-        private void SetupHost()
+        private void SetupUnityHost()
         {
             HostRelay host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
