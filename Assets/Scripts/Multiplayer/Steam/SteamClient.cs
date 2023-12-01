@@ -1,3 +1,5 @@
+using MessagePack;
+using MsgPck;
 using Steamworks;
 using UnityEngine;
 
@@ -25,21 +27,19 @@ namespace Ulf
 
             if(gettingTitle_.Equals(pchName))
             {
-                GetHostConnect((CSteamID)param.m_ulSteamIDLobby);
+                HostConnect(param);
             }
         }
 
-        private void GetHostConnect(CSteamID lobbySteamID)
+        private void HostConnect(LobbyDataUpdate_t param)
         {
-            if(SteamMatchmaking.GetLobbyGameServer(lobbySteamID, out uint serverIp, out ushort serverPort, out CSteamID steamServerId))
+            var msg = MessagePackSerializer.Serialize<IUnionMsg>(new PlayerData()
             {
-                Debug.Log("Success when try get server info!");
+                 isReady = true,
+                  playerId = "max",
+            });
 
-            }
-            else
-            {
-                Debug.LogError("Error when try get server info");
-            }
+            SteamNetworking.SendP2PPacket((CSteamID)param.m_ulSteamIDMember, msg, (uint)msg.Length, EP2PSend.k_EP2PSendReliable);
 
         }
 
