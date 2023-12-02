@@ -9,6 +9,7 @@ namespace Ulf
     public class SteamBase : MonoBehaviour, INetworkable
     {
         protected const string pchName = "Ulf";
+        protected CSteamID MySteamID => SteamUser.GetSteamID();
 
         public bool IsConnected => false;
 
@@ -40,6 +41,7 @@ namespace Ulf
             {
                 Debug.LogError("Steam not initialized!");
             }
+
         }
 
         protected void Update()
