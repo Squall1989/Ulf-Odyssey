@@ -42,16 +42,17 @@ namespace Ulf
             lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
         }
 
-        bool isAlreadyJoined = false;
         private void OnGetLobbyInfo(LobbyDataUpdate_t param)
         {
+            if (param.m_bSuccess == 0)
+                return;
             string gettingTitle_ = SteamMatchmaking.GetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name");
-            Debug.Log(gettingTitle_);
 
-            if(gettingTitle_.Equals(pchName) && !isAlreadyJoined)
+            if(gettingTitle_.Equals(pchName))
             {
-                isAlreadyJoined = true;
-                SteamMatchmaking.JoinLobby((CSteamID)param.m_ulSteamIDLobby);
+                string code = SteamMatchmaking.GetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name");
+                if(code.Equals(pchCode)) 
+                    SteamMatchmaking.JoinLobby((CSteamID)param.m_ulSteamIDLobby);
             }
         }
 
@@ -69,7 +70,6 @@ namespace Ulf
             {
                 CSteamID lobbyId = SteamMatchmaking.GetLobbyByIndex(i);
                 var lobbyData = SteamMatchmaking.RequestLobbyData(lobbyId);
-                Debug.Log("lobbyData :" + lobbyData);
             }
 
         }

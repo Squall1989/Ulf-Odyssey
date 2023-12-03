@@ -52,6 +52,7 @@ namespace Ulf
             Debug.Log(param.m_eResult);
             Debug.Log(param.m_ulSteamIDLobby);
             SteamMatchmaking.SetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name", pchName);
+            SteamMatchmaking.SetLobbyData((CSteamID)param.m_ulSteamIDLobby, "code", pchCode);
         }
 
         private void OnDestroy()
