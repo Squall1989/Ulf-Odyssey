@@ -12,7 +12,7 @@ namespace Ulf
 {
     public abstract class RelayBase
     {
-        protected delegate void UnionConnectDelegate(IUnionMsg message, NetworkConnection connection);
+        protected delegate void UnionConnectDelegate(IUnionMsg message, IConnectWrapper connection);
         protected delegate void UnionDelegate(IUnionMsg message);
         protected Dictionary<Type, UnionConnectDelegate> callbacksConnectDict = new ();
         protected Dictionary<Type, UnionDelegate> callbacksDict = new ();
@@ -31,7 +31,7 @@ namespace Ulf
             }
         }
 
-        public virtual void RegisterHandler<T>(Action<T, NetworkConnection> callback)
+        public virtual void RegisterHandler<T>(Action<T, IConnectWrapper> callback)
         {
             var type = typeof(T);
             if (callbacksDict.ContainsKey(type))
@@ -50,7 +50,7 @@ namespace Ulf
             SendToAll(bytes);
         }
 
-        public void Send<T>(T message, NetworkConnection connection) where T : IUnionMsg
+        public void Send<T>(T message, IConnectWrapper connection) where T : IUnionMsg
         {
             NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize<IUnionMsg>(message), Allocator.Temp);
             SendTo(bytes, connection);
@@ -63,7 +63,7 @@ namespace Ulf
 
             var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
             OnLog?.Invoke("Message type: " + msg.GetType());
-            callbacksConnectDict[msg.GetType()]?.Invoke(msg, connection);
+            callbacksConnectDict[msg.GetType()]?.Invoke(msg, WrapConnection(connection));
         }
         protected void Read(DataStreamReader stream)
         {
@@ -75,7 +75,17 @@ namespace Ulf
             callbacksDict[msg.GetType()]?.Invoke(msg);
         }
 
+        protected IConnectWrapper WrapConnection(NetworkConnection connection)
+        {
+            return new UnityConnect() { networkConnection = connection };
+        }
+
+        protected NetworkConnection UnwrapConnection(IConnectWrapper wrapper)
+        {
+            return ((UnityConnect)wrapper).networkConnection;
+        }
+
         protected abstract void SendToAll(NativeArray<byte> bytes);
-        protected abstract void SendTo(NativeArray<byte> bytes, NetworkConnection connection);
+        protected abstract void SendTo(NativeArray<byte> bytes, IConnectWrapper connection);
     }
 }

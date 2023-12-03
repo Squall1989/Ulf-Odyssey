@@ -9,7 +9,7 @@ public class MultiplayerHost
     private ISceneProxy _sceneHost;
     private INetworkable _networkable;
     protected Dictionary<string, PlayerData> _players = new();
-    protected Dictionary<NetworkConnection, string> _connetions = new();
+    protected Dictionary<IConnectWrapper, string> _connetions = new();
     private UnitsBehaviour _unitsBehaviour;
 
     public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost, IUnitsProxy unitsBehaviour) 
@@ -31,7 +31,7 @@ public class MultiplayerHost
         });
     }
 
-    private async void PlayerReady(PlayerData msg, NetworkConnection connection)
+    private async void PlayerReady(PlayerData msg, IConnectWrapper connection)
     {
         string id = msg.playerId;
         _connetions.Add(connection, id);

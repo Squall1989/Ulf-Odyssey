@@ -189,9 +189,9 @@ namespace Ulf
 
 
 
-        protected override void SendTo(NativeArray<byte> bytes, NetworkConnection connection)
+        protected override void SendTo(NativeArray<byte> bytes, IConnectWrapper connection)
         {
-            if (hostDriver.BeginSend(connection, out var writer) == 0)
+            if (hostDriver.BeginSend(((UnityConnect)connection).networkConnection, out var writer) == 0)
             {
                 writer.WriteBytes(bytes);
                 //var maxPayloadSize = writer.Capacity;

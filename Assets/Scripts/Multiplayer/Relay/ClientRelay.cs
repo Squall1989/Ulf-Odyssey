@@ -176,9 +176,9 @@ public class ClientRelay : RelayBase, INetworkable
         }
     }
 
-    protected override void SendTo(NativeArray<byte> bytes, NetworkConnection connection)
+    protected override void SendTo(NativeArray<byte> bytes, IConnectWrapper connection)
     {
-        if (clientDriver.BeginSend(connection, out var writer) == 0)
+        if (clientDriver.BeginSend(((UnityConnect)connection).networkConnection, out var writer) == 0)
         {
             writer.WriteBytes(bytes);
             clientDriver.EndSend(writer);
