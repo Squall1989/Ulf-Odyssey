@@ -20,7 +20,6 @@ namespace Ulf
         protected CSteamID lobbySteamID = new CSteamID();
         protected CSteamID MySteamID => SteamUser.GetSteamID();
 
-        public bool IsConnected => false;
 
         public Action<string> OnReceive { get ; set; }
 

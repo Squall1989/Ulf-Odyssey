@@ -14,7 +14,10 @@ namespace Ulf
         private CallResult<LobbyMatchList_t> lobbyMatchList_t;
         protected Callback<LobbyDataUpdate_t> Callback_lobbyInfo;
 
-        private CSteamID hostId;
+        private CSteamID _hostId;
+
+        public bool IsConnected => _hostId != default;
+
 
         private void Start()
         {
@@ -54,13 +57,7 @@ namespace Ulf
 
         private void ConnectToHost(CSteamID hostId)
         {
-            var msg = MessagePackSerializer.Serialize<IUnionMsg>(new PlayerData()
-            {
-                 isReady = true,
-                  playerId = "max",
-            });
-
-            var socket = SteamNetworking.SendP2PPacket(hostId, msg, (uint)msg.Length, EP2PSend.k_EP2PSendReliable);
+            _hostId = hostId;
 
         }
 
@@ -89,7 +86,7 @@ namespace Ulf
         public void Send<T>(T message) where T : IUnionMsg
         {
             var bytes = Reader.Serialize<IUnionMsg>(message);
-            SteamNetworking.SendP2PPacket(hostId, bytes, (uint)bytes.Length, EP2PSend.k_EP2PSendUnreliableNoDelay);
+            SteamNetworking.SendP2PPacket(_hostId, bytes, (uint)bytes.Length, EP2PSend.k_EP2PSendUnreliableNoDelay);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Ulf
         private Callback<LobbyEnter_t> lobbyEnter_t;
 
         private List<CSteamID> clientList = new();
+        public bool IsConnected => clientList.Count > 0;
 
         private void Start()
         {
