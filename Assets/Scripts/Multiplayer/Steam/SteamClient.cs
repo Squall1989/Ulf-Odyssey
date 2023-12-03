@@ -32,6 +32,7 @@ namespace Ulf
 
         protected override void OnLobbyEnter(LobbyEnter_t param)
         {
+            lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
             base.OnLobbyEnter(param);
             ConnectToHost(SteamMatchmaking.GetLobbyOwner((CSteamID)param.m_ulSteamIDLobby));
 
@@ -39,7 +40,7 @@ namespace Ulf
 
         private void OnLobbyJoin(LobbyChatUpdate_t param)
         {
-            lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
+            //lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
         }
 
         private void OnGetLobbyInfo(LobbyDataUpdate_t param)
@@ -50,7 +51,7 @@ namespace Ulf
 
             if(gettingTitle_.Equals(pchName))
             {
-                string code = SteamMatchmaking.GetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name");
+                string code = SteamMatchmaking.GetLobbyData((CSteamID)param.m_ulSteamIDLobby, "code");
                 if(code.Equals(pchCode)) 
                     SteamMatchmaking.JoinLobby((CSteamID)param.m_ulSteamIDLobby);
             }
