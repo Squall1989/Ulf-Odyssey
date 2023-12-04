@@ -68,6 +68,5 @@ namespace Ulf
                 SteamNetworking.SendP2PPacket(client, bytes, (uint)bytes.Length, EP2PSend.k_EP2PSendUnreliableNoDelay);
             }
         }
-
     }
 }

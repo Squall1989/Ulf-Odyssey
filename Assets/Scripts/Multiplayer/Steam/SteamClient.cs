@@ -42,18 +42,21 @@ namespace Ulf
         {
             //lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
         }
-
+        bool isJoinOnce = false;
         private void OnGetLobbyInfo(LobbyDataUpdate_t param)
         {
-            if (param.m_bSuccess == 0)
+            if (param.m_bSuccess == 0 || isJoinOnce)
                 return;
             string gettingTitle_ = SteamMatchmaking.GetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name");
 
             if(gettingTitle_.Equals(pchName))
             {
                 string code = SteamMatchmaking.GetLobbyData((CSteamID)param.m_ulSteamIDLobby, "code");
-                if(code.Equals(pchCode)) 
+                if (code.Equals(pchCode))
+                {
+                    isJoinOnce = true;
                     SteamMatchmaking.JoinLobby((CSteamID)param.m_ulSteamIDLobby);
+                }
             }
         }
 

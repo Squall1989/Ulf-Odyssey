@@ -1,8 +1,12 @@
+using MessagePack;
+using ModestTree;
 using MsgPck;
 using Steamworks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UlfServer;
+using Unity.Collections;
 using Unity.Networking.Transport;
 using UnityEngine;
 
@@ -84,10 +88,16 @@ namespace Ulf
             }
         }
 
-        protected void ReadP2pPacket(uint size)
+        protected (IUnionMsg msg, CSteamID steamID) ReadP2pPacket(uint size)
         {
             var bytes = new byte[size];
             SteamNetworking.ReadP2PPacket(bytes, size, out var newSize, out CSteamID senderId);
+            var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
+
+            callbacksConnectDict[msg.GetType()]?.Invoke(msg, WrapConnection(senderId));
+            callbacksDict[msg.GetType()]?.Invoke(msg);
+
+            return (msg, senderId);
         }
 
         protected void Update()
