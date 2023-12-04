@@ -93,9 +93,11 @@ namespace Ulf
             var bytes = new byte[size];
             SteamNetworking.ReadP2PPacket(bytes, size, out var newSize, out CSteamID senderId);
             var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
-
-            callbacksConnectDict[msg.GetType()]?.Invoke(msg, WrapConnection(senderId));
-            callbacksDict[msg.GetType()]?.Invoke(msg);
+            var key = msg.GetType();
+            if (callbacksConnectDict.ContainsKey(key))
+                callbacksConnectDict[msg.GetType()]?.Invoke(msg, WrapConnection(senderId));
+            if (callbacksDict.ContainsKey(key))
+                callbacksDict[msg.GetType()]?.Invoke(msg);
 
             return (msg, senderId);
         }
