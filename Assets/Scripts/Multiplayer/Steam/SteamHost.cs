@@ -12,7 +12,6 @@ namespace Ulf
     {
         private CallResult<LobbyCreated_t> lobbyCreated_t;
         private CallResult<LobbyPlayerJoined> lobbyJoined_t;
-        private Callback<P2PSessionRequest_t> p2pSessionRequest_t;
         private Callback<LobbyEnter_t> lobbyEnter_t;
 
         private List<CSteamID> clientList = new();
@@ -23,7 +22,6 @@ namespace Ulf
             lobbyEnter_t = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
             lobbyJoined_t = CallResult<LobbyPlayerJoined>.Create(OnLobbyPlayerJoined);
             lobbyCreated_t = CallResult<LobbyCreated_t>.Create(LobbyCreated);
-            p2pSessionRequest_t = Callback<P2PSessionRequest_t>.Create(P2pRequested);
             CreateLobby();
         }
 
@@ -34,11 +32,7 @@ namespace Ulf
 
         }
 
-        private void P2pRequested(P2PSessionRequest_t param)
-        {
-            if(SteamNetworking.AcceptP2PSessionWithUser(param.m_steamIDRemote))
-                clientList.Add(param.m_steamIDRemote);
-        }
+
 
         void CreateLobby()
         {
@@ -53,6 +47,13 @@ namespace Ulf
             Debug.Log(param.m_ulSteamIDLobby);
             SteamMatchmaking.SetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name", pchName);
             SteamMatchmaking.SetLobbyData((CSteamID)param.m_ulSteamIDLobby, "code", pchCode);
+        }
+
+        protected override void P2pRequested(P2PSessionRequest_t param)
+        {
+            base.P2pRequested(param);
+            clientList.Add(param.m_steamIDRemote);
+
         }
 
         private void OnDestroy()

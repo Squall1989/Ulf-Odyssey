@@ -14,6 +14,7 @@ namespace Ulf
 {
     public class SteamBase : MonoBehaviour
     {
+        private Callback<P2PSessionRequest_t> p2pSessionRequest_t;
 
         protected delegate void UnionConnectDelegate(IUnionMsg message, IConnectWrapper connection);
         protected delegate void UnionDelegate(IUnionMsg message);
@@ -21,7 +22,7 @@ namespace Ulf
         protected Dictionary<Type, UnionDelegate> callbacksDict = new();
 
         protected const string pchName = "Ulf";
-        protected const string pchCode = "123";
+        protected const string pchCode = "12345";
         protected CSteamID lobbySteamID = new CSteamID();
         protected CSteamID MySteamID => SteamUser.GetSteamID();
 
@@ -34,8 +35,16 @@ namespace Ulf
             {
                 Debug.LogError("Steam not initialized!");
             }
+            p2pSessionRequest_t = Callback<P2PSessionRequest_t>.Create(P2pRequested);
         }
 
+        protected virtual void P2pRequested(P2PSessionRequest_t param)
+        {
+            if (SteamNetworking.AcceptP2PSessionWithUser(param.m_steamIDRemote))
+            {
+
+            }
+        }
 
         protected virtual void OnLobbyEnter(LobbyEnter_t param)
         {
@@ -94,6 +103,7 @@ namespace Ulf
             SteamNetworking.ReadP2PPacket(bytes, size, out var newSize, out CSteamID senderId);
             var msg = MessagePackSerializer.Deserialize<IUnionMsg>(bytes.ToArray());
             var key = msg.GetType();
+            Debug.Log("Read: " + key);
             if (callbacksConnectDict.ContainsKey(key))
                 callbacksConnectDict[msg.GetType()]?.Invoke(msg, WrapConnection(senderId));
             if (callbacksDict.ContainsKey(key))
