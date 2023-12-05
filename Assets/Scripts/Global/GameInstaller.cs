@@ -60,14 +60,14 @@ namespace Ulf
 
         protected void SetupSteamClient()
         {
-            Container.Rebind<INetworkable>().To<SteamClient>().FromComponentInNewPrefabResource("Steam/SteamClient").AsTransient();
+            Container.Rebind<INetworkable>().To<SteamClient>().FromComponentInNewPrefabResource("Steam/SteamClient").AsSingle();
 
             SceneManager.LoadScene("GameScene");
         }
 
         protected void SetupSteamHost()
         {
-            Container.Rebind<INetworkable>().To<SteamHost>().FromComponentInNewPrefabResource("Steam/SteamHost").AsTransient();
+            Container.Rebind<INetworkable>().To<SteamHost>().FromComponentInNewPrefabResource("Steam/SteamHost").AsSingle();
 
             SceneManager.LoadScene("GameScene");
         }
@@ -79,7 +79,7 @@ namespace Ulf
             client.Join(code);
             client.OnJoined += () => SceneManager.LoadScene("GameScene");
             
-            Container.Rebind<INetworkable>().To<ClientRelay>().FromInstance(client).AsTransient();
+            Container.Rebind<INetworkable>().To<ClientRelay>().FromInstance(client).AsSingle();
         }
 
         private void SetupUnityHost()
@@ -87,7 +87,7 @@ namespace Ulf
             HostRelay host = new HostRelay();
             host.OnLog += (log) => Debug.Log(log);
             host.StartAllocate();
-            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsCached();
+            Container.Bind<INetworkable>().To<HostRelay>().FromInstance(host).AsSingle();
 
             SceneManager.LoadScene("GameScene");
 
