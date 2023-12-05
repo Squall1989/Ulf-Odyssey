@@ -22,14 +22,14 @@ namespace Ulf
         protected Dictionary<Type, UnionDelegate> callbacksDict = new();
 
         protected const string pchName = "Ulf";
-        protected const string pchCode = "123456789";
+        protected const string pchCode = "1111";
         protected CSteamID lobbySteamID = new CSteamID();
         protected CSteamID MySteamID => SteamUser.GetSteamID();
 
 
         public Action<string> OnReceive { get ; set; }
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             if(!SteamAPI.Init())
             {
@@ -87,7 +87,7 @@ namespace Ulf
         public virtual void RegisterHandler<T>(Action<T, IConnectWrapper> callback)
         {
             var type = typeof(T);
-            if (callbacksDict.ContainsKey(type))
+            if (callbacksConnectDict.ContainsKey(type))
             {
                 callbacksConnectDict[type] += (msg, connect) => callback((T)msg, connect);
             }

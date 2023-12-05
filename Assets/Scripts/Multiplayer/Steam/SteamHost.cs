@@ -2,6 +2,7 @@ using MsgPck;
 using Steamworks;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UlfServer;
 using Unity.Services.Lobbies;
 using UnityEngine;
@@ -17,12 +18,28 @@ namespace Ulf
         private List<CSteamID> clientList = new();
         public bool IsConnected => clientList.Count > 0;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            RegisterHandler<PlayerData>(OnPlayerData);
+        }
+
+        private void OnPlayerData(PlayerData data, IConnectWrapper connect)
+        {
+            if(!clientList.Contains(UnwrapConnection(connect)))
+            {
+                clientList.Add(UnwrapConnection(connect));
+            }
+
+        }
+
         private void Start()
         {
             lobbyEnter_t = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
             lobbyJoined_t = CallResult<LobbyPlayerJoined>.Create(OnLobbyPlayerJoined);
             lobbyCreated_t = CallResult<LobbyCreated_t>.Create(LobbyCreated);
             CreateLobby();
+            
         }
 
 
