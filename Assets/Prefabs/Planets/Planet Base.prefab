@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92454e61d3e19fd478edf91c3dcd3db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startUnits: []
   elementType: 0
+  bridgePfb: {fileID: 4711928879901467781, guid: d70cddaa8f6aeea48a093bef49c3136e, type: 3}
 --- !u!1 &3478049593489766046
 GameObject:
   m_ObjectHideFlags: 0

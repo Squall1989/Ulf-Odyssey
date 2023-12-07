@@ -47,24 +47,25 @@ namespace MessagePack.Resolvers
 
         static GeneratedResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(16)
+            lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(17)
             {
-                { typeof(global::Ulf.CreatePlanetStruct[]), 0 },
-                { typeof(global::Ulf.CreateUnitStruct[]), 1 },
-                { typeof(global::Ulf.SnapUnitStruct[]), 2 },
-                { typeof(global::ElementType), 3 },
-                { typeof(global::MsgPck.IUnionMsg), 4 },
-                { typeof(global::Ulf.INextAction), 5 },
-                { typeof(global::MsgPck.ActionData), 6 },
-                { typeof(global::MsgPck.PlayerData), 7 },
-                { typeof(global::MsgPck.SnapSceneStruct), 8 },
-                { typeof(global::Ulf.BridgePositionStruct), 9 },
-                { typeof(global::Ulf.CreatePlanetStruct), 10 },
-                { typeof(global::Ulf.CreateSceneStruct), 11 },
-                { typeof(global::Ulf.CreateUnitStruct), 12 },
-                { typeof(global::Ulf.MovementAction), 13 },
-                { typeof(global::Ulf.SnapPlanetStruct), 14 },
-                { typeof(global::Ulf.SnapUnitStruct), 15 },
+                { typeof(global::Ulf.CreateBridgeStruct[]), 0 },
+                { typeof(global::Ulf.CreatePlanetStruct[]), 1 },
+                { typeof(global::Ulf.CreateUnitStruct[]), 2 },
+                { typeof(global::Ulf.SnapUnitStruct[]), 3 },
+                { typeof(global::ElementType), 4 },
+                { typeof(global::MsgPck.IUnionMsg), 5 },
+                { typeof(global::Ulf.INextAction), 6 },
+                { typeof(global::MsgPck.ActionData), 7 },
+                { typeof(global::MsgPck.PlayerData), 8 },
+                { typeof(global::MsgPck.SnapSceneStruct), 9 },
+                { typeof(global::Ulf.CreateBridgeStruct), 10 },
+                { typeof(global::Ulf.CreatePlanetStruct), 11 },
+                { typeof(global::Ulf.CreateSceneStruct), 12 },
+                { typeof(global::Ulf.CreateUnitStruct), 13 },
+                { typeof(global::Ulf.MovementAction), 14 },
+                { typeof(global::Ulf.SnapPlanetStruct), 15 },
+                { typeof(global::Ulf.SnapUnitStruct), 16 },
             };
         }
 
@@ -78,22 +79,23 @@ namespace MessagePack.Resolvers
 
             switch (key)
             {
-                case 0: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreatePlanetStruct>();
-                case 1: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreateUnitStruct>();
-                case 2: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.SnapUnitStruct>();
-                case 3: return new MessagePack.Formatters.ElementTypeFormatter();
-                case 4: return new MessagePack.Formatters.MsgPck.IUnionMsgFormatter();
-                case 5: return new MessagePack.Formatters.Ulf.INextActionFormatter();
-                case 6: return new MessagePack.Formatters.MsgPck.ActionDataFormatter();
-                case 7: return new MessagePack.Formatters.MsgPck.PlayerDataFormatter();
-                case 8: return new MessagePack.Formatters.MsgPck.SnapSceneStructFormatter();
-                case 9: return new MessagePack.Formatters.Ulf.BridgePositionStructFormatter();
-                case 10: return new MessagePack.Formatters.Ulf.CreatePlanetStructFormatter();
-                case 11: return new MessagePack.Formatters.Ulf.CreateSceneStructFormatter();
-                case 12: return new MessagePack.Formatters.Ulf.CreateUnitStructFormatter();
-                case 13: return new MessagePack.Formatters.Ulf.MovementActionFormatter();
-                case 14: return new MessagePack.Formatters.Ulf.SnapPlanetStructFormatter();
-                case 15: return new MessagePack.Formatters.Ulf.SnapUnitStructFormatter();
+                case 0: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreateBridgeStruct>();
+                case 1: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreatePlanetStruct>();
+                case 2: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreateUnitStruct>();
+                case 3: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.SnapUnitStruct>();
+                case 4: return new MessagePack.Formatters.ElementTypeFormatter();
+                case 5: return new MessagePack.Formatters.MsgPck.IUnionMsgFormatter();
+                case 6: return new MessagePack.Formatters.Ulf.INextActionFormatter();
+                case 7: return new MessagePack.Formatters.MsgPck.ActionDataFormatter();
+                case 8: return new MessagePack.Formatters.MsgPck.PlayerDataFormatter();
+                case 9: return new MessagePack.Formatters.MsgPck.SnapSceneStructFormatter();
+                case 10: return new MessagePack.Formatters.Ulf.CreateBridgeStructFormatter();
+                case 11: return new MessagePack.Formatters.Ulf.CreatePlanetStructFormatter();
+                case 12: return new MessagePack.Formatters.Ulf.CreateSceneStructFormatter();
+                case 13: return new MessagePack.Formatters.Ulf.CreateUnitStructFormatter();
+                case 14: return new MessagePack.Formatters.Ulf.MovementActionFormatter();
+                case 15: return new MessagePack.Formatters.Ulf.SnapPlanetStructFormatter();
+                case 16: return new MessagePack.Formatters.Ulf.SnapUnitStructFormatter();
                 default: return null;
             }
         }
@@ -558,10 +560,10 @@ namespace MessagePack.Formatters.MsgPck
 
 namespace MessagePack.Formatters.Ulf
 {
-    public sealed class BridgePositionStructFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.BridgePositionStruct>
+    public sealed class CreateBridgeStructFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.CreateBridgeStruct>
     {
 
-        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.BridgePositionStruct value, global::MessagePack.MessagePackSerializerOptions options)
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.CreateBridgeStruct value, global::MessagePack.MessagePackSerializerOptions options)
         {
             writer.WriteArrayHeader(4);
             writer.Write(value.angleStart);
@@ -570,7 +572,7 @@ namespace MessagePack.Formatters.Ulf
             writer.Write(value.endPlanetId);
         }
 
-        public global::Ulf.BridgePositionStruct Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        public global::Ulf.CreateBridgeStruct Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
             if (reader.TryReadNil())
             {
@@ -579,7 +581,7 @@ namespace MessagePack.Formatters.Ulf
 
             options.Security.DepthStep(ref reader);
             var length = reader.ReadArrayHeader();
-            var ____result = new global::Ulf.BridgePositionStruct();
+            var ____result = new global::Ulf.CreateBridgeStruct();
 
             for (int i = 0; i < length; i++)
             {
@@ -614,12 +616,13 @@ namespace MessagePack.Formatters.Ulf
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.CreatePlanetStruct value, global::MessagePack.MessagePackSerializerOptions options)
         {
             global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
-            writer.WriteArrayHeader(5);
+            writer.WriteArrayHeader(6);
             writer.Write(value.planetId);
             global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.CreateUnitStruct[]>(formatterResolver).Serialize(ref writer, value.createUnits, options);
             global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::ElementType>(formatterResolver).Serialize(ref writer, value.ElementType, options);
             writer.Write(value.planetSize);
-            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::UnityEngine.Vector3>(formatterResolver).Serialize(ref writer, value.planetPos, options);
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::UnityEngine.Vector2>(formatterResolver).Serialize(ref writer, value.planetPos, options);
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.CreateBridgeStruct[]>(formatterResolver).Serialize(ref writer, value.bridges, options);
         }
 
         public global::Ulf.CreatePlanetStruct Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -651,7 +654,10 @@ namespace MessagePack.Formatters.Ulf
                         ____result.planetSize = reader.ReadSingle();
                         break;
                     case 4:
-                        ____result.planetPos = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::UnityEngine.Vector3>(formatterResolver).Deserialize(ref reader, options);
+                        ____result.planetPos = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::UnityEngine.Vector2>(formatterResolver).Deserialize(ref reader, options);
+                        break;
+                    case 5:
+                        ____result.bridges = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.CreateBridgeStruct[]>(formatterResolver).Deserialize(ref reader, options);
                         break;
                     default:
                         reader.Skip();

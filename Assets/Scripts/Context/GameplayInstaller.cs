@@ -9,6 +9,7 @@ namespace Ulf
     {
         [Inject] GameOptions options;
         [Inject] ConnectHandler handlerConnect;
+        [SerializeField] private BridgeMono bridgeExample;
 
         public override void InstallBindings()
         {
@@ -45,6 +46,7 @@ namespace Ulf
 
         private void BindHost()
         {
+            Container.Bind<BridgeMono>().FromInstance(bridgeExample).AsSingle();
             Container.Bind<SceneGenerator>().FromNew().AsSingle();
             Container.Bind<ISceneProxy>().To<SceneHost>().AsSingle();
             Container.Bind(typeof(IUnitsProxy), typeof(ITickable)).To<UnitsBehaviour>().FromNew().AsSingle();

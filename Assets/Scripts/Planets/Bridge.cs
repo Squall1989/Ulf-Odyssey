@@ -1,17 +1,26 @@
-using Assets.Scripts.Interfaces;
-
 using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
 {
-    public class Bridge : Planet
+    public class Bridge : IRound
     {
-        private float startDeg, endDeg;
+        private float planetAngle;
 
-        public Bridge(Vector2 pos, float radius, float startDeg, float endDeg) : base(new CreatePlanetStruct() { planetPos = pos, planetSize = radius})
+        public float Size { get; private set; }
+
+        public Bridge(float size)
         {
-            this.startDeg = startDeg;
-            this.endDeg = endDeg;
+            Size = size;
+        }
+
+        public void AddUnit(Unit unit)
+        {
+
+        }
+
+        public void RmUnit(Unit unit)
+        {
+
         }
     }
 }

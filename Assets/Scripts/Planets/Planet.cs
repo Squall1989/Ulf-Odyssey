@@ -6,7 +6,7 @@ using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
 {
-    public class Planet
+    public class Planet : IRound
     {
         private CreatePlanetStruct _planetStruct;
         private List<Unit> units;

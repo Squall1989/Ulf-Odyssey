@@ -1,6 +1,6 @@
 using MessagePack;
 using System.Collections.Generic;
-using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
 {
@@ -36,10 +36,12 @@ namespace Ulf
         [Key(3)] 
         public float planetSize;
         [Key(4)] 
-        public Vector3 planetPos;
+        public Vector2 planetPos;
+        [Key(5)]
+        public CreateBridgeStruct[] bridges;
     }
     [MessagePackObject]
-    public struct BridgePositionStruct
+    public struct CreateBridgeStruct
     {
         [Key(0)]
         public float angleStart;

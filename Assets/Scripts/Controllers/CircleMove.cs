@@ -36,12 +36,12 @@ namespace Ulf
             float speedRadial = _direct * speedLinear * deltaTime / radius;
             currDegree += speedRadial;// / 180 * (float)Math.PI;
 
-            _position.x = radius * (float)Math.Sin(currDegree);
-            _position.y = radius * (float)Math.Cos(currDegree);
-            _position += _planetPos;
-
             if (currDegree >= 360f)
                 currDegree -= 360f;
+
+            _position = GetMovePos(_planetPos, radius, currDegree);
+
+            
         }
 
         public void ToLand(Vector2 pos, float radius, float startAngle)
@@ -63,6 +63,14 @@ namespace Ulf
         public void SetMoveDirect(int direct)
         {
             _direct = direct;
+        }
+
+        public static Vector2 GetMovePos(Vector2 planetPos, float radius, float currDegree)
+        {
+            float x = radius * (float)Math.Sin(currDegree);
+            float y = radius * (float)Math.Cos(currDegree);
+            return new Vector2(x, y) + planetPos;
+
         }
     }
 }

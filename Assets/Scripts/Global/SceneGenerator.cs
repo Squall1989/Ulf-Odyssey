@@ -3,94 +3,80 @@ using System.Linq;
 using System.Collections.Generic;
 using Extensions;
 using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
-using UnityEngine;
-using Unity.VisualScripting.Dependencies.NCalc;
+using System.Drawing;
+using UnityEngine.UIElements;
 
 namespace Ulf
 {
     public class SceneGenerator 
     {
 
-        private List<CreatePlanetStruct> planetList;
-        private List<BridgePositionStruct> bridgeList;
+        private List<CreatePlanetStruct> planetList = new List<CreatePlanetStruct>(limit);
+        private List<CreateBridgeStruct> bridgeList = new();
         //private AllUnitsScriptable allUnits;
         private int planetNextId;
         private int unitNextId;
 
         private float bridgeSize = 5f;
 
+        private const int limit = 10;
+
         protected AllUnitsScriptable _allUnits;
         private AllPlanetsScriptable _allPlanets;
 
         public List<CreatePlanetStruct> PlanetList => planetList;
 
-        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets)
+        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets, BridgeMono bridgeMono)
         {
+            bridgeSize = bridgeMono.Size;
             _allUnits = allUnits;
             _allPlanets = allPlanets;
-            Generate(10);
+            GeneratePlanet(ElementType.wood, Vector2.zero);
         }
 
-        void Generate(int limit)
+        private CreateBridgeStruct GetBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
         {
-
-            planetNextId = 0;
-            planetList = new(limit);
-            for (int p = 0; p < limit; p++)
+            float bridgeAngle = Random.Range(0, 359);
+            Vector2 nextPos = CircleMove.GetMovePos(planetPos, planetSize + bridgeSize + endPlanetSize, bridgeAngle);
+            int trying = 5;
+            while (--trying > 0 && !checkPlanetsPos(nextPos, endPlanetSize))
             {
-                planetList.Add(GeneratePlanet(ElementType.wood));
+                bridgeAngle = Random.Range(0, 359);
             }
-            GenerateScenePositions();
+
+            bool left = Random.Range(1, 2) % 2 == 0;
+            var bridge = new CreateBridgeStruct()
+            {
+                angleStart = bridgeAngle,
+                startPlanetId = planetId,
+                mirrorLeft = left
+            };
+
+            return bridge;
         }
 
-        private void GenerateScenePositions()
+
+
+        bool checkPlanetsPos(Vector2 rndPos, float size)
         {
-            bridgeList = new();
-            foreach(var planet in planetList)
+            foreach (var planet in planetList)
             {
-                float bridgeAngle = Random.Range(15, 90);
-                bool left = Random.Range(1, 2) % 2 == 0;
-                bridgeList.Add(new BridgePositionStruct()
-                {
-                    angleStart = bridgeAngle,
-                    startPlanetId = planet.planetId,
-                    mirrorLeft = left
-                });
+                if ((planet.planetPos - rndPos).magnitude < planet.planetSize + size + bridgeSize)
+                    return false;
             }
+
+            return true;
         }
 
-        private Vector3 RandomPlanetPos(float size)
+        private void GeneratePlanet(ElementType elementType, Vector2 pos)
         {
-            Vector3 rndPos = new Vector3();
-            while (!checkPlanetsPos())
-            {
-                int x = Random.Range(-60, 60);
-                int y = Random.Range(-60, 60);
-                rndPos = new Vector3(x, y, 0);
-            }
-
-            return rndPos;
-
-            bool checkPlanetsPos()
-            {
-                foreach(var planet in planetList)
-                {
-                    if((planet.planetPos - rndPos).magnitude < planet.planetSize + size + bridgeSize) 
-                        return false;
-                }
-
-                return true;
-            }
-        }
-
-        private CreatePlanetStruct GeneratePlanet(ElementType elementType)
-        {
+            var planetId = planetNextId++;
             var elementSizes = _allPlanets.GetSizes(elementType);
-
             int sizeNum = Random.Range(0, elementSizes.Length);
-            Vector3 pos = RandomPlanetPos(elementSizes[sizeNum]);
-            int unitCount = Random.Range(1, 10);
+
+            int unitCount = Random.Range(1, 6);
             var availableUnits = _allUnits.AllUnits.Where(u => u.ElementType == elementType);
 
             List<CreateUnitStruct> units = new(unitCount);
@@ -106,14 +92,36 @@ namespace Ulf
                 units.Add(createUnit);
             }
 
-            return new CreatePlanetStruct()
+            List<CreateBridgeStruct> createBridges = new();
+
+            if (planetList.Count < limit)
             {
-                createUnits = units.ToArray(),
-                ElementType = elementType,
-                planetId = planetNextId++,
-                planetSize = elementSizes[sizeNum],
-                planetPos = pos,
-            };
+                int nextSizeNum = Random.Range(0, elementSizes.Length);
+                var bridge = GetBridge(planetId, pos, elementSizes[sizeNum], elementSizes[nextSizeNum]);
+                createBridges.Add(bridge);
+
+                AddPlanet();
+
+                var nextPlanet = CircleMove.GetMovePos(pos, elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum], bridge.angleStart);
+                GeneratePlanet(elementType, nextPlanet);
+            }
+            else
+            {
+                AddPlanet();
+            }
+
+            void AddPlanet()
+            {
+                planetList.Add(new CreatePlanetStruct()
+                {
+                    createUnits = units.ToArray(),
+                    ElementType = elementType,
+                    planetId = planetId,
+                    planetSize = elementSizes[sizeNum],
+                    planetPos = pos,
+                    bridges = createBridges.ToArray(),
+                });
+            }
         }
 
         public SnapUnitStruct[] StartSnapUnits(CreateUnitStruct[] createUnits)

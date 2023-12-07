@@ -5,7 +5,7 @@ namespace Ulf
 {
     public interface IRound
     {
-        void NewUnit(Unit unit, float startDegree);
+        void AddUnit(Unit unit);
         void RmUnit(Unit unit);
     }
 }

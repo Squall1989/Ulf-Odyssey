@@ -8,6 +8,7 @@ namespace Ulf
     {
         //[SerializeField] private UnitMono[] startUnits;
         [SerializeField] private ElementType elementType;
+        [SerializeField] private BridgeMono bridgePfb;
 
         private Planet planet;
 
@@ -26,6 +27,14 @@ namespace Ulf
         public void Init(CreatePlanetStruct planetStruct)
         {
             planet = new(planetStruct);
+            if (planetStruct.bridges != null)
+            {
+                foreach (var bridge in planetStruct.bridges)
+                {
+                    var bridgeMono = Instantiate(bridgePfb);
+                    bridgeMono.Init(planet, bridge.angleStart);
+                }
+            }
         }
 
         public void InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits, IUnitsProxy unitsProxy)
