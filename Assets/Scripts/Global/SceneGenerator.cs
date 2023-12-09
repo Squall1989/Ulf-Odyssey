@@ -33,17 +33,23 @@ namespace Ulf
             bridgeSize = bridgeMono.Size;
             _allUnits = allUnits;
             _allPlanets = allPlanets;
-            GeneratePlanet(ElementType.wood, Vector2.zero);
+            GeneratePlanet(ElementType.wood, Vector2.zero, 1);
         }
 
-        private CreateBridgeStruct GetBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
+        private (CreateBridgeStruct bridge, bool success) GetBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
         {
             float bridgeAngle = Random.Range(0, 359);
             Vector2 nextPos = CircleMove.GetMovePos(planetPos, planetSize + bridgeSize + endPlanetSize, bridgeAngle);
-            int trying = 5;
-            while (--trying > 0 && !checkPlanetsPos(nextPos, endPlanetSize))
+            int trying = 25;
+            while (!checkPlanetsPos(nextPos, endPlanetSize))
             {
                 bridgeAngle = Random.Range(0, 359);
+                nextPos = CircleMove.GetMovePos(planetPos, planetSize + bridgeSize + endPlanetSize, bridgeAngle);
+
+                if (--trying == 0)
+                {
+                    return (default, false);
+                }
             }
 
             bool left = Random.Range(1, 2) % 2 == 0;
@@ -54,7 +60,7 @@ namespace Ulf
                 mirrorLeft = left
             };
 
-            return bridge;
+            return (bridge, true);
         }
 
 
@@ -70,11 +76,10 @@ namespace Ulf
             return true;
         }
 
-        private void GeneratePlanet(ElementType elementType, Vector2 pos)
+        private void GeneratePlanet(ElementType elementType, Vector2 pos, int sizeNum)
         {
             var planetId = planetNextId++;
             var elementSizes = _allPlanets.GetSizes(elementType);
-            int sizeNum = Random.Range(0, elementSizes.Length);
 
             int unitCount = Random.Range(1, 6);
             var availableUnits = _allUnits.AllUnits.Where(u => u.ElementType == elementType);
@@ -97,13 +102,19 @@ namespace Ulf
             if (planetList.Count < limit)
             {
                 int nextSizeNum = Random.Range(0, elementSizes.Length);
-                var bridge = GetBridge(planetId, pos, elementSizes[sizeNum], elementSizes[nextSizeNum]);
-                createBridges.Add(bridge);
+                var bridgeCreation = GetBridge(planetId, pos, elementSizes[sizeNum], elementSizes[nextSizeNum]);
+                if (bridgeCreation.success)
+                {
+                    createBridges.Add(bridgeCreation.bridge);
 
-                AddPlanet();
+                    AddPlanet();
 
-                var nextPlanet = CircleMove.GetMovePos(pos, elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum], bridge.angleStart);
-                GeneratePlanet(elementType, nextPlanet);
+                    var distToNextPlanet = elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum];
+                    var nextPlanet = CircleMove.GetMovePos(pos, distToNextPlanet, bridgeCreation.bridge.angleStart);
+                    GeneratePlanet(elementType, nextPlanet, nextSizeNum);
+                }
+                else
+                    AddPlanet();
             }
             else
             {

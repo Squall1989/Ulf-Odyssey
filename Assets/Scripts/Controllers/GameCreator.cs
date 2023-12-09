@@ -33,7 +33,7 @@ namespace Ulf
                     Debug.LogError($"Planet prefab with size {planetStruct.createPlanet.planetSize} and element {planetStruct.createPlanet.ElementType} is NULL!!!");
                     continue;
                 }
-
+                Debug.Log("Planet: " + prefab);
                 var planetNew = Instantiate(prefab, planetStruct.createPlanet.planetPos, Quaternion.identity);
                 planetNew.Init(planetStruct.createPlanet);
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);

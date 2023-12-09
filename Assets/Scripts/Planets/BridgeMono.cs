@@ -18,6 +18,10 @@ namespace Ulf
             transform.position = pos;
 
             MovementMono.LookAtPlanet(transform, planet.Position);
+
+            pos = CircleMove.GetMovePos(planet.Position, planet.Radius + Size / 2f, angle);
+
+            transform.position = pos;
         }
     }
 }
