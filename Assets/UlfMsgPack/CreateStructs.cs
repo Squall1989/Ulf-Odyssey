@@ -13,6 +13,24 @@ namespace Ulf
         public float MoveSpeed;
     }
 
+    [System.Serializable]
+    public struct DefaultBuildStruct
+    {
+        [Key(0)]
+        public string View;
+    }
+
+    [MessagePackObject]
+    public struct CreateBuildStruct
+    {
+        [Key(0)]
+        public string View;
+        [Key(1)]
+        public int Guid;
+        [Key(2)]
+        public float Angle;
+    }
+
     [MessagePackObject]
     public struct CreateUnitStruct
     {
