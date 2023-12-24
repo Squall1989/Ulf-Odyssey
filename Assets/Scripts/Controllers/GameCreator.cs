@@ -11,6 +11,7 @@ namespace Ulf
     public class GameCreator : MonoBehaviour
     {
         [Inject] protected AllPlanetsScriptable planetsContainer;
+        [Inject] protected AllBuildScriptable buildContainer;
         [Inject] protected AllUnitsScriptable unitsContainer;
         [Inject] protected ISceneProxy sceneProxy;
         [Inject] protected IUnitsProxy unitsProxy;
@@ -40,6 +41,11 @@ namespace Ulf
 
                 planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
 
+                var buildStructs = planetStruct.createPlanet.builds;
+                if (planetStruct.createPlanet.builds.Length > 0)
+                {
+                    planetNew.InstBuilds(buildContainer.GetBuilds(buildStructs), buildStructs);
+                }
                 sceneProxy.AddPlanet(planetNew.Planet);
             }
         }

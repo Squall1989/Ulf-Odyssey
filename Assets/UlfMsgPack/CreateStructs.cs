@@ -16,8 +16,8 @@ namespace Ulf
     [System.Serializable]
     public struct DefaultBuildStruct
     {
-        [Key(0)]
         public string View;
+        public ElementType ElementType;
     }
 
     [MessagePackObject]
@@ -57,6 +57,8 @@ namespace Ulf
         public Vector2 planetPos;
         [Key(5)]
         public CreateBridgeStruct[] bridges;
+        [Key(6)]
+        public CreateBuildStruct[] builds;
     }
     [MessagePackObject]
     public struct CreateBridgeStruct

@@ -25,14 +25,16 @@ namespace Ulf
 
         protected AllUnitsScriptable _allUnits;
         private AllPlanetsScriptable _allPlanets;
+        private AllBuildScriptable _allBuilds;
 
         public List<CreatePlanetStruct> PlanetList => planetList;
 
-        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets, BridgeMono bridgeMono)
+        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets, AllBuildScriptable allBuilds, BridgeMono bridgeMono)
         {
             bridgeSize = bridgeMono.Size;
             _allUnits = allUnits;
             _allPlanets = allPlanets;
+            _allBuilds = allBuilds;
             bridgesGenerations = 0;
             GeneratePlanet(ElementType.wood, Vector2.zero, 1);
         }
@@ -103,8 +105,13 @@ namespace Ulf
             List<CreateBridgeStruct> createBridges = new();
 
             AddBridges(planetId, pos, sizeNum, elementType, elementSizes, ref createBridges);
+
             List<float> buildAngles = createBridges.Select(p => p.angleStart).ToList();
-            AddBuilds(buildAngles);
+
+            List<CreateBuildStruct> createBuilds = new();
+
+            AddBuilds(elementType, buildAngles, ref createBuilds);
+
             AddPlanet();
 
             void AddPlanet()
@@ -117,13 +124,42 @@ namespace Ulf
                     planetSize = elementSizes[sizeNum],
                     planetPos = pos,
                     bridges = createBridges.ToArray(),
+                    builds = createBuilds.ToArray(),
                 });
             }
         }
 
-        private void AddBuilds(List<float> buildAngles)
+        private (float deg, bool success) GetFreeRandomAngle(List<float> angles)
         {
+            const float angleSpace = 7f;
 
+            int tryCount = 10;
+
+            while (tryCount-- > 0)
+            {
+                float newAngle = Random.Range(0, 359f);
+
+                foreach (int angle in angles)
+                {
+                    if (MathUtils.GetMinAngleDiff(newAngle, angle) < angleSpace)
+                        continue;
+                }
+
+                return (newAngle, true);
+            }
+
+            return (0, false);
+        }
+
+        private void AddBuilds(ElementType element, List<float> buildAngles, ref List<CreateBuildStruct> createBuilds)
+        {
+            var angleRoll = GetFreeRandomAngle(buildAngles);
+
+            if(angleRoll.success)
+            {
+                DefaultBuildStruct buildStruct = _allBuilds.Builds.Where(p => p.Element == element).RandomElement().DefaultBuild;
+                createBuilds.Add(new CreateBuildStruct() { Angle = angleRoll.deg, View = buildStruct.View, Guid = unitNextId++ });
+            }
         }
 
         protected void AddBridges(int planetId, Vector2 pos, int sizeNum, ElementType elementType, float[] elementSizes, ref List<CreateBridgeStruct> createBridges)

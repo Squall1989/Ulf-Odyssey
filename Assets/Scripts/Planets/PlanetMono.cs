@@ -27,6 +27,7 @@ namespace Ulf
         public void Init(CreatePlanetStruct planetStruct)
         {
             planet = new(planetStruct);
+
             if (planetStruct.bridges != null)
             {
                 foreach (var bridge in planetStruct.bridges)
@@ -34,6 +35,15 @@ namespace Ulf
                     var bridgeMono = Instantiate(bridgePfb);
                     bridgeMono.Init(planet, bridge.angleStart);
                 }
+            }
+        }
+
+        public void InstBuilds(BuildMono[] builds, CreateBuildStruct[] createBuilds)
+        {
+            for (int u = 0; u < builds.Length; u++)
+            {
+                var _buildMono = Instantiate(builds[u], gameObject.transform);
+                _buildMono.Init(planet, createBuilds[u], createBuilds[u].Angle);
             }
         }
 

@@ -23,6 +23,7 @@ namespace Ulf
 
             Container.Bind<AllUnitsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
             Container.Bind<AllPlanetsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
+            Container.Bind<AllBuildScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
         }
 
 
