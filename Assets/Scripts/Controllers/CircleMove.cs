@@ -67,9 +67,9 @@ namespace Ulf
 
         public static Vector2 GetMovePos(Vector2 planetPos, float radius, float currDegree)
         {
-            float x = radius * (float)Math.Sin(currDegree);
-            float y = radius * (float)Math.Cos(currDegree);
-            return new Vector2(x, y) + planetPos;
+            float x = planetPos.x + radius * (float)Math.Cos(currDegree);
+            float y = planetPos.y + radius * (float)Math.Sin(currDegree);
+            return new Vector2(x, y);
 
         }
     }

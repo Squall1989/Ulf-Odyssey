@@ -16,12 +16,10 @@ namespace Ulf
             Vector2 pos = CircleMove.GetMovePos(planet.Position, planet.Radius + Size / 2f, angle);
 
             transform.position = pos;
+            gameObject.name = "Bridge " + angle.ToString();
+
 
             MovementMono.LookAtPlanet(transform, planet.Position);
-
-            pos = CircleMove.GetMovePos(planet.Position, planet.Radius + Size / 2f, angle);
-
-            transform.position = pos;
         }
     }
 }

@@ -17,17 +17,15 @@ namespace Ulf
 
         }
 
-        internal void Init(Planet planet, CreateBuildStruct createBuildStruct, float angle)
+        internal void Init(Planet planet, CreateBuildStruct createBuildStruct)
         {
-            Vector2 pos = CircleMove.GetMovePos(planet.Position, planet.Radius, angle);
+            Vector2 pos = CircleMove.GetMovePos(planet.Position, planet.Radius, createBuildStruct.Angle);
 
             transform.position = pos;
+            gameObject.name = "Build " + createBuildStruct.Angle.ToString();
 
             MovementMono.LookAtPlanet(transform, planet.Position);
 
-            pos = CircleMove.GetMovePos(planet.Position, planet.Radius, angle);
-
-            transform.position = pos;
         }
     }
 }

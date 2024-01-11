@@ -66,8 +66,6 @@ namespace Ulf
             return (bridge, true);
         }
 
-
-
         bool checkPlanetsPos(Vector2 rndPos, float size)
         {
             foreach (var planet in planetPoses)
@@ -79,7 +77,7 @@ namespace Ulf
             return true;
         }
 
-        private void GeneratePlanet(ElementType elementType, Vector2 pos, int sizeNum)
+        private void GeneratePlanet(ElementType elementType, Vector2 pos, int sizeNum, float? fromBridgeDeg = null)
         {
             var planetId = planetNextId++;
             var elementSizes = _allPlanets.GetSizes(elementType);
@@ -106,11 +104,20 @@ namespace Ulf
 
             AddBridges(planetId, pos, sizeNum, elementType, elementSizes, ref createBridges);
 
-            List<float> buildAngles = createBridges.Select(p => p.angleStart).ToList();
+            List<float> bridgedAngles = createBridges.Select(p => p.angleStart).ToList();
+
+            if(fromBridgeDeg != null)
+            {
+                fromBridgeDeg += 180f;
+                if (fromBridgeDeg >= 360f)
+                    fromBridgeDeg -= 360f;
+
+                bridgedAngles.Add(fromBridgeDeg.Value);
+            }
 
             List<CreateBuildStruct> createBuilds = new();
 
-            AddBuilds(elementType, buildAngles, ref createBuilds);
+            AddBuilds(elementType, bridgedAngles, ref createBuilds);
 
             AddPlanet();
 
@@ -131,21 +138,25 @@ namespace Ulf
 
         private (float deg, bool success) GetFreeRandomAngle(List<float> angles)
         {
-            const float angleSpace = 7f;
+            const float angleSpace = 90f;
 
             int tryCount = 10;
 
             while (tryCount-- > 0)
             {
                 float newAngle = Random.Range(0, 359f);
-
+                bool success = true;
                 foreach (int angle in angles)
                 {
                     if (MathUtils.GetMinAngleDiff(newAngle, angle) < angleSpace)
-                        continue;
+                    {
+                        success = false;
+                        break;
+                    }
                 }
 
-                return (newAngle, true);
+                if(success)
+                    return (newAngle, success);
             }
 
             return (0, false);
@@ -180,9 +191,8 @@ namespace Ulf
 
                     var distToNextPlanet = elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum];
                     var nextPlanet = CircleMove.GetMovePos(pos, distToNextPlanet, bridgeCreation.bridge.angleStart);
-                    GeneratePlanet(elementType, nextPlanet, nextSizeNum);
+                    GeneratePlanet(elementType, nextPlanet, nextSizeNum, bridgeCreation.bridge.angleStart);
                 }
-                else
                 {
                     break;
                 }

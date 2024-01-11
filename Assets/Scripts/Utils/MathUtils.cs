@@ -9,13 +9,15 @@ namespace Ulf
     {
         public static float GetMinAngleDiff( float x, float y )
         {
-            List<float> diffs = new() { 
+            var diffs = new List<float>() {
                 Math.Abs(x - y),
                 Math.Abs(x - y - 360f),
-                Math.Abs(x - y + 360f) 
+                Math.Abs(x - y + 360f)
             };
 
-            return diffs.Min();
+            float min = diffs.Min();
+
+            return min;
         }
     }
 }

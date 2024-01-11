@@ -38,9 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: builds
+    uniqueID: 691653287
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: planets
-    uniqueID: 691653287
     locked: 0
