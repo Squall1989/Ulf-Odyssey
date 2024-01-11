@@ -33,8 +33,8 @@ namespace Ulf
 
         private void Move()
         {
-            float speedRadial = _direct * speedLinear * deltaTime / radius;
-            currDegree += speedRadial;// / 180 * (float)Math.PI;
+            float speedRadial = _direct * speedLinear  / radius;
+            currDegree += (float)(speedRadial * Math.PI / 180f);
 
             if (currDegree >= 360f)
                 currDegree -= 360f;
@@ -65,11 +65,11 @@ namespace Ulf
             _direct = direct;
         }
 
-        public static Vector2 GetMovePos(Vector2 planetPos, float radius, float currDegree)
+        public static Vector2 GetMovePos(Vector2 movePlanetPos, float moveRadius, float moveDegree)
         {
-            float x = planetPos.x + radius * (float)Math.Cos(currDegree);
-            float y = planetPos.y + radius * (float)Math.Sin(currDegree);
-            return new Vector2(x, y);
+            float x = movePlanetPos.x + moveRadius * (float)Math.Cos(moveDegree * Math.PI / 180f);
+            float y = movePlanetPos.y + moveRadius * (float)Math.Sin(moveDegree * Math.PI / 180f);
+            return new Vector2(x,y);
 
         }
     }
