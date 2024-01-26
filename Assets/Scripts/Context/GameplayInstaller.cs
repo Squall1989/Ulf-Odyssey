@@ -10,6 +10,7 @@ namespace Ulf
         [Inject] GameOptions options;
         [Inject] ConnectHandler handlerConnect;
         [SerializeField] private BridgeMono bridgeExample;
+        [SerializeField] private InputControl input;
 
         public override void InstallBindings()
         {

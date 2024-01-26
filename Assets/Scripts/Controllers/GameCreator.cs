@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -16,13 +17,30 @@ namespace Ulf
         [Inject] protected ISceneProxy sceneProxy;
         [Inject] protected IUnitsProxy unitsProxy;
         [Inject] protected ConnectHandler connectHandler;
+        [Inject] protected InputControl inputControl;
+
+        private List<PlanetMono> planetList = new();
 
         async void Start()
         {
             var scene = await sceneProxy.GetSceneStruct();
             InstPlanets(scene);
+            var player = await sceneProxy.SpawnPlayer();
+            InstPlayer(player);
         }
 
+        private void InstPlayer(SnapPlayerStruct player)
+        {
+            var planet = planetList.First(p => p.Planet.ID == player.planetId);
+            var unitMonoDefault = unitsContainer.GetUnits( new CreateUnitStruct[] { player.snapUnitStruct.createUnit }).First();
+            var unitMono = planet.InstUnit(unitMonoDefault, player.snapUnitStruct, unitsProxy);
+            SetupControl(unitMono);
+        }
+
+        private void SetupControl(UnitMono unitMono)
+        {
+
+        }
 
         private void InstPlanets(List<SnapPlanetStruct> planetStructs)
         {
@@ -37,6 +55,7 @@ namespace Ulf
                 Debug.Log("Planet: " + prefab);
                 var planetNew = Instantiate(prefab, planetStruct.createPlanet.planetPos, Quaternion.identity);
                 planetNew.Init(planetStruct.createPlanet);
+                planetList.Add(planetNew);
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
 
                 planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);

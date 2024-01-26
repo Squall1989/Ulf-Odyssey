@@ -2,11 +2,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Extensions;
-using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
-using System.Drawing;
-using UnityEngine.UIElements;
 
 namespace Ulf
 {
@@ -77,6 +74,35 @@ namespace Ulf
             return true;
         }
 
+        public SnapPlayerStruct SpawnPlayer()
+        {
+            var defaultPlayer = _allUnits.AllUnits.First();
+            var planetId = planetList.RandomElement().planetId;
+
+            var unitPlayer = GenerateUnit(defaultPlayer);
+            return new SnapPlayerStruct()
+            {
+                planetId = planetId,
+                snapUnitStruct = new SnapUnitStruct()
+                {
+                    createUnit = unitPlayer,
+                    angle = Random.Range(0, 359f),
+                      health = unitPlayer.Health
+                }
+            };
+        }
+
+        private CreateUnitStruct GenerateUnit(DefaultUnitStruct defaultUnit)
+        {
+            CreateUnitStruct createUnit = new CreateUnitStruct()
+            {
+                View = defaultUnit.View,
+                Guid = unitNextId++,
+            };
+
+            return createUnit;
+        }
+
         private void GeneratePlanet(ElementType elementType, Vector2 pos, int sizeNum, float? fromBridgeDeg = null)
         {
             var planetId = planetNextId++;
@@ -92,11 +118,7 @@ namespace Ulf
             for(int i = 0; i < unitCount; i++)
             {
                 var defaultUnit = availableUnits.RandomElement();
-                CreateUnitStruct createUnit = new CreateUnitStruct()
-                {
-                     View = defaultUnit.View,
-                     Guid = unitNextId++,
-                };
+                var createUnit = GenerateUnit(defaultUnit);
                 units.Add(createUnit);
             }
 

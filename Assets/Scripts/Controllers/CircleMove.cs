@@ -53,10 +53,7 @@ namespace Ulf
 
         public void SetAngle(float angle)
         {
-            if(angle != currDegree)
-            {
-
-            }
+            
             currDegree = angle;
         }
 

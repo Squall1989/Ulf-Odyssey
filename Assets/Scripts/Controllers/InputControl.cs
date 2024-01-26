@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Ulf
 {
-    public class InputControl : MonoBehaviour, IControl
+    public class InputControl : MonoBehaviour
     {
         [SerializeField] private InputAction moveAction;
         [SerializeField] private InputAction attackAction;
