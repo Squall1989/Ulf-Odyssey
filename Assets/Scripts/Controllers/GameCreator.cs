@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
+using Cinemachine;
 
 namespace Ulf
 {
@@ -18,6 +19,7 @@ namespace Ulf
         [Inject] protected IUnitsProxy unitsProxy;
         [Inject] protected ConnectHandler connectHandler;
         [Inject] protected InputControl inputControl;
+        [Inject] protected CinemachineVirtualCamera cameraControl;
 
         private List<PlanetMono> planetList = new();
 
@@ -34,12 +36,21 @@ namespace Ulf
             var planet = planetList.First(p => p.Planet.ID == player.planetId);
             var unitMonoDefault = unitsContainer.GetUnits( new CreateUnitStruct[] { player.snapUnitStruct.createUnit }).First();
             var unitMono = planet.InstUnit(unitMonoDefault, player.snapUnitStruct, unitsProxy);
+            unitMono.transform.parent = null;
+            unitMono.transform.localScale = new Vector3(2,2,2);
+            unitMono.gameObject.name = "Player";
             SetupControl(unitMono);
         }
 
         private void SetupControl(UnitMono unitMono)
         {
+            inputControl.OnMove += (direct) =>
+            {
+                unitMono.CircleMove.SetMoveDirect(direct);
+            };
 
+            cameraControl.Follow = unitMono.transform;
+            cameraControl.LookAt = unitMono.transform;
         }
 
         private void InstPlanets(List<SnapPlanetStruct> planetStructs)
