@@ -11,6 +11,7 @@ namespace Ulf
         
         public Unit Unit => _unit;
         public DefaultUnitStruct DefaultUnit => defaultUnit;
+        public CircleMove CircleMove => movement.CircleMove;
 
         public void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {

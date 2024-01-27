@@ -1,5 +1,7 @@
 
+using Extensions;
 using MsgPck;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace Ulf
 
         protected List<Planet> planets = new();
         private SceneGenerator _sceneGenerator;
+
+        public Action<SnapPlayerStruct> OnPlayerCreated;
 
         public SceneHost(SceneGenerator sceneGenerator) 
         {
@@ -58,6 +62,19 @@ namespace Ulf
                     planetsSnapshot.ToList()
                 );
             }
+        }
+
+        public async Task<SnapPlayerStruct> SpawnPlayer()
+        {
+            while(planets.Count == 0)
+            {
+                await Task.Delay(1000);
+            }
+
+            var playerStruct = _sceneGenerator.SpawnPlayer();
+
+            OnPlayerCreated?.Invoke(playerStruct);
+            return playerStruct;
         }
 
     }

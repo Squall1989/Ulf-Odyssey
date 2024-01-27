@@ -23,6 +23,13 @@ namespace Ulf
         public int health;
     }
 
-
+    [MessagePackObject]
+    public struct SnapPlayerStruct
+    {
+        [Key(0)]
+        public SnapUnitStruct snapUnitStruct;
+        [Key(1)]
+        public int planetId;
+    }
 
 }

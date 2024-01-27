@@ -51,14 +51,18 @@ namespace Ulf
         {
             for (int u = 0; u < unitsMono.Length; u++)
             {
-                var _unitMono = Instantiate(unitsMono[u], gameObject.transform);
-                _unitMono.Init(planet, snapUnits[u].createUnit, snapUnits[u].angle);
-                unitsProxy.Add(_unitMono.Unit);
-                //unitsRegister.Record(_unitMono.Unit);
+                InstUnit(unitsMono[u], snapUnits[u], unitsProxy);
             }
         }
 
-        
+        public UnitMono InstUnit(UnitMono unitMono, SnapUnitStruct snapUnit, IUnitsProxy unitsProxy)
+        {
+            var _unitMono = Instantiate(unitMono, gameObject.transform);
+            _unitMono.Init(planet, snapUnit.createUnit, snapUnit.angle);
+            unitsProxy.Add(_unitMono.Unit);
+            return _unitMono;
+        }
+            
 
         private void OnValidate()
         {

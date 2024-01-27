@@ -14,6 +14,7 @@ namespace Ulf
         public ElementType Element => _planetStruct.ElementType;
         public float Radius => _planetStruct.planetSize;
         public Vector2 Position => _planetStruct.planetPos;
+        public int ID => _planetStruct.planetId;
 
         public Planet(CreatePlanetStruct planetStruct)
         {

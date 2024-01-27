@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,14 @@ namespace Ulf
         [Inject] GameOptions options;
         [Inject] ConnectHandler handlerConnect;
         [SerializeField] private BridgeMono bridgeExample;
+        [SerializeField] private InputControl input;
+        [SerializeField] protected CinemachineVirtualCamera cameraControl;
 
         public override void InstallBindings()
         {
             SwitchGameMode();
+            Container.Bind<InputControl>().FromComponentInNewPrefab(input).AsSingle();
+            Container.Bind<CinemachineVirtualCamera>().FromInstance(cameraControl).AsSingle();
         }
 
         protected void SwitchGameMode()
