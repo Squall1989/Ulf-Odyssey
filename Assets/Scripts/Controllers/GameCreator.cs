@@ -20,6 +20,7 @@ namespace Ulf
         [Inject] protected ConnectHandler connectHandler;
         [Inject] protected InputControl inputControl;
         [Inject] protected CinemachineVirtualCamera cameraControl;
+        [Inject] protected PlayerMono playerPrefab;
 
         private List<PlanetMono> planetList = new();
 
@@ -34,8 +35,7 @@ namespace Ulf
         private void InstPlayer(SnapPlayerStruct player)
         {
             var planet = planetList.First(p => p.Planet.ID == player.planetId);
-            var unitMonoDefault = unitsContainer.GetUnits( new CreateUnitStruct[] { player.snapUnitStruct.createUnit }).First();
-            var unitMono = planet.InstUnit(unitMonoDefault, player.snapUnitStruct, unitsProxy);
+            var unitMono = planet.InstUnit(playerPrefab, player.snapUnitStruct, null);
             unitMono.transform.parent = null;
             unitMono.transform.localScale = new Vector3(2,2,2);
             unitMono.gameObject.name = "Player";

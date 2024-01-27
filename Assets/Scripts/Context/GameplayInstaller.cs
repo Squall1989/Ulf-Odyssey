@@ -13,10 +13,12 @@ namespace Ulf
         [SerializeField] private BridgeMono bridgeExample;
         [SerializeField] private InputControl input;
         [SerializeField] protected CinemachineVirtualCamera cameraControl;
+        [SerializeField] protected PlayerMono playerMono;
 
         public override void InstallBindings()
         {
             SwitchGameMode();
+            Container.Bind<PlayerMono>().FromInstance(playerMono).AsSingle();
             Container.Bind<InputControl>().FromComponentInNewPrefab(input).AsSingle();
             Container.Bind<CinemachineVirtualCamera>().FromInstance(cameraControl).AsSingle();
         }

@@ -30,6 +30,11 @@ namespace Ulf
             planets.Add(planet);
         }
 
+        public void AddPlayer(Unit unit)
+        {
+
+        }
+
         public Task<List<SnapPlanetStruct>> GetSceneStruct()
         {
             if (planets.Count == 0)
