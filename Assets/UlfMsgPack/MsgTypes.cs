@@ -36,5 +36,7 @@ namespace MsgPck
         public int guid;
         [Key(1)]
         public INextAction action;
+        [Key(2)]
+        public bool isPlayerAction;
     }
 }

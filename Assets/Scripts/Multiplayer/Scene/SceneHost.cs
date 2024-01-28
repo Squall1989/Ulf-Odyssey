@@ -12,10 +12,9 @@ namespace Ulf
     /// <summary>
     /// Units interaction
     /// </summary>
-    public class SceneHost : ISceneProxy
+    public class SceneHost : SceneBase, ISceneProxy
     {
 
-        protected List<Planet> planets = new();
         private SceneGenerator _sceneGenerator;
 
         public Action<SnapPlayerStruct> OnPlayerCreated;
@@ -25,15 +24,7 @@ namespace Ulf
             _sceneGenerator = sceneGenerator;
         }
 
-        public void AddPlanet(Planet planet)
-        {
-            planets.Add(planet);
-        }
 
-        public void AddPlayer(Unit unit)
-        {
-
-        }
 
         public Task<List<SnapPlanetStruct>> GetSceneStruct()
         {
@@ -81,6 +72,7 @@ namespace Ulf
             OnPlayerCreated?.Invoke(playerStruct);
             return playerStruct;
         }
+
 
     }
 }

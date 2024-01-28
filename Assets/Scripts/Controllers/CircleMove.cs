@@ -6,14 +6,14 @@ namespace Ulf
 {
     public class CircleMove : IMovable
     {
-        private float deltaTime;
-        private float radius;
-        private float speedLinear;
-        private float currDegree;
+        protected float deltaTime;
+        protected float radius;
+        protected float speedLinear;
+        protected float currDegree;
 
-        private Vector2 _planetPos;
-        private Vector2 _position;
-        private int _direct;
+        protected Vector2 _planetPos;
+        protected Vector2 _position;
+        protected int _direct;
 
         public float Degree => currDegree;
 
@@ -31,7 +31,7 @@ namespace Ulf
             Move();
         }
 
-        private void Move()
+        protected void Move()
         {
             float speedRadial = _direct * speedLinear  / radius;
             currDegree += (float)(speedRadial * Math.PI / 180f);

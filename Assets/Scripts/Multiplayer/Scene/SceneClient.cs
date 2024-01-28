@@ -9,13 +9,12 @@ using Ulf;
 /// <summary>
 /// Connect to scene hoster
 /// </summary>
-public class SceneClient : ISceneProxy
+public class SceneClient : SceneBase, ISceneProxy
 {
     private string _playerId;
     private INetworkable _networkable;
     private int totalPlanetCount = 999;
     private List<SnapPlanetStruct> planetSnaps = new();
-    private List<Planet> planets = new();
 
     public SceneClient(INetworkable networkable, string playerId)
     {
@@ -23,11 +22,6 @@ public class SceneClient : ISceneProxy
         _networkable = networkable;
         _networkable.RegisterHandler<SnapSceneStruct>(SceneReceived);
         
-    }
-
-    public void AddPlanet(Planet planet)
-    {
-        planets.Add(planet);
     }
 
     public async Task<List<SnapPlanetStruct>> GetSceneStruct()
@@ -63,4 +57,5 @@ public class SceneClient : ISceneProxy
     {
         throw new NotImplementedException();
     }
+
 }
