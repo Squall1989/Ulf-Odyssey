@@ -4,13 +4,23 @@ namespace Ulf
 {
     public class Bridge : IRound
     {
-        private float planetAngle;
-
         public float Size { get; private set; }
+        public Vector2 Position { get; private set; }
 
-        public Bridge(float size)
+        private Planet _inPlanet;
+        private Planet _outPlanet;
+
+        public Bridge(float size, Vector2 position, Planet inPlanet)
         {
             Size = size;
+            Position = position;
+            _inPlanet = inPlanet;
+        }
+
+        public void ConnectOutPlanet(Planet outPlanet)
+        {
+            _outPlanet = outPlanet;
+
         }
 
         public void AddUnit(Unit unit)

@@ -57,6 +57,7 @@ namespace Ulf
             {
                 angleStart = bridgeAngle,
                 startPlanetId = planetId,
+                endPlanetId = planetNextId +1,
                 mirrorLeft = left
             };
 

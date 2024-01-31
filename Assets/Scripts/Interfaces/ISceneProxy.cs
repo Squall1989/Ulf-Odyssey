@@ -11,4 +11,5 @@ public interface ISceneProxy
     void AddPlayer(Player player, bool isOurPlayer);
     void DoPlayerAction(ActionData playerActionData);
     void CreatePlayerMoveAction(int direct);
+    void CreatePlayerStandAction(int direct);
 }

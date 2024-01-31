@@ -13,6 +13,19 @@ namespace Ulf
         public INextAction prevAction;
         public Timer timer;
     }
+
+    [MessagePackObject]
+    public struct StandAction : INextAction
+    {
+        [Key(0)]
+        public int direction;
+
+        public void DoAction(Unit unit)
+        {
+            (unit as Player).ExtendedCircleMove.SetStandDirect(direction);
+        }
+    }
+
     [MessagePackObject]
     public struct MovementAction : INextAction
     {

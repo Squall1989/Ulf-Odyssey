@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 using Cinemachine;
+using System;
 
 namespace Ulf
 {
@@ -23,6 +24,7 @@ namespace Ulf
         [Inject] protected PlayerMono playerPrefab;
 
         private List<PlanetMono> planetList = new();
+        private List<BridgeMono> bridgeList = new();
 
         async void Start()
         {
@@ -30,6 +32,28 @@ namespace Ulf
             InstPlanets(scene);
             var player = await sceneProxy.SpawnPlayer();
             InstPlayer(player);
+
+            ConnectBridges();
+        }
+
+        private void ConnectBridges()
+        {
+            foreach (var bridge in bridgeList)
+            {
+                var planetOut = GetPlanetFromId(bridge.CreateStruct.endPlanetId);
+                bridge.OnSetBridge(planetOut);
+            }
+        }
+
+        public Planet GetPlanetFromId(int id)
+        {
+            foreach(var planet in planetList)
+            {
+                if (planet.Planet.ID == id)
+                    return planet.Planet;
+            }
+
+            return null;
         }
 
         private void InstPlayer(SnapPlayerStruct player)
@@ -50,6 +74,10 @@ namespace Ulf
             {
                 sceneProxy.CreatePlayerMoveAction(direct);
             };
+            inputControl.OnStand += (direct) =>
+            {
+                sceneProxy.CreatePlayerStandAction(direct);
+            };
 
             cameraControl.Follow = unitMono.transform;
             cameraControl.LookAt = unitMono.transform;
@@ -66,9 +94,14 @@ namespace Ulf
                     continue;
                 }
                 Debug.Log("Planet: " + prefab);
+
                 var planetNew = Instantiate(prefab, planetStruct.createPlanet.planetPos, Quaternion.identity);
                 planetNew.Init(planetStruct.createPlanet);
                 planetList.Add(planetNew);
+
+                if(planetNew.BridgesMono != null)
+                    bridgeList.AddRange(planetNew.BridgesMono);
+
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
 
                 planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);

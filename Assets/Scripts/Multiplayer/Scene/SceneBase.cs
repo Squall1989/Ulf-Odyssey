@@ -39,6 +39,11 @@ namespace Ulf
             playerActionData.action.DoAction(player);
         }
 
+        public void CreatePlayerStandAction(int direct)
+        {
+
+        }
+
         public void CreatePlayerMoveAction(int direct)
         {
             MovementAction movementAction = new MovementAction()

@@ -14,6 +14,9 @@ namespace Ulf
 
         private CircleCollider2D planetCollider;
 
+        private BridgeMono[] bridgesMono;
+
+        public BridgeMono[] BridgesMono => bridgesMono;
         public ElementType ElementType => elementType;
         public float Size => GetComponent<CircleCollider2D>().radius;
 
@@ -30,10 +33,13 @@ namespace Ulf
             gameObject.name = planetStruct.planetId.ToString();
             if (planetStruct.bridges != null)
             {
-                foreach (var bridge in planetStruct.bridges)
+                bridgesMono = new BridgeMono[planetStruct.bridges.Length];
+                for (int i = 0; i < planetStruct.bridges.Length; i++)
                 {
                     var bridgeMono = Instantiate(bridgePfb);
-                    bridgeMono.Init(planet, bridge.angleStart);
+                    bridgeMono.Init(planet, planetStruct.bridges[i]);
+
+                    bridgesMono[i] = bridgeMono;
                 }
             }
         }
