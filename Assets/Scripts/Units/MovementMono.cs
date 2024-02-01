@@ -9,9 +9,9 @@ namespace Ulf
 
         public CircleMove CircleMove => _circleMove;
 
-        public void Init(Planet planet, DefaultUnitStruct unitStruct, float angle)
+        public void Init(Planet planet, CircleMove circleMove, float angle)
         {
-            _circleMove = new(unitStruct.MoveSpeed);
+            _circleMove = circleMove;
             _circleMove.ToLand(planet.Position, planet.Radius, angle);
             _circleMove.SetMoveDirect(0);
             transform.position = _circleMove.Position;

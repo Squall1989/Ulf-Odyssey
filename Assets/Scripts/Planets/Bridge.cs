@@ -1,3 +1,4 @@
+using System;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
@@ -31,6 +32,14 @@ namespace Ulf
         public void RmUnit(Unit unit)
         {
 
+        }
+
+        internal Planet GetOutPlanet(float degree)
+        {
+            if (degree < 90)
+                return _inPlanet;
+            else
+                return _outPlanet;
         }
     }
 }

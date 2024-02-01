@@ -15,16 +15,11 @@ namespace Ulf
 
         public virtual void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
-            movement.Init(planet, defaultUnit, freeArc);
+            movement.Init(planet, new CircleMove(defaultUnit.MoveSpeed), freeArc);
             planet.AddUnit(_unit);
-            CreateUnit(planet, createUnit);
-        }
-
-        protected virtual void CreateUnit(Planet planet, CreateUnitStruct createUnit)
-        {
             _unit = new Unit(planet.Element, createUnit, defaultUnit, movement.CircleMove);
-
         }
+
 
         //protected void OnValidate()
         //{

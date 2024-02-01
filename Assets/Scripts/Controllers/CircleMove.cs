@@ -70,6 +70,11 @@ namespace Ulf
 
         }
 
-
+        public static float GetAngle(Vector2 planetPos, Vector2 pointPos)
+        {
+            var module = (pointPos.y - planetPos.y) / (pointPos.x - planetPos.x);
+            float angle = (float)Math.Atan( Math.Abs(module));
+            return angle;
+        }
     }
 }

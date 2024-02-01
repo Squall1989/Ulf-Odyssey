@@ -1,5 +1,6 @@
 using Vector2 = UnityEngine.Vector2;
 using System;
+using UnityEditor.Build;
 
 namespace Ulf
 {
@@ -7,7 +8,7 @@ namespace Ulf
     {
         private bool _isOnBridge;
         private Bridge _bridgeToStand;
-        private int standDirect;
+        private int _standDirect;
 
         public ExtendedCircleMove(float speed) : base(speed)
         {
@@ -27,9 +28,9 @@ namespace Ulf
 
         internal void SetStandDirect(int direction)
         {
-            standDirect = direction;
+            _standDirect = direction;
 
-            if(standDirect != 0)
+            if(_standDirect != 0)
             {
                 CheckStandOpportunity();
             }
@@ -39,7 +40,46 @@ namespace Ulf
         {
             if (_isOnBridge)
             {
+                if(_standDirect == -1)
+                    TryLeaveBridge();
+            }
+            else
+            {
+                if(_standDirect == 1)
+                    TryStandBridge();
+            }
+        }
 
+        private void TryStandBridge()
+        {
+            if(_bridgeToStand != null)
+            {
+                var degree = GetAngle(_bridgeToStand.Position, Position);
+                if (IsStandableBridgeDegree(degree))
+                {
+                    ToLand(_bridgeToStand.Position, _bridgeToStand.Size, degree, true);
+                }
+            }
+        }
+
+        private bool IsStandableBridgeDegree(float degree)
+        {
+            if (degree < 90 || degree > 270)
+                return true;
+            else 
+                return false;
+        }
+
+        private void TryLeaveBridge()
+        {
+            if(_isOnBridge)
+            {
+                var degree = GetAngle(_bridgeToStand.Position, Position);
+                if (IsStandableBridgeDegree(degree))
+                {
+                    Planet planet = _bridgeToStand.GetOutPlanet(degree);
+                    ToLand(planet.Position, planet.Radius, degree, true);
+                }
             }
         }
     }

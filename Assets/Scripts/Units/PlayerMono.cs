@@ -11,9 +11,12 @@ namespace Ulf
 
         public Player Player => _player;
 
-        protected override void CreateUnit(Planet planet, CreateUnitStruct createUnit)
+        public override void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
-            _player = new Player(planet.Element, createUnit, defaultUnit, CircleMove);
+            var circleMove = new ExtendedCircleMove(defaultUnit.MoveSpeed);
+            movement.Init(planet, circleMove, freeArc);
+
+            _player = new Player(planet.Element, createUnit, defaultUnit, circleMove);
             _unit = _player;
         }
 

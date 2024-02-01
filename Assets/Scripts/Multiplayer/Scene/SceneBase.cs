@@ -41,7 +41,20 @@ namespace Ulf
 
         public void CreatePlayerStandAction(int direct)
         {
+            StandAction standAction = new StandAction()
+            {
+                 direction = direct,
+                 
+            };
 
+            standAction.DoAction(_player);
+
+            OnPlayerAction?.Invoke(new ActionData()
+            {
+                action = standAction,
+                guid = _player.GUID,
+                isPlayerAction = true
+            });
         }
 
         public void CreatePlayerMoveAction(int direct)

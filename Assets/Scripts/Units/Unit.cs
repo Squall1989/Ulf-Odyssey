@@ -5,10 +5,10 @@ namespace Ulf
 {
     public class Unit
     {
-        private CircleMove _movement;
-        private CreateUnitStruct _unitStruct;
-        private DefaultUnitStruct _defaultUnit;
-        private Health _health;
+        protected CircleMove _movement;
+        protected CreateUnitStruct _unitStruct;
+        protected DefaultUnitStruct _defaultUnit;
+        protected Health _health;
 
         public int GUID => _unitStruct.Guid;
         public CircleMove Movement => _movement;

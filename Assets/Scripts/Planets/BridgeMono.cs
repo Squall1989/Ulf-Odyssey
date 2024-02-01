@@ -30,6 +30,7 @@ namespace Ulf
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            Debug.Log("Enter " + collision.gameObject.name);
             if(collision.TryGetComponent<PlayerMono>(out var playerMono))
             {
                 playerMono.Player.ExtendedCircleMove.SetBridge(_bridge);
@@ -38,6 +39,8 @@ namespace Ulf
 
         private void OnTriggerExit2D(Collider2D collision)
         {
+            Debug.Log("Exit");
+
             if (collision.TryGetComponent<PlayerMono>(out var playerMono))
             {
                 playerMono.Player.ExtendedCircleMove.SetBridge(null);

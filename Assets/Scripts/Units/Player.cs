@@ -8,9 +8,9 @@ namespace Ulf
         private ExtendedCircleMove circleMoveExtended;
         public ExtendedCircleMove ExtendedCircleMove => circleMoveExtended;
         
-        public Player(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, CircleMove circleMove) : base(elementType, unitStruct, defaultUnit, circleMove)
+        public Player(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, ExtendedCircleMove circleMove) : base(elementType, unitStruct, defaultUnit, circleMove)
         {
-            circleMoveExtended = new ExtendedCircleMove(defaultUnit.MoveSpeed);
+            circleMoveExtended = circleMove;
         }
 
     }
