@@ -5,7 +5,7 @@ namespace Ulf
 {
     public class Bridge : IRound
     {
-        public float Size { get; private set; }
+        public float Radius { get; private set; }
         public Vector2 Position { get; private set; }
 
         private Planet _inPlanet;
@@ -13,7 +13,7 @@ namespace Ulf
 
         public Bridge(float size, Vector2 position, Planet inPlanet)
         {
-            Size = size;
+            Radius = size;
             Position = position;
             _inPlanet = inPlanet;
         }

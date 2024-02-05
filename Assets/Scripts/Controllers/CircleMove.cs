@@ -7,17 +7,17 @@ namespace Ulf
     public class CircleMove : IMovable
     {
         protected float deltaTime;
+        private IRound _round;
         protected float radius;
         protected float speedLinear;
         protected float currDegree;
 
-        protected Vector2 _planetPos;
         protected Vector2 _position;
         protected int _direct;
 
         public float Degree => currDegree;
 
-        public Vector2 PlanetPosition => _planetPos;
+        public Vector2 PlanetPosition => _round.Position;
         public Vector2 Position => _position;
 
         public CircleMove(float speed)
@@ -33,21 +33,21 @@ namespace Ulf
 
         protected void Move()
         {
-            float speedRadial = _direct * speedLinear  / radius;
-            currDegree += (float)(speedRadial * Math.PI / 180f);
+            float speedRadial = _direct * speedLinear * deltaTime * (float)Math.PI * 2f  / radius;
+            currDegree += speedRadial;
 
             if (currDegree >= 360f)
                 currDegree -= 360f;
 
-            _position = GetMovePos(_planetPos, radius, currDegree);
+            _position = GetMovePos(_round.Position, radius, currDegree);
 
             
         }
 
-        public void ToLand(Vector2 pos, float radius, float startAngle)
+        public void ToLand(IRound round, float startAngle)
         {
-            _planetPos = pos;
-            this.radius = radius;
+            _round = round;
+            this.radius = round.Radius;
             currDegree = startAngle;
         }
 
@@ -76,5 +76,6 @@ namespace Ulf
             float angle = (float)Math.Atan( Math.Abs(module));
             return angle;
         }
+
     }
 }

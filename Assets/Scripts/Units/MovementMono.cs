@@ -12,7 +12,7 @@ namespace Ulf
         public void Init(Planet planet, CircleMove circleMove, float angle)
         {
             _circleMove = circleMove;
-            _circleMove.ToLand(planet.Position, planet.Radius, angle);
+            _circleMove.ToLand(planet, angle);
             _circleMove.SetMoveDirect(0);
             transform.position = _circleMove.Position;
         }

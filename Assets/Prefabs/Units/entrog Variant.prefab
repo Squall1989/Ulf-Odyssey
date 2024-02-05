@@ -92,7 +92,7 @@ MonoBehaviour:
     View: entrog
     ElementType: 0
     Health: 2
-    MoveSpeed: 15
+    MoveSpeed: 10
 --- !u!114 &5325269441799377016
 MonoBehaviour:
   m_ObjectHideFlags: 0

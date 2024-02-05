@@ -95,7 +95,7 @@ MonoBehaviour:
     View: lisroga
     ElementType: 0
     Health: 5
-    MoveSpeed: 25
+    MoveSpeed: 30
 --- !u!114 &1920118870522966737
 MonoBehaviour:
   m_ObjectHideFlags: 0

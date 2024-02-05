@@ -14,9 +14,9 @@ namespace Ulf
         {
         }
 
-        public void ToLand(Vector2 pos, float radius, float startAngle, bool isOnBridge)
+        public void ToLand(IRound round, float startAngle, bool isOnBridge)
         {
-            base.ToLand(pos, radius, startAngle);
+            base.ToLand(round, startAngle);
 
             _isOnBridge = isOnBridge;
         }
@@ -57,7 +57,7 @@ namespace Ulf
                 var degree = GetAngle(_bridgeToStand.Position, Position);
                 if (IsStandableBridgeDegree(degree))
                 {
-                    ToLand(_bridgeToStand.Position, _bridgeToStand.Size, degree, true);
+                    ToLand(_bridgeToStand, degree, true);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace Ulf
                 if (IsStandableBridgeDegree(degree))
                 {
                     Planet planet = _bridgeToStand.GetOutPlanet(degree);
-                    ToLand(planet.Position, planet.Radius, degree, true);
+                    ToLand(planet, degree, true);
                 }
             }
         }
