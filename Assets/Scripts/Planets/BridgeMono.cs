@@ -30,7 +30,9 @@ namespace Ulf
 
         public void LookAtCenter(Transform playerTransform)
         {
-
+            Vector3 relative = playerTransform.InverseTransformPoint(transform.position);
+            float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+            playerTransform.Rotate(0, 0, -angle);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

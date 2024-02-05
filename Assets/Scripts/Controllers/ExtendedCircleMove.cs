@@ -74,11 +74,12 @@ namespace Ulf
         {
             if(_isOnBridge)
             {
-                var degree = GetAngle(_bridgeToStand.Position, Position);
+                var degree = GetAngle(_round.Position, Position);
                 if (IsStandableBridgeDegree(degree))
                 {
-                    Planet planet = _bridgeToStand.GetOutPlanet(degree);
-                    ToLand(planet, degree, true);
+                    Planet planet = (_round as Bridge).GetOutPlanet(degree);
+                    degree = GetAngle(planet.Position, Position);
+                    ToLand(planet, degree, false);
                 }
             }
         }

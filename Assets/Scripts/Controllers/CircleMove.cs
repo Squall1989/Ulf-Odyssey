@@ -7,7 +7,7 @@ namespace Ulf
     public class CircleMove : IMovable
     {
         protected float deltaTime;
-        private IRound _round;
+        protected IRound _round;
         protected float radius;
         protected float speedLinear;
         protected float currDegree;
