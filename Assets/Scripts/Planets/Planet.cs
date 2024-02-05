@@ -8,6 +8,7 @@ namespace Ulf
 {
     public class Planet : IRound
     {
+        private IRoundMono _roundMono;
         private CreatePlanetStruct _planetStruct;
         private List<Unit> units;
 
@@ -15,9 +16,11 @@ namespace Ulf
         public float Radius => _planetStruct.planetSize;
         public Vector2 Position => _planetStruct.planetPos;
         public int ID => _planetStruct.planetId;
+        public IRoundMono RoundMono => _roundMono;
 
-        public Planet(CreatePlanetStruct planetStruct)
+        public Planet(CreatePlanetStruct planetStruct, IRoundMono roundMono)
         {
+            _roundMono = roundMono;
             _planetStruct = planetStruct;
             units = new List<Unit>(planetStruct.createUnits.Length);
         }

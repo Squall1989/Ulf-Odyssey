@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Ulf
 {
-    public class BridgeMono : MonoBehaviour
+    public class BridgeMono : MonoBehaviour, IRoundMono
     {
         [SerializeField]
         private CircleCollider2D circleCollider;
@@ -23,9 +23,14 @@ namespace Ulf
             gameObject.name = "Bridge " + createBridgeStruct.angleStart.ToString();
 
 
-            MovementMono.LookAtPlanet(transform, planet.Position);
+            planet.RoundMono.LookAtCenter(transform);
             _createBridgeStruct = createBridgeStruct;
-            _bridge = new Bridge(circleCollider.radius, transform.position, planet);
+            _bridge = new Bridge(circleCollider.radius, transform.position, planet, this);
+        }
+
+        public void LookAtCenter(Transform playerTransform)
+        {
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

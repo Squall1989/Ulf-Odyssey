@@ -1,4 +1,5 @@
-﻿using Vector2 = UnityEngine.Vector2;
+﻿using Ulf;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Assets.Scripts.Interfaces
 {
@@ -10,6 +11,6 @@ namespace Assets.Scripts.Interfaces
 
         void SetMoveDirect(int direct);
 
-        void ToLand(Vector2 pos, float radius, float startDegree);
+        void ToLand(IRound round, Vector2 pos, float radius, float startDegree);
     }
 }

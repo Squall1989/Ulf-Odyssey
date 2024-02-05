@@ -5,14 +5,18 @@ namespace Ulf
 {
     public class Bridge : IRound
     {
+        private IRoundMono _roundMono;
+
         public float Size { get; private set; }
         public Vector2 Position { get; private set; }
+        public IRoundMono RoundMono => _roundMono;
 
         private Planet _inPlanet;
         private Planet _outPlanet;
 
-        public Bridge(float size, Vector2 position, Planet inPlanet)
+        public Bridge(float size, Vector2 position, Planet inPlanet, IRoundMono roundMono)
         {
+            _roundMono = roundMono;
             Size = size;
             Position = position;
             _inPlanet = inPlanet;

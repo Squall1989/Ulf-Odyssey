@@ -24,7 +24,7 @@ namespace Ulf
             transform.position = pos;
             gameObject.name = "Build " + createBuildStruct.Angle.ToString();
 
-            MovementMono.LookAtPlanet(transform, planet.Position);
+            planet.RoundMono.LookAtCenter(transform);
 
         }
     }

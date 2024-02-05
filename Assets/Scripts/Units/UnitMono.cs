@@ -19,15 +19,5 @@ namespace Ulf
             planet.AddUnit(_unit);
             _unit = new Unit(planet.Element, createUnit, defaultUnit, movement.CircleMove);
         }
-
-
-        //protected void OnValidate()
-        //{
-        //    if (unitStruct.View.LastIndexOf(" ") == -1)
-        //        return;
-        //    var unitLoader = Resources.Load<AllUnitsScriptable>("Units");
-        //    unitStruct.View.TrimEnd();
-        //    unitLoader.AddUnit(unitStruct);
-        //}
     }
 }

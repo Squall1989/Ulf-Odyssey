@@ -12,7 +12,7 @@ namespace Ulf
         public void Init(Planet planet, CircleMove circleMove, float angle)
         {
             _circleMove = circleMove;
-            _circleMove.ToLand(planet.Position, planet.Radius, angle);
+            _circleMove.ToLand(planet, planet.Position, planet.Radius, angle);
             _circleMove.SetMoveDirect(0);
             transform.position = _circleMove.Position;
         }
@@ -21,14 +21,8 @@ namespace Ulf
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
             transform.position = _circleMove.Position;
-            LookAtPlanet(transform, _circleMove.PlanetPosition);
+            _circleMove.Round.RoundMono.LookAtCenter(transform);
         }
 
-        public static void LookAtPlanet(Transform transform, Vector3 planetPos)
-        {
-            Vector3 relative = -transform.InverseTransformPoint(planetPos);
-            float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-            transform.Rotate(0, 0, -angle);
-        }
     }
 }
