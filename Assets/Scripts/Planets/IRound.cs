@@ -7,6 +7,7 @@ namespace Ulf
     {
         public float Radius { get; }
         public Vector2 Position { get; }
+        IRoundMono RoundMono {  get; }
         void AddUnit(Unit unit);
         void RmUnit(Unit unit);
     }

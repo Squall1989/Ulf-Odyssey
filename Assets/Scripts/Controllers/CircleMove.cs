@@ -11,7 +11,6 @@ namespace Ulf
         protected float radius;
         protected float speedLinear;
         protected float currDegree;
-
         protected Vector2 _position;
         protected int _direct;
 
@@ -19,6 +18,7 @@ namespace Ulf
 
         public Vector2 PlanetPosition => _round.Position;
         public Vector2 Position => _position;
+        public IRound Round => _round;
 
         public CircleMove(float speed)
         {
@@ -73,7 +73,7 @@ namespace Ulf
         public static float GetAngle(Vector2 planetPos, Vector2 pointPos)
         {
             var module = (pointPos.y - planetPos.y) / (pointPos.x - planetPos.x);
-            float angle = (float)Math.Atan( Math.Abs(module));
+            float angle = (float)Math.Atan( Math.Abs(module)) * 180f / (float)Math.PI;
             return angle;
         }
 

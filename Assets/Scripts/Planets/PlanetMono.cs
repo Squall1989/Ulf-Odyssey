@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Ulf
 {
-    public class PlanetMono : MonoBehaviour
+    public class PlanetMono : MonoBehaviour, IRoundMono
     {
         //[SerializeField] private UnitMono[] startUnits;
         [SerializeField] private ElementType elementType;
@@ -29,7 +29,7 @@ namespace Ulf
 
         public void Init(CreatePlanetStruct planetStruct)
         {
-            planet = new(planetStruct);
+            planet = new(planetStruct, this);
             gameObject.name = planetStruct.planetId.ToString();
             if (planetStruct.bridges != null)
             {
@@ -69,12 +69,12 @@ namespace Ulf
                 unitsProxy.Add(_unitMono.Unit);
             return _unitMono;
         }
-            
 
-        private void OnValidate()
+        public void LookAtCenter(Transform unitTransform)
         {
-            //SceneHub sceneHub = FindObjectOfType<SceneHub>();
-            //sceneHub.UpdateScene(this);
+            Vector3 relative = -unitTransform.InverseTransformPoint(transform.position);
+            float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+            unitTransform.Rotate(0, 0, -angle);
         }
     }
 }
