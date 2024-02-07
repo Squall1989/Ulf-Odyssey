@@ -22,6 +22,8 @@ namespace Ulf
 
         public Planet Planet => planet;
 
+        public Transform TransformRound => transform;
+
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();
@@ -74,7 +76,10 @@ namespace Ulf
         {
             Vector3 relative = -unitTransform.InverseTransformPoint(transform.position);
             float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-            unitTransform.Rotate(0, 0, -angle);
+            //if(unitTransform.TryGetComponent<PlayerMono>(out var player))
+              //  Debug.Log("angle: " + angle);
+            if(angle != 0)
+                unitTransform.Rotate(0, 0, -angle);
         }
     }
 }

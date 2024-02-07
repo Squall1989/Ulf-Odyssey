@@ -21,7 +21,7 @@ namespace Ulf
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
             transform.position = _circleMove.Position;
-            _circleMove.Round.RoundMono.LookAtCenter(transform);
+            _circleMove.Round.RoundMono.LookAtCenter(transform); 
         }
 
     }

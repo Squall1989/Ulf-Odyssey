@@ -10,8 +10,21 @@ namespace Ulf
         private Bridge _bridgeToStand;
         private int _standDirect;
 
+        public Action<string> OnLog;
+
         public ExtendedCircleMove(float speed) : base(speed)
         {
+        }
+
+        protected override void Move(int moveDirect)
+        {
+            if(_isOnBridge)
+            {
+                moveDirect *= -1;
+            }
+            base.Move(moveDirect);
+
+            //OnLog?.Invoke("angle: " + currDegree);
         }
 
         public void ToLand(IRound round, float startAngle, bool isOnBridge)
@@ -54,32 +67,41 @@ namespace Ulf
         {
             if(_bridgeToStand != null)
             {
-                var degree = GetAngle(_bridgeToStand.Position, Position);
-                if (IsStandableBridgeDegree(degree))
+                var bridgeDegree = GetRelativeBridgeDeg();
+                if (Bridge.IsStandableBridgeDegree(bridgeDegree))
                 {
+                    var degree = GetAngle(Position - (Vector2)_bridgeToStand.RoundMono.TransformRound.position);
                     ToLand(_bridgeToStand, degree, true);
                 }
             }
         }
 
-        private bool IsStandableBridgeDegree(float degree)
+
+
+        private float GetRelativeBridgeDeg()
         {
-            if (degree < 90 || degree > 270)
-                return true;
-            else 
-                return false;
+            var relative = (Vector2)_bridgeToStand.RoundMono.TransformRound.InverseTransformPoint(Position);
+            var bridgeDegree = GetAngle(relative);
+            return bridgeDegree;
         }
 
         private void TryLeaveBridge()
         {
             if(_isOnBridge)
             {
-                var degree = GetAngle(_round.Position, Position);
-                if (IsStandableBridgeDegree(degree))
+                var bridgeDegree = GetRelativeBridgeDeg();
+                if (Bridge.IsStandableBridgeDegree(bridgeDegree))
                 {
-                    Planet planet = (_round as Bridge).GetOutPlanet(degree);
-                    degree = GetAngle(planet.Position, Position);
-                    ToLand(planet, degree, false);
+                    Planet planet = (_round as Bridge).GetOutPlanet(bridgeDegree);
+                    if (planet == null)
+                    {
+                        OnLog?.Invoke("planet is null, return " );
+                        return;
+                    }
+
+                    var planetDegree = GetAngle(Position - (Vector2)planet.RoundMono.TransformRound.position);
+
+                    ToLand(planet, planetDegree, false);
                 }
             }
         }

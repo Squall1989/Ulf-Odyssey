@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Interfaces;
 using System;
-using Vector2 = UnityEngine.Vector2;
+using UnityEngine;
 
 namespace Ulf
 {
@@ -28,20 +28,21 @@ namespace Ulf
         public void SetDeltaTime(float delta)
         {
             deltaTime = delta;
-            Move();
+            Move(_direct);
         }
 
-        protected void Move()
+        protected virtual void Move(int moveDirect)
         {
-            float speedRadial = _direct * speedLinear * deltaTime * (float)Math.PI * 2f  / radius;
+            float speedRadial = moveDirect * speedLinear * deltaTime * (float)Math.PI * 2f  / radius;
             currDegree += speedRadial;
 
             if (currDegree >= 360f)
                 currDegree -= 360f;
 
-            _position = GetMovePos(_round.Position, radius, currDegree);
+            if (currDegree < 0)
+                currDegree += 360f;
 
-            
+            _position = GetMovePos(_round.Position, radius, currDegree);
         }
 
         public void ToLand(IRound round, float startAngle)
@@ -70,10 +71,16 @@ namespace Ulf
 
         }
 
-        public static float GetAngle(Vector2 planetPos, Vector2 pointPos)
+        public static float GetAngle(Vector2 relativePointPos)
         {
-            var module = (pointPos.y - planetPos.y) / (pointPos.x - planetPos.x);
-            float angle = (float)Math.Atan( Math.Abs(module)) * 180f / (float)Math.PI;
+            var tan2 = Mathf.Atan2(relativePointPos.y, relativePointPos.x);
+            var angle = tan2 * 180f / Mathf.PI;
+
+            if(angle < 0)
+            {
+                angle += 360f;
+            }
+            
             return angle;
         }
 

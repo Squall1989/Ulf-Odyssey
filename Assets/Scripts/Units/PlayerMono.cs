@@ -14,6 +14,7 @@ namespace Ulf
         public override void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
             var circleMove = new ExtendedCircleMove(defaultUnit.MoveSpeed);
+            circleMove.OnLog += (log) => Debug.Log(log);
             movement.Init(planet, circleMove, freeArc);
 
             _player = new Player(planet.Element, createUnit, defaultUnit, circleMove);

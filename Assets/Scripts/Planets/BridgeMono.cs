@@ -14,6 +14,8 @@ namespace Ulf
         public float Size => circleCollider.radius * 2f;
         public CreateBridgeStruct CreateStruct => _createBridgeStruct;
         public Action<Planet> OnSetBridge => _bridge.ConnectOutPlanet;
+                public Transform TransformRound => transform;
+
 
         public void Init(Planet planet, CreateBridgeStruct createBridgeStruct)
         {
@@ -25,6 +27,7 @@ namespace Ulf
 
             planet.RoundMono.LookAtCenter(transform);
             _createBridgeStruct = createBridgeStruct;
+            Physics.SyncTransforms();
             _bridge = new Bridge(circleCollider.radius, transform.position, planet, this);
         }
 
@@ -47,6 +50,7 @@ namespace Ulf
         private void OnTriggerExit2D(Collider2D collision)
         {
             Debug.Log("Exit");
+
 
             if (collision.TryGetComponent<PlayerMono>(out var playerMono))
             {
