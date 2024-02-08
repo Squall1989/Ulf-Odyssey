@@ -20,15 +20,19 @@ namespace Ulf
         public void Init(Planet planet, CreateBridgeStruct createBridgeStruct)
         {
             Vector2 pos = CircleMove.GetMovePos(planet.Position, planet.Radius + Size / 2f, createBridgeStruct.angleStart);
-
             transform.position = pos;
+
             gameObject.name = "Bridge " + createBridgeStruct.angleStart.ToString();
 
-
             planet.RoundMono.LookAtCenter(transform);
+            if (createBridgeStruct.mirrorLeft)
+            {
+                transform.Rotate(Vector3.up, 180f);
+            }
+
             _createBridgeStruct = createBridgeStruct;
             Physics.SyncTransforms();
-            _bridge = new Bridge(circleCollider.radius, transform.position, planet, this);
+            _bridge = new Bridge(createBridgeStruct.mirrorLeft, circleCollider.radius, transform.position, planet, this);
         }
 
         public void LookAtCenter(Transform playerTransform)

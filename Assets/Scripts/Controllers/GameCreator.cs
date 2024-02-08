@@ -40,7 +40,9 @@ namespace Ulf
         {
             foreach (var bridge in bridgeList)
             {
-                var planetOut = GetPlanetFromId(bridge.CreateStruct.endPlanetId);
+                var planetId = bridge.CreateStruct.endPlanetId;
+                var planetOut = GetPlanetFromId(planetId);
+                Debug.Log($"endPlanetId: {planetId} planet: {planetOut.RoundMono.TransformRound}");
                 bridge.OnSetBridge(planetOut);
             }
         }

@@ -68,7 +68,7 @@ namespace Ulf
             if(_bridgeToStand != null)
             {
                 var bridgeDegree = GetRelativeBridgeDeg();
-                if (Bridge.IsStandableBridgeDegree(bridgeDegree))
+                if (_bridgeToStand.IsStandableBridgeDegree(bridgeDegree, true))
                 {
                     var degree = GetAngle(Position - (Vector2)_bridgeToStand.RoundMono.TransformRound.position);
                     ToLand(_bridgeToStand, degree, true);
@@ -90,7 +90,7 @@ namespace Ulf
             if(_isOnBridge)
             {
                 var bridgeDegree = GetRelativeBridgeDeg();
-                if (Bridge.IsStandableBridgeDegree(bridgeDegree))
+                if (_bridgeToStand.IsStandableBridgeDegree(bridgeDegree, false))
                 {
                     Planet planet = (_round as Bridge).GetOutPlanet(bridgeDegree);
                     if (planet == null)

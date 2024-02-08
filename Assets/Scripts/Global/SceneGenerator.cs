@@ -17,7 +17,7 @@ namespace Ulf
 
         private float bridgeSize = 5f;
 
-        private const int limit = 5;
+        private const int limit = 10;
         private int bridgesGenerations;
 
         protected AllUnitsScriptable _allUnits;
@@ -33,7 +33,7 @@ namespace Ulf
             _allPlanets = allPlanets;
             _allBuilds = allBuilds;
             bridgesGenerations = 0;
-            GeneratePlanet(ElementType.wood, Vector2.zero, 1);
+            GeneratePlanet(planetNextId++, ElementType.wood, Vector2.zero, 1);
         }
 
         private (CreateBridgeStruct bridge, bool success) GetBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
@@ -57,7 +57,6 @@ namespace Ulf
             {
                 angleStart = bridgeAngle,
                 startPlanetId = planetId,
-                endPlanetId = planetNextId +1,
                 mirrorLeft = left
             };
 
@@ -104,9 +103,9 @@ namespace Ulf
             return createUnit;
         }
 
-        private void GeneratePlanet(ElementType elementType, Vector2 pos, int sizeNum, float? fromBridgeDeg = null)
+        private void GeneratePlanet(int id, ElementType elementType, Vector2 pos, int sizeNum, float? fromBridgeDeg = null)
         {
-            var planetId = planetNextId++;
+            var planetId = id;
             var elementSizes = _allPlanets.GetSizes(elementType);
 
             planetPoses.Add((pos, elementSizes[sizeNum]));
@@ -210,11 +209,13 @@ namespace Ulf
                 var bridgeCreation = GetBridge(planetId, pos, elementSizes[sizeNum], elementSizes[nextSizeNum]);
                 if (bridgeCreation.success)
                 {
+                    int nextPlanetId = planetNextId++;
+                    bridgeCreation.bridge.endPlanetId = nextPlanetId;
                     createBridges.Add(bridgeCreation.bridge);
 
                     var distToNextPlanet = elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum];
                     var nextPlanet = CircleMove.GetMovePos(pos, distToNextPlanet, bridgeCreation.bridge.angleStart);
-                    GeneratePlanet(elementType, nextPlanet, nextSizeNum, bridgeCreation.bridge.angleStart);
+                    GeneratePlanet(nextPlanetId, elementType, nextPlanet, nextSizeNum, bridgeCreation.bridge.angleStart);
                 }
                 {
                     break;

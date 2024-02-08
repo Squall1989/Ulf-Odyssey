@@ -10,12 +10,14 @@ namespace Ulf
         public Vector2 Position { get; private set; }
         public IRoundMono RoundMono => _roundMono;
 
+        private bool _leftSide;
         private Planet _inPlanet;
         private Planet _outPlanet;
-        private const float allowance = 10f;
+        private const float allowance = 30f;
 
-        public Bridge(float size, Vector2 position, Planet inPlanet, IRoundMono roundMono)
+        public Bridge(bool leftSide, float size, Vector2 position, Planet inPlanet, IRoundMono roundMono)
         {
+            _leftSide = leftSide;
             Radius = size;
             _roundMono = roundMono;
             Position = position;
@@ -40,11 +42,11 @@ namespace Ulf
 
         internal Planet GetOutPlanet(float degree)
         {
-            if (IsUpperAllow(degree))
+            if (IsUpperAllow(degree, _leftSide))
             {
                 return _outPlanet;
             }
-            else if (IsLowerAllow(degree))
+            else if (IsLowerAllow(degree, _leftSide))
             {
                 return _inPlanet;
             }
@@ -54,34 +56,50 @@ namespace Ulf
             }
         }
 
-        public static bool IsStandableBridgeDegree(float degree)
+        public bool IsStandableBridgeDegree(float degree, bool isToStand)
         {
-            if(IsUpperAllow(degree)) 
+            if(IsUpperAllow(degree, isToStand)) 
                 return true;
-            if(IsLowerAllow(degree)) 
+            if(IsLowerAllow(degree, isToStand)) 
                 return true;
 
             return false;
         }
 
-        private static bool IsUpperAllow(float degree)
+        private bool IsUpperAllow(float degree, bool isToStand)
         {
             const float upperDeg = 90f;
 
             if (MathF.Abs(degree - upperDeg) <= allowance)
-                return true;
+            {
+                bool isStandLeft = isToStand && _leftSide;
+
+                if (degree > upperDeg && isStandLeft || degree < upperDeg && !isStandLeft)
+                    return true;
+                else 
+                    return false;
+            }
             else
                 return false;
         }
 
-        private static bool IsLowerAllow(float degree)
+        private bool IsLowerAllow(float degree, bool isToStand)
         {
             const float lowerDeg = 270f;
 
             if (MathF.Abs(degree - lowerDeg) <= allowance)
-                return true;
+            {
+                bool isStandLeft = isToStand && _leftSide;
+
+                if (degree < lowerDeg && isStandLeft || degree > lowerDeg && !isStandLeft)
+                    return true;
+                else
+                    return false;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }
