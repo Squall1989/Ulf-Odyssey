@@ -5,6 +5,7 @@ namespace Ulf
 {
     public class Bridge : IRound
     {
+        public int ID => _inPlanet.ID * 100 + _outPlanet.ID;
         public float Radius { get; private set; }
         private IRoundMono _roundMono;
         public Vector2 Position { get; private set; }

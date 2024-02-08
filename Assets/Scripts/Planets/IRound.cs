@@ -5,6 +5,7 @@ namespace Ulf
 {
     public interface IRound
     {
+        public int ID { get; }
         public float Radius { get; }
         public Vector2 Position { get; }
         IRoundMono RoundMono {  get; }

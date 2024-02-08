@@ -63,6 +63,7 @@ namespace Ulf
             var planet = planetList.First(p => p.Planet.ID == player.planetId);
             var unitMono = planet.InstUnit(playerPrefab, player.snapUnitStruct, null);
             PlayerMono playerMono = unitMono as PlayerMono;
+            playerMono.Player.GetRoundFromId = sceneProxy.GetRoundFromId;
             unitMono.transform.parent = null;
             unitMono.transform.localScale = new Vector3(2,2,2);
             unitMono.gameObject.name = "Player";
@@ -72,13 +73,15 @@ namespace Ulf
 
         private void SetupControl(UnitMono unitMono)
         {
+            var extendMovement = ((unitMono as PlayerMono).CircleMove as ExtendedCircleMove);
             inputControl.OnMove += (direct) =>
             {
                 sceneProxy.CreatePlayerMoveAction(direct);
             };
             inputControl.OnStand += (direct) =>
             {
-                sceneProxy.CreatePlayerStandAction(direct);
+                extendMovement.SetStandDirect(direct);
+                //sceneProxy.CreatePlayerStandAction(direct);
             };
 
             cameraControl.Follow = unitMono.transform;

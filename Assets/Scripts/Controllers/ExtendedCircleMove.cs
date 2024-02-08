@@ -11,6 +11,7 @@ namespace Ulf
         private int _standDirect;
 
         public Action<string> OnLog;
+        public Action<int, float> OnRoundStand;
 
         public ExtendedCircleMove(float speed) : base(speed)
         {
@@ -72,6 +73,7 @@ namespace Ulf
                 {
                     var degree = GetAngle(Position - (Vector2)_bridgeToStand.RoundMono.TransformRound.position);
                     ToLand(_bridgeToStand, degree, true);
+                    OnRoundStand?.Invoke(_bridgeToStand.ID, degree);
                 }
             }
         }
@@ -102,8 +104,11 @@ namespace Ulf
                     var planetDegree = GetAngle(Position - (Vector2)planet.RoundMono.TransformRound.position);
 
                     ToLand(planet, planetDegree, false);
+                    OnRoundStand?.Invoke(planet.ID, planetDegree);
                 }
             }
         }
+
+
     }
 }

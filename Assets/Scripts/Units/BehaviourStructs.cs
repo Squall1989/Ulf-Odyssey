@@ -18,11 +18,13 @@ namespace Ulf
     public struct StandAction : INextAction
     {
         [Key(0)]
-        public int direction;
+        public float degree;
+        [Key(1)]
+        public int roundId;
 
         public void DoAction(Unit unit)
         {
-            (unit as Player).ExtendedCircleMove.SetStandDirect(direction);
+            (unit as Player).StandTo(roundId, degree);
         }
     }
 
