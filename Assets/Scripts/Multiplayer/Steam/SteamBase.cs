@@ -71,6 +71,24 @@ namespace Ulf
 
         }
 
+        public virtual void UnRegisterHandler<T>(Action<T> callback)
+        {
+            var type = typeof(T);
+            if (callbacksDict.ContainsKey(type))
+            {
+                callbacksDict[type] -= (msg) => callback((T)msg);
+            }
+        }
+
+        public virtual void UnRegisterHandler<T>(Action<T, IConnectWrapper> callback)
+        {
+            var type = typeof(T);
+            if (callbacksConnectDict.ContainsKey(type))
+            {
+                callbacksConnectDict[type] -= (msg, connect) => callback((T)msg, connect);
+            }
+        }
+
         public virtual void RegisterHandler<T>(Action<T> callback)
         {
             var type = typeof(T);

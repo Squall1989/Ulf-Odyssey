@@ -44,6 +44,25 @@ namespace Ulf
             }
         }
 
+        public virtual void UnRegisterHandler<T>(Action<T> callback)
+        {
+            var type = typeof(T);
+            if (callbacksDict.ContainsKey(type))
+            {
+                callbacksDict[type] -= (msg) => callback((T)msg);
+            }
+        }
+
+        public virtual void UnRegisterHandler<T>(Action<T, IConnectWrapper> callback)
+        {
+            var type = typeof(T);
+            if (callbacksDict.ContainsKey(type))
+            {
+                callbacksConnectDict[type] -= (msg, connect) => callback((T)msg, connect);
+            }
+            
+        }
+
         public void Send<T>(T message) where T : IUnionMsg
         {
             NativeArray<byte> bytes = new NativeArray<byte>(Reader.Serialize<IUnionMsg>(message), Allocator.Temp);

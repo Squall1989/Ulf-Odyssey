@@ -17,6 +17,7 @@ namespace Ulf
         [Inject] protected AllBuildScriptable buildContainer;
         [Inject] protected AllUnitsScriptable unitsContainer;
         [Inject] protected ISceneProxy sceneProxy;
+        [Inject] protected IPlayerProxy playerProxy;
         [Inject] protected IUnitsProxy unitsProxy;
         [Inject] protected ConnectHandler connectHandler;
         [Inject] protected InputControl inputControl;
@@ -30,8 +31,9 @@ namespace Ulf
         {
             var scene = await sceneProxy.GetSceneStruct();
             InstPlanets(scene);
-            var player = await sceneProxy.SpawnPlayer();
-            InstPlayer(player);
+            var player = await playerProxy.SpawnPlayer();
+            
+            SetupControl(InstPlayer(player));
 
             ConnectBridges();
         }
@@ -58,7 +60,7 @@ namespace Ulf
             return null;
         }
 
-        private void InstPlayer(SnapPlayerStruct player)
+        private UnitMono InstPlayer(SnapPlayerStruct player)
         {
             var planet = planetList.First(p => p.Planet.ID == player.planetId);
             var unitMono = planet.InstUnit(playerPrefab, player.snapUnitStruct, null);
@@ -67,8 +69,8 @@ namespace Ulf
             unitMono.transform.parent = null;
             unitMono.transform.localScale = new Vector3(2,2,2);
             unitMono.gameObject.name = "Player";
-            SetupControl(unitMono);
-            sceneProxy.AddPlayer(playerMono.Player, true);
+            playerProxy.AddPlayer(playerMono.Player, true);
+            return unitMono;
         }
 
         private void SetupControl(UnitMono unitMono)
@@ -76,7 +78,7 @@ namespace Ulf
             var extendMovement = ((unitMono as PlayerMono).CircleMove as ExtendedCircleMove);
             inputControl.OnMove += (direct) =>
             {
-                sceneProxy.CreatePlayerMoveAction(direct);
+                playerProxy.CreatePlayerMoveAction(direct);
             };
             inputControl.OnStand += (direct) =>
             {

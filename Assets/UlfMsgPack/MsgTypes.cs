@@ -8,6 +8,8 @@ namespace MsgPck
     [Union(0, typeof(SnapSceneStruct))]
     [Union(1, typeof(PlayerData))]
     [Union(2, typeof(ActionData))]
+    [Union(3, typeof(SnapPlayerStruct))]
+    [Union(3, typeof(RequestPlayerSpawn))]
     public interface IUnionMsg
     { }
 
@@ -21,6 +23,11 @@ namespace MsgPck
         [Key(2)]
         public SnapPlanetStruct snapPlanet;
     }
+
+    [MessagePackObject]
+    public struct RequestPlayerSpawn : IUnionMsg
+    {   }
+
     [MessagePackObject]
     public struct PlayerData : IUnionMsg
     {

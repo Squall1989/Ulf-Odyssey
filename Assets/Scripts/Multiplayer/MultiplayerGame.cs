@@ -17,7 +17,9 @@ namespace Ulf
         {
             _multiplayerHost = multiplayerHost;
             _sceneProxy = sceneProxy;
-            //sender.OnPlayerIdSet += RegisterOurPlayer;
+
+
+
             SetupHandlers();
         }
 

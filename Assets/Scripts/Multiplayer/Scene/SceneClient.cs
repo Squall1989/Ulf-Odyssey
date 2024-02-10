@@ -52,10 +52,4 @@ public class SceneClient : SceneBase, ISceneProxy
         totalPlanetCount = msg.totalCount;
         planetSnaps.Add(msg.snapPlanet);
     }
-
-    public Task<SnapPlayerStruct> SpawnPlayer()
-    {
-        throw new NotImplementedException();
-    }
-
 }

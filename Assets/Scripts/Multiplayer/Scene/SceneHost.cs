@@ -14,10 +14,7 @@ namespace Ulf
     /// </summary>
     public class SceneHost : SceneBase, ISceneProxy
     {
-
         private SceneGenerator _sceneGenerator;
-
-        public Action<SnapPlayerStruct> OnPlayerCreated;
 
         public SceneHost(SceneGenerator sceneGenerator) 
         {
@@ -59,20 +56,5 @@ namespace Ulf
                 );
             }
         }
-
-        public async Task<SnapPlayerStruct> SpawnPlayer()
-        {
-            while(planets.Count == 0)
-            {
-                await Task.Delay(1000);
-            }
-
-            var playerStruct = _sceneGenerator.SpawnPlayer();
-
-            OnPlayerCreated?.Invoke(playerStruct);
-            return playerStruct;
-        }
-
-
     }
 }

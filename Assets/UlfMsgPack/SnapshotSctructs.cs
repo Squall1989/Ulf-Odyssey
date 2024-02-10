@@ -1,4 +1,5 @@
 using MessagePack;
+using MsgPck;
 
 namespace Ulf
 {
@@ -24,12 +25,14 @@ namespace Ulf
     }
 
     [MessagePackObject]
-    public struct SnapPlayerStruct
+    public struct SnapPlayerStruct : IUnionMsg
     {
         [Key(0)]
         public SnapUnitStruct snapUnitStruct;
         [Key(1)]
         public int planetId;
+        [Key(2)]
+        public string playerId;
     }
 
 }

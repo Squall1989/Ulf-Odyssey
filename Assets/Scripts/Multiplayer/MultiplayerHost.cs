@@ -16,17 +16,11 @@ public class MultiplayerHost
     public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost, IUnitsProxy unitsBehaviour) 
     {
         _sceneHost = sceneHost;
-        (_sceneHost as SceneHost).OnPlayerCreated += PlayerCreatedSend;
         _networkable = networkable;
         _networkable.RegisterHandler<PlayerData>(PlayerReady);
         _unitsBehaviour = (UnitsBehaviour)unitsBehaviour;
 
         _unitsBehaviour.OnUnitAction += SendAction;
-    }
-
-    private void PlayerCreatedSend(SnapPlayerStruct snapPlayer)
-    {
-
     }
 
     private void SendAction(int unitGuid, INextAction nextAction)
