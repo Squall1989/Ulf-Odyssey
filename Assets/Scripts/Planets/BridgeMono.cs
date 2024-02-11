@@ -16,6 +16,7 @@ namespace Ulf
         public Action<Planet> OnSetBridge => _bridge.ConnectOutPlanet;
                 public Transform TransformRound => transform;
 
+        public Bridge Bridge => _bridge;
 
         public void Init(Planet planet, CreateBridgeStruct createBridgeStruct)
         {

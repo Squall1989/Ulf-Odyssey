@@ -88,6 +88,9 @@ namespace Ulf
                 //sceneProxy.CreatePlayerStandAction(direct);
             };
 
+            extendMovement.OnRoundStand += playerProxy.CreatePlayerStandAction;
+
+
             cameraControl.Follow = unitMono.transform;
             cameraControl.LookAt = unitMono.transform;
         }
@@ -108,9 +111,10 @@ namespace Ulf
                 planetNew.Init(planetStruct.createPlanet);
                 planetList.Add(planetNew);
 
-                if(planetNew.BridgesMono != null)
+                if (planetNew.BridgesMono != null)
+                {
                     bridgeList.AddRange(planetNew.BridgesMono);
-
+                }
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
 
                 planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
@@ -121,6 +125,11 @@ namespace Ulf
                     planetNew.InstBuilds(buildContainer.GetBuilds(buildStructs), buildStructs);
                 }
                 sceneProxy.AddPlanet(planetNew.Planet);
+            }
+
+            foreach (var bridgeMono in bridgeList)
+            {
+                sceneProxy.AddBridge(bridgeMono.Bridge);
             }
         }
     }
