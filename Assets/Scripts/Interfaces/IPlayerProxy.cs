@@ -1,9 +1,11 @@
+using System;
 using System.Threading.Tasks;
 
 namespace Ulf
 {
     public interface IPlayerProxy
     {
+        Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
         void AddPlayer(Player player, bool isOurPlayer);
         Task<SnapPlayerStruct> SpawnPlayer();
         void CreatePlayerMoveAction(int direct);

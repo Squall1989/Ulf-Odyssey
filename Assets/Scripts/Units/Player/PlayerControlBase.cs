@@ -10,8 +10,9 @@ namespace Ulf
     {
         protected List<Player> players = new();
         protected Player _player;
-        protected Action<ActionData> OnPlayerAction;
         protected SceneGenerator _sceneGenerator;
+
+        public Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
 
         protected PlayerControlBase(SceneGenerator sceneGenerator) 
         {
@@ -28,7 +29,12 @@ namespace Ulf
             players.Add(player);
         }
 
-        public void DoPlayerAction(ActionData playerActionData)
+        protected virtual void OurPlayerAction(ActionData playerActionData)
+        {
+            DoPlayerAction(playerActionData);
+        }
+
+        protected void DoPlayerAction(ActionData playerActionData)
         {
             var player = players.First(p => p.GUID == playerActionData.guid);
             playerActionData.action.DoAction(player);
@@ -44,7 +50,7 @@ namespace Ulf
 
             standAction.DoAction(_player);
 
-            OnPlayerAction?.Invoke(new ActionData()
+            OurPlayerAction(new ActionData()
             {
                 action = standAction,
                 guid = _player.GUID,
@@ -62,7 +68,7 @@ namespace Ulf
 
             movementAction.DoAction(_player);
 
-            OnPlayerAction?.Invoke(new ActionData()
+            OurPlayerAction(new ActionData()
             {
                 action = movementAction,
                 guid = _player.GUID,

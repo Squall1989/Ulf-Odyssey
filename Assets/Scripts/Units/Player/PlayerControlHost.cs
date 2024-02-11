@@ -1,3 +1,4 @@
+using MsgPck;
 using System;
 using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace Ulf
         {
             _networkable = networkable;
             _networkable.RegisterHandler<SnapPlayerStruct>(PlayerSpawnUnit);
-
+            _networkable.RegisterHandler<ActionData>(OtherPlayerAction);
         }
 
         private void PlayerSpawnUnit(SnapPlayerStruct playerStruct)
         {
-
+            OnOtherPlayerSpawn?.Invoke(playerStruct);
+            _networkable.Send(playerStruct);
         }
 
         public Task<SnapPlayerStruct> SpawnPlayer()
@@ -26,6 +28,18 @@ namespace Ulf
             _networkable.Send(playerStruct);
             
             return Task.FromResult(playerStruct);
+        }
+
+        protected void OtherPlayerAction(ActionData playerActionData)
+        {
+            _networkable.Send(playerActionData);
+            base.DoPlayerAction(playerActionData);
+        }
+
+        protected override void OurPlayerAction(ActionData playerActionData)
+        {
+            base.OurPlayerAction(playerActionData);
+            _networkable.Send(playerActionData);
         }
     }
 }

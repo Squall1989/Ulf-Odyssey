@@ -31,10 +31,9 @@ namespace Ulf
         {
             var scene = await sceneProxy.GetSceneStruct();
             InstPlanets(scene);
+            playerProxy.OnOtherPlayerSpawn += (playerStruct) => InstPlayer(playerStruct, false);
             var player = await playerProxy.SpawnPlayer();
-            
-            SetupControl(InstPlayer(player));
-
+            InstPlayer(player, true);
             ConnectBridges();
         }
 
@@ -60,7 +59,7 @@ namespace Ulf
             return null;
         }
 
-        private UnitMono InstPlayer(SnapPlayerStruct player)
+        private void InstPlayer(SnapPlayerStruct player, bool ourPlayer)
         {
             var planet = planetList.First(p => p.Planet.ID == player.planetId);
             var unitMono = planet.InstUnit(playerPrefab, player.snapUnitStruct, null);
@@ -69,8 +68,11 @@ namespace Ulf
             unitMono.transform.parent = null;
             unitMono.transform.localScale = new Vector3(2,2,2);
             unitMono.gameObject.name = "Player";
-            playerProxy.AddPlayer(playerMono.Player, true);
-            return unitMono;
+            playerProxy.AddPlayer(playerMono.Player, ourPlayer);
+            
+            if(ourPlayer)
+                SetupControl(unitMono);
+
         }
 
         private void SetupControl(UnitMono unitMono)

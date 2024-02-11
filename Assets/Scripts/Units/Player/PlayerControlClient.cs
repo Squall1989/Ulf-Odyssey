@@ -1,15 +1,38 @@
 using MsgPck;
+using System;
 using System.Threading.Tasks;
 
 namespace Ulf
 {
     public class PlayerControlClient : PlayerControlBase, IPlayerProxy
     {
+        private string _playerId;
         private INetworkable _networkable;
 
-        public PlayerControlClient(INetworkable networkable, SceneGenerator sceneGenerator) : base(sceneGenerator) 
+        public PlayerControlClient(INetworkable networkable, SceneGenerator sceneGenerator, string playerId) : base(sceneGenerator) 
         {
+            _playerId = playerId;
             _networkable = networkable;
+            _networkable.RegisterHandler<SnapPlayerStruct>(OtherPlayerSpawn);
+            _networkable.RegisterHandler<ActionData>(OtherPlayerAction);
+        }
+
+        private void OtherPlayerAction(ActionData data)
+        {
+            if(data.guid == _player.GUID)
+            {
+                return;
+            }
+
+            DoPlayerAction(data);
+        }
+
+        private void OtherPlayerSpawn(SnapPlayerStruct playerStruct)
+        {
+            if (playerStruct.playerId == _playerId)
+                return;
+
+            OnOtherPlayerSpawn?.Invoke(playerStruct);
         }
 
         public async Task<SnapPlayerStruct> SpawnPlayer()
@@ -33,6 +56,12 @@ namespace Ulf
                 snapPlayerStruct = playerStruct;
 
             }
+        }
+
+        protected override void OurPlayerAction(ActionData playerActionData)
+        {
+            base.OurPlayerAction(playerActionData);
+            _networkable.Send(playerActionData);
         }
     }
 }
