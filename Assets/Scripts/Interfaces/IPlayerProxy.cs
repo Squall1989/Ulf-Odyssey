@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Ulf
 {
     public interface IPlayerProxy
     {
+        List<SnapPlayerStruct> PlayersSnapshot();
         Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
         void AddPlayer(Player player, bool isOurPlayer);
         Task<SnapPlayerStruct> SpawnPlayer();

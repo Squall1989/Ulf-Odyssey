@@ -7,14 +7,16 @@ using Unity.Networking.Transport;
 
 public class MultiplayerHost 
 {
+    private IPlayerProxy _playerProxy;
     private ISceneProxy _sceneHost;
     private INetworkable _networkable;
     protected Dictionary<string, PlayerData> _players = new();
     protected Dictionary<IConnectWrapper, string> _connetions = new();
     private UnitsBehaviour _unitsBehaviour;
 
-    public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost, IUnitsProxy unitsBehaviour) 
+    public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost, IUnitsProxy unitsBehaviour, IPlayerProxy playerProxy) 
     {
+        _playerProxy = playerProxy;
         _sceneHost = sceneHost;
         _networkable = networkable;
         _networkable.RegisterHandler<PlayerData>(PlayerReady);
@@ -49,5 +51,9 @@ public class MultiplayerHost
                  snapPlanet = sceneStruct[i]
             }, connection);
         }
+
+        var players = _playerProxy.PlayersSnapshot();
+        foreach (var player in players)
+            _networkable.Send(player, connection);
     }
 }

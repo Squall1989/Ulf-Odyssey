@@ -68,6 +68,7 @@ namespace Ulf
             unitMono.transform.parent = null;
             unitMono.transform.localScale = new Vector3(2,2,2);
             unitMono.gameObject.name = "Player";
+            playerMono.Player.SetPlayerId(player.playerId);
             playerProxy.AddPlayer(playerMono.Player, ourPlayer);
             
             if(ourPlayer)

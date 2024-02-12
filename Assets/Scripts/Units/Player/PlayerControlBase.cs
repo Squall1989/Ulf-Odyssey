@@ -29,6 +29,11 @@ namespace Ulf
             players.Add(player);
         }
 
+        public List<SnapPlayerStruct> PlayersSnapshot()
+        {
+            return players.Select(p => p.GetSnapshot()).ToList();
+        }
+
         protected virtual void OurPlayerAction(ActionData playerActionData)
         {
             DoPlayerAction(playerActionData);
