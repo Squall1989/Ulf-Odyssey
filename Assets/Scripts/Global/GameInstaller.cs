@@ -16,6 +16,7 @@ namespace Ulf
 
         public override void InstallBindings()
         {
+            Application.targetFrameRate = 60;
 
             Container.Bind<GameOptions>().FromInstance(options).AsSingle();
             Container.Bind<ConnectHandler>().FromInstance(handlerConnect).AsSingle();
