@@ -9,7 +9,7 @@ namespace MsgPck
     [Union(1, typeof(PlayerData))]
     [Union(2, typeof(ActionData))]
     [Union(3, typeof(SnapPlayerStruct))]
-    [Union(3, typeof(RequestPlayerSpawn))]
+    [Union(4, typeof(RequestPlayerSpawn))]
     public interface IUnionMsg
     { }
 

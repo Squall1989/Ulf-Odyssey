@@ -188,7 +188,7 @@ namespace MessagePack.Formatters.MsgPck
                 { typeof(global::MsgPck.PlayerData).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(1, 1) },
                 { typeof(global::MsgPck.ActionData).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(2, 2) },
                 { typeof(global::Ulf.SnapPlayerStruct).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(3, 3) },
-                { typeof(global::MsgPck.RequestPlayerSpawn).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(3, 4) },
+                { typeof(global::MsgPck.RequestPlayerSpawn).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(4, 4) },
             };
             this.keyToJumpMap = new global::System.Collections.Generic.Dictionary<int, int>(5)
             {
@@ -196,7 +196,7 @@ namespace MessagePack.Formatters.MsgPck
                 { 1, 1 },
                 { 2, 2 },
                 { 3, 3 },
-                { 3, 4 },
+                { 4, 4 },
             };
         }
 
