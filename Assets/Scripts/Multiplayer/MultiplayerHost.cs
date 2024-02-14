@@ -37,9 +37,22 @@ public class MultiplayerHost
     private async void PlayerReady(PlayerData msg, IConnectWrapper connection)
     {
         string id = msg.playerId;
-        _connetions.Add(connection, id);
-        _players.Add(id, msg);
-
+        if (_connetions.ContainsKey(connection))
+        {
+            _connetions[connection] = id;
+        }
+        else
+        {
+            _connetions.Add(connection, id);
+        }
+        if (_players.ContainsKey(id))
+        {
+            _players[id] = msg;
+        }
+        else
+        {
+            _players.Add(id, msg);
+        }
         var sceneStruct = await _sceneHost.GetSceneStruct();
 
         for (int i = 0; i < sceneStruct.Count; i++)
