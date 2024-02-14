@@ -10,14 +10,10 @@ namespace Ulf
     {
         protected List<Player> players = new();
         protected Player _player;
-        protected SceneGenerator _sceneGenerator;
+
 
         public Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
 
-        protected PlayerControlBase(SceneGenerator sceneGenerator) 
-        {
-            _sceneGenerator = sceneGenerator;
-        }
 
         public void AddPlayer(Player player, bool isOurPlayer)
         {

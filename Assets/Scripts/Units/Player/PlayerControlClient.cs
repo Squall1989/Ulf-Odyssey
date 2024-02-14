@@ -9,7 +9,7 @@ namespace Ulf
         private string _playerId;
         private INetworkable _networkable;
 
-        public PlayerControlClient(INetworkable networkable, SceneGenerator sceneGenerator, string playerId) : base(sceneGenerator) 
+        public PlayerControlClient(INetworkable networkable, string playerId) : base() 
         {
             _playerId = playerId;
             _networkable = networkable;
@@ -19,6 +19,11 @@ namespace Ulf
 
         private void OtherPlayerAction(ActionData data)
         {
+            if(!data.isPlayerAction)
+            {
+                return;
+            }
+
             if(data.guid == _player.GUID)
             {
                 return;
