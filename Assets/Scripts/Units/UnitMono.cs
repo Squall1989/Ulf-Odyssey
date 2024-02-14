@@ -16,7 +16,6 @@ namespace Ulf
         public virtual void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
             movement.Init(planet, new CircleMove(defaultUnit.MoveSpeed), freeArc);
-            planet.AddUnit(_unit);
             _unit = new Unit(planet.Element, createUnit, defaultUnit, movement.CircleMove);
         }
     }
