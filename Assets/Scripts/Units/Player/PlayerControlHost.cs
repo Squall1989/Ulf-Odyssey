@@ -6,10 +6,12 @@ namespace Ulf
 {
     public class PlayerControlHost : PlayerControlBase, IPlayerProxy
     {
+        private SceneGenerator _sceneGenerator;
         private INetworkable _networkable;
 
-        public PlayerControlHost(SceneGenerator sceneGenerator, INetworkable networkable) : base(sceneGenerator)
+        public PlayerControlHost(SceneGenerator sceneGenerator, INetworkable networkable) : base()
         {
+            _sceneGenerator = sceneGenerator;
             _networkable = networkable;
             _networkable.RegisterHandler<SnapPlayerStruct>(PlayerSpawnUnit);
             _networkable.RegisterHandler<ActionData>(OtherPlayerAction);
