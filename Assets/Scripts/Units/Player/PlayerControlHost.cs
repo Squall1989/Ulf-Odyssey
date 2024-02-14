@@ -1,20 +1,37 @@
 using MsgPck;
 using System;
 using System.Threading.Tasks;
+using UnityEditor.MemoryProfiler;
 
 namespace Ulf
 {
     public class PlayerControlHost : PlayerControlBase, IPlayerProxy
     {
+        private MultiplayerHost _multiplayerHost;
         private SceneGenerator _sceneGenerator;
         private INetworkable _networkable;
 
-        public PlayerControlHost(SceneGenerator sceneGenerator, INetworkable networkable) : base()
+        public PlayerControlHost(SceneGenerator sceneGenerator, MultiplayerHost multiplayerHost, INetworkable networkable) : base()
         {
+            _multiplayerHost = multiplayerHost;
             _sceneGenerator = sceneGenerator;
             _networkable = networkable;
-            _networkable.RegisterHandler<SnapPlayerStruct>(PlayerSpawnUnit);
+            _networkable.RegisterHandler<RequestPlayerSpawn>(PlayerRequestSpawn);
             _networkable.RegisterHandler<ActionData>(OtherPlayerAction);
+
+            _multiplayerHost.OnPlayerReady += SendSnapshots;
+        }
+
+        private void PlayerRequestSpawn(RequestPlayerSpawn spawn, IConnectWrapper connect)
+        {
+            var spawnedPlayer = _sceneGenerator.SpawnPlayer();
+            var id = _multiplayerHost.GetPlayerId(connect);
+
+            if(id != null)
+            {
+                _networkable.Send(spawnedPlayer);
+                OnOtherPlayerSpawn?.Invoke(spawnedPlayer);
+            }
         }
 
         private void PlayerSpawnUnit(SnapPlayerStruct playerStruct)
@@ -42,6 +59,13 @@ namespace Ulf
         {
             base.OurPlayerAction(playerActionData);
             _networkable.Send(playerActionData);
+        }
+
+        protected void SendSnapshots(IConnectWrapper connection)
+        {
+            var players = PlayersSnapshot();
+            foreach (var player in players)
+                _networkable.Send(player, connection);
         }
     }
 }

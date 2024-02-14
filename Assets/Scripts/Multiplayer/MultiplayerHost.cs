@@ -3,7 +3,6 @@ using MsgPck;
 using System;
 using System.Collections.Generic;
 using Ulf;
-using Unity.Networking.Transport;
 
 public class MultiplayerHost 
 {
@@ -14,15 +13,24 @@ public class MultiplayerHost
     protected Dictionary<IConnectWrapper, string> _connetions = new();
     private UnitsBehaviour _unitsBehaviour;
 
-    public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost, IUnitsProxy unitsBehaviour, IPlayerProxy playerProxy) 
+    public Action<IConnectWrapper> OnPlayerReady;
+
+    public MultiplayerHost(INetworkable networkable, ISceneProxy sceneHost, IUnitsProxy unitsBehaviour) 
     {
-        _playerProxy = playerProxy;
         _sceneHost = sceneHost;
         _networkable = networkable;
         _networkable.RegisterHandler<PlayerData>(PlayerReady);
         _unitsBehaviour = (UnitsBehaviour)unitsBehaviour;
 
         _unitsBehaviour.OnUnitAction += SendAction;
+    }
+
+    public string GetPlayerId(IConnectWrapper connectWrapper)
+    {
+        if(_connetions.TryGetValue(connectWrapper, out var id)) 
+            return id;
+        else
+            return null;
     }
 
     private void SendAction(int unitGuid, INextAction nextAction)
@@ -65,8 +73,6 @@ public class MultiplayerHost
             }, connection);
         }
 
-        var players = _playerProxy.PlayersSnapshot();
-        foreach (var player in players)
-            _networkable.Send(player, connection);
+        OnPlayerReady?.Invoke(connection);
     }
 }

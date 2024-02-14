@@ -58,7 +58,8 @@ namespace Ulf
 
             void receiveStruct(SnapPlayerStruct playerStruct)
             {
-                snapPlayerStruct = playerStruct;
+                if (playerStruct.playerId == _playerId)
+                    snapPlayerStruct = playerStruct;
 
             }
         }
