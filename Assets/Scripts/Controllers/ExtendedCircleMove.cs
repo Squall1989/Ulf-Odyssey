@@ -1,6 +1,5 @@
 using Vector2 = UnityEngine.Vector2;
 using System;
-using UnityEditor.Build;
 
 namespace Ulf
 {
@@ -74,6 +73,7 @@ namespace Ulf
                     var degree = GetAngle(Position - (Vector2)_bridgeToStand.RoundMono.TransformRound.position);
                     //ToLand(_bridgeToStand, degree, true);
                     OnRoundStand?.Invoke(_bridgeToStand.ID, degree);
+                    OnLog?.Invoke("bridge in: " + _bridgeToStand.ID);
                 }
             }
         }
@@ -100,6 +100,7 @@ namespace Ulf
                         OnLog?.Invoke("planet is null, return " );
                         return;
                     }
+                    OnLog?.Invoke("planet out: " + planet.ID);
 
                     var planetDegree = GetAngle(Position - (Vector2)planet.RoundMono.TransformRound.position);
 

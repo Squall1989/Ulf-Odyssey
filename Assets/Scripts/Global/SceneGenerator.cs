@@ -41,7 +41,7 @@ namespace Ulf
             float bridgeAngle = Random.Range(0, 359);
             Vector2 nextPos = CircleMove.GetMovePos(planetPos, planetSize + bridgeSize + endPlanetSize, bridgeAngle);
             int trying = 25;
-            while (!checkPlanetsPos(nextPos, endPlanetSize))
+            while (!checkPlanetsPos(nextPos, planetPos, endPlanetSize))
             {
                 bridgeAngle = Random.Range(0, 359);
                 nextPos = CircleMove.GetMovePos(planetPos, planetSize + bridgeSize + endPlanetSize, bridgeAngle);
@@ -63,10 +63,13 @@ namespace Ulf
             return (bridge, true);
         }
 
-        bool checkPlanetsPos(Vector2 rndPos, float size)
+        bool checkPlanetsPos(Vector2 rndPos, Vector2 planetPos, float size)
         {
             foreach (var planet in planetPoses)
             {
+                if (planetPos.Equals(rndPos))
+                    continue;
+
                 if ((planet.pos - rndPos).magnitude < planet.size + size + bridgeSize)
                     return false;
             }
