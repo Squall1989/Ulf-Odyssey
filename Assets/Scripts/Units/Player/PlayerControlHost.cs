@@ -29,6 +29,7 @@ namespace Ulf
 
             if(id != null)
             {
+                spawnedPlayer.playerId = id;
                 _networkable.Send(spawnedPlayer);
                 OnOtherPlayerSpawn?.Invoke(spawnedPlayer);
             }
