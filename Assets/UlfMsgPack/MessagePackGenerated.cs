@@ -315,13 +315,15 @@ namespace MessagePack.Formatters.Ulf
 
         public INextActionFormatter()
         {
-            this.typeToKeyAndJumpMap = new global::System.Collections.Generic.Dictionary<global::System.RuntimeTypeHandle, global::System.Collections.Generic.KeyValuePair<int, int>>(1, global::MessagePack.Internal.RuntimeTypeHandleEqualityComparer.Default)
+            this.typeToKeyAndJumpMap = new global::System.Collections.Generic.Dictionary<global::System.RuntimeTypeHandle, global::System.Collections.Generic.KeyValuePair<int, int>>(2, global::MessagePack.Internal.RuntimeTypeHandleEqualityComparer.Default)
             {
                 { typeof(global::Ulf.MovementAction).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(0, 0) },
+                { typeof(global::Ulf.StandAction).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(1, 1) },
             };
-            this.keyToJumpMap = new global::System.Collections.Generic.Dictionary<int, int>(1)
+            this.keyToJumpMap = new global::System.Collections.Generic.Dictionary<int, int>(2)
             {
                 { 0, 0 },
+                { 1, 1 },
             };
         }
 
@@ -336,6 +338,9 @@ namespace MessagePack.Formatters.Ulf
                 {
                     case 0:
                         global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.MovementAction>(options.Resolver).Serialize(ref writer, (global::Ulf.MovementAction)value, options);
+                        break;
+                    case 1:
+                        global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.StandAction>(options.Resolver).Serialize(ref writer, (global::Ulf.StandAction)value, options);
                         break;
                     default:
                         break;
@@ -372,6 +377,9 @@ namespace MessagePack.Formatters.Ulf
             {
                 case 0:
                     result = (global::Ulf.INextAction)global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.MovementAction>(options.Resolver).Deserialize(ref reader, options);
+                    break;
+                case 1:
+                    result = (global::Ulf.INextAction)global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.StandAction>(options.Resolver).Deserialize(ref reader, options);
                     break;
                 default:
                     reader.Skip();

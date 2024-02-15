@@ -45,6 +45,7 @@ namespace Ulf
     }
 
     [Union(0, typeof(MovementAction))]
+    [Union(1, typeof(StandAction))]
     public interface INextAction
     {
         void DoAction(Unit unit);
