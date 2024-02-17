@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Extensions;
 using Vector2 = UnityEngine.Vector2;
 using Random = UnityEngine.Random;
+using static UnityEditor.Rendering.FilterWindow;
 
 namespace Ulf
 {
@@ -59,9 +60,9 @@ namespace Ulf
 
             planetPoses[1] = new Vector2(edges[0], 0);
 
-            Vector2 pos3 = new Vector2(edges[1], 0);
-            var numerator = edges[0] * edges[0] + edges[1] * edges[1] - edges[2] * edges[2];
-            var denominator = edges[0] * edges[1] * 2f;
+            Vector2 pos3 = new Vector2(edges[2], 0);
+            var numerator = edges[0] * edges[0] + edges[2] * edges[2] - edges[1] * edges[1];
+            var denominator = edges[0] * edges[2] * 2f;
             var cos3 = numerator / denominator;
             var sin3 = Math.Sqrt(1 - cos3 * cos3);
             float findedX = (float)(pos3.x * cos3 - pos3.y * sin3);
@@ -69,10 +70,26 @@ namespace Ulf
 
             planetPoses[2] = new Vector2(findedX, findedY);
 
-            CreatePlanetStruct[] planetStructs = new CreatePlanetStruct[corners];
+            return CreatePlanetsFromPoses(ref planetPoses, ref planetSizes, element);
+        }
 
-            for(int p = 0; p < corners; p++)
+        private CreatePlanetStruct[] CreatePlanetsFromPoses(ref Vector2[] planetPoses, ref float[] planetSizes, ElementType element)
+        {
+            int lenght = planetPoses.Length;
+            var planetStructs = new CreatePlanetStruct[lenght];
+
+            for (int p = 0; p < lenght; p++)
             {
+                int nextNum = p < lenght -1 ? p +1 : 0;
+                var bridgeAngle = calcAngle(planetPoses[p], planetPoses[nextNum]);
+                CreateBridgeStruct bridgeStruct = new CreateBridgeStruct()
+                {
+                      angleStart = bridgeAngle,
+                       startPlanetId = p,
+                        endPlanetId = nextNum,
+                         mirrorLeft = false,
+                };
+
                 planetStructs[p] = new CreatePlanetStruct()
                 {
                     ElementType = element,
@@ -80,10 +97,20 @@ namespace Ulf
                     planetPos = planetPoses[p],
                     planetSize = planetSizes[p],
                     createUnits = GenerateUnits(element),
+                     bridges = new CreateBridgeStruct[] { bridgeStruct }
                 };
             }
 
             return planetStructs;
+
+            float calcAngle(Vector2 start, Vector2 end)
+            {
+                var angledVect = end - start;
+                float angle = Vector2.SignedAngle(new Vector2(1,0), angledVect);
+                if (angle < 0)
+                    angle += 360f;
+                return angle;
+            }
         }
 
         private (CreateBridgeStruct bridge, bool success) GenerateBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
