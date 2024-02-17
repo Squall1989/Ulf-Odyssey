@@ -15,3 +15,4 @@ MonoBehaviour:
   planetsMono:
   - {fileID: 8721879571282068014, guid: 5068596514cd05c4483a4b1dea926097, type: 3}
   - {fileID: 8721879571282068014, guid: e19d156f60a5ba147966b2512a1d13dc, type: 3}
+  - {fileID: 8721879571282068014, guid: 4c2bb62215055b94081cbc423885659a, type: 3}
