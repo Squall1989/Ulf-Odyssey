@@ -33,10 +33,60 @@ namespace Ulf
             _allPlanets = allPlanets;
             _allBuilds = allBuilds;
             bridgesGenerations = 0;
-            GeneratePlanet(planetNextId++, ElementType.wood, Vector2.zero, 1);
+
+            planetList = CreateTriangleStruct(ElementType.wood).ToList();
         }
 
-        private (CreateBridgeStruct bridge, bool success) GetBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
+        private CreatePlanetStruct[] CreateTriangleStruct(ElementType element, int corners = 3)
+        {
+            var allSizes = _allPlanets.GetSizes(element);
+            float[] planetSizes = new float[corners];
+            Vector2[] planetPoses = new Vector2[corners];
+            float[] edges = new float[corners];
+
+            for (int i = 0; i < corners; i++)
+            {
+                planetSizes[i] = allSizes[Random.Range(0, allSizes.Length)];
+            }
+
+            planetPoses[0] = new Vector2(0, 0);
+
+            for (int e = 0; e < corners; e++)
+            {
+                int nextCornerNum = e < corners -1 ? e +1 : 0;
+                edges[e] = planetSizes[e] + planetSizes[nextCornerNum] + bridgeSize;
+            }
+
+            planetPoses[1] = new Vector2(edges[0], 0);
+
+            Vector2 pos3 = new Vector2(edges[1], 0);
+            var numerator = edges[0] * edges[0] + edges[1] * edges[1] - edges[2] * edges[2];
+            var denominator = edges[0] * edges[1] * 2f;
+            var cos3 = numerator / denominator;
+            var sin3 = Math.Sqrt(1 - cos3 * cos3);
+            float findedX = (float)(pos3.x * cos3 - pos3.y * sin3);
+            float findedY = (float)(pos3.x * sin3 + pos3.y * cos3);
+
+            planetPoses[2] = new Vector2(findedX, findedY);
+
+            CreatePlanetStruct[] planetStructs = new CreatePlanetStruct[corners];
+
+            for(int p = 0; p < corners; p++)
+            {
+                planetStructs[p] = new CreatePlanetStruct()
+                {
+                    ElementType = element,
+                    planetId = planetNextId++,
+                    planetPos = planetPoses[p],
+                    planetSize = planetSizes[p],
+                    createUnits = GenerateUnits(element),
+                };
+            }
+
+            return planetStructs;
+        }
+
+        private (CreateBridgeStruct bridge, bool success) GenerateBridge(int planetId, Vector2 planetPos, float planetSize, float endPlanetSize)
         {
             float bridgeAngle = Random.Range(0, 359);
             Vector2 nextPos = CircleMove.GetMovePos(planetPos, planetSize + bridgeSize + endPlanetSize, bridgeAngle);
@@ -106,60 +156,58 @@ namespace Ulf
             return createUnit;
         }
 
-        private void GeneratePlanet(int id, ElementType elementType, Vector2 pos, int sizeNum, float? fromBridgeDeg = null)
+        private CreateUnitStruct[] GenerateUnits(ElementType elementType)
         {
-            var planetId = id;
-            var elementSizes = _allPlanets.GetSizes(elementType);
-
-            planetPoses.Add((pos, elementSizes[sizeNum]));
-
             int unitCount = Random.Range(1, 6);
             var availableUnits = _allUnits.AllUnits.Where(u => u.ElementType == elementType);
 
-            List<CreateUnitStruct> units = new(unitCount);
-            
-            for(int i = 0; i < unitCount; i++)
+            var units = new CreateUnitStruct[unitCount];
+
+            for (int i = 0; i < unitCount; i++)
             {
                 var defaultUnit = availableUnits.RandomElement();
                 var createUnit = GenerateUnit(defaultUnit);
-                units.Add(createUnit);
+                units[i] = createUnit;
             }
 
-            List<CreateBridgeStruct> createBridges = new();
-
-            AddBridges(planetId, pos, sizeNum, elementType, elementSizes, ref createBridges);
-
-            List<float> bridgedAngles = createBridges.Select(p => p.angleStart).ToList();
-
-            if(fromBridgeDeg != null)
-            {
-                fromBridgeDeg += 180f;
-                if (fromBridgeDeg >= 360f)
-                    fromBridgeDeg -= 360f;
-
-                bridgedAngles.Add(fromBridgeDeg.Value);
-            }
-
-            List<CreateBuildStruct> createBuilds = new();
-
-            AddBuilds(elementType, bridgedAngles, ref createBuilds);
-
-            AddPlanet();
-
-            void AddPlanet()
-            {
-                planetList.Add(new CreatePlanetStruct()
-                {
-                    createUnits = units.ToArray(),
-                    ElementType = elementType,
-                    planetId = planetId,
-                    planetSize = elementSizes[sizeNum],
-                    planetPos = pos,
-                    bridges = createBridges.ToArray(),
-                    builds = createBuilds.ToArray(),
-                });
-            }
+            return units;
         }
+
+        //private CreatePlanetStruct GeneratePlanet(int id, ElementType elementType, Vector2 pos, int sizeNum)
+        //{
+        //    var planetId = id;
+        //    var elementSizes = _allPlanets.GetSizes(elementType);
+
+        //    planetPoses.Add((pos, elementSizes[sizeNum]));
+
+
+
+        //    if (fromBridgeDeg != null)
+        //    {
+        //        fromBridgeDeg += 180f;
+        //        if (fromBridgeDeg >= 360f)
+        //            fromBridgeDeg -= 360f;
+
+        //        bridgedAngles.Add(fromBridgeDeg.Value);
+        //    }
+
+        //    List<CreateBuildStruct> createBuilds = new();
+
+        //    AddBuilds(elementType, bridgedAngles, ref createBuilds);
+
+        //    var planetStruct = new CreatePlanetStruct()
+        //    {
+        //        createUnits = units.ToArray(),
+        //        ElementType = elementType,
+        //        planetId = planetId,
+        //        planetSize = elementSizes[sizeNum],
+        //        planetPos = pos,
+        //    };
+
+        //    planetList.Add(planetStruct);
+
+        //    return planetStruct;
+        //}
 
         private (float deg, bool success) GetFreeRandomAngle(List<float> angles)
         {
@@ -198,31 +246,21 @@ namespace Ulf
             }
         }
 
-        protected void AddBridges(int planetId, Vector2 pos, int sizeNum, ElementType elementType, float[] elementSizes, ref List<CreateBridgeStruct> createBridges)
+        protected void CreateBridgeWithPlanet(ref CreatePlanetStruct planetStruct, int sizeNum, int nextSizeNum)
         {
             if (bridgesGenerations++ >= limit)
                 return;
 
-            int bridgesOnPlanet = Random.Range(1, 4);
-
-            while (bridgesOnPlanet-- > 0)
+            var elementSizes = _allPlanets.GetSizes(planetStruct.ElementType);
+            var bridgeCreation = GenerateBridge(planetStruct.planetId, planetStruct.planetPos, elementSizes[sizeNum], elementSizes[nextSizeNum]);
+            if (bridgeCreation.success)
             {
-                
-                int nextSizeNum = Random.Range(0, elementSizes.Length);
-                var bridgeCreation = GetBridge(planetId, pos, elementSizes[sizeNum], elementSizes[nextSizeNum]);
-                if (bridgeCreation.success)
-                {
-                    int nextPlanetId = planetNextId++;
-                    bridgeCreation.bridge.endPlanetId = nextPlanetId;
-                    createBridges.Add(bridgeCreation.bridge);
+                int nextPlanetId = planetNextId++;
+                bridgeCreation.bridge.endPlanetId = nextPlanetId;
 
-                    var distToNextPlanet = elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum];
-                    var nextPlanet = CircleMove.GetMovePos(pos, distToNextPlanet, bridgeCreation.bridge.angleStart);
-                    GeneratePlanet(nextPlanetId, elementType, nextPlanet, nextSizeNum, bridgeCreation.bridge.angleStart);
-                }
-                {
-                    break;
-                }
+                var distToNextPlanet = elementSizes[sizeNum] + bridgeSize + elementSizes[nextSizeNum];
+                var nextPlanetPos = CircleMove.GetMovePos(planetStruct.planetPos, distToNextPlanet, bridgeCreation.bridge.angleStart);
+                //GeneratePlanet(nextPlanetId, planetStruct.ElementType, nextPlanetPos, nextSizeNum);
             }
         }
 

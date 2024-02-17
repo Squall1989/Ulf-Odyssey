@@ -9,9 +9,9 @@ public class AllPlanetsScriptable : ScriptableObject
 
     public PlanetMono[] PlanetMono => planetsMono;
 
-    public PlanetMono GetPlanet(CreatePlanetStruct planetStruct)
+    public PlanetMono GetPlanet(float size, ElementType element)
     {
-        return planetsMono.FirstOrDefault(p => p.Size == planetStruct.planetSize && p.ElementType == planetStruct.ElementType);
+        return planetsMono.FirstOrDefault(p => p.Size == size && p.ElementType == element);
     }
 
     public float[] GetSizes(ElementType elementType)

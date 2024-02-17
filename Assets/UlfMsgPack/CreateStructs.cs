@@ -46,7 +46,6 @@ namespace Ulf
     {
         [Key(0)]
         public int planetId;
-
         [Key(1)]
         public CreateUnitStruct[] createUnits;
         [Key(2)]

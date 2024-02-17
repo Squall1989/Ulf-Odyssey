@@ -100,7 +100,7 @@ namespace Ulf
         {
             foreach (var planetStruct in planetStructs)
             {
-                var prefab = planetsContainer.GetPlanet(planetStruct.createPlanet);
+                var prefab = planetsContainer.GetPlanet(planetStruct.createPlanet.planetSize, planetStruct.createPlanet.ElementType);
                 if (prefab == null)
                 {
                     Debug.LogError($"Planet prefab with size {planetStruct.createPlanet.planetSize} and element {planetStruct.createPlanet.ElementType} is NULL!!!");
@@ -121,10 +121,12 @@ namespace Ulf
                 planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
 
                 var buildStructs = planetStruct.createPlanet.builds;
-                if (planetStruct.createPlanet.builds.Length > 0)
-                {
-                    planetNew.InstBuilds(buildContainer.GetBuilds(buildStructs), buildStructs);
-                }
+
+                if (planetStruct.createPlanet.builds != null)
+                    if (planetStruct.createPlanet.builds.Length > 0)
+                    {
+                        planetNew.InstBuilds(buildContainer.GetBuilds(buildStructs), buildStructs);
+                    }
                 sceneProxy.AddPlanet(planetNew.Planet);
             }
 
