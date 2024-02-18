@@ -41,13 +41,13 @@ namespace Ulf
 
         }
 
-        internal Planet GetOutPlanet(float degree)
+        internal Planet GetOutPlanet(float degree, bool toStand)
         {
-            if (IsUpperAllow(degree, _leftSide))
+            if (IsUpperAllow(degree, toStand))
             {
                 return _outPlanet;
             }
-            else if (IsLowerAllow(degree, _leftSide))
+            else if (IsLowerAllow(degree, toStand))
             {
                 return _inPlanet;
             }
@@ -73,11 +73,11 @@ namespace Ulf
 
             if (MathF.Abs(degree - upperDeg) <= allowance)
             {
-                bool isStandLeft = isToStand && _leftSide;
+                bool isInside = degree < upperDeg;
 
-                if (degree > upperDeg && isStandLeft || degree < upperDeg && !isStandLeft)
+                if (isInside && isToStand || !isInside && !isToStand)
                     return true;
-                else 
+                else
                     return false;
             }
             else
@@ -90,9 +90,8 @@ namespace Ulf
 
             if (MathF.Abs(degree - lowerDeg) <= allowance)
             {
-                bool isStandLeft = isToStand && _leftSide;
-
-                if (degree < lowerDeg && isStandLeft || degree > lowerDeg && !isStandLeft)
+                bool isInside = degree > lowerDeg;
+                if (isInside && isToStand || !isInside && !isToStand)
                     return true;
                 else
                     return false;
@@ -102,5 +101,6 @@ namespace Ulf
                 return false;
             }
         }
+
     }
 }

@@ -24,6 +24,14 @@ namespace Ulf
             }
             base.Move(moveDirect);
 
+            if (_isOnBridge)
+            {
+                var planet =_bridgeToStand.GetOutPlanet(GetRelativeBridgeDeg(), false);
+                if(planet != null )
+                {
+                    LeaveToRound(planet);
+                }
+            }
             //OnLog?.Invoke("angle: " + currDegree);
         }
 
@@ -70,9 +78,8 @@ namespace Ulf
                 var bridgeDegree = GetRelativeBridgeDeg();
                 if (_bridgeToStand.IsStandableBridgeDegree(bridgeDegree, true))
                 {
-                    var degree = GetAngle(Position - (Vector2)_bridgeToStand.RoundMono.TransformRound.position);
-                    //ToLand(_bridgeToStand, degree, true);
-                    OnRoundStand?.Invoke(_bridgeToStand.ID, degree);
+                    LeaveToRound(_bridgeToStand);
+
                     OnLog?.Invoke("bridge in: " + _bridgeToStand.ID);
                 }
             }
@@ -94,7 +101,7 @@ namespace Ulf
                 var bridgeDegree = GetRelativeBridgeDeg();
                 if (_bridgeToStand.IsStandableBridgeDegree(bridgeDegree, false))
                 {
-                    Planet planet = (_round as Bridge).GetOutPlanet(bridgeDegree);
+                    Planet planet = (_round as Bridge).GetOutPlanet(bridgeDegree, true);
                     if (planet == null)
                     {
                         OnLog?.Invoke("planet is null, return " );
@@ -102,14 +109,16 @@ namespace Ulf
                     }
                     OnLog?.Invoke("planet out: " + planet.ID);
 
-                    var planetDegree = GetAngle(Position - (Vector2)planet.RoundMono.TransformRound.position);
-
-                    //ToLand(planet, planetDegree, false);
-                    OnRoundStand?.Invoke(planet.ID, planetDegree);
+                    LeaveToRound(planet);
                 }
             }
         }
 
+        public void LeaveToRound(IRound round)
+        {
+            var planetDegree = GetAngle(Position - (Vector2)round.RoundMono.TransformRound.position);
 
+            OnRoundStand?.Invoke(round.ID, planetDegree);
+        }
     }
 }

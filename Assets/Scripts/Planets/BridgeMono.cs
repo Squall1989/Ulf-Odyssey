@@ -33,7 +33,7 @@ namespace Ulf
 
             _createBridgeStruct = createBridgeStruct;
             Physics.SyncTransforms();
-            _bridge = new Bridge(createBridgeStruct.mirrorLeft, circleCollider.radius, transform.position, planet, this);
+            _bridge = new Bridge(!createBridgeStruct.mirrorLeft, circleCollider.radius, transform.position, planet, this);
         }
 
         public void LookAtCenter(Transform playerTransform)

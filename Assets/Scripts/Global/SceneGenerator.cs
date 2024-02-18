@@ -87,7 +87,7 @@ namespace Ulf
                       angleStart = bridgeAngle,
                        startPlanetId = p,
                         endPlanetId = nextNum,
-                         mirrorLeft = false,
+                         mirrorLeft = p%2 ==0,
                 };
 
                 planetStructs[p] = new CreatePlanetStruct()
