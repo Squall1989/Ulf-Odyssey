@@ -78,16 +78,14 @@ namespace Ulf
 
         private void SetupControl(UnitMono unitMono)
         {
-            var extendMovement = ((unitMono as PlayerMono).CircleMove as ExtendedCircleMove);
+            var playerMono = unitMono as PlayerMono;
+            var extendMovement = playerMono.CircleMove as ExtendedCircleMove;
             inputControl.OnMove += (direct) =>
             {
                 playerProxy.CreatePlayerMoveAction(direct);
             };
-            inputControl.OnStand += (direct) =>
-            {
-                extendMovement.SetStandDirect(direct);
-                //sceneProxy.CreatePlayerStandAction(direct);
-            };
+
+            inputControl.OnStand += playerMono.PlayerMovement.ControlStandDirect;
 
             extendMovement.OnRoundStand += playerProxy.CreatePlayerStandAction;
 

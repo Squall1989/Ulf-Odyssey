@@ -76,14 +76,12 @@ namespace Ulf
             return _unitMono;
         }
 
-        public void LookAtCenter(Transform unitTransform)
+        public float LookAtCenter(Transform unitTransform)
         {
             Vector3 relative = -unitTransform.InverseTransformPoint(transform.position);
             float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-            //if(unitTransform.TryGetComponent<PlayerMono>(out var player))
-              //  Debug.Log("angle: " + angle);
-            if(angle != 0)
-                unitTransform.Rotate(0, 0, -angle);
+            
+            return -angle;
         }
     }
 }

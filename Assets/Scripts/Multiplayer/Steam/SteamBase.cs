@@ -22,7 +22,7 @@ namespace Ulf
         protected Dictionary<Type, UnionDelegate> callbacksDict = new();
 
         protected const string pchName = "Ulf";
-        protected const string pchCode = "11";
+        protected const string pchCode = "1";
         protected CSteamID lobbySteamID = new CSteamID();
         protected CSteamID MySteamID => SteamUser.GetSteamID();
 

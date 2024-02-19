@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Interfaces;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace Ulf
 {
@@ -31,9 +33,11 @@ namespace Ulf
             Move(_direct);
         }
 
+        protected float linearSpeed => speedLinear * deltaTime * (float)Math.PI * 2f / radius;
+
         protected virtual void Move(int moveDirect)
         {
-            float speedRadial = moveDirect * speedLinear * deltaTime * (float)Math.PI * 2f  / radius;
+            float speedRadial = moveDirect * linearSpeed;
             currDegree += speedRadial;
 
             if (currDegree >= 360f)
@@ -45,7 +49,7 @@ namespace Ulf
             _position = GetMovePos(_round.Position, radius, currDegree);
         }
 
-        public void ToLand(IRound round, float startAngle)
+        public virtual void ToLand(IRound round, float startAngle)
         {
             _round = round;
             this.radius = round.Radius;

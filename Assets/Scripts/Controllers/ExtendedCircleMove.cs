@@ -7,13 +7,13 @@ namespace Ulf
     {
         private bool _isOnBridge;
         private Bridge _bridgeToStand;
-        private int _standDirect;
 
         public Action<string> OnLog;
         public Action<int, float> OnRoundStand;
 
         public ExtendedCircleMove(float speed) : base(speed)
         {
+
         }
 
         protected override void Move(int moveDirect)
@@ -24,6 +24,16 @@ namespace Ulf
             }
             base.Move(moveDirect);
 
+            if (radius > _round.Radius)
+            {
+                radius -= speedLinear * deltaTime / 10f;
+
+                if (radius < _round.Radius)
+                {
+                    radius = _round.Radius;
+                }
+            }
+
             if (_isOnBridge)
             {
                 var planet =_bridgeToStand.GetOutPlanet(GetRelativeBridgeDeg(), false);
@@ -32,6 +42,8 @@ namespace Ulf
                     LeaveToRound(planet);
                 }
             }
+
+            
             //OnLog?.Invoke("angle: " + currDegree);
         }
 
@@ -39,34 +51,31 @@ namespace Ulf
         {
             base.ToLand(round, startAngle);
 
+            radius = (round.Position - Position).magnitude;
+
             _isOnBridge = isOnBridge;
         }
 
         internal void SetBridge(Bridge bridge)
         {
             this._bridgeToStand = bridge;
+
         }
 
-        internal void SetStandDirect(int direction)
-        {
-            _standDirect = direction;
 
-            if(_standDirect != 0)
-            {
-                CheckStandOpportunity();
-            }
-        }
-
-        private void CheckStandOpportunity()
+        public void CheckStandOpportunity(int standDirect)
         {
+            if (standDirect == 0)
+                return;
+
             if (_isOnBridge)
             {
-                if(_standDirect == -1)
+                if(standDirect == -1)
                     TryLeaveBridge();
             }
             else
             {
-                if(_standDirect == 1)
+                if(standDirect == 1)
                     TryStandBridge();
             }
         }

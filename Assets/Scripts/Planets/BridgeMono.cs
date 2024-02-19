@@ -25,7 +25,9 @@ namespace Ulf
 
             gameObject.name = "Bridge " + createBridgeStruct.angleStart.ToString();
 
-            planet.RoundMono.LookAtCenter(transform);
+            float angle =planet.RoundMono.LookAtCenter(transform);
+            transform.Rotate(0,0, angle);
+
             if (createBridgeStruct.mirrorLeft)
             {
                 transform.Rotate(Vector3.up, 180f);
@@ -36,11 +38,12 @@ namespace Ulf
             _bridge = new Bridge(!createBridgeStruct.mirrorLeft, circleCollider.radius, transform.position, planet, this);
         }
 
-        public void LookAtCenter(Transform playerTransform)
+        public float LookAtCenter(Transform playerTransform)
         {
             Vector3 relative = playerTransform.InverseTransformPoint(transform.position);
             float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-            playerTransform.Rotate(0, 0, -angle);
+
+            return -angle;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
