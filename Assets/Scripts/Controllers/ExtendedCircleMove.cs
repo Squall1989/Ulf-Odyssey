@@ -108,7 +108,7 @@ namespace Ulf
             if(_isOnBridge)
             {
                 var bridgeDegree = GetRelativeBridgeDeg();
-                if (_bridgeToStand.IsStandableBridgeDegree(bridgeDegree, false))
+                if (_bridgeToStand.IsStandableBridgeDegree(bridgeDegree, true))
                 {
                     Planet planet = (_round as Bridge).GetOutPlanet(bridgeDegree, true);
                     if (planet == null)

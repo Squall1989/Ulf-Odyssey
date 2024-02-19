@@ -64,8 +64,6 @@ namespace Ulf
                 rotateMeasure /= 10f;
             }
 
-            Debug.Log("Rotate ulf: " + rotateMeasure);
-
             return rotateMeasure;
         }
     }
