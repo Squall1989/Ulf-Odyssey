@@ -16,6 +16,8 @@ namespace Ulf
         protected Vector2 _position;
         protected int _direct;
 
+
+        public Action<int> OnMoveDirect;
         public float Degree => currDegree;
 
         public Vector2 PlanetPosition => _round.Position;
@@ -65,6 +67,7 @@ namespace Ulf
         public void SetMoveDirect(int direct)
         {
             _direct = direct;
+            OnMoveDirect?.Invoke(direct);
         }
 
         public static Vector2 GetMovePos(Vector2 movePlanetPos, float moveRadius, float moveDegree)

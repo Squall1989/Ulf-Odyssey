@@ -4,6 +4,7 @@ namespace Ulf
 {
     public class UnitMono : MonoBehaviour
     {
+        [SerializeField] protected Transform visualTransform;
         [SerializeField] protected MovementMono movement;
         [SerializeField] protected DefaultUnitStruct defaultUnit;
 
@@ -15,7 +16,7 @@ namespace Ulf
 
         public virtual void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
-            movement.Init(planet, new CircleMove(defaultUnit.MoveSpeed), freeArc);
+            movement.Init(planet, new CircleMove(defaultUnit.MoveSpeed), freeArc, visualTransform);
             _unit = new Unit(planet.Element, createUnit, defaultUnit, movement.CircleMove);
         }
     }

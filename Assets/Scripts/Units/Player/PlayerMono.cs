@@ -18,7 +18,7 @@ namespace Ulf
         {
             var circleMove = new ExtendedCircleMove(defaultUnit.MoveSpeed);
             circleMove.OnLog += (log) => Debug.Log(log);
-            movement.Init(planet, circleMove, freeArc);
+            movement.Init(planet, circleMove, freeArc, visualTransform);
 
             _movementMono = movement as PlayerMovementMono;
             _player = new Player(planet.Element, createUnit, defaultUnit, circleMove);

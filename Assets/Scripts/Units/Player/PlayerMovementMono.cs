@@ -16,9 +16,9 @@ namespace Ulf
             StartCoroutine(StandDirectCorout());
         }
 
-        public override void Init(Planet planet, CircleMove circleMove, float angle)
+        public override void Init(Planet planet, CircleMove circleMove, float angle, Transform visualTransform)
         {
-            base.Init(planet, circleMove, angle);
+            base.Init(planet, circleMove, angle, visualTransform);
             
             extendedCircleMove = circleMove as ExtendedCircleMove;
         }
