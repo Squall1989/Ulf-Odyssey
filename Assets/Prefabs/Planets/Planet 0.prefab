@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 14.5
       objectReference: {fileID: 0}
+    - target: {fileID: 776891176270804569, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 776891176270804569, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 412537267
+      objectReference: {fileID: 0}
     - target: {fileID: 1303719828287207208, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_Radius
       value: 7.47
@@ -75,6 +83,14 @@ PrefabInstance:
     - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_Size.y
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1034425785
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

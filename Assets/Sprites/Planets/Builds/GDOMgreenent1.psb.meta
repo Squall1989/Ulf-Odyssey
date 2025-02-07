@@ -70,12 +70,13 @@ ScriptedImporter:
     compressionQualitySet: 0
     textureFormatSet: 0
     applyGammaDecoding: 0
-  spriteImportData:
+  singleSpriteImportData:
   - name: 
     originalName: 
     pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 0
@@ -92,13 +93,14 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
     spritePosition: {x: 0, y: 0}
-  mosaicSpriteImportData: []
-  rigSpriteImportData:
+  multiSpriteImportData: []
+  layeredSpriteImportData:
   - name: entelki2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 976
@@ -120,6 +122,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -141,6 +144,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 1709
@@ -162,6 +166,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -183,6 +188,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 496
@@ -204,6 +210,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 1709
@@ -225,6 +232,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 1709
@@ -241,15 +249,194 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 1709, y: 380}
     spritePosition: {x: 274, y: 653}
-  characterData:
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  rigSpriteImportData:
+  - name: entelki2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 976
+      y: 4
+      width: 725
+      height: 660
+    spriteID: 3d3fa046442bc1246af61bcb9a703a70
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 976, y: 4}
+    spritePosition: {x: 0, y: 136}
+  - name: entosnova
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 964
+      height: 738
+    spriteID: cabe08abbb86ac24888ec616405d0651
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 119, y: 1}
+  - name: entpart
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1709
+      y: 564
+      width: 36
+      height: 36
+    spriteID: 15cf3b219e6540744aa55bdebc65e27a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1709, y: 564}
+    spritePosition: {x: 558, y: 397}
+  - name: entsvet1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 750
+      width: 484
+      height: 482
+    spriteID: 8f13b4a9705fca048b608949565a3e9f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 750}
+    spritePosition: {x: 576, y: 275}
+  - name: entback1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 496
+      y: 750
+      width: 414
+      height: 370
+    spriteID: a52c969d9b3633244af98011be2a4b86
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 496, y: 750}
+    spritePosition: {x: 654, y: 433}
+  - name: entelka1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1709
+      y: 4
+      width: 316
+      height: 368
+    spriteID: aaa32a96ca31cbc4c8fa3c7d97d3cb87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1709, y: 4}
+    spritePosition: {x: 834, y: 157}
+  - name: entelka3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1709
+      y: 380
+      width: 128
+      height: 176
+    spriteID: f6fc1ce61d42e9a41ace29ba5bde5460
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1709, y: 380}
+    spritePosition: {x: 274, y: 653}
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
     bones: []
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
     pivot: {x: 0, y: 0}
     boneReadOnly: 0
-  sharedRigSpriteImportData: []
-  sharedRigCharacterData:
+  characterData:
     bones: []
     parts: []
     dimension: {x: 0, y: 0}
@@ -266,13 +453,97 @@ ScriptedImporter:
   generatePhysicsShape: 0
   paperDollMode: 0
   keepDupilcateSpriteName: 1
-  skeletonAssetReferenceID: 
   padding: 4
   spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
   spriteCategoryList:
     categories: []
   spritePackingTag: 
   resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: entelki2
+    spriteName: entelki2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3d3fa046442bc1246af61bcb9a703a70
+    layerID: 10
+    mosaicPosition: {x: 976, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: entosnova
+    spriteName: entosnova
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cabe08abbb86ac24888ec616405d0651
+    layerID: 9
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: entpart
+    spriteName: entpart
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 15cf3b219e6540744aa55bdebc65e27a
+    layerID: 8
+    mosaicPosition: {x: 1709, y: 564}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: entsvet1
+    spriteName: entsvet1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8f13b4a9705fca048b608949565a3e9f
+    layerID: 7
+    mosaicPosition: {x: 4, y: 750}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: entback1
+    spriteName: entback1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a52c969d9b3633244af98011be2a4b86
+    layerID: 6
+    mosaicPosition: {x: 496, y: 750}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: entelka1
+    spriteName: entelka1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: aaa32a96ca31cbc4c8fa3c7d97d3cb87
+    layerID: 5
+    mosaicPosition: {x: 1709, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: entelka3
+    spriteName: entelka3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f6fc1ce61d42e9a41ace29ba5bde5460
+    layerID: 15
+    mosaicPosition: {x: 1709, y: 380}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "\u0424\u043E\u043D"
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: df36a98c5a542124a8f206d6a000b1b8
+    layerID: 1
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
   mosaicPSDLayers: []
   rigPSDLayers:
   - name: entelki2
@@ -356,7 +627,6 @@ ScriptedImporter:
     isImported: 0
     isVisible: 0
   sharedRigPSDLayers: []
-  pSDLayerImportSetting: []
   importFileNodeState: 1
   platformSettingsDirtyTick: 0
   spriteSizeExpandChanged: 0
