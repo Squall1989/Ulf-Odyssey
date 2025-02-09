@@ -1,0 +1,918 @@
+fileFormatVersion: 2
+guid: b8adf906c6c6a604fbdddbbffad8c9d0
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: resiconstest_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 129
+      height: 129
+    spriteID: a807ae43c71791241af3addde94b3283
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: ramka1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 129
+      height: 129
+    spriteID: 6acedf4ce6d10774ab94f76dad06c530
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconpero1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 141
+      width: 129
+      height: 129
+    spriteID: d5c743d3276ba3249b464ce582c0f782
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 141}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconpero2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 278
+      width: 129
+      height: 129
+    spriteID: 6f1d1ebd152025c4788f647f0f657d04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 278}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconpero3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 415
+      width: 129
+      height: 129
+    spriteID: 62fb5f6cd8d34b040ad3e6d45fb1587f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 415}
+    spritePosition: {x: 0, y: 0}
+  - name: resicnkey3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 552
+      width: 129
+      height: 129
+    spriteID: 357ce4f26c2a9074797e2ba057b2e8bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 552}
+    spritePosition: {x: 0, y: 0}
+  - name: resicnkey2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 689
+      width: 129
+      height: 129
+    spriteID: c1f77f1f9daf12c4c98e1474c6e3269e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 689}
+    spritePosition: {x: 0, y: 0}
+  - name: resicnkey1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 826
+      width: 129
+      height: 129
+    spriteID: ee4d1718ae1b73144bc406d76c5872f6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 826}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconugol1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 4
+      width: 129
+      height: 129
+    spriteID: 155bd9a27ed2e1c4ea3f04e77df55228
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconugol2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 141
+      width: 129
+      height: 129
+    spriteID: ff685554c9ab0b944bca160a17a21f3e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 141}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconugol3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 278
+      width: 129
+      height: 129
+    spriteID: e197cd598ce800d49b347d3e34a0f9c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 278}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconchesh1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 826
+      width: 113
+      height: 110
+    spriteID: 980e19448b96a8841aa825a830d945c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 276, y: 826}
+    spritePosition: {x: 2, y: 17}
+  - name: resiconchesh1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 415
+      y: 119
+      width: 107
+      height: 106
+    spriteID: 4f32257c79fd9e844a52746a4b43ad68
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 411, y: 119}
+    spritePosition: {x: 4, y: 21}
+  - name: resiconchesh1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 415
+      y: 4
+      width: 110
+      height: 107
+    spriteID: a2321f47372fc4f4592abdbd80d0c29d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 414, y: 4}
+    spritePosition: {x: 1, y: 21}
+  - name: resiconkoja3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 415
+      width: 129
+      height: 129
+    spriteID: 5d982f0ea817b8249bf901d16233ade0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 415}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconkoja2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 552
+      width: 129
+      height: 129
+    spriteID: 09800adab6b136c4ea41516c9c9dfb25
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 552}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconkoja1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 689
+      width: 129
+      height: 129
+    spriteID: efb3cb471af97dd4cb281e8331f314c6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 689}
+    spritePosition: {x: 0, y: 0}
+  - name: reslomicon3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 826
+      width: 129
+      height: 129
+    spriteID: 96261741f51e9214e8e0902372dc5d41
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 826}
+    spritePosition: {x: 0, y: 0}
+  - name: reslomicon2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 4
+      width: 129
+      height: 129
+    spriteID: cd7ca00793edb6a43a14fd6560151863
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 278, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: reslomicon1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 141
+      width: 129
+      height: 129
+    spriteID: 6ec608c9d18d0dc4e8a83547872cad37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 278, y: 141}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconblood13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 278
+      width: 129
+      height: 129
+    spriteID: 67e9eec6febcada4a9ad47b5ce361606
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 278, y: 278}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconblood2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 415
+      width: 129
+      height: 129
+    spriteID: a85d4c7e3f26b2a4bb3b9979c2012c2e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 278, y: 415}
+    spritePosition: {x: 0, y: 0}
+  - name: resiconblood1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 552
+      width: 129
+      height: 129
+    spriteID: b42e07ebd9477764db0ee81098034377
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 278, y: 552}
+    spritePosition: {x: 0, y: 0}
+  - name: "\u0421\u043B\u043E\u0439 6"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 278
+      y: 689
+      width: 129
+      height: 129
+    spriteID: d874a838344cb4c44abb5a1d0e371d21
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 278, y: 689}
+    spritePosition: {x: 0, y: 0}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 1
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: ramka
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: c92f8b145b86d7b4b8416c4023bafaec
+    layerID: 22
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: ramka1
+    spriteName: ramka1
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 6acedf4ce6d10774ab94f76dad06c530
+    layerID: 24
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 0
+  - name: resiconpero1
+    spriteName: resiconpero1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d5c743d3276ba3249b464ce582c0f782
+    layerID: 120
+    mosaicPosition: {x: 4, y: 141}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconpero2
+    spriteName: resiconpero2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6f1d1ebd152025c4788f647f0f657d04
+    layerID: 131
+    mosaicPosition: {x: 4, y: 278}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconpero3
+    spriteName: resiconpero3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 62fb5f6cd8d34b040ad3e6d45fb1587f
+    layerID: 132
+    mosaicPosition: {x: 4, y: 415}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resicnkey3
+    spriteName: resicnkey3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 357ce4f26c2a9074797e2ba057b2e8bd
+    layerID: 99
+    mosaicPosition: {x: 4, y: 552}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resicnkey2
+    spriteName: resicnkey2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c1f77f1f9daf12c4c98e1474c6e3269e
+    layerID: 115
+    mosaicPosition: {x: 4, y: 689}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resicnkey1
+    spriteName: resicnkey1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ee4d1718ae1b73144bc406d76c5872f6
+    layerID: 116
+    mosaicPosition: {x: 4, y: 826}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconugol1
+    spriteName: resiconugol1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 155bd9a27ed2e1c4ea3f04e77df55228
+    layerID: 74
+    mosaicPosition: {x: 141, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconugol2
+    spriteName: resiconugol2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ff685554c9ab0b944bca160a17a21f3e
+    layerID: 97
+    mosaicPosition: {x: 141, y: 141}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconugol3
+    spriteName: resiconugol3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e197cd598ce800d49b347d3e34a0f9c2
+    layerID: 98
+    mosaicPosition: {x: 141, y: 278}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconchesh1
+    spriteName: resiconchesh1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 980e19448b96a8841aa825a830d945c5
+    layerID: 75
+    mosaicPosition: {x: 278, y: 826}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconchesh1
+    spriteName: resiconchesh1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4f32257c79fd9e844a52746a4b43ad68
+    layerID: 76
+    mosaicPosition: {x: 415, y: 119}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconchesh1
+    spriteName: resiconchesh1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a2321f47372fc4f4592abdbd80d0c29d
+    layerID: 77
+    mosaicPosition: {x: 415, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconkoja3
+    spriteName: resiconkoja3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5d982f0ea817b8249bf901d16233ade0
+    layerID: 54
+    mosaicPosition: {x: 141, y: 415}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconkoja2
+    spriteName: resiconkoja2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 09800adab6b136c4ea41516c9c9dfb25
+    layerID: 67
+    mosaicPosition: {x: 141, y: 552}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconkoja1
+    spriteName: resiconkoja1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: efb3cb471af97dd4cb281e8331f314c6
+    layerID: 68
+    mosaicPosition: {x: 141, y: 689}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: reslomicon3
+    spriteName: reslomicon3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 96261741f51e9214e8e0902372dc5d41
+    layerID: 39
+    mosaicPosition: {x: 141, y: 826}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: reslomicon2
+    spriteName: reslomicon2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cd7ca00793edb6a43a14fd6560151863
+    layerID: 40
+    mosaicPosition: {x: 278, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: reslomicon1
+    spriteName: reslomicon1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6ec608c9d18d0dc4e8a83547872cad37
+    layerID: 31
+    mosaicPosition: {x: 278, y: 141}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconblood13
+    spriteName: resiconblood13
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 67e9eec6febcada4a9ad47b5ce361606
+    layerID: 19
+    mosaicPosition: {x: 278, y: 278}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconblood2
+    spriteName: resiconblood2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a85d4c7e3f26b2a4bb3b9979c2012c2e
+    layerID: 20
+    mosaicPosition: {x: 278, y: 415}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: resiconblood1
+    spriteName: resiconblood1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b42e07ebd9477764db0ee81098034377
+    layerID: 21
+    mosaicPosition: {x: 278, y: 552}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "\u0421\u043B\u043E\u0439 6"
+    spriteName: "\u0421\u043B\u043E\u0439 6"
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d874a838344cb4c44abb5a1d0e371d21
+    layerID: 11
+    mosaicPosition: {x: 278, y: 689}
+    flatten: 0
+    isImported: 1
+    isVisible: 0
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []

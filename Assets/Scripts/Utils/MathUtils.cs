@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace Ulf
 {
+
     public static class MathUtils
     {
         public static float GetMinAngleDiff( float x, float y )
