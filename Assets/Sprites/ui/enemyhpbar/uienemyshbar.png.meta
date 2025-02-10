@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      uienemyshbar_0: -4257803508561060329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
