@@ -1,0 +1,436 @@
+fileFormatVersion: 2
+guid: e5ab10e6bd79ba4408c0b68fd3e96cf9
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: eae626267f9996d40a91db68b85dbd37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: iuzub1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 121
+      height: 153
+    spriteID: 30d11a956b10c9a4489706caf9a38304
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 140, y: 80}
+  - name: iuzub2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 314
+      width: 51
+      height: 77
+    spriteID: 0e65536f4c5c24940b1288b337579d5d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 314}
+    spritePosition: {x: 261, y: 157}
+  - name: iuzub8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 399
+      width: 44
+      height: 67
+    spriteID: 8b16e5025c313e24184115eb971939c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 399}
+    spritePosition: {x: 233, y: 157}
+  - name: iuzub9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 314
+      width: 47
+      height: 56
+    spriteID: 6ea6a737bd08efa48946c2a5063ad39c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 314}
+    spritePosition: {x: 214, y: 148}
+  - name: iuzub7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 378
+      width: 41
+      height: 60
+    spriteID: 0da9730061b8e69439fbab33e727608a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 378}
+    spritePosition: {x: 74, y: 96}
+  - name: iuzub6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 63
+      y: 446
+      width: 38
+      height: 62
+    spriteID: 615ad3f7c6b02b749b262683ad2c88dc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 63, y: 446}
+    spritePosition: {x: 49, y: 79}
+  - name: iuzub5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 86
+      y: 165
+      width: 36
+      height: 62
+    spriteID: 1d5a64e9a0d324a44898fef34643ca05
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 86, y: 165}
+    spritePosition: {x: 35, y: 76}
+  - name: iuzub4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 86
+      y: 235
+      width: 39
+      height: 57
+    spriteID: d6c124cc906842545a14a49f8bdb5e5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 86, y: 235}
+    spritePosition: {x: 20, y: 76}
+  - name: iuzub3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 165
+      width: 74
+      height: 141
+    spriteID: bd7d9c9da9b657a44b8af72c4689731c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 165}
+    spritePosition: {x: 0, y: 0}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: iuzub1
+    spriteName: iuzub1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 30d11a956b10c9a4489706caf9a38304
+    layerID: 16
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub2
+    spriteName: iuzub2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0e65536f4c5c24940b1288b337579d5d
+    layerID: 19
+    mosaicPosition: {x: 4, y: 314}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub8
+    spriteName: iuzub8
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8b16e5025c313e24184115eb971939c9
+    layerID: 18
+    mosaicPosition: {x: 4, y: 399}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub9
+    spriteName: iuzub9
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6ea6a737bd08efa48946c2a5063ad39c
+    layerID: 17
+    mosaicPosition: {x: 63, y: 314}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub7
+    spriteName: iuzub7
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0da9730061b8e69439fbab33e727608a
+    layerID: 22
+    mosaicPosition: {x: 63, y: 378}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub6
+    spriteName: iuzub6
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 615ad3f7c6b02b749b262683ad2c88dc
+    layerID: 15
+    mosaicPosition: {x: 63, y: 446}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub5
+    spriteName: iuzub5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1d5a64e9a0d324a44898fef34643ca05
+    layerID: 14
+    mosaicPosition: {x: 86, y: 165}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub4
+    spriteName: iuzub4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d6c124cc906842545a14a49f8bdb5e5f
+    layerID: 13
+    mosaicPosition: {x: 86, y: 235}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: iuzub3
+    spriteName: iuzub3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bd7d9c9da9b657a44b8af72c4689731c
+    layerID: 12
+    mosaicPosition: {x: 4, y: 165}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
