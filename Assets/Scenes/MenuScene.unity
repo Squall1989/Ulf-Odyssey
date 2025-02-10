@@ -2868,53 +2868,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireRoot
       objectReference: {fileID: 0}
-    - target: {fileID: 2320349100215552001, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656691617599146385, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012049251542249798, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: lengthInSec
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: autoRandomSeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: simulationSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6430708317578518884, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.0001
-      objectReference: {fileID: 0}
     - target: {fileID: 9043982267109150580, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 9043982267109150580, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.97
+      value: -10.25
       objectReference: {fileID: 0}
     - target: {fileID: 9043982267109150580, guid: 8177c07ee07d6b745b13e7707e791548, type: 3}
       propertyPath: m_LocalPosition.z
