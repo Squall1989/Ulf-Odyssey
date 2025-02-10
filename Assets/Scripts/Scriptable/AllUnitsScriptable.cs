@@ -2,25 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Ulf;
+using System.Linq;
+using System;
 
 [CreateAssetMenu(fileName = "Units", menuName = "ScriptableObjects/Units", order = 2)]
 public class AllUnitsScriptable : ScriptableObject
 {
-    Dictionary<string, CreateUnitStruct> UnitsList = new();
+    [SerializeField] private UnitMono[] unitsMono;
 
-    public IEnumerable<CreateUnitStruct> AllUnits => UnitsList.Values;
+    public IEnumerable<DefaultUnitStruct> AllUnits => unitsMono.Select(p => p.DefaultUnit);
+    public UnitMono[] AllUnitsMono => unitsMono;
 
-    public void AddUnit(CreateUnitStruct unitStruct)
+    internal UnitMono[] GetUnits(CreateUnitStruct[] createUnits)
     {
-        if(UnitsList.ContainsKey(unitStruct.View))
+        UnitMono[] units = new UnitMono[createUnits.Length];
+
+        for(int i = 0; i < createUnits.Length; i++)
         {
-            UnitsList[unitStruct.View] = unitStruct;
+            units[i] = unitsMono.First(p => p.DefaultUnit.View == createUnits[i].View);
         }
-        else
-        {
-            UnitsList.Add(unitStruct.View, unitStruct);
-        }
-        Debug.Log("Unit " + unitStruct.View + "saved. Units count: " + UnitsList.Count);
-        EditorUtility.SetDirty(this);
+
+        return units;
     }
+
+    //public void AddUnit(CreateUnitStruct unitStruct)
+    //{
+    //    if(UnitsList.ContainsKey(unitStruct.View))
+    //    {
+    //        UnitsList[unitStruct.View] = unitStruct;
+    //    }
+    //    else
+    //    {
+    //        UnitsList.Add(unitStruct.View, unitStruct);
+    //    }
+    //    Debug.Log("Unit " + unitStruct.View + "saved. Units count: " + UnitsList.Count);
+    //    EditorUtility.SetDirty(this);
+    //}
 }

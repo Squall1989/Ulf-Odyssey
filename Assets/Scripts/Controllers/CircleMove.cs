@@ -1,21 +1,28 @@
 ﻿using Assets.Scripts.Interfaces;
 using System;
-using Vector2 = UnityEngine.Vector2;
+using Unity.VisualScripting;
+using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace Ulf
 {
     public class CircleMove : IMovable
     {
-        private float deltaTime;
-        private float radius;
-        private float speedLinear;
-        private float currDegree;
+        protected float deltaTime;
+        protected IRound _round;
+        protected float radius;
+        protected float speedLinear;
+        protected float currDegree;
+        protected Vector2 _position;
+        protected int _direct;
 
-        private Vector2 position;
 
+        public Action<int> OnMoveDirect;
         public float Degree => currDegree;
 
-        public Vector2 Position => position;
+        public Vector2 PlanetPosition => _round.Position;
+        public Vector2 Position => _position;
+        public IRound Round => _round;
 
         public CircleMove(float speed)
         {
@@ -25,24 +32,64 @@ namespace Ulf
         public void SetDeltaTime(float delta)
         {
             deltaTime = delta;
+            Move(_direct);
         }
 
-        public void ToLand(float radius, float startAngle)
-        {
-            this.radius = radius;
-            currDegree = startAngle;
-        }
+        protected float linearSpeed => speedLinear * deltaTime * (float)Math.PI * 2f / radius;
 
-        public void Move(int direct)
+        protected virtual void Move(int moveDirect)
         {
-            float speedRadial = direct * speedLinear * deltaTime / radius;
-            currDegree = (currDegree + speedRadial) / 180 * (float)Math.PI;
-
-            position.x = radius * (float)Math.Sin(currDegree);
-            position.y = radius * (float)Math.Cos(currDegree);
+            float speedRadial = moveDirect * linearSpeed;
+            currDegree += speedRadial;
 
             if (currDegree >= 360f)
                 currDegree -= 360f;
+
+            if (currDegree < 0)
+                currDegree += 360f;
+
+            _position = GetMovePos(_round.Position, radius, currDegree);
         }
+
+        public virtual void ToLand(IRound round, float startAngle)
+        {
+            _round = round;
+            this.radius = round.Radius;
+            currDegree = startAngle;
+        }
+
+        public void SetAngle(float angle)
+        {
+            
+            currDegree = angle;
+        }
+
+        public void SetMoveDirect(int direct)
+        {
+            _direct = direct;
+            OnMoveDirect?.Invoke(direct);
+        }
+
+        public static Vector2 GetMovePos(Vector2 movePlanetPos, float moveRadius, float moveDegree)
+        {
+            float x = movePlanetPos.x + moveRadius * (float)Math.Cos(moveDegree * Math.PI / 180f);
+            float y = movePlanetPos.y + moveRadius * (float)Math.Sin(moveDegree * Math.PI / 180f);
+            return new Vector2(x,y);
+
+        }
+
+        public static float GetAngle(Vector2 relativePointPos)
+        {
+            var tan2 = Mathf.Atan2(relativePointPos.y, relativePointPos.x);
+            var angle = tan2 * 180f / Mathf.PI;
+
+            if(angle < 0)
+            {
+                angle += 360f;
+            }
+            
+            return angle;
+        }
+
     }
 }

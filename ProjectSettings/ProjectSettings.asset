@@ -646,11 +646,11 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: UGS_BETA_LOBBY_EVENTS;UGS_LOBBY_EVENTS
+    Standalone: UGS_BETA_LOBBY_EVENTS;UGS_LOBBY_EVENTS;STEAMWORKS_NET
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
-    Standalone: 0
+    Standalone: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:

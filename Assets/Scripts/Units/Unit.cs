@@ -5,15 +5,30 @@ namespace Ulf
 {
     public class Unit
     {
-        private CircleMove _movement;
-        private Health _health;
+        protected CircleMove _movement;
+        protected CreateUnitStruct _unitStruct;
+        protected DefaultUnitStruct _defaultUnit;
+        protected Health _health;
 
+        public int GUID => _unitStruct.Guid;
         public CircleMove Movement => _movement;
 
-        public Unit(ElementType elementType, CreateUnitStruct unitStruct)
+        public Unit(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, CircleMove circleMove)
         {
+            _defaultUnit = defaultUnit;
+            _unitStruct = unitStruct;
+            _health = new Health(defaultUnit.Health, elementType);
+            _movement = circleMove;
+        }
 
-            _health = new Health(unitStruct.Health, elementType);
+        internal SnapUnitStruct GetSnapshot()
+        {
+            return new SnapUnitStruct()
+            {
+                angle = _movement.Degree,
+                health = _health.CurrHealth,
+                createUnit = _unitStruct,
+            };
         }
     }
 }

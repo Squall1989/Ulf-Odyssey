@@ -1,22 +1,42 @@
 using System;
+using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.Networking.Transport;
 using Unity.Networking.Transport.Relay;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Lobbies.Models;
+using Unity.Services.Lobbies;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using MsgPck;
+using UlfServer;
+using UnityEngine;
 
 namespace Ulf
 {
-    public class HostRelay 
+    public class HostRelay : RelayBase, INetworkable
     {
         private NativeList<NetworkConnection> serverConnections;
         private Allocation hostAllocation;
         private NetworkDriver hostDriver;
         private string joinCode;
 
+        private bool isActive;
+        private bool isConnected;
+
         public Action<string> OnCodeGenerate;
         public Action<string> OnLog;
+        //private NetworkPipeline myPipeline;
 
+        public Action<string> OnReceive { get; set; }
+
+        public bool IsConnected => isConnected;
+
+        public HostRelay()
+        {
+
+        }
 
         public void BindHost()
         {
@@ -31,6 +51,7 @@ namespace Ulf
 
             // Create the Host's NetworkDriver from the NetworkSettings.
             hostDriver = NetworkDriver.Create(settings);
+            //myPipeline = hostDriver.CreatePipeline(typeof(FragmentationPipelineStage), typeof(ReliableSequencedPipelineStage));
 
             // Bind to the Relay server.
             if (hostDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
@@ -54,6 +75,7 @@ namespace Ulf
 
         public async void StartAllocate()
         {
+            isActive = true;
             OnLog?.Invoke("Host - Creating an allocation. Upon success, I have 10 seconds to BIND to the Relay server that I've allocated.");
 
             // Determine region to use (user-selected or auto-select/QoS)
@@ -70,7 +92,7 @@ namespace Ulf
             // Initialize NetworkConnection list for the server (Host).
             // This list object manages the NetworkConnections which represent connected players.
             serverConnections = new NativeList<NetworkConnection>(maxConnections, Allocator.Persistent);
-        
+
             BindHost();
         }
 
@@ -82,7 +104,9 @@ namespace Ulf
             {
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(hostAllocation.AllocationId);
                 OnLog?.Invoke("Host - Got join code: " + joinCode);
-                OnCodeGenerate?.Invoke(joinCode);
+                //OnCodeGenerate?.Invoke(joinCode);
+                CreateLobby(joinCode);
+                Update();
             }
             catch (RelayServiceException ex)
             {
@@ -90,9 +114,13 @@ namespace Ulf
             }
         }
 
-        public void Update()
+        public async void Update()
         {
-            UpdateHost();
+            while (isActive)
+            {
+                UpdateHost();
+                await Task.Delay(500);
+            }
         }
 
         void UpdateHost()
@@ -112,7 +140,7 @@ namespace Ulf
             {
                 if (!serverConnections[i].IsCreated)
                 {
-                    OnLog?.Invoke("Stale connection removed");
+                    OnLog?.Invoke("connection removed: " + serverConnections[i].GetConnectionId());
                     serverConnections.RemoveAt(i);
                     --i;
                 }
@@ -125,9 +153,10 @@ namespace Ulf
                 // Adds the requesting Player to the serverConnections list.
                 // This also sends a Connect event back the requesting Player,
                 // as a means of acknowledging acceptance.
-                OnLog?.Invoke("Accepted an incoming connection.");
+                int connectionId = incomingConnection.GetConnectionId();
+                OnLog?.Invoke("Accepted an incoming connection: " + connectionId);
                 serverConnections.Add(incomingConnection);
-                SendMessage("Hello!!!!!!!!");
+                isConnected = true;
             }
 
             // Process events from all connections.
@@ -143,8 +172,7 @@ namespace Ulf
                     {
                         // Handle Relay events.
                         case NetworkEvent.Type.Data:
-                            FixedString32Bytes msg = stream.ReadFixedString32();
-                            OnLog?.Invoke($"Server received msg: {msg}");
+                            Read(stream, serverConnections[i]);
                             //hostLatestMessageReceived = msg.ToString();
                             break;
 
@@ -152,15 +180,29 @@ namespace Ulf
                         case NetworkEvent.Type.Disconnect:
                             OnLog?.Invoke("Server received disconnect from client");
                             serverConnections[i] = default(NetworkConnection);
+                            CheckConnections();
                             break;
                     }
                 }
             }
         }
 
-        public void SendMessage(string msg)
+
+
+        protected override void SendTo(NativeArray<byte> bytes, IConnectWrapper connection)
         {
-            if (serverConnections.Length == 0)
+            if (hostDriver.BeginSend(((UnityConnect)connection).networkConnection, out var writer) == 0)
+            {
+                writer.WriteBytes(bytes);
+                //var maxPayloadSize = writer.Capacity;
+
+                hostDriver.EndSend(writer);
+            }
+        }
+
+        protected override void SendToAll(NativeArray<byte> bytes)
+        {
+            if (!isConnected)
             {
                 OnLog?.Invoke("No players connected to send messages to.");
                 return;
@@ -175,9 +217,57 @@ namespace Ulf
                 if (hostDriver.BeginSend(serverConnections[i], out var writer) == 0)
                 {
                     // Send the message. Aside from FixedString32, many different types can be used.
-                    writer.WriteFixedString32(msg);
+                    writer.WriteBytes(bytes);
                     hostDriver.EndSend(writer);
                 }
+            }
+        }
+
+        private bool CheckConnections()
+        {
+            foreach (var connection in serverConnections)
+            {
+                if (connection.IsCreated)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void StopHost()
+        {
+            isActive = false;
+        }
+
+        private async void CreateLobby(string code)
+        {
+
+            string lobbyName = "new lobby";
+            int maxPlayers = 4;
+            CreateLobbyOptions options = new CreateLobbyOptions();
+            options.IsPrivate = false;
+            options.Data = new System.Collections.Generic.Dictionary<string, DataObject>();
+            DataObject data = new(DataObject.VisibilityOptions.Public, code);
+            options.Data.Add("code", data);
+
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);
+
+            OnLog?.Invoke("Lobby created: " + lobby.LobbyCode);
+
+            HeartbeatLobbyCoroutine(lobby.Id, 10);
+        }
+
+
+        async void HeartbeatLobbyCoroutine(string lobbyId, int waitTimeSeconds)
+        {
+            await Task.Delay(waitTimeSeconds * 1000);
+
+            while (true)
+            {
+                await LobbyService.Instance.SendHeartbeatPingAsync(lobbyId);
+                await Task.Delay(waitTimeSeconds * 1000);
             }
         }
     }

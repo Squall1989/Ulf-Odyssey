@@ -41,7 +41,7 @@ The following packages were updated:
   com.unity.render-pipelines.universal from version 14.0.6 to 14.0.7
   com.unity.timeline from version 1.7.3 to 1.7.4
 
-=== Mon Feb 10 10:03:00 2025
+=== Fri Feb  7 09:37:33 2025
 
 Packages were changed.
 Update Mode: updateDependencies
@@ -50,6 +50,7 @@ The following packages were added:
   com.unity.modules.accessibility@1.0.0
   com.unity.multiplayer.center@1.0.0
 The following packages were updated:
+  com.unity.cinemachine from version 2.9.7 to 2.10.3
   com.unity.collab-proxy from version 2.0.4 to 2.6.0
   com.unity.feature.2d from version 1.0.0 to 2.0.1
   com.unity.ide.visualstudio from version 2.0.18 to 2.0.22

@@ -10,7 +10,6 @@ using Zenject;
 public class SceneHub : MonoBehaviour
 {
     [SerializeField] SceneScriptable sceneScriptable;
-    [Inject] IGame game;
 
     public static SceneHub Instance;
 

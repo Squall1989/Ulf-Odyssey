@@ -6,18 +6,22 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class LobbyClientUI : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_InputField JoinCodeInput;
     [SerializeField] private TMPro.TextMeshProUGUI logText;
     [SerializeField] private Button joinButton;
-
-    ClientRelay clientRelay;
+    [Inject] ConnectHandler connectHandler;
+    //ClientRelay clientRelay;
 
     private void Start()
     {
-        joinButton.onClick.AddListener(() => QueryLobbies()) ;
+        joinButton.onClick.AddListener(() =>
+        {
+            connectHandler.SetCode(JoinCodeInput.text);
+        }) ;
     }
 
     private async void QueryLobbies()

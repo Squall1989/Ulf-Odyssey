@@ -2,35 +2,33 @@
 using MsgPck;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Zenject;
 
 namespace Ulf
 {
     public class MultiplayerGame : IGame
     {
-        protected (int id, string name) controlledPlayer;
-        protected Dictionary<int, string> _players = new Dictionary<int, string>();
+        private MultiplayerHost _multiplayerHost;
+        private ISceneProxy _sceneProxy;
 
-        MessageSender sender;
 
-        [Inject] 
-        public MultiplayerGame(MessageSender sender)
+        public MultiplayerGame(ISceneProxy sceneProxy, MultiplayerHost multiplayerHost)
         {
-            this.sender = sender;   
-            sender.OnPlayerIdSet += RegisterOurPlayer;
+            _multiplayerHost = multiplayerHost;
+            _sceneProxy = sceneProxy;
+
+
+
+            SetupHandlers();
         }
 
-        public void RegisterPlayer(int id, string name)
+
+        protected void SetupHandlers()
         {
 
-            _players.Add(id, name);
-            
         }
 
-        private void RegisterOurPlayer(int id, string name)
-        {
-            controlledPlayer.name = name;
-            controlledPlayer.id = id;
-        }
+
     }
 }

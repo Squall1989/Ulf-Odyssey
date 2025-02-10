@@ -4,46 +4,84 @@ using Zenject;
 
 namespace Ulf
 {
-    public class PlanetMono : MonoBehaviour
+    public class PlanetMono : MonoBehaviour, IRoundMono
     {
-        [SerializeField] private UnitMono[] startUnits;
+        //[SerializeField] private UnitMono[] startUnits;
         [SerializeField] private ElementType elementType;
+        [SerializeField] private BridgeMono bridgePfb;
 
-        Planet planet;
+        private Planet planet;
 
-        CircleCollider2D planetCollider;
+        private CircleCollider2D planetCollider;
+
+        private BridgeMono[] bridgesMono;
+
+        public BridgeMono[] BridgesMono => bridgesMono;
+        public ElementType ElementType => elementType;
+        public float Size => GetComponent<CircleCollider2D>().radius;
+
+        public Planet Planet => planet;
+
+        public Transform TransformRound => transform;
 
         private void Awake()
         {
             planetCollider = GetComponent<CircleCollider2D>();
-            planet = new Planet(planetCollider.radius, elementType);
         }
 
-        private void InstUnits(IRegister<Unit> unitsRegister)
+        public void Init(CreatePlanetStruct planetStruct)
         {
-            float arcPerUnit = 360f / startUnits.Length;
-            for (int u = 0; u < startUnits.Length; u++)
+            planet = new(planetStruct, this);
+            gameObject.name = planetStruct.planetId.ToString();
+            if (planetStruct.bridges != null)
             {
-                var _unitMono = Instantiate(startUnits[u], gameObject.transform);
-                (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit +1));
-                _unitMono.Init(planet, freeArc);
-                unitsRegister.Record(_unitMono.Unit);
+                bridgesMono = new BridgeMono[planetStruct.bridges.Length];
+                for (int i = 0; i < planetStruct.bridges.Length; i++)
+                {
+                    var bridgeMono = Instantiate(bridgePfb);
+                    bridgeMono.Init(planet, planetStruct.bridges[i]);
+
+                    bridgesMono[i] = bridgeMono;
+                }
             }
         }
 
-        public CreatePlanetStruct GeneratePlanetStruct()
+        public void InstBuilds(BuildMono[] builds, CreateBuildStruct[] createBuilds)
         {
-            return new()
+            for (int u = 0; u < builds.Length; u++)
             {
-                 ElementType = elementType,
-                 createUnits = startUnits.Select(unit => unit.UnitStruct).ToArray()
-            };
+                var _buildMono = Instantiate(builds[u]);
+                _buildMono.Init(planet, createBuilds[u]);
+            }
         }
 
-        private void OnValidate()
+        public void InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits, IUnitsProxy unitsProxy)
         {
-            //SceneHub sceneHub = FindObjectOfType<SceneHub>();
-            //sceneHub.UpdateScene(this);
+            for (int u = 0; u < unitsMono.Length; u++)
+            {
+                InstUnit(unitsMono[u], snapUnits[u], unitsProxy);
+            }
+        }
+
+        public UnitMono InstUnit(UnitMono unitMono, SnapUnitStruct snapUnit, IUnitsProxy unitsProxy)
+        {
+            var _unitMono = Instantiate(unitMono, gameObject.transform);
+            _unitMono.Init(planet, snapUnit.createUnit, snapUnit.angle);
+            if (unitsProxy != null)
+            {
+                unitsProxy.Add(_unitMono.Unit);
+                planet.AddUnit(_unitMono.Unit);
+
+            }
+            return _unitMono;
+        }
+
+        public float LookAtCenter(Transform unitTransform)
+        {
+            Vector3 relative = -unitTransform.InverseTransformPoint(transform.position);
+            float angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
+            
+            return -angle;
         }
     }
 }

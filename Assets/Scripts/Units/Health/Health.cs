@@ -10,6 +10,7 @@ namespace Ulf
         protected ElementType _element;
 
         public Action<int> OnHealthChange;
+        public int CurrHealth => _health;
 
         public Health(int maxHealth, ElementType element)
         {

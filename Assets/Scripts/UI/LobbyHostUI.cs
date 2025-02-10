@@ -6,15 +6,14 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class LobbyHostUI : MonoBehaviour
 {
     [SerializeField] private TMPro.TextMeshProUGUI codeText;
     [SerializeField] private Button startHostButton;
     [SerializeField] private TMPro.TextMeshProUGUI logText;
-    private HostRelay host;
-
-
+    [Inject] private ConnectHandler connectHandler;
 
     private void Start()
     {
@@ -22,21 +21,9 @@ public class LobbyHostUI : MonoBehaviour
 
         
     }
-
-    private async void HostLobbyStart()
+    private void HostLobbyStart()
     {
-        try
-        {
-            await UnityServices.InitializeAsync();
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        }
-        catch (Exception e)
-        {
-            Debug.LogException(e);
-        }
-        LobbyCreate lobbyHost = new();
-        var lobby = await lobbyHost.Create();
-        Debug.Log("lobby created: " + lobby.Name);
+        connectHandler.SetMode(true);
     }
 
 }

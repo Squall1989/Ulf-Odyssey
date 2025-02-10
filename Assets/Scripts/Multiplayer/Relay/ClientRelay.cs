@@ -4,16 +4,27 @@ using Unity.Collections;
 using System;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
+using MsgPck;
+using Ulf;
 
-public class ClientRelay 
+public class ClientRelay : RelayBase, INetworkable
 {
 
-    private NetworkDriver playerDriver;
+    private NetworkDriver clientDriver;
     private NetworkConnection clientConnection;
     private JoinAllocation playerAllocation;
 
-    public Action<string> OnLog;
+    public Action OnJoined;
+    private bool isActive;
+    private bool isConnected;
 
+    public Action<string> OnReceive { get; set; }
+
+    public bool IsConnected => isConnected;
 
     public void BindPlayer()
     {
@@ -26,18 +37,21 @@ public class ClientRelay
         settings.WithRelayParameters(ref relayServerData);
 
         // Create the Player's NetworkDriver from the NetworkSettings object.
-        playerDriver = NetworkDriver.Create(settings);
+        clientDriver = NetworkDriver.Create(settings);
 
         // Bind to the Relay server.
-        if (playerDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
+        if (clientDriver.Bind(NetworkEndpoint.AnyIpv4) != 0)
         {
             OnLog?.Invoke("Player client failed to bind");
         }
         else
         {
             OnLog?.Invoke("Player client bound to Relay server");
-            clientConnection = playerDriver.Connect();
-
+            clientConnection = clientDriver.Connect();
+            isActive = true;
+            QuickJoinLobby();
+            OnJoined?.Invoke();
+            Update();
         }
     }
 
@@ -46,7 +60,8 @@ public class ClientRelay
         // Input join code in the respective input field first.
         if (String.IsNullOrEmpty(JoinCodeInput))
         {
-            OnLog?.Invoke("Please input a join code.");
+            OnLog?.Invoke("Try connect to random lobby...");
+            QuickJoinLobby();
             return;
         }
 
@@ -64,46 +79,109 @@ public class ClientRelay
         }
     }
 
-    public void Update()
+    public async void Update()
     {
-        UpdatePlayer();
+        while (isActive)
+        {
+            UpdatePlayer();
+            await Task.Delay(100);
+        }
     }
 
     void UpdatePlayer()
     {
         // Skip update logic if the Player isn't yet bound.
-        if (!playerDriver.IsCreated || !playerDriver.Bound)
+        if (!clientDriver.IsCreated || !clientDriver.Bound)
         {
             return;
         }
 
         // This keeps the binding to the Relay server alive,
         // preventing it from timing out due to inactivity.
-        playerDriver.ScheduleUpdate().Complete();
+        clientDriver.ScheduleUpdate().Complete();
 
         // Resolve event queue.
         NetworkEvent.Type eventType;
-        while ((eventType = clientConnection.PopEvent(playerDriver, out var stream)) != NetworkEvent.Type.Empty)
+        while ((eventType = clientConnection.PopEvent(clientDriver, out var stream)) != NetworkEvent.Type.Empty)
         {
             switch (eventType)
             {
                 // Handle Relay events.
                 case NetworkEvent.Type.Data:
-                    FixedString32Bytes msg = stream.ReadFixedString32();
-                    OnLog?.Invoke($"Player received msg: {msg}");
+                    //FixedString32Bytes msg = stream.ReadFixedString32();
+                    //OnLog?.Invoke($"Player received msg: {msg}");
+                    Read(stream);
+
                     break;
 
                 // Handle Connect events.
                 case NetworkEvent.Type.Connect:
                     OnLog?.Invoke("Player connected to the Host");
+                    isConnected = true;
                     break;
 
                 // Handle Disconnect events.
                 case NetworkEvent.Type.Disconnect:
                     OnLog?.Invoke("Player got disconnected from the Host");
                     clientConnection = default(NetworkConnection);
+                    isConnected = false;
                     break;
             }
+        }
+    }
+
+    public void StopClient()
+    {
+        isActive = false;
+    }
+
+    private async void QuickJoinLobby()
+    {
+        try
+        {
+            // Quick-join a random lobby with a maximum capacity of 10 or more players.
+            QuickJoinLobbyOptions options = new QuickJoinLobbyOptions();
+
+            options.Filter = new List<QueryFilter>()
+            {
+                new QueryFilter(
+                    field: QueryFilter.FieldOptions.MaxPlayers,
+                    op: QueryFilter.OpOptions.GE,
+                    value: "4")
+            };
+
+            var lobby = await LobbyService.Instance.QuickJoinLobbyAsync(options);
+            var code = lobby.Data["code"].Value;
+            OnLog?.Invoke("Lobby joined code: " + code);
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                Join(code);
+            }
+            // ...
+        }
+        catch (LobbyServiceException e)
+        {
+            OnLog?.Invoke(e.Message);
+        }
+    }
+
+
+    protected override void SendToAll(NativeArray<byte> bytes)
+    {
+        if (clientDriver.BeginSend(clientConnection, out var writer) == 0)
+        {
+            writer.WriteBytes(bytes);
+            clientDriver.EndSend(writer);
+        }
+    }
+
+    protected override void SendTo(NativeArray<byte> bytes, IConnectWrapper connection)
+    {
+        if (clientDriver.BeginSend(((UnityConnect)connection).networkConnection, out var writer) == 0)
+        {
+            writer.WriteBytes(bytes);
+            clientDriver.EndSend(writer);
         }
     }
 }
