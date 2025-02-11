@@ -15,23 +15,32 @@ public class SceneGUI : Editor
         SceneView.duringSceneGui += OnSceneGUI;
     }
 
+    static void CLear()
+    {
+        selectedIndex = 0;
+        time = 0;
+        isFixed = false;
+    }
+
     private static void OnSceneGUI(SceneView sceneView)
     {
         if (Selection.activeGameObject != null && !isFixed)
         {
             if (Selection.activeGameObject.GetComponent<Animator>() != null)
             {
+                CLear();
                 selectedAnimator = Selection.activeGameObject.GetComponent<Animator>();
             }
         }
 
         if(selectedAnimator == null)
         {
+            CLear();
             return;
         }
 
         Handles.BeginGUI(); // Начинаем рисовать GUI
-        GUILayout.BeginArea(new Rect(10, 10, 250, 150), "Анимация", GUI.skin.window);
+        GUILayout.BeginArea(new Rect(10, 10, 250, 150), selectedAnimator.name, GUI.skin.window);
 
         AnimationClip[] clips = null;
         if (selectedAnimator.runtimeAnimatorController != null)
@@ -48,7 +57,9 @@ public class SceneGUI : Editor
         string[] clipNames = clips.Select(x => x.name).ToArray();
 
         selectedIndex = EditorGUILayout.Popup("Выбери анимацию:", selectedIndex, clipNames);
-        time = EditorGUILayout.Slider(time, 0f, 1f);
+        var clip = clips[selectedIndex];
+        var duration = clip.averageDuration;
+        time = EditorGUILayout.Slider(time, 0f, duration);
         isFixed = EditorGUILayout.Toggle("Зафиксировать", isFixed);
         PlayAnimationInEditor(clips[selectedIndex], selectedAnimator);
         GUILayout.EndArea();
@@ -60,9 +71,7 @@ public class SceneGUI : Editor
         if (animator == null || clip == null)
             return;
 
-        float timing = clip.averageDuration * time;
-
-        animator.Play(clip.name, 0, timing);
+        animator.Play(clip.name, 0, time);
         animator.Update(0); // Принудительное обновление
 #if UNITY_EDITOR
         EditorApplication.QueuePlayerLoopUpdate(); // Перерисовать сцену
