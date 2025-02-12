@@ -1,0 +1,500 @@
+fileFormatVersion: 2
+guid: 39ccd17dbcaec1147961fa8b0cb746e2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: e09a0e7f5cc1aa9418bd8394ce7f6bd3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: fireent11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 268
+      width: 236
+      height: 255
+    spriteID: 02e4205e0d61f054684a867bf629cb66
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 268}
+    spritePosition: {x: 2, y: 0}
+  - name: fireent10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 262
+      y: 4
+      width: 256
+      height: 248
+    spriteID: 1ec0338f059082e4ba292794c3343b93
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 262, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: fireent9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 250
+      height: 256
+    spriteID: 1ea7d8864c709024781ce350c614dc16
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 6, y: 0}
+  - name: fireent8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 531
+      width: 232
+      height: 256
+    spriteID: 24f5cdf9d1a525f448d65e1fdbfde384
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 531}
+    spritePosition: {x: 21, y: 0}
+  - name: fireent7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 262
+      y: 260
+      width: 228
+      height: 249
+    spriteID: 996b327934cda3549ad0c97f35c81388
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 262, y: 260}
+    spritePosition: {x: 20, y: 0}
+  - name: fireent6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 795
+      width: 198
+      height: 222
+    spriteID: e15740aca0df5674d925d5f4318106ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 795}
+    spritePosition: {x: 50, y: 0}
+  - name: fireent5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 262
+      y: 517
+      width: 169
+      height: 204
+    spriteID: 2e8de25bb97fd03429220d983ef5559e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 262, y: 517}
+    spritePosition: {x: 69, y: 0}
+  - name: fireent4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 262
+      y: 729
+      width: 162
+      height: 203
+    spriteID: 94b8a6b17cadf324c8ba16ec4122d70d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 262, y: 729}
+    spritePosition: {x: 75, y: 0}
+  - name: fireent3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 526
+      y: 4
+      width: 155
+      height: 190
+    spriteID: f2b89a7b1a7c7b742ab8aa7a5aa422f3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 526, y: 4}
+    spritePosition: {x: 82, y: 0}
+  - name: fireent2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 526
+      y: 202
+      width: 143
+      height: 185
+    spriteID: cd42181304eac7f4aab852504db13b55
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 526, y: 202}
+    spritePosition: {x: 92, y: 0}
+  - name: fireent
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 526
+      y: 395
+      width: 142
+      height: 171
+    spriteID: 832a01e9d9aab3f4d815e2eafdf30c2e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 526, y: 395}
+    spritePosition: {x: 92, y: 0}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: fireent11
+    spriteName: fireent11
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 02e4205e0d61f054684a867bf629cb66
+    layerID: 52
+    mosaicPosition: {x: 4, y: 268}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent10
+    spriteName: fireent10
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1ec0338f059082e4ba292794c3343b93
+    layerID: 51
+    mosaicPosition: {x: 262, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent9
+    spriteName: fireent9
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1ea7d8864c709024781ce350c614dc16
+    layerID: 50
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent8
+    spriteName: fireent8
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 24f5cdf9d1a525f448d65e1fdbfde384
+    layerID: 49
+    mosaicPosition: {x: 4, y: 531}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent7
+    spriteName: fireent7
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 996b327934cda3549ad0c97f35c81388
+    layerID: 48
+    mosaicPosition: {x: 262, y: 260}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent6
+    spriteName: fireent6
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e15740aca0df5674d925d5f4318106ac
+    layerID: 47
+    mosaicPosition: {x: 4, y: 795}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent5
+    spriteName: fireent5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2e8de25bb97fd03429220d983ef5559e
+    layerID: 46
+    mosaicPosition: {x: 262, y: 517}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent4
+    spriteName: fireent4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 94b8a6b17cadf324c8ba16ec4122d70d
+    layerID: 45
+    mosaicPosition: {x: 262, y: 729}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent3
+    spriteName: fireent3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f2b89a7b1a7c7b742ab8aa7a5aa422f3
+    layerID: 44
+    mosaicPosition: {x: 526, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent2
+    spriteName: fireent2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cd42181304eac7f4aab852504db13b55
+    layerID: 43
+    mosaicPosition: {x: 526, y: 202}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fireent
+    spriteName: fireent
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 832a01e9d9aab3f4d815e2eafdf30c2e
+    layerID: 42
+    mosaicPosition: {x: 526, y: 395}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
