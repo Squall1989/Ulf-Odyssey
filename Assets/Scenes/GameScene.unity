@@ -1108,7 +1108,7 @@ MonoBehaviour:
   target: {fileID: 1341266847}
   uiBlurMat: {fileID: 2100000, guid: 56befc5dc0fd5f649a64614a16f7810c, type: 2}
   delayFwd: 0.15
-  delayBack: 0.16
+  delayBack: 0.3
   moveTime: 0.2
   yMove: 200
   zRotate: 0

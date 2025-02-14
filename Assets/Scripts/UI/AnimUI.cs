@@ -61,13 +61,15 @@ namespace Ulf
         {
             Vector2 size = new Vector2(scrollWidth, 
                 isFwdAnim ? scroll1H : scroll1L);
-            scroll1.DOSizeDelta(size, .8f);
+            scroll1.DOSizeDelta(size, isFwdAnim ? .5f : .1f);
         }
 
         private void ReverseAnim()
         {
             ScrollAnim();
-            target.DORotateQuaternion(startRot, rotateTime);
+            DOTween.Sequence()
+                .AppendInterval(.15f)
+                .Append(target.DORotateQuaternion(startRot, rotateTime));
             DOTween.Sequence()
                 .AppendInterval(rotateTime - delayBack)
                 .Append(target.DOAnchorPos(startPos, moveTime).OnComplete(() =>
