@@ -12,11 +12,6 @@ public class AnimUIExtension : Editor
         AnimUI animator = (AnimUI)target;
         Handles.BeginGUI();
 
-        if (GUILayout.Button("Set new Rect Target"))
-        {
-            animator.SetRectTarget();
-        }
-
         if (GUILayout.Button("TestAnim"))
         {
             animator.StartAnim();
