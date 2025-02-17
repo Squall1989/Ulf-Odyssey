@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      takedmgentrog_0: -1492210645644329062
+      takedmgentrog_1: 5137199077005701738
+      takedmgentrog_2: -6420984863563419154
+      takedmgentrog_3: 3543373671222066028
+      takedmgentrog_4: 6789457426120140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -98,23 +98,3 @@ public class SceneGUI : Editor
 #endif
     }
 }
-
-[CustomEditor(typeof(Animator))]
-public class AnimatorPreview : Editor
-{
-    Animator animator;
-
-
-    private void OnSceneGUI()
-    {
-        Animator animator = (Animator)target;
-
-
-        
-
-        Handles.BeginGUI();
-
-    }
-
-    
-}
