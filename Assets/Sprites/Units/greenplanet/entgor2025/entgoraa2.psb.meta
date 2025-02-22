@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39ccd17dbcaec1147961fa8b0cb746e2
+guid: b54f47e4d8088714d8fea6357b3eae72
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -83,7 +83,7 @@ ScriptedImporter:
       y: 0
       width: 0
       height: 0
-    spriteID: e09a0e7f5cc1aa9418bd8394ce7f6bd3
+    spriteID: e94c9b243d90e424ba30a178c1d28890
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -95,51 +95,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: fireent11
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 268
-      width: 236
-      height: 255
-    spriteID: 02e4205e0d61f054684a867bf629cb66
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 268}
-    spritePosition: {x: 2, y: 0}
-  - name: fireent10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 262
-      y: 4
-      width: 256
-      height: 248
-    spriteID: 1ec0338f059082e4ba292794c3343b93
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 262, y: 4}
-    spritePosition: {x: 0, y: 0}
-  - name: fireent9
+  - name: svententrog
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -149,9 +105,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 250
-      height: 256
-    spriteID: 1ea7d8864c709024781ce350c614dc16
+      width: 160
+      height: 206
+    spriteID: de429fca31b53564c9b6aebcffc53e56
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,8 +116,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 6, y: 0}
-  - name: fireent8
+    spritePosition: {x: 0, y: 0}
+  - name: volna2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -170,164 +126,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 531
-      width: 232
-      height: 256
-    spriteID: 24f5cdf9d1a525f448d65e1fdbfde384
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 531}
-    spritePosition: {x: 21, y: 0}
-  - name: fireent7
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 262
-      y: 260
-      width: 228
-      height: 249
-    spriteID: 996b327934cda3549ad0c97f35c81388
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 262, y: 260}
-    spritePosition: {x: 20, y: 0}
-  - name: fireent6
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 795
-      width: 198
-      height: 222
-    spriteID: e15740aca0df5674d925d5f4318106ac
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 795}
-    spritePosition: {x: 50, y: 0}
-  - name: fireent5
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 262
-      y: 517
-      width: 169
-      height: 204
-    spriteID: 2e8de25bb97fd03429220d983ef5559e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 262, y: 517}
-    spritePosition: {x: 69, y: 0}
-  - name: fireent4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 262
-      y: 729
-      width: 162
-      height: 203
-    spriteID: 94b8a6b17cadf324c8ba16ec4122d70d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 262, y: 729}
-    spritePosition: {x: 75, y: 0}
-  - name: fireent3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 526
-      y: 4
-      width: 155
-      height: 190
-    spriteID: f2b89a7b1a7c7b742ab8aa7a5aa422f3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 526, y: 4}
-    spritePosition: {x: 82, y: 0}
-  - name: fireent2
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 526
-      y: 202
-      width: 143
-      height: 185
-    spriteID: cd42181304eac7f4aab852504db13b55
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 526, y: 202}
-    spritePosition: {x: 92, y: 0}
-  - name: fireent
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 526
       y: 395
-      width: 142
-      height: 171
-    spriteID: 832a01e9d9aab3f4d815e2eafdf30c2e
+      width: 40
+      height: 89
+    spriteID: 8d62660dde507ff4a813cd5b6da4dcce
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -335,8 +137,140 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 526, y: 395}
-    spritePosition: {x: 92, y: 0}
+    uvTransform: {x: 4, y: 395}
+    spritePosition: {x: 70, y: 49}
+  - name: ship5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 52
+      y: 434
+      width: 42
+      height: 36
+    spriteID: fb07e46c0e9fe4a4aab8dd6dda19a90d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 52, y: 434}
+    spritePosition: {x: 97, y: 118}
+  - name: ship3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 52
+      y: 395
+      width: 49
+      height: 31
+    spriteID: 74e60f12fadd06440b76f8970c2cd2a0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 52, y: 395}
+    spritePosition: {x: 93, y: 80}
+  - name: volna1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 218
+      width: 128
+      height: 169
+    spriteID: 7d55996f944cb554cbb37e587dd716ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 218}
+    spritePosition: {x: 14, y: 15}
+  - name: ship6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 52
+      y: 478
+      width: 34
+      height: 24
+    spriteID: 1c73277cc95fd75408634a7b36c56001
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 52, y: 478}
+    spritePosition: {x: 109, y: 50}
+  - name: ship2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 172
+      y: 4
+      width: 38
+      height: 38
+    spriteID: 443ff447ff9168e4280e893ad6e532b8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 172, y: 4}
+    spritePosition: {x: 79, y: 136}
+  - name: ship1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 102
+      y: 434
+      width: 27
+      height: 45
+    spriteID: 06476394ecb4ce947a9f3d8e1c050477
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 102, y: 434}
+    spritePosition: {x: 53, y: 161}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
@@ -376,113 +310,83 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: fireent11
-    spriteName: fireent11
+  - name: svententrog
+    spriteName: svententrog
     isGroup: 0
     parentIndex: -1
-    spriteID: 02e4205e0d61f054684a867bf629cb66
-    layerID: 52
-    mosaicPosition: {x: 4, y: 268}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: fireent10
-    spriteName: fireent10
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 1ec0338f059082e4ba292794c3343b93
-    layerID: 51
-    mosaicPosition: {x: 262, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: fireent9
-    spriteName: fireent9
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 1ea7d8864c709024781ce350c614dc16
-    layerID: 50
+    spriteID: de429fca31b53564c9b6aebcffc53e56
+    layerID: 18
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent8
-    spriteName: fireent8
+  - name: volna2
+    spriteName: volna2
     isGroup: 0
     parentIndex: -1
-    spriteID: 24f5cdf9d1a525f448d65e1fdbfde384
-    layerID: 49
-    mosaicPosition: {x: 4, y: 531}
+    spriteID: 8d62660dde507ff4a813cd5b6da4dcce
+    layerID: 16
+    mosaicPosition: {x: 4, y: 395}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent7
-    spriteName: fireent7
+  - name: ship5
+    spriteName: ship5
     isGroup: 0
     parentIndex: -1
-    spriteID: 996b327934cda3549ad0c97f35c81388
-    layerID: 48
-    mosaicPosition: {x: 262, y: 260}
+    spriteID: fb07e46c0e9fe4a4aab8dd6dda19a90d
+    layerID: 7
+    mosaicPosition: {x: 52, y: 434}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent6
-    spriteName: fireent6
+  - name: ship3
+    spriteName: ship3
     isGroup: 0
     parentIndex: -1
-    spriteID: e15740aca0df5674d925d5f4318106ac
-    layerID: 47
-    mosaicPosition: {x: 4, y: 795}
+    spriteID: 74e60f12fadd06440b76f8970c2cd2a0
+    layerID: 9
+    mosaicPosition: {x: 52, y: 395}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent5
-    spriteName: fireent5
+  - name: volna1
+    spriteName: volna1
     isGroup: 0
     parentIndex: -1
-    spriteID: 2e8de25bb97fd03429220d983ef5559e
-    layerID: 46
-    mosaicPosition: {x: 262, y: 517}
+    spriteID: 7d55996f944cb554cbb37e587dd716ed
+    layerID: 13
+    mosaicPosition: {x: 4, y: 218}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent4
-    spriteName: fireent4
+  - name: ship6
+    spriteName: ship6
     isGroup: 0
     parentIndex: -1
-    spriteID: 94b8a6b17cadf324c8ba16ec4122d70d
-    layerID: 45
-    mosaicPosition: {x: 262, y: 729}
+    spriteID: 1c73277cc95fd75408634a7b36c56001
+    layerID: 17
+    mosaicPosition: {x: 52, y: 478}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent3
-    spriteName: fireent3
+  - name: ship2
+    spriteName: ship2
     isGroup: 0
     parentIndex: -1
-    spriteID: f2b89a7b1a7c7b742ab8aa7a5aa422f3
-    layerID: 44
-    mosaicPosition: {x: 526, y: 4}
+    spriteID: 443ff447ff9168e4280e893ad6e532b8
+    layerID: 5
+    mosaicPosition: {x: 172, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent2
-    spriteName: fireent2
+  - name: ship1
+    spriteName: ship1
     isGroup: 0
     parentIndex: -1
-    spriteID: cd42181304eac7f4aab852504db13b55
-    layerID: 43
-    mosaicPosition: {x: 526, y: 202}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: fireent
-    spriteName: fireent
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 832a01e9d9aab3f4d815e2eafdf30c2e
-    layerID: 42
-    mosaicPosition: {x: 526, y: 395}
+    spriteID: 06476394ecb4ce947a9f3d8e1c050477
+    layerID: 6
+    mosaicPosition: {x: 102, y: 434}
     flatten: 0
     isImported: 1
     isVisible: 1
