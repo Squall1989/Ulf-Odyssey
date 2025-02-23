@@ -6,7 +6,7 @@ using Ulf;
 
 public class MultiplayerHost 
 {
-    private IPlayerProxy _playerProxy;
+    private IPlayersProxy _playerProxy;
     private ISceneProxy _sceneHost;
     private INetworkable _networkable;
     protected Dictionary<string, PlayerData> _players = new();

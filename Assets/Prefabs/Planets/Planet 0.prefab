@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 776891176270804569, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 776891176270804569, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_SortingLayerID
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1303719828287207208, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_Radius
-      value: 7.47
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 1953562182878465971, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_Name
@@ -78,15 +78,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_Size.x
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_Size.y
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3632559889533004852, guid: 0ea2a162cf1a644449b3ea1d2d68bf7e, type: 3}
       propertyPath: m_SortingLayerID

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace Ulf
 {
-    public class PlayerControlSingle : PlayerControlBase, IPlayerProxy
+    public class PlayerControlSingle : PlayerControlBase, IPlayersProxy
     {
         private SceneGenerator _sceneGenerator;
 
