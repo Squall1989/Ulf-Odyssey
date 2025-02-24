@@ -72,7 +72,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _LightHeight: 0.082
-    - _LightMax: 0.187
+    - _LightMax: 0.162
     - _LightMin: 0.174
     - _ZWrite: 0
     m_Colors:
