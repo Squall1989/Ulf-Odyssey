@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Ulf
 {
-    public interface IPlayerProxy
+    public interface IPlayersProxy
     {
         List<SnapPlayerStruct> PlayersSnapshot();
         Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }

@@ -46,7 +46,7 @@ namespace Ulf
                     break;
                 case GameType.single:
                     Container.Bind<IGame>().To<SinglePlayerGame>().FromNew().AsCached();
-                    Container.Bind<IPlayerProxy>().To<PlayerControlSingle>().AsSingle();
+                    Container.Bind<IPlayersProxy>().To<PlayerControlSingle>().AsSingle();
                     BindHost();
                     break;
             }
@@ -63,14 +63,14 @@ namespace Ulf
         private void BindMultiplayerHost()
         {
             Container.Bind<MultiplayerHost>().AsSingle().NonLazy();
-            Container.Bind<IPlayerProxy>().To<PlayerControlHost>().AsSingle();
+            Container.Bind<IPlayersProxy>().To<PlayerControlHost>().AsSingle();
         }
 
         private void BindMultiplayerClient()
         {
             Container.Bind<ISceneProxy>().To<SceneClient>().FromNew().AsCached();
             Container.Bind<IUnitsProxy>().To<UnitsController>().FromNew().AsSingle();
-            Container.Bind<IPlayerProxy>().To<PlayerControlClient>().AsSingle();
+            Container.Bind<IPlayersProxy>().To<PlayerControlClient>().AsSingle();
         }
     }
 }

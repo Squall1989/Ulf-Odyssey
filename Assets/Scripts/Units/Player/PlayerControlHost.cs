@@ -5,7 +5,7 @@ using UnityEditor.MemoryProfiler;
 
 namespace Ulf
 {
-    public class PlayerControlHost : PlayerControlBase, IPlayerProxy
+    public class PlayerControlHost : PlayerControlBase, IPlayersProxy
     {
         private MultiplayerHost _multiplayerHost;
         private SceneGenerator _sceneGenerator;

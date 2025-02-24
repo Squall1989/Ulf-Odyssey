@@ -17,7 +17,7 @@ namespace Ulf
         [Inject] protected AllBuildScriptable buildContainer;
         [Inject] protected AllUnitsScriptable unitsContainer;
         [Inject] protected ISceneProxy sceneProxy;
-        [Inject] protected IPlayerProxy playerProxy;
+        [Inject] protected IPlayersProxy playerProxy;
         [Inject] protected IUnitsProxy unitsProxy;
         [Inject] protected ConnectHandler connectHandler;
         [Inject] protected InputControl inputControl;

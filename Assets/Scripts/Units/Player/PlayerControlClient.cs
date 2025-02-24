@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Ulf
 {
-    public class PlayerControlClient : PlayerControlBase, IPlayerProxy
+    public class PlayerControlClient : PlayerControlBase, IPlayersProxy
     {
         private string _playerId;
         private INetworkable _networkable;
