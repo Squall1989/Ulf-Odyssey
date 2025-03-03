@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e71cd602a68bd84096d0b281661f9f1
+guid: 9a52dfbbf2454a44fbe5d4f1ff81bea4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -83,7 +83,7 @@ ScriptedImporter:
       y: 0
       width: 0
       height: 0
-    spriteID: 356cf2368143f364ea55e99e322ec882
+    spriteID: 81ed07552ccab7840bcc79dcd2e06ed6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -95,7 +95,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: fireent13
+  - name: lisspearA24
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -103,11 +103,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 268
-      y: 942
-      width: 54
-      height: 58
-    spriteID: ff98a240f3bfe4b4a8e1f3c2a429e001
+      x: 494
+      y: 433
+      width: 0
+      height: 0
+    spriteID: c3929c75b67f9704b955898f38cac510
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -115,75 +115,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 942}
-    spritePosition: {x: 182, y: 169}
-  - name: fireent12
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 519
-      y: 4
-      width: 171
-      height: 201
-    spriteID: 10e5bbc91ade9794fb5ef3530e1bf083
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 519, y: 4}
-    spritePosition: {x: 0, y: 55}
-  - name: fireent11
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 795
-      width: 221
-      height: 224
-    spriteID: fc6ffdbd218551942bef8626dcfa18f3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 795}
-    spritePosition: {x: 26, y: 0}
-  - name: fireent10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 268
-      width: 256
-      height: 255
-    spriteID: d559250237438124da739ae005a7260c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 268}
-    spritePosition: {x: 0, y: 0}
-  - name: fireent9
+    uvTransform: {x: 494, y: 433}
+    spritePosition: {x: 0, y: 300}
+  - name: Spearmanblock1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -193,9 +127,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 256
-      height: 256
-    spriteID: 1fcec02a78ef85846ada62b032b9de64
+      width: 351
+      height: 300
+    spriteID: e70ef7975637ce34dbfcdfe717cdfd0b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -204,8 +138,74 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 0, y: 0}
-  - name: fireent8
+    spritePosition: {x: 9, y: 0}
+  - name: Spearmanblock12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 425
+      y: 312
+      width: 83
+      height: 88
+    spriteID: 871f0dfb7e6997a4da91f0707d874904
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 425, y: 312}
+    spritePosition: {x: 73, y: 181}
+  - name: Spearmanblock13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 91
+      y: 458
+      width: 65
+      height: 34
+    spriteID: 68ad5205ee7a321409cda53d04ae071f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 91, y: 458}
+    spritePosition: {x: 73, y: 143}
+  - name: Spearmanblock14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 414
+      y: 4
+      width: 57
+      height: 34
+    spriteID: b9b7a81160595d94ab0ea18123ab5bf5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 414, y: 4}
+    spritePosition: {x: 27, y: 191}
+  - name: Spearmanblock15
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -214,10 +214,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 531
-      width: 243
-      height: 256
-    spriteID: df680989c393cab4f92721eb615aa4a6
+      y: 458
+      width: 79
+      height: 41
+    spriteID: a2078817e02fd1740bef1f99401fff9c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -225,9 +225,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 531}
-    spritePosition: {x: 13, y: 0}
-  - name: fireent7
+    uvTransform: {x: 4, y: 458}
+    spritePosition: {x: 186, y: 129}
+  - name: Spearmanblock16
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -235,11 +235,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 268
+      x: 363
       y: 4
-      width: 243
-      height: 256
-    spriteID: 8812621ca9e45a244b197039f16e6637
+      width: 43
+      height: 75
+    spriteID: b43e750e6dcda784b809e507eeff1834
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -247,9 +247,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 4}
-    spritePosition: {x: 12, y: 0}
-  - name: fireent6
+    uvTransform: {x: 363, y: 4}
+    spritePosition: {x: 192, y: 92}
+  - name: Spearmanblock17
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -257,11 +257,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 268
-      y: 268
-      width: 214
-      height: 228
-    spriteID: 3264639d2aef65742a74b1f02d28bd52
+      x: 412
+      y: 433
+      width: 74
+      height: 56
+    spriteID: a55be8a066e487843bb9f180aa86e22f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -269,9 +269,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 268}
-    spritePosition: {x: 42, y: 0}
-  - name: fireent5
+    uvTransform: {x: 412, y: 433}
+    spritePosition: {x: 199, y: 110}
+  - name: Spearmanblock17
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -279,11 +279,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 268
-      y: 504
-      width: 186
-      height: 212
-    spriteID: e1b717a5786a3014ea504590fd24e201
+      x: 337
+      y: 433
+      width: 67
+      height: 66
+    spriteID: 977fc2abc5615ee47a32bd484be6f69b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -291,9 +291,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 504}
-    spritePosition: {x: 61, y: 0}
-  - name: fireent4
+    uvTransform: {x: 337, y: 433}
+    spritePosition: {x: 192, y: 155}
+  - name: Spearmanblock19
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -301,11 +301,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 268
-      y: 724
-      width: 177
-      height: 210
-    spriteID: 20b21e16dfe2ad44784b2d27291f2139
+      x: 222
+      y: 312
+      width: 195
+      height: 113
+    spriteID: dd11681e3086bf34ca6ba7774b1b4aae
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -313,9 +313,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 268, y: 724}
-    spritePosition: {x: 68, y: 0}
-  - name: fireent3
+    uvTransform: {x: 222, y: 312}
+    spritePosition: {x: 115, y: 57}
+  - name: Spearmanblock110
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -323,11 +323,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 519
-      y: 213
-      width: 169
-      height: 197
-    spriteID: 3c609805471895343948fe52f5d9b462
+      x: 4
+      y: 312
+      width: 210
+      height: 138
+    spriteID: f847eaaf31b473c4d88bd133276ddf81
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -335,9 +335,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 519, y: 213}
-    spritePosition: {x: 76, y: 0}
-  - name: fireent2
+    uvTransform: {x: 4, y: 312}
+    spritePosition: {x: 109, y: 45}
+  - name: Spearmanblock112
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -345,11 +345,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 519
-      y: 418
-      width: 158
-      height: 191
-    spriteID: e8179a7caeef7854a99539fe5b4cb233
+      x: 222
+      y: 433
+      width: 107
+      height: 72
+    spriteID: 946a7208f87763b4fbda297475f9047d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -357,30 +357,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 519, y: 418}
-    spritePosition: {x: 85, y: 0}
-  - name: fireent1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 519
-      y: 617
-      width: 157
-      height: 177
-    spriteID: eb56d3fa15d45c44881b9af3708e042c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 519, y: 617}
-    spritePosition: {x: 85, y: 0}
+    uvTransform: {x: 222, y: 433}
+    spritePosition: {x: 144, y: 92}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
@@ -420,133 +398,123 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
-  - name: fireent13
-    spriteName: fireent13
+  - name: lisspearA24
+    spriteName: lisspearA24
     isGroup: 0
     parentIndex: -1
-    spriteID: ff98a240f3bfe4b4a8e1f3c2a429e001
-    layerID: 90
-    mosaicPosition: {x: 268, y: 942}
+    spriteID: c3929c75b67f9704b955898f38cac510
+    layerID: 12
+    mosaicPosition: {x: 494, y: 433}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent12
-    spriteName: fireent12
+  - name: Spearmanblock1
+    spriteName: Spearmanblock1
     isGroup: 0
     parentIndex: -1
-    spriteID: 10e5bbc91ade9794fb5ef3530e1bf083
-    layerID: 89
-    mosaicPosition: {x: 519, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: fireent11
-    spriteName: fireent11
-    isGroup: 0
-    parentIndex: -1
-    spriteID: fc6ffdbd218551942bef8626dcfa18f3
-    layerID: 52
-    mosaicPosition: {x: 4, y: 795}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: fireent10
-    spriteName: fireent10
-    isGroup: 0
-    parentIndex: -1
-    spriteID: d559250237438124da739ae005a7260c
-    layerID: 51
-    mosaicPosition: {x: 4, y: 268}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: fireent9
-    spriteName: fireent9
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 1fcec02a78ef85846ada62b032b9de64
-    layerID: 50
+    spriteID: e70ef7975637ce34dbfcdfe717cdfd0b
+    layerID: 60
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent8
-    spriteName: fireent8
+  - name: Spearmanblock12
+    spriteName: Spearmanblock12
     isGroup: 0
     parentIndex: -1
-    spriteID: df680989c393cab4f92721eb615aa4a6
-    layerID: 49
-    mosaicPosition: {x: 4, y: 531}
+    spriteID: 871f0dfb7e6997a4da91f0707d874904
+    layerID: 59
+    mosaicPosition: {x: 425, y: 312}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent7
-    spriteName: fireent7
+  - name: Spearmanblock13
+    spriteName: Spearmanblock13
     isGroup: 0
     parentIndex: -1
-    spriteID: 8812621ca9e45a244b197039f16e6637
-    layerID: 48
-    mosaicPosition: {x: 268, y: 4}
+    spriteID: 68ad5205ee7a321409cda53d04ae071f
+    layerID: 66
+    mosaicPosition: {x: 91, y: 458}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent6
-    spriteName: fireent6
+  - name: Spearmanblock14
+    spriteName: Spearmanblock14
     isGroup: 0
     parentIndex: -1
-    spriteID: 3264639d2aef65742a74b1f02d28bd52
-    layerID: 84
-    mosaicPosition: {x: 268, y: 268}
+    spriteID: b9b7a81160595d94ab0ea18123ab5bf5
+    layerID: 58
+    mosaicPosition: {x: 414, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent5
-    spriteName: fireent5
+  - name: Spearmanblock15
+    spriteName: Spearmanblock15
     isGroup: 0
     parentIndex: -1
-    spriteID: e1b717a5786a3014ea504590fd24e201
-    layerID: 83
-    mosaicPosition: {x: 268, y: 504}
+    spriteID: a2078817e02fd1740bef1f99401fff9c
+    layerID: 63
+    mosaicPosition: {x: 4, y: 458}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent4
-    spriteName: fireent4
+  - name: Spearmanblock16
+    spriteName: Spearmanblock16
     isGroup: 0
     parentIndex: -1
-    spriteID: 20b21e16dfe2ad44784b2d27291f2139
-    layerID: 82
-    mosaicPosition: {x: 268, y: 724}
+    spriteID: b43e750e6dcda784b809e507eeff1834
+    layerID: 64
+    mosaicPosition: {x: 363, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent3
-    spriteName: fireent3
+  - name: Spearmanblock17
+    spriteName: Spearmanblock17
     isGroup: 0
     parentIndex: -1
-    spriteID: 3c609805471895343948fe52f5d9b462
-    layerID: 81
-    mosaicPosition: {x: 519, y: 213}
+    spriteID: a55be8a066e487843bb9f180aa86e22f
+    layerID: 65
+    mosaicPosition: {x: 412, y: 433}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent2
-    spriteName: fireent2
+  - name: Spearmanblock17
+    spriteName: Spearmanblock17
     isGroup: 0
     parentIndex: -1
-    spriteID: e8179a7caeef7854a99539fe5b4cb233
-    layerID: 80
-    mosaicPosition: {x: 519, y: 418}
+    spriteID: 977fc2abc5615ee47a32bd484be6f69b
+    layerID: 57
+    mosaicPosition: {x: 337, y: 433}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: fireent1
-    spriteName: fireent1
+  - name: Spearmanblock19
+    spriteName: Spearmanblock19
     isGroup: 0
     parentIndex: -1
-    spriteID: eb56d3fa15d45c44881b9af3708e042c
-    layerID: 79
-    mosaicPosition: {x: 519, y: 617}
+    spriteID: dd11681e3086bf34ca6ba7774b1b4aae
+    layerID: 56
+    mosaicPosition: {x: 222, y: 312}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Spearmanblock110
+    spriteName: Spearmanblock110
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f847eaaf31b473c4d88bd133276ddf81
+    layerID: 62
+    mosaicPosition: {x: 4, y: 312}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Spearmanblock112
+    spriteName: Spearmanblock112
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 946a7208f87763b4fbda297475f9047d
+    layerID: 55
+    mosaicPosition: {x: 222, y: 433}
     flatten: 0
     isImported: 1
     isVisible: 1
