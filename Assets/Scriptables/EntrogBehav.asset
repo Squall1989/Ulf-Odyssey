@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef4327e3b54f4d44bce981bddc8cd27, type: 3}
   m_Name: EntrogBehav
   m_EditorClassIdentifier: 
-  lookDist: 0
-  attackDist: 0
-  initiativeType: 0
+  lookDist: 4
+  attackDist: 2
   attackPattern:
-    initiative: 0
-    attackChooses: []
+    initiative: 1
+    attackChooses:
+    - condition: 3
+      attackType: 1
+    - condition: 3
+      attackType: 2
