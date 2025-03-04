@@ -22,14 +22,13 @@ namespace Ulf
             Container.Bind<ConnectHandler>().FromInstance(handlerConnect).AsSingle();
             options.OnGameTypeChange += SetGameType;
 
+            var stats = Resources.LoadAll<StatsScriptable>("Containers/Stats"); 
+            Container.Bind<StatsScriptable[]>().FromInstance(stats).AsSingle();
+
             Container.Bind<AllUnitsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
             Container.Bind<AllPlanetsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
             Container.Bind<AllBuildScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
         }
-
-
-
-
 
         public void SetGameType(GameType gameType)
         {

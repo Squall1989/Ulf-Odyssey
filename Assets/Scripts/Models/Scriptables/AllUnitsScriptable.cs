@@ -1,10 +1,8 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Ulf;
 using System.Linq;
-using System;
 
 [CreateAssetMenu(fileName = "Units", menuName = "ScriptableObjects/Units", order = 2)]
 public class AllUnitsScriptable : ScriptableObject

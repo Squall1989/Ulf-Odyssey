@@ -23,7 +23,7 @@ namespace Ulf
             circleMove.OnMoveDirect += ChangeDirect;
 
             rightDir = _visualTransform.localRotation.eulerAngles;
-            leftDir = leftDir + new Vector3(0, 180f, 0);
+            leftDir = rightDir + new Vector3(0, 180f, 0);
         }
 
         private void ChangeDirect(int direct)
