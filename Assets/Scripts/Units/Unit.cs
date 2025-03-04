@@ -10,8 +10,11 @@ namespace Ulf
         protected DefaultUnitStruct _defaultUnit;
         protected Health _health;
 
+        public Action<float> OnChangeSpeed;
+
+        public string View => _unitStruct.View;
         public int GUID => _unitStruct.Guid;
-        public CircleMove Movement => _movement;
+        public float Degree => _movement.Degree;
 
         public Unit(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, CircleMove circleMove)
         {
@@ -29,6 +32,14 @@ namespace Ulf
                 health = _health.CurrHealth,
                 createUnit = _unitStruct,
             };
+        }
+
+        public virtual void MoveCommand(MovementAction action)
+        {
+            _movement.SetAngle(action.fromAngle);
+            _movement.SetMoveDirect(action.direction);
+            _movement.SetSpeed(action.speed);
+            OnChangeSpeed?.Invoke(action.speed);
         }
     }
 }

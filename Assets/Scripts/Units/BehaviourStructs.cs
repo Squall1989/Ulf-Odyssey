@@ -35,12 +35,12 @@ namespace Ulf
         public int direction;
         [Key(1)]
         public float fromAngle;
+        [Key(2)]
+        public float speed;
 
         public void DoAction(Unit unit)
         {
-            unit.Movement.SetMoveDirect(direction);
-            // ToDo: smooth angle set
-            unit.Movement.SetAngle(fromAngle);
+            unit.MoveCommand(this);
         }
     }
 

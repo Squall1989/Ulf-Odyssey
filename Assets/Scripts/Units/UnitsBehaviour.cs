@@ -5,6 +5,7 @@ using Time = UnityEngine.Time;
 using Random = UnityEngine.Random;
 using MsgPck;
 using System;
+using System.Linq;
 
 namespace Ulf
 {
@@ -14,10 +15,11 @@ namespace Ulf
         protected Dictionary<Unit, BehaviourUnitStruct> unitsBehaviourDict = new();
 
         public Action<int, INextAction> OnUnitAction;
+        private readonly StatsScriptable[] _stats;
 
-        public UnitsBehaviour() 
+        public UnitsBehaviour(StatsScriptable[] stats) 
         {
-
+            _stats = stats;
         }
 
         public void Add(Unit unit)
@@ -69,10 +71,17 @@ namespace Ulf
 
             // left[-1] right[+1] stay[0]
             int direct = Random.Range(-1, 2);
+            float speed = 0;
+            if (direct != 0)
+            {
+                var stat = _stats.FirstOrDefault(p => p.ID == unit.View);
+                speed = stat.GetStatAmount(StatType.walkSpeed);
+            }
 
             return new MovementAction() { 
                 direction = direct,
-                fromAngle = unit.Movement.Degree,
+                fromAngle = unit.Degree,
+                speed = speed,
             };
         }
 

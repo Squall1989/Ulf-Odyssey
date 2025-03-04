@@ -16,13 +16,14 @@ namespace Ulf
 
         public override void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
-            var circleMove = new ExtendedCircleMove(defaultUnit.MoveSpeed);
+            var circleMove = new ExtendedCircleMove();
             circleMove.OnLog += (log) => Debug.Log(log);
-            movement.Init(planet, circleMove, freeArc, visualTransform);
+            _movement.Init(planet, circleMove, freeArc);
 
-            _movementMono = movement as PlayerMovementMono;
+            _movementMono = _movement as PlayerMovementMono;
             _player = new Player(planet.Element, createUnit, defaultUnit, circleMove);
             _unit = _player;
+            _player.OnChangeSpeed += _animator.SetSpeed;
         }
 
 

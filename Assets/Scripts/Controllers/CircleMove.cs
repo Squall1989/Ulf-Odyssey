@@ -24,9 +24,9 @@ namespace Ulf
         public Vector2 Position => _position;
         public IRound Round => _round;
 
-        public CircleMove(float speed)
+        public CircleMove()
         {
-            speedLinear = speed;
+
         }
 
         public void SetDeltaTime(float delta)
@@ -58,6 +58,10 @@ namespace Ulf
             currDegree = startAngle;
         }
 
+        public void SetSpeed(float speed)
+        {
+            speedLinear = speed;
+        }
         public void SetAngle(float angle)
         {
             

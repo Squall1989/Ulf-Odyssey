@@ -1,3 +1,4 @@
+using ENet;
 using MsgPck;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,14 @@ namespace Ulf
     {
         protected List<Player> players = new();
         protected Player _player;
-
+        private StatsScriptable[] _stats;
 
         public Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
+
+        public PlayerControlBase(StatsScriptable[] stats)
+        {
+            _stats = stats;
+        }
 
 
         public void AddPlayer(Player player, bool isOurPlayer)
@@ -61,10 +67,18 @@ namespace Ulf
 
         public void CreatePlayerMoveAction(int direct)
         {
+            float speed = 0;
+            if (direct != 0)
+            {
+                var stat = _stats.FirstOrDefault(p => p.ID == _player.View);
+                speed = stat.GetStatAmount(StatType.walkSpeed);
+                UnityEngine.Debug.Log("Speed: " + speed);
+            }
             MovementAction movementAction = new MovementAction()
             {
                 direction = direct,
-                fromAngle = _player.Movement.Degree,
+                fromAngle = _player.Degree,
+                speed = speed,
             };
 
             movementAction.DoAction(_player);

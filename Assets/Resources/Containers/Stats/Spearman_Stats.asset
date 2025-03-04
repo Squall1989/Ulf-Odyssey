@@ -15,6 +15,6 @@ MonoBehaviour:
   unitId: spearman
   statStructs:
   - stat: 3
-    amount: 2
+    amount: 20
   - stat: 4
-    amount: 3
+    amount: 15

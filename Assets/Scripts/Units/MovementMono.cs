@@ -3,21 +3,21 @@ using UnityEngine;
 
 namespace Ulf
 {
+
     public class MovementMono : MonoBehaviour
     {
         protected CircleMove _circleMove;
-        private Transform _visualTransform;
+        [SerializeField] private Transform _visualTransform;
 
         private Vector3 leftDir, rightDir;
 
         public CircleMove CircleMove => _circleMove;
 
-        public virtual void Init(Planet planet, CircleMove circleMove, float angle, Transform visualTransform)
+        public virtual void Init(Planet planet, CircleMove circleMove, float angle)
         {
             _circleMove = circleMove;
             _circleMove.ToLand(planet, angle);
             _circleMove.SetMoveDirect(0);
-            _visualTransform = visualTransform;
             transform.position = _circleMove.Position;
 
             circleMove.OnMoveDirect += ChangeDirect;

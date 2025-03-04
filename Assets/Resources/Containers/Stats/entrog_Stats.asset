@@ -15,6 +15,6 @@ MonoBehaviour:
   unitId: entrog
   statStructs:
   - stat: 3
-    amount: 1
+    amount: 7
   - stat: 4
-    amount: 2
+    amount: 9

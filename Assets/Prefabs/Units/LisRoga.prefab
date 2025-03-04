@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5121279730957933265}
   - component: {fileID: 8203120888528194403}
   - component: {fileID: 6589484832610837306}
+  - component: {fileID: 7808295612756477069}
   m_Layer: 0
   m_Name: LisRoga
   m_TagString: Untagged
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63aa16dbe00c95843bd5e3f145967428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visualTransform: {fileID: 5186386109896103385}
 --- !u!114 &5121279730957933265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,13 +200,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb9a179b95360a449817b3634e8f21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualTransform: {fileID: 5186386109896103385}
-  movement: {fileID: 241075752283749987}
+  _movement: {fileID: 241075752283749987}
+  _animator: {fileID: 7808295612756477069}
   defaultUnit:
     View: spearman
     ElementType: 0
     Health: 5
-    MoveSpeed: 30
 --- !u!70 &8203120888528194403
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -269,6 +270,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7808295612756477069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270581910693719322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1673ddc4a040b814784d7ffe10d10704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4631589331180623981}
 --- !u!1001 &9030412896267083957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,6 +358,11 @@ PrefabInstance:
       addedObject: {fileID: 2793142739291278644}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
+--- !u!95 &4631589331180623981 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4401368522406082776, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
+  m_PrefabInstance: {fileID: 9030412896267083957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5186386109896103385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4227690512426710380, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}

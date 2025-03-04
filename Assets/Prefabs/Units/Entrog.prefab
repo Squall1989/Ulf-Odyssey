@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1081034849199943668}
   - component: {fileID: 2746582215199746068}
   - component: {fileID: 2893612041825369041}
+  - component: {fileID: 3559531542157373509}
   m_Layer: 0
   m_Name: Entrog
   m_TagString: Untagged
@@ -70,13 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536892288df927446ae92e536620b9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualTransform: {fileID: 1495261973432630268}
-  movement: {fileID: 2893612041825369041}
+  _movement: {fileID: 2893612041825369041}
+  _animator: {fileID: 3559531542157373509}
   defaultUnit:
     View: entrog
     ElementType: 0
     Health: 2
-    MoveSpeed: 10
 --- !u!114 &2893612041825369041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +89,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0121c1d8e348f048b7e77616faa88ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _visualTransform: {fileID: 1495261973432630268}
+--- !u!114 &3559531542157373509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655256478124802393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1673ddc4a040b814784d7ffe10d10704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1278724594395161023}
 --- !u!1001 &708646540622588100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +160,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}
+--- !u!95 &1278724594395161023 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1759622642541054331, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}
+  m_PrefabInstance: {fileID: 708646540622588100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1495261973432630268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2095759947840590648, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}

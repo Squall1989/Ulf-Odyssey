@@ -1,11 +1,8 @@
 using Zenject;
 using UnityEngine;
-using static Zenject.CheatSheet;
-using System;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
 
 namespace Ulf
 {
@@ -46,9 +43,7 @@ namespace Ulf
             }
 
             
-        }
-
-        
+        }        
 
         private async void SetupServices()
         {

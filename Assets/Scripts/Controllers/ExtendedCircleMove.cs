@@ -11,7 +11,7 @@ namespace Ulf
         public Action<string> OnLog;
         public Action<int, float> OnRoundStand;
 
-        public ExtendedCircleMove(float speed) : base(speed)
+        public ExtendedCircleMove() : base()
         {
 
         }
