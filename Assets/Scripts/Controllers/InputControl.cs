@@ -13,6 +13,7 @@ namespace Ulf
 
         public Action<int> OnMove { get; set; }
         public Action<int> OnStand { get; set; }
+        public Action<int> OnAttack { get; set; }
 
         private void Start()
         {
@@ -21,6 +22,8 @@ namespace Ulf
 
             standAction.canceled += StandActionCancel;
             standAction.started += StandActionStart;
+
+            attackAction.started += AttackActionStart;
         }
 
         private void MoveActionCancel(InputAction.CallbackContext context)
@@ -47,6 +50,12 @@ namespace Ulf
             //Debug.Log("Started: " + context.ReadValue<float>());
             OnStand?.Invoke((int)context.ReadValue<float>());
 
+        }
+
+        private void AttackActionStart(InputAction.CallbackContext context)
+        {
+            int attack = (int)context.ReadValue<float>();
+            OnAttack?.Invoke(attack);
         }
 
         public void OnEnable()

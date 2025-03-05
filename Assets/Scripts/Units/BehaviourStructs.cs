@@ -2,16 +2,19 @@ using MessagePack;
 
 namespace Ulf
 {
-    public struct BehaviourUnitStruct
-    {
-        public BehaviourUnitStruct(Timer timer, INextAction nextAction)
-        {
-            this.timer = timer;
-            this.prevAction = nextAction;
-        }
 
-        public INextAction prevAction;
-        public Timer timer;
+    [MessagePackObject]
+    public struct UniversalAction : INextAction
+    {
+        [Key(0)]
+        public ActionType action;
+        [Key(1)]
+        public int paramNum;
+
+        public void DoAction(Unit unit)
+        {
+            unit.Actions.UniversalAction(action, paramNum);
+        }
     }
 
     [MessagePackObject]
@@ -40,12 +43,13 @@ namespace Ulf
 
         public void DoAction(Unit unit)
         {
-            unit.MoveCommand(this);
+            unit.Move.MoveCommand(this);
         }
     }
 
     [Union(0, typeof(MovementAction))]
     [Union(1, typeof(StandAction))]
+    [Union(2, typeof(UniversalAction))]
     public interface INextAction
     {
         void DoAction(Unit unit);

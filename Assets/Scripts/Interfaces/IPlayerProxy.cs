@@ -12,5 +12,6 @@ namespace Ulf
         Task<SnapPlayerStruct> SpawnPlayer();
         void CreatePlayerMoveAction(int direct);
         void CreatePlayerStandAction(int id, float angle);
+        void CreateUniversalAction(ActionType actionType, int num);
     }
 }

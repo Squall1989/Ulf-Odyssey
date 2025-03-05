@@ -1,11 +1,10 @@
 ﻿using Assets.Scripts.Interfaces;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace Ulf
 {
+
     public class CircleMove : IMovable
     {
         protected float deltaTime;
@@ -17,6 +16,7 @@ namespace Ulf
         protected int _direct;
 
 
+        public Action<float> OnChangeSpeed;
         public Action<int> OnMoveDirect;
         public float Degree => currDegree;
 
@@ -61,6 +61,7 @@ namespace Ulf
         public void SetSpeed(float speed)
         {
             speedLinear = speed;
+            OnChangeSpeed?.Invoke(speed);
         }
         public void SetAngle(float angle)
         {
@@ -72,6 +73,13 @@ namespace Ulf
         {
             _direct = direct;
             OnMoveDirect?.Invoke(direct);
+        }
+
+        public virtual void MoveCommand(MovementAction action)
+        {
+            SetAngle(action.fromAngle);
+            SetMoveDirect(action.direction);
+            SetSpeed(action.speed);
         }
 
         public static Vector2 GetMovePos(Vector2 movePlanetPos, float moveRadius, float moveDegree)

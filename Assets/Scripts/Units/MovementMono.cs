@@ -8,6 +8,7 @@ namespace Ulf
     {
         protected CircleMove _circleMove;
         [SerializeField] private Transform _visualTransform;
+        [SerializeField] protected Animator _animator;
 
         private Vector3 leftDir, rightDir;
 
@@ -18,6 +19,8 @@ namespace Ulf
             _circleMove = circleMove;
             _circleMove.ToLand(planet, angle);
             _circleMove.SetMoveDirect(0);
+            _circleMove.OnChangeSpeed += SetSpeed;
+
             transform.position = _circleMove.Position;
 
             circleMove.OnMoveDirect += ChangeDirect;
@@ -51,5 +54,9 @@ namespace Ulf
             transform.Rotate(new Vector3(0,0,RotateUnit()));
         }
 
+        internal void SetSpeed(float speed)
+        {
+            _animator.SetFloat("speed", speed / 10);
+        }
     }
 }

@@ -65,6 +65,24 @@ namespace Ulf
             });
         }
 
+        public void CreateUniversalAction(ActionType actionType, int num)
+        {
+            UniversalAction action = new UniversalAction()
+            {
+                 action = actionType,
+                 paramNum = num
+            };
+
+            action.DoAction(_player);
+
+            OurPlayerAction(new ActionData()
+            {
+                action = action,
+                guid = _player.GUID,
+                isPlayerAction = true
+            });
+        }
+
         public void CreatePlayerMoveAction(int direct)
         {
             float speed = 0;

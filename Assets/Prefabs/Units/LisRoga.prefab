@@ -62,7 +62,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -131,7 +131,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -151,7 +151,6 @@ GameObject:
   - component: {fileID: 5121279730957933265}
   - component: {fileID: 8203120888528194403}
   - component: {fileID: 6589484832610837306}
-  - component: {fileID: 7808295612756477069}
   m_Layer: 0
   m_Name: LisRoga
   m_TagString: Untagged
@@ -188,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 5186386109896103385}
+  _animator: {fileID: 4631589331180623981}
 --- !u!114 &5121279730957933265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 241075752283749987}
-  _animator: {fileID: 7808295612756477069}
+  _action: {fileID: 4482240818312830544}
   defaultUnit:
     View: spearman
     ElementType: 0
@@ -270,19 +270,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &7808295612756477069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3270581910693719322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1673ddc4a040b814784d7ffe10d10704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4631589331180623981}
 --- !u!1001 &9030412896267083957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,7 +343,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4227690512426710380, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2793142739291278644}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3054531039451999503, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4482240818312830544}
   m_SourcePrefab: {fileID: 100100000, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
 --- !u!95 &4631589331180623981 stripped
 Animator:
@@ -368,3 +358,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4227690512426710380, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
   m_PrefabInstance: {fileID: 9030412896267083957}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6282987006870670778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3054531039451999503, guid: 51e5df78cfe38ed4d8f85d7b0ae9fbf6, type: 3}
+  m_PrefabInstance: {fileID: 9030412896267083957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4482240818312830544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282987006870670778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1673ddc4a040b814784d7ffe10d10704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 4631589331180623981}
+  _attackColliders:
+  - {fileID: 5235471752936604381}
+  - {fileID: 7116184755288746314}

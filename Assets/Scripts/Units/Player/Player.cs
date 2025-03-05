@@ -11,7 +11,7 @@ namespace Ulf
         public string PlayerID => _playerId;
         public Func<int, IRound> GetRoundFromId;
 
-        public Player(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, ExtendedCircleMove circleMove) : base(elementType, unitStruct, defaultUnit, circleMove)
+        public Player(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, ExtendedCircleMove circleMove, ActionUnit action) : base(elementType, unitStruct, defaultUnit, circleMove, action)
         {
             circleMoveExtended = circleMove;
         }

@@ -85,6 +85,11 @@ namespace Ulf
                 playerProxy.CreatePlayerMoveAction(direct);
             };
 
+            inputControl.OnAttack += (num) =>
+            {
+                playerProxy.CreateUniversalAction(ActionType.attack, num);
+            };
+
             inputControl.OnStand += playerMono.PlayerMovement.ControlStandDirect;
 
             extendMovement.OnRoundStand += playerProxy.CreatePlayerStandAction;

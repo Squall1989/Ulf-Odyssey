@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1081034849199943668}
   - component: {fileID: 2746582215199746068}
   - component: {fileID: 2893612041825369041}
-  - component: {fileID: 3559531542157373509}
   m_Layer: 0
   m_Name: Entrog
   m_TagString: Untagged
@@ -72,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 2893612041825369041}
-  _animator: {fileID: 3559531542157373509}
+  _action: {fileID: 8758293523488247729}
   defaultUnit:
     View: entrog
     ElementType: 0
@@ -90,19 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 1495261973432630268}
---- !u!114 &3559531542157373509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655256478124802393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1673ddc4a040b814784d7ffe10d10704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1278724594395161023}
+  _animator: {fileID: 1278724594395161023}
 --- !u!1001 &708646540622588100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,8 +145,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 999160598665939803, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8758293523488247729}
   m_SourcePrefab: {fileID: 100100000, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}
+--- !u!1 &290522872392360863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 999160598665939803, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}
+  m_PrefabInstance: {fileID: 708646540622588100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8758293523488247729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290522872392360863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1673ddc4a040b814784d7ffe10d10704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1278724594395161023}
+  _attackColliders: []
 --- !u!95 &1278724594395161023 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1759622642541054331, guid: b72183e2a8979c64f8972a24db7a1e2f, type: 3}

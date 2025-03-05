@@ -6,22 +6,25 @@ namespace Ulf
     public class Unit
     {
         protected CircleMove _movement;
+        private ActionUnit _action;
         protected CreateUnitStruct _unitStruct;
         protected DefaultUnitStruct _defaultUnit;
         protected Health _health;
 
-        public Action<float> OnChangeSpeed;
-
         public string View => _unitStruct.View;
         public int GUID => _unitStruct.Guid;
         public float Degree => _movement.Degree;
+        public CircleMove Move => _movement;
+        public ActionUnit Actions => _action;
 
-        public Unit(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, CircleMove circleMove)
+        public Unit(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, 
+            CircleMove circleMove, ActionUnit action)
         {
             _defaultUnit = defaultUnit;
             _unitStruct = unitStruct;
             _health = new Health(defaultUnit.Health, elementType);
             _movement = circleMove;
+            _action = action;
         }
 
         internal SnapUnitStruct GetSnapshot()
@@ -32,14 +35,6 @@ namespace Ulf
                 health = _health.CurrHealth,
                 createUnit = _unitStruct,
             };
-        }
-
-        public virtual void MoveCommand(MovementAction action)
-        {
-            _movement.SetAngle(action.fromAngle);
-            _movement.SetMoveDirect(action.direction);
-            _movement.SetSpeed(action.speed);
-            OnChangeSpeed?.Invoke(action.speed);
         }
     }
 }
