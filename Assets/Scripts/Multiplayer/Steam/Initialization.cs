@@ -15,7 +15,6 @@ public class Initialization : MonoBehaviour
 
     private void Start()
     {
-        SteamAPI.Init();
         if (SteamAPI.IsSteamRunning())
         {
             string name = SteamFriends.GetPersonaName();

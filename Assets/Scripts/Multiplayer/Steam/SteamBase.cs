@@ -46,13 +46,6 @@ namespace Ulf
             }
         }
 
-        protected virtual void OnLobbyEnter(LobbyEnter_t param)
-        {
-            lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
-            Debug.Log("Enter: " + param.m_ulSteamIDLobby);
-            var ownerId = SteamMatchmaking.GetLobbyOwner((CSteamID)param.m_ulSteamIDLobby);
-        }
-
         protected IConnectWrapper WrapConnection(CSteamID connection)
         {
             return new SteamConnect() {  steamID = connection };
