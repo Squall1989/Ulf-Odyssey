@@ -1,7 +1,9 @@
 using MsgPck;
 using Steamworks;
 using System;
+using System.Text;
 using UlfServer;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 namespace Ulf
@@ -12,13 +14,17 @@ namespace Ulf
         protected Callback<LobbyDataUpdate_t> Callback_lobbyInfo;
 
         private CSteamID _hostId;
+        private HSteamNetConnection connection;
 
         public bool IsConnected => _hostId != default;
 
         private void ConnectToHost(CSteamID hostId)
         {
             _hostId = hostId;
-
+            SteamNetworkingIdentity steamNetworking = new SteamNetworkingIdentity();
+            steamNetworking.SetSteamID(hostId);
+            connection = SteamNetworkingSockets.ConnectP2P(ref steamNetworking, 0, 0, new SteamNetworkingConfigValue_t[0]);
+            UnityEngine.Debug.Log("Connected to server");
         }
 
 
