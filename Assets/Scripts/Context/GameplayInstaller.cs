@@ -57,7 +57,7 @@ namespace Ulf
             Container.Bind<BridgeMono>().FromInstance(bridgeExample).AsSingle();
             Container.Bind<SceneGenerator>().FromNew().AsSingle();
             Container.Bind<ISceneProxy>().To<SceneHost>().AsSingle();
-            Container.Bind(typeof(IUnitsProxy), typeof(ITickable)).To<UnitsBehaviour>().FromNew().AsSingle();
+            Container.Bind(typeof(IUnitsProxy), typeof(ITickable)).To<UnitsDecisions>().FromNew().AsSingle();
         }
 
         private void BindMultiplayerHost()

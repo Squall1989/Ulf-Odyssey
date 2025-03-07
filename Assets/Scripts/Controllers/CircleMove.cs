@@ -13,8 +13,8 @@ namespace Ulf
         protected float speedLinear;
         protected float currDegree;
         protected Vector2 _position;
-        protected int _direct;
-
+        protected int _lookDirect;
+        protected int _moveDirect;
 
         public Action<float> OnChangeSpeed;
         public Action<int> OnMoveDirect;
@@ -23,6 +23,7 @@ namespace Ulf
         public Vector2 PlanetPosition => _round.Position;
         public Vector2 Position => _position;
         public IRound Round => _round;
+        public int Direct => _lookDirect;
 
         public CircleMove()
         {
@@ -32,7 +33,7 @@ namespace Ulf
         public void SetDeltaTime(float delta)
         {
             deltaTime = delta;
-            Move(_direct);
+            Move(_moveDirect);
         }
 
         protected float linearSpeed => speedLinear * deltaTime * (float)Math.PI * 2f / radius;
@@ -71,7 +72,11 @@ namespace Ulf
 
         public void SetMoveDirect(int direct)
         {
-            _direct = direct;
+            _moveDirect = direct;
+            if (direct != 0)
+            {
+                _lookDirect = direct;
+            }
             OnMoveDirect?.Invoke(direct);
         }
 

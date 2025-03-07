@@ -13,6 +13,7 @@ namespace Ulf
         protected Player _player;
         private StatsScriptable[] _stats;
 
+        public List<Player> PlayersList => players;
         public Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
 
         public PlayerControlBase(StatsScriptable[] stats)
@@ -55,7 +56,7 @@ namespace Ulf
                 roundId = id,
             };
 
-            standAction.DoAction(_player);
+            //standAction.DoAction(_player);
 
             OurPlayerAction(new ActionData()
             {
@@ -73,7 +74,7 @@ namespace Ulf
                  paramNum = num
             };
 
-            action.DoAction(_player);
+            //action.DoAction(_player);
 
             OurPlayerAction(new ActionData()
             {
@@ -99,7 +100,7 @@ namespace Ulf
                 speed = speed,
             };
 
-            movementAction.DoAction(_player);
+            //movementAction.DoAction(_player);
 
             OurPlayerAction(new ActionData()
             {

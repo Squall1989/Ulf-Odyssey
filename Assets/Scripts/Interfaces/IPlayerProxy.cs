@@ -6,6 +6,7 @@ namespace Ulf
 {
     public interface IPlayersProxy
     {
+        List<Player> PlayersList { get; }
         List<SnapPlayerStruct> PlayersSnapshot();
         Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
         void AddPlayer(Player player, bool isOurPlayer);
