@@ -21,11 +21,7 @@ namespace Ulf
         protected Dictionary<Type, UnionConnectDelegate> callbacksConnectDict = new();
         protected Dictionary<Type, UnionDelegate> callbacksDict = new();
 
-        protected const string pchName = "Ulf";
-        protected const string pchCode = "1";
-        protected CSteamID lobbySteamID = new CSteamID();
-        protected CSteamID MySteamID => SteamUser.GetSteamID();
-
+        private const ushort PORT = 27015; // Любой свободный порт
 
         public Action<string> OnReceive { get ; set; }
 
@@ -42,15 +38,8 @@ namespace Ulf
         {
             if (SteamNetworking.AcceptP2PSessionWithUser(param.m_steamIDRemote))
             {
-
+                
             }
-        }
-
-        protected virtual void OnLobbyEnter(LobbyEnter_t param)
-        {
-            lobbySteamID = (CSteamID)param.m_ulSteamIDLobby;
-            Debug.Log("Enter: " + param.m_ulSteamIDLobby);
-            var ownerId = SteamMatchmaking.GetLobbyOwner((CSteamID)param.m_ulSteamIDLobby);
         }
 
         protected IConnectWrapper WrapConnection(CSteamID connection)
@@ -130,21 +119,14 @@ namespace Ulf
             return (msg, senderId);
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             SteamAPI.RunCallbacks();
-            if(SteamNetworking.IsP2PPacketAvailable(out uint size))
+            if (SteamNetworking.IsP2PPacketAvailable(out uint size))
             {
                 ReadP2pPacket(size);
             }
         }
 
-        private void OnDestroy()
-        {
-            if (lobbySteamID != default(CSteamID))
-            {
-                SteamMatchmaking.LeaveLobby(lobbySteamID);
-            }
-        }
     }
 }

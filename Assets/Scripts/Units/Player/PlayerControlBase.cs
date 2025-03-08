@@ -1,3 +1,4 @@
+using ENet;
 using MsgPck;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,15 @@ namespace Ulf
     {
         protected List<Player> players = new();
         protected Player _player;
+        private StatsScriptable[] _stats;
 
-
+        public List<Player> PlayersList => players;
         public Action<SnapPlayerStruct> OnOtherPlayerSpawn { get; set; }
+
+        public PlayerControlBase(StatsScriptable[] stats)
+        {
+            _stats = stats;
+        }
 
 
         public void AddPlayer(Player player, bool isOurPlayer)
@@ -49,7 +56,7 @@ namespace Ulf
                 roundId = id,
             };
 
-            standAction.DoAction(_player);
+            //standAction.DoAction(_player);
 
             OurPlayerAction(new ActionData()
             {
@@ -59,15 +66,41 @@ namespace Ulf
             });
         }
 
+        public void CreateUniversalAction(ActionType actionType, int num)
+        {
+            UniversalAction action = new UniversalAction()
+            {
+                 action = actionType,
+                 paramNum = num
+            };
+
+            //action.DoAction(_player);
+
+            OurPlayerAction(new ActionData()
+            {
+                action = action,
+                guid = _player.GUID,
+                isPlayerAction = true
+            });
+        }
+
         public void CreatePlayerMoveAction(int direct)
         {
+            float speed = 0;
+            if (direct != 0)
+            {
+                var stat = _stats.FirstOrDefault(p => p.ID == _player.View);
+                speed = stat.GetStatAmount(StatType.walkSpeed);
+                UnityEngine.Debug.Log("Speed: " + speed);
+            }
             MovementAction movementAction = new MovementAction()
             {
                 direction = direct,
-                fromAngle = _player.Movement.Degree,
+                fromAngle = _player.Degree,
+                speed = speed,
             };
 
-            movementAction.DoAction(_player);
+            //movementAction.DoAction(_player);
 
             OurPlayerAction(new ActionData()
             {

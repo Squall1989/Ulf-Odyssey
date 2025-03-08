@@ -11,7 +11,7 @@ namespace Ulf
         private SceneGenerator _sceneGenerator;
         private INetworkable _networkable;
 
-        public PlayerControlHost(SceneGenerator sceneGenerator, MultiplayerHost multiplayerHost, INetworkable networkable) : base()
+        public PlayerControlHost(SceneGenerator sceneGenerator, MultiplayerHost multiplayerHost, INetworkable networkable, StatsScriptable[] stats) : base(stats)
         {
             _multiplayerHost = multiplayerHost;
             _sceneGenerator = sceneGenerator;

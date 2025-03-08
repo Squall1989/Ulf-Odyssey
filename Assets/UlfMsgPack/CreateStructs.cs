@@ -1,5 +1,4 @@
 using MessagePack;
-using System.Collections.Generic;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Ulf
@@ -10,7 +9,6 @@ namespace Ulf
         public string View;
         public ElementType ElementType;
         public int Health;
-        public float MoveSpeed;
     }
 
     [System.Serializable]

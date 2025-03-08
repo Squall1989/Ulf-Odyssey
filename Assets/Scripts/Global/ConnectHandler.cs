@@ -4,7 +4,7 @@ using System;
 public class ConnectHandler 
 {
     public Action<bool> OnHostStart;
-    public Action<string> OnGetClientCode;
+    public Action<string, ulong> OnClientConnect;
 
     public bool IsHost { get; private set; }
 
@@ -14,8 +14,8 @@ public class ConnectHandler
         OnHostStart?.Invoke(isHots);
     }
 
-    public void SetCode(string code)
+    public void ClientConnect(string name, ulong id)
     {
-        OnGetClientCode?.Invoke(code);
+        OnClientConnect?.Invoke(name, id);
     }
 }

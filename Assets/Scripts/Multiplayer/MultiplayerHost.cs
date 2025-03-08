@@ -11,7 +11,7 @@ public class MultiplayerHost
     private INetworkable _networkable;
     protected Dictionary<string, PlayerData> _players = new();
     protected Dictionary<IConnectWrapper, string> _connetions = new();
-    private UnitsBehaviour _unitsBehaviour;
+    private UnitsDecisions _unitsBehaviour;
 
     public Action<IConnectWrapper> OnPlayerReady;
 
@@ -20,7 +20,7 @@ public class MultiplayerHost
         _sceneHost = sceneHost;
         _networkable = networkable;
         _networkable.RegisterHandler<PlayerData>(PlayerReady);
-        _unitsBehaviour = (UnitsBehaviour)unitsBehaviour;
+        _unitsBehaviour = (UnitsDecisions)unitsBehaviour;
 
         _unitsBehaviour.OnUnitAction += SendAction;
     }

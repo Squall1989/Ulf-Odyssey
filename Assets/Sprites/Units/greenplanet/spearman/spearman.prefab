@@ -754,6 +754,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: spearman
       objectReference: {fileID: 0}
+    - target: {fileID: -8530048980314574783, guid: c36611a91b8ba9d41bf3d99de2d39f8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1253227
+      objectReference: {fileID: 0}
+    - target: {fileID: -8530048980314574783, guid: c36611a91b8ba9d41bf3d99de2d39f8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0013315516
+      objectReference: {fileID: 0}
     - target: {fileID: -8286349183774080451, guid: c36611a91b8ba9d41bf3d99de2d39f8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.67957777
@@ -1064,7 +1072,7 @@ Animator:
   m_GameObject: {fileID: 3054531039451999503}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b522ee0ded056944bafe58a892ee0264, type: 2}
+  m_Controller: {fileID: 9100000, guid: da53c432a8738c947871a0a131ed11dd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

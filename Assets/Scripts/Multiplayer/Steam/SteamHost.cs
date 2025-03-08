@@ -1,26 +1,29 @@
+using ENet;
 using MsgPck;
 using Steamworks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using UlfServer;
-using Unity.Services.Lobbies;
-using UnityEngine;
+using Unity.Entities.UniversalDelegates;
 
 namespace Ulf
 {
     public class SteamHost : SteamBase, INetworkable
     {
-        private CallResult<LobbyCreated_t> lobbyCreated_t;
-        private CallResult<LobbyPlayerJoined> lobbyJoined_t;
-        private Callback<LobbyEnter_t> lobbyEnter_t;
-
         private List<CSteamID> clientList = new();
+        private HSteamListenSocket listenSocket;
+        private HSteamNetPollGroup pollGroup;
+        private Callback<SocketStatusCallback_t> socketCallback;
+        private Callback<SteamNetConnectionStatusChangedCallback_t> connectCallback;
+
         public bool IsConnected => clientList.Count > 0;
 
         protected override void Awake()
         {
             base.Awake();
+            SteamNetworkingUtils.InitRelayNetworkAccess();
             RegisterHandler<PlayerData>(OnPlayerData);
         }
 
@@ -35,35 +38,24 @@ namespace Ulf
 
         private void Start()
         {
-            lobbyEnter_t = Callback<LobbyEnter_t>.Create(OnLobbyEnter);
-            lobbyJoined_t = CallResult<LobbyPlayerJoined>.Create(OnLobbyPlayerJoined);
-            lobbyCreated_t = CallResult<LobbyCreated_t>.Create(LobbyCreated);
-            CreateLobby();
-            
+            CreateServer();
         }
 
-
-        private void OnLobbyPlayerJoined(LobbyPlayerJoined param, bool bio)
+        private void CreateServer()
         {
-            Debug.Log("Player joined: " + param.Player);
+            pollGroup = SteamNetworkingSockets.CreatePollGroup();
+            listenSocket = SteamNetworkingSockets.CreateListenSocketP2P(0, 0, null);
 
+            UnityEngine.Debug.Log("Сервер запущен, ждём подключения...");
+            CSteamID myID = SteamUser.GetSteamID();
+            UnityEngine.Debug.Log($"Мой Steam ID: {myID}");
+            // Подписываемся на события изменения статуса соединения
+            connectCallback = Callback<SteamNetConnectionStatusChangedCallback_t>.Create(OnConnection);
         }
 
-
-
-        void CreateLobby()
+        private void OnConnection(SteamNetConnectionStatusChangedCallback_t callback)
         {
-            SteamAPICall_t handle = SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeInvisible, 2);
-            lobbyCreated_t.Set(handle);
-            Debug.Log("Called Create Lobby()");
-        }
-
-        private void LobbyCreated(LobbyCreated_t param, bool bio)
-        {
-            Debug.Log(param.m_eResult);
-            Debug.Log(param.m_ulSteamIDLobby);
-            SteamMatchmaking.SetLobbyData((CSteamID)param.m_ulSteamIDLobby, "name", pchName);
-            SteamMatchmaking.SetLobbyData((CSteamID)param.m_ulSteamIDLobby, "code", pchCode);
+            UnityEngine.Debug.Log("Connect state changed");
         }
 
         protected override void P2pRequested(P2PSessionRequest_t param)
@@ -84,6 +76,24 @@ namespace Ulf
             foreach (var client in clientList)
             {
                 SteamNetworking.SendP2PPacket(client, bytes, (uint)bytes.Length, EP2PSend.k_EP2PSendUnreliableNoDelay);
+            }
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            IntPtr[] messagesPtr= new IntPtr[10];
+            SteamNetworkingMessage_t[] messages = new SteamNetworkingMessage_t[10];
+            int msgCount = SteamNetworkingSockets.ReceiveMessagesOnPollGroup(pollGroup, messagesPtr, 10);
+            for (int i = 0; i < msgCount; i++)
+            {
+                byte[] buffer = new byte[messages[i].m_cbSize]; // Создаём массив нужного размера
+                Marshal.Copy((IntPtr)messages[i].m_pData, buffer, 0, (int)messages[i].m_cbSize); // Копируем байты
+
+                string receivedText = Encoding.UTF8.GetString(buffer); // Преобразуем в строку
+                UnityEngine.Debug.Log($"Получено сообщение: {receivedText}");
+
+                messages[i].Release(); // Освобождаем память
             }
         }
     }

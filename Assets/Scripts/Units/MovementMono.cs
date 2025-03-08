@@ -3,33 +3,41 @@ using UnityEngine;
 
 namespace Ulf
 {
+
     public class MovementMono : MonoBehaviour
     {
         protected CircleMove _circleMove;
-        private Transform _visualTransform;
+        [SerializeField] private Transform _visualTransform;
+        [SerializeField] protected Animator _animator;
+
+        private Vector3 leftDir, rightDir;
 
         public CircleMove CircleMove => _circleMove;
 
-        public virtual void Init(Planet planet, CircleMove circleMove, float angle, Transform visualTransform)
+        public virtual void Init(Planet planet, CircleMove circleMove, float angle)
         {
             _circleMove = circleMove;
             _circleMove.ToLand(planet, angle);
             _circleMove.SetMoveDirect(0);
-            _visualTransform = visualTransform;
+            _circleMove.OnChangeSpeed += SetSpeed;
+
             transform.position = _circleMove.Position;
 
             circleMove.OnMoveDirect += ChangeDirect;
+
+            rightDir = _visualTransform.localRotation.eulerAngles;
+            leftDir = rightDir + new Vector3(0, 180f, 0);
         }
 
         private void ChangeDirect(int direct)
         {
             if(direct == -1)
             {
-                _visualTransform.localRotation = Quaternion.Euler(0, 0, 0);
+                _visualTransform.localRotation = Quaternion.Euler(leftDir);
             }
             else if (direct == 1)
             {
-                _visualTransform.localRotation = Quaternion.Euler(0, 180f, 0);
+                _visualTransform.localRotation = Quaternion.Euler(rightDir);
             }
         }
 
@@ -46,5 +54,9 @@ namespace Ulf
             transform.Rotate(new Vector3(0,0,RotateUnit()));
         }
 
+        internal void SetSpeed(float speed)
+        {
+            _animator.SetFloat("speed", speed / 10);
+        }
     }
 }

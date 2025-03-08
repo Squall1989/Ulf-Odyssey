@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889603731463838634}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.36008275, y: 0.50625867, z: 0.08794891}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2513441050255433824
 MonoBehaviour:
@@ -112,10 +112,26 @@ MonoBehaviour:
     m_Flags: 0
   attackAction:
     m_Name: Attack
-    m_Type: 0
-    m_ExpectedControlType: 
+    m_Type: 1
+    m_ExpectedControlType: Button
     m_Id: 1977659a-d618-4cc2-84dd-188edc3594f5
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: fdecb8b7-7bed-47eb-b1eb-9bdd3f1d34f7
+      m_Path: <Mouse>/leftButton
+      m_Interactions: Press
+      m_Processors: Clamp(min=1,max=1)
+      m_Groups: 
+      m_Action: Attack
+      m_Flags: 0
+    - m_Name: 
+      m_Id: ae0182c6-97ab-4ed7-ade0-13fe8ce8df1a
+      m_Path: <Mouse>/rightButton
+      m_Interactions: Press
+      m_Processors: Clamp(min=2,max=2)
+      m_Groups: 
+      m_Action: Attack
+      m_Flags: 0
     m_Flags: 0

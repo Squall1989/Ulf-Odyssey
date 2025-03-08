@@ -1,11 +1,10 @@
 using Zenject;
 using UnityEngine;
-using static Zenject.CheatSheet;
-using System;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
+using Steamworks;
+using System;
 
 namespace Ulf
 {
@@ -17,19 +16,19 @@ namespace Ulf
         public override void InstallBindings()
         {
             Application.targetFrameRate = 60;
-
             Container.Bind<GameOptions>().FromInstance(options).AsSingle();
             Container.Bind<ConnectHandler>().FromInstance(handlerConnect).AsSingle();
             options.OnGameTypeChange += SetGameType;
 
+            var stats = Resources.LoadAll<StatsScriptable>("Containers/Stats"); 
+            Container.Bind<StatsScriptable[]>().FromInstance(stats).AsSingle();
+
             Container.Bind<AllUnitsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
             Container.Bind<AllPlanetsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
             Container.Bind<AllBuildScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
+
+            SetupSteam();
         }
-
-
-
-
 
         public void SetGameType(GameType gameType)
         {
@@ -40,8 +39,9 @@ namespace Ulf
                     break;
                 case GameType.online:
                     SetupServices();
+                    
                     handlerConnect.OnHostStart += (ishost) => SetupSteamHost();
-                    handlerConnect.OnGetClientCode += (code) => SetupSteamClient();
+                    handlerConnect.OnClientConnect += SetupSteamClient;
 
                     break;
             }
@@ -49,7 +49,22 @@ namespace Ulf
             
         }
 
-        
+        private void SetupSteamClient(string name, ulong id)
+        {
+            var client = Resources.Load<SteamClient>("Steam/SteamClient");
+            client.Connect(name, id);
+            Container.Rebind<INetworkable>().To<SteamClient>().FromInstance(client);
+
+            SceneManager.LoadScene("GameScene");
+        }
+
+        private void SetupSteam()
+        {
+            if (SteamAPI.Init())
+            {
+                Container.Bind<IFriendConnectable>().To<SteamLookFriends>().FromComponentInNewPrefabResource("Steam/SteamFriends").AsSingle();
+            }
+        }
 
         private async void SetupServices()
         {
@@ -58,13 +73,6 @@ namespace Ulf
 
             string playerId = AuthenticationService.Instance.PlayerId;
             Container.Bind<string>().FromInstance(playerId).AsSingle();
-        }
-
-        protected void SetupSteamClient()
-        {
-            Container.Rebind<INetworkable>().To<SteamClient>().FromComponentInNewPrefabResource("Steam/SteamClient").AsSingle();
-
-            SceneManager.LoadScene("GameScene");
         }
 
         protected void SetupSteamHost()

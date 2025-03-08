@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Ulf
@@ -6,7 +7,7 @@ namespace Ulf
     {
         private SceneGenerator _sceneGenerator;
 
-        public PlayerControlSingle(SceneGenerator sceneGenerator) : base() 
+        public PlayerControlSingle(SceneGenerator sceneGenerator, StatsScriptable[] stats) : base(stats) 
         {
             _sceneGenerator = sceneGenerator;
         }
