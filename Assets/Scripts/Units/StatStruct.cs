@@ -12,4 +12,5 @@ public enum StatType
     attackDist,
     walkSpeed,
     runSpeed,
+    patrolDist,
 }

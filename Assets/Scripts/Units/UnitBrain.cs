@@ -1,36 +1,43 @@
 ﻿using System;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Ulf
 {
     /// <summary>
     /// Supporting class for units decisions
     /// </summary>
-    public class UnitsBrain
+    public class UnitBrain
     {
-        private IPlayersProxy _playersProxy;
-        private StatsScriptable[] _stats;
-        private Unit _unit;
-        private Player _player;
+        private readonly IPlayersProxy _playersProxy;
+        private readonly Unit _unit;
+        private readonly StatsScriptable _unitStats;
+        private readonly Vector2 _startPos;
 
-        public UnitsBrain(IPlayersProxy playersProxy, StatsScriptable[] stats)
+        private float moveDecisionCooldown;
+
+        public Action<Unit, int, float> OnUnitMove;
+        public Action<Unit, ActionType, int> OnUnitAction;
+
+        public UnitBrain(IPlayersProxy playersProxy, Unit unit, StatsScriptable unitStats)
         {
             _playersProxy = playersProxy;
-            _stats = stats;
+            _unit = unit;
+            _unitStats = unitStats;
+            _startPos = unit.Move.Position;
         }
 
-        public void InitNextUnit(Unit unit)
+        private bool FindPlayer(out Player closestPlayer)
         {
-            _unit = unit;
-            IRound planet = unit.Move.Round;
+            IRound planet = _unit.Move.Round;
             float playerDist = 999;
-            Player closestPlayer = null;
+            closestPlayer = null;
             foreach (var player in _playersProxy.PlayersList)
             {
                 if (player.Move.Round == planet)
                 {
-                    float dist = math.distance(unit.Move.Position, player.Move.Position);
+                    float dist = math.distance(_unit.Move.Position, player.Move.Position);
                     if(dist < playerDist)
                     {
                         playerDist = dist;
@@ -39,45 +46,99 @@ namespace Ulf
                 }
             }
 
-            if(closestPlayer != null)
+            return closestPlayer != null;
+
+        }
+
+        private int DecidesWalk()
+        {
+            float patrolDist = _unitStats.GetStatAmount(StatType.patrolDist);
+
+            float unitAwayDist = (_startPos - _unit.Move.Position).magnitude;
+
+            if(_unit.Move.Direct != 0 && unitAwayDist >= patrolDist)
             {
-                _player = closestPlayer;
+                bool isUnitLookToStart = IsUnitLookTo(_startPos);
+
+                if(isUnitLookToStart)
+                {
+                    return _unit.Move.Direct;
+                }
+                else
+                {
+                    return _unit.Move.Direct * -1;
+                }
+            }
+            else
+            {
+                return Random.Range(-1, 2);
             }
         }
 
-        public MoveType DecideMove(Unit unit, float lookDist)
+        private bool IsUnitLookTo(Vector2 point)
         {
-            if (unit != _unit)
-            {
-                throw new Exception("Unit not initialized!");
-            }
+            Vector2 pointPlanetVector = point - _unit.Move.PlanetPosition;
+            Vector2 unitPlanetVector = _unit.Move.Position - _unit.Move.PlanetPosition;
+            bool pointRight = MathUtils.IsRightDir(unitPlanetVector, pointPlanetVector);
 
-            if (_player != null)
+            bool lookToPoint = pointRight == (_unit.Move.Direct == -1);
+            return lookToPoint;
+        }
+
+        private bool DecidesRun(Player treatPlayer, out int direct)
+        {
+            direct = 0;
+            if (treatPlayer != null)
             {
-                float playerDist = (_player.Move.Position - _unit.Move.Position).magnitude;
+                float playerDist = (treatPlayer.Move.Position - _unit.Move.Position).magnitude;
+                float lookDist = _unitStats.GetStatAmount(StatType.lookDist);
 
                 if (playerDist > lookDist)
                 {
-                    return MoveType.walk;
+                    return false;
                 }
 
-                Vector2 playerPlanetVector = _player.Move.Position - _player.Move.PlanetPosition;
-                Vector2 unitPlanetVector = _unit.Move.Position - _unit.Move.PlanetPosition;
-                bool playerRight = MathUtils.IsRightDir(unitPlanetVector, playerPlanetVector);
+                bool lookToPlayer = IsUnitLookTo(treatPlayer.Move.Position);
 
-                bool lookToPlayer = playerRight == (_unit.Move.Direct == -1);
                 if(lookToPlayer)
                 {
-                    return MoveType.run;
+                    direct = _unit.Move.Direct;
+                    return true;
                 }
             }
 
-            return MoveType.walk;
+            return false;
         }
 
-        public void DecideAction(Unit unit)
+        public void MakeDecision(float deltaTime)
         {
-            
+            moveDecisionCooldown -= deltaTime;
+            if (_unit.Actions.IsActionInProcess)
+            {
+                return;
+            }
+
+            if(FindPlayer(out var player))
+            {
+                if (DecidesRun(player, out int direct))
+                {
+                    float speed = _unitStats.GetStatAmount(StatType.runSpeed);
+                    OnUnitMove?.Invoke(_unit, direct, speed);
+                    return;
+                }
+            }
+
+            if (moveDecisionCooldown <= 0 )
+            {
+                int dir = DecidesWalk();
+                float speed = 0;
+                if (dir != 0)
+                {
+                    _unitStats.GetStatAmount(StatType.walkSpeed);
+                }
+                OnUnitMove?.Invoke(_unit, dir, speed);
+                moveDecisionCooldown = Random.Range(1, 4);
+            }
         }
     }
 
