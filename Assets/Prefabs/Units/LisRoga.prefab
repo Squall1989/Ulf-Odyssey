@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2793142739291278644}
   - component: {fileID: 7116184755288746314}
-  m_Layer: 10
+  - component: {fileID: 8146462656638081855}
+  m_Layer: 12
   m_Name: AttackCollider2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +70,18 @@ CapsuleCollider2D:
   m_Offset: {x: -2.5, y: 1.59}
   m_Size: {x: 1.32, y: 2.05}
   m_Direction: 0
+--- !u!114 &8146462656638081855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321178872435619042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413b810eb2f86e747ba6646dc7eba9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &544712742856171212
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +92,8 @@ GameObject:
   m_Component:
   - component: {fileID: 14203294998240378}
   - component: {fileID: 5235471752936604381}
-  m_Layer: 10
+  - component: {fileID: 1234118021893958231}
+  m_Layer: 12
   m_Name: AttackCollider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +152,18 @@ CapsuleCollider2D:
   m_Offset: {x: -2.37, y: 1.33}
   m_Size: {x: 1.24, y: 1}
   m_Direction: 0
+--- !u!114 &1234118021893958231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544712742856171212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413b810eb2f86e747ba6646dc7eba9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3270581910693719322
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,5 +895,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 4631589331180623981}
   _attackColliders:
-  - {fileID: 5235471752936604381}
-  - {fileID: 7116184755288746314}
+  - {fileID: 1234118021893958231}
+  - {fileID: 8146462656638081855}

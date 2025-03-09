@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace Ulf
 {
+
     public class ActionsMono : MonoBehaviour
     {
         [SerializeField] protected Animator _animator;
-        [SerializeField] protected Collider2D[] _attackColliders;
+        [SerializeField] protected WeaponMono[] _attackColliders;
         private ActionUnit _action;
 
         protected void Awake()
         {
             for (int i = 0; i < _attackColliders.Length; i++)
             {
-                _attackColliders[i].enabled = false;
+                DeActivateCollider(i);
             }
         }
 
@@ -73,5 +74,7 @@ namespace Ulf
                     break;
             }
         }
+
+
     }
 }
