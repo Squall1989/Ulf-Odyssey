@@ -134,7 +134,7 @@ namespace Ulf
                 float speed = 0;
                 if (dir != 0)
                 {
-                    _unitStats.GetStatAmount(StatType.walkSpeed);
+                    speed = _unitStats.GetStatAmount(StatType.walkSpeed);
                 }
                 OnUnitMove?.Invoke(_unit, dir, speed);
                 moveDecisionCooldown = Random.Range(1, 4);

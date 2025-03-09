@@ -91,7 +91,6 @@ namespace Ulf
             {
                 var stat = _stats.FirstOrDefault(p => p.ID == _player.View);
                 speed = stat.GetStatAmount(StatType.walkSpeed);
-                UnityEngine.Debug.Log("Speed: " + speed);
             }
             MovementAction movementAction = new MovementAction()
             {

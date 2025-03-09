@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Ulf
@@ -11,6 +10,8 @@ namespace Ulf
         [SerializeField] protected Animator _animator;
 
         private Vector3 leftDir, rightDir;
+
+        private int _enemyLayerMask;
 
         public CircleMove CircleMove => _circleMove;
 
@@ -27,6 +28,7 @@ namespace Ulf
 
             rightDir = _visualTransform.localRotation.eulerAngles;
             leftDir = rightDir + new Vector3(0, 180f, 0);
+            SetEnemyLayerMask(LayerMask.GetMask("player"));
         }
 
         private void ChangeDirect(int direct)
@@ -57,6 +59,44 @@ namespace Ulf
         internal void SetSpeed(float speed)
         {
             _animator.SetFloat("speed", speed / 10);
+        }
+
+        protected void SetEnemyLayerMask(int layerMask)
+        {
+            _enemyLayerMask = layerMask;
+        }
+
+        private bool IsEnemyLayer(Collider2D collider)
+        {
+            int layer = collider.gameObject.layer;
+            bool inMask = (_enemyLayerMask & (1 << layer)) != 0;
+            return inMask;
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (IsEnemyLayer(collision))
+            {
+                _circleMove.RestrictMove(0);
+            }
+        }
+        private void OnTriggerStay2D(Collider2D collision)
+        { 
+            MoveCollision(collision);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            MoveCollision(collision);
+        }
+
+        private void MoveCollision(Collider2D collision)
+        {
+            if (IsEnemyLayer(collision))
+            {
+                bool rightDirect = transform.InverseTransformPoint(collision.transform.position).x > 0;
+                _circleMove.RestrictMove(rightDirect ? -1 : 1);
+            }
         }
     }
 }

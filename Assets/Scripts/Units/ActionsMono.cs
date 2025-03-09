@@ -47,7 +47,7 @@ namespace Ulf
                 return;
             }
 
-            _attackColliders[num].enabled = isEnable;
+            _attackColliders[num].gameObject.SetActive(isEnable);
         }
 
         internal void Init(ActionUnit actionUnit)

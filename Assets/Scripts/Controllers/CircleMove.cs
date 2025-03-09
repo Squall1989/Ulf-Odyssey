@@ -18,6 +18,8 @@ namespace Ulf
 
         public Action<float> OnChangeSpeed;
         public Action<int> OnMoveDirect;
+        private int _restrictDir;
+
         public float Degree => currDegree;
 
         public Vector2 PlanetPosition => _round.Position;
@@ -61,6 +63,10 @@ namespace Ulf
 
         public void SetSpeed(float speed)
         {
+            if(_restrictDir == _moveDirect)
+            {
+                speed = 0;
+            }
             speedLinear = speed;
             OnChangeSpeed?.Invoke(speed);
         }
@@ -108,5 +114,13 @@ namespace Ulf
             return angle;
         }
 
+        internal void RestrictMove(int dir)
+        {
+            if (dir == Direct)
+            {
+                SetSpeed(0);
+            }
+            _restrictDir = dir;
+        }
     }
 }
