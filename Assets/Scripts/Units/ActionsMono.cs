@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace Ulf
 {
-    public class ActionsMono : MonoBehaviour
+
+    public class ActionsMono : MonoBehaviour, IKillable
     {
         [SerializeField] protected Animator _animator;
-        [SerializeField] protected Collider2D[] _attackColliders;
+        [SerializeField] protected WeaponMono[] _attackColliders;
         private ActionUnit _action;
+
+        public ActionUnit Action => _action;
 
         protected void Awake()
         {
-            for (int i = 0; i < _attackColliders.Length; i++)
-            {
-                _attackColliders[i].enabled = false;
-            }
+
         }
 
         // From animation event
@@ -47,13 +47,19 @@ namespace Ulf
                 return;
             }
 
-            _attackColliders[num].enabled = isEnable;
+            _attackColliders[num].Activate(isEnable);
         }
 
         internal void Init(ActionUnit actionUnit)
         {
             _action = actionUnit;
             _action.OnAction += ActionUniversal;
+
+            for (int i = 0; i < _attackColliders.Length; i++)
+            {
+                _attackColliders[i].OnUnitTriggered += _action.AttackUnit;
+                DeActivateCollider(i);
+            }
         }
 
         private void ActionUniversal(ActionType type, int param)
@@ -72,6 +78,17 @@ namespace Ulf
                     _animator.SetInteger("death", param);
                     break;
             }
+        }
+        public void Kill()
+        {
+            _animator.SetInteger("death", 1);
+            _animator.SetInteger("attack", 0);
+
+        }
+
+        public void Ressurect()
+        {
+            _animator.SetInteger("death", 0);
         }
     }
 }

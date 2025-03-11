@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2214681753285207008}
   - component: {fileID: 3632559889533004852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2587939045525366855}
   - component: {fileID: 1303719828287207208}
   - component: {fileID: -408206135760129413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Planet Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3126545357255676763}
   - component: {fileID: 776891176270804569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}

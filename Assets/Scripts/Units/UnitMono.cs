@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ulf
@@ -17,10 +18,27 @@ namespace Ulf
 
         public virtual void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
-            var action = new ActionUnit();
+            var action = new ActionUnit(createUnit.Guid);
+            var health = new Health(defaultUnit.Health, defaultUnit.ElementType);
+
             _action.Init(action);
             _movement.Init(planet, new CircleMove(), freeArc);
-            _unit = new Unit(planet.Element, createUnit, defaultUnit, _movement.CircleMove, action);
+
+            _unit = new Unit(createUnit, defaultUnit, _movement.CircleMove, action, health);
+
+            health.SetKillables(GetKillables());
+        }
+
+        protected virtual List<IKillable> GetKillables()
+        {
+            List<IKillable> killables = new()
+            {
+                CircleMove, 
+                _action.Action,
+                _action,
+                _movement,
+            };
+            return killables;
         }
     }
 }

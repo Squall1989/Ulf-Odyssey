@@ -24,15 +24,18 @@ namespace Ulf
         protected AllUnitsScriptable _allUnits;
         private AllPlanetsScriptable _allPlanets;
         private AllBuildScriptable _allBuilds;
+        private PlayerMono _playerMono;
 
         public List<CreatePlanetStruct> PlanetList => planetList;
 
-        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets, AllBuildScriptable allBuilds, BridgeMono bridgeMono)
+        public SceneGenerator(AllUnitsScriptable allUnits, AllPlanetsScriptable allPlanets, AllBuildScriptable allBuilds, 
+            BridgeMono bridgeMono, PlayerMono playerMono)
         {
             bridgeSize = bridgeMono.Size;
             _allUnits = allUnits;
             _allPlanets = allPlanets;
             _allBuilds = allBuilds;
+            _playerMono = playerMono;
             bridgesGenerations = 0;
 
             planetList = CreateTriangleStruct(ElementType.wood).ToList();
@@ -156,7 +159,7 @@ namespace Ulf
 
         public SnapPlayerStruct SpawnPlayer()
         {
-            var defaultPlayer = _allUnits.AllUnits.First();
+            var defaultPlayer = _playerMono.DefaultUnit;
             var planetId = planetList.RandomElement().planetId;
 
             var unitPlayer = GenerateUnit(defaultPlayer);

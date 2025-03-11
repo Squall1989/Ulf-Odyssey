@@ -1,7 +1,5 @@
 using MsgPck;
-using System;
 using System.Threading.Tasks;
-using UnityEditor.MemoryProfiler;
 
 namespace Ulf
 {
@@ -11,7 +9,8 @@ namespace Ulf
         private SceneGenerator _sceneGenerator;
         private INetworkable _networkable;
 
-        public PlayerControlHost(SceneGenerator sceneGenerator, MultiplayerHost multiplayerHost, INetworkable networkable, StatsScriptable[] stats) : base(stats)
+        public PlayerControlHost(SceneGenerator sceneGenerator, MultiplayerHost multiplayerHost, INetworkable networkable, StatsScriptable[] stats)
+            : base(stats)
         {
             _multiplayerHost = multiplayerHost;
             _sceneGenerator = sceneGenerator;

@@ -3,7 +3,6 @@ using MsgPck;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ulf
 {
@@ -28,6 +27,8 @@ namespace Ulf
             {
                 _player = player;
             }
+
+            player.Actions.OnAttacked += CreateDamage;
 
             players.Add(player);
         }
@@ -66,6 +67,21 @@ namespace Ulf
             });
         }
 
+        public void CreateDamage((int damage,int guid) damageParam)
+        {
+            DamageAction damageAction = new DamageAction()
+            {
+                 damageAmount = damageParam.damage,
+            };
+
+            OurPlayerAction(new ActionData()
+            {
+                action = damageAction,
+                guid = damageParam.guid,
+                isPlayerAction = true
+            });
+        }
+
         public void CreateUniversalAction(ActionType actionType, int num)
         {
             UniversalAction action = new UniversalAction()
@@ -91,7 +107,6 @@ namespace Ulf
             {
                 var stat = _stats.FirstOrDefault(p => p.ID == _player.View);
                 speed = stat.GetStatAmount(StatType.walkSpeed);
-                UnityEngine.Debug.Log("Speed: " + speed);
             }
             MovementAction movementAction = new MovementAction()
             {

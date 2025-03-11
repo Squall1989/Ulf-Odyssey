@@ -19,7 +19,8 @@ namespace Ulf
         public override void Init(Planet planet, CircleMove circleMove, float angle)
         {
             base.Init(planet, circleMove, angle);
-            
+            SetEnemyLayerMask(LayerMask.GetMask("unit"));
+
             extendedCircleMove = circleMove as ExtendedCircleMove;
         }
 
