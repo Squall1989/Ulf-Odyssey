@@ -1,0 +1,756 @@
+fileFormatVersion: 2
+guid: 4a3b3da4905c4214d93a84e175ef4017
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: e4c273a6b33405544984f98c9cfaf865
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: hpiconcherep3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 479
+      width: 20
+      height: 15
+    spriteID: 3244dc52ab25c3048b08d164de164c30
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 39, y: 479}
+    spritePosition: {x: 24, y: 50}
+  - name: hpiconcherep2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 479
+      width: 27
+      height: 20
+    spriteID: 8778e927541c5a142958f2d6ef20356a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 479}
+    spritePosition: {x: 9, y: 45}
+  - name: hpiconcherep1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 63
+      height: 64
+    spriteID: 3d58cf8431353de40b8a09a26e844063
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 1}
+  - name: hpiconcherep
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 76
+      width: 63
+      height: 64
+    spriteID: 0fb97c015cc1ae04a99a0fd974794f7d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 76}
+    spritePosition: {x: 0, y: 0}
+  - name: hpteniconcherep
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 418
+      width: 62
+      height: 53
+    spriteID: 2a08e28743260784c8d9b782a63c6a2f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 418}
+    spritePosition: {x: 2, y: 0}
+  - name: hpiconghost
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 148
+      width: 60
+      height: 61
+    spriteID: 516d7233e31ad22478c7ab363c5ebb1b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 148}
+    spritePosition: {x: 2, y: 3}
+  - name: hpteniconghost
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 353
+      width: 63
+      height: 57
+    spriteID: 2b0c0a0e34dabbf42b074e238dd87221
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 353}
+    spritePosition: {x: 1, y: 0}
+  - name: hpicondemon1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 460
+      width: 43
+      height: 43
+    spriteID: f53e0a46c7d173a40a5ad44b3d9e562d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 460}
+    spritePosition: {x: 11, y: 19}
+  - name: hpicondemon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 72
+      width: 47
+      height: 64
+    spriteID: 18eaa80d7f4087046b9ee45ec9aef6b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 72}
+    spritePosition: {x: 9, y: 0}
+  - name: hptenicondemon
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 144
+      width: 48
+      height: 62
+    spriteID: dd030f926dc15d84aa56d5013d03a635
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 144}
+    spritePosition: {x: 13, y: 0}
+  - name: hpiconnature3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 335
+      width: 53
+      height: 49
+    spriteID: 1f185b3d3b436e04bac1711564f4b9d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 335}
+    spritePosition: {x: 1, y: 14}
+  - name: hpiconnature2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 147
+      y: 4
+      width: 34
+      height: 56
+    spriteID: c58e95bb44bee7549a404ab946796a5d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 147, y: 4}
+    spritePosition: {x: 28, y: 8}
+  - name: hpiconnature1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 189
+      y: 4
+      width: 49
+      height: 33
+    spriteID: b695012f059013443bcd09a94f815362
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 189, y: 4}
+    spritePosition: {x: 2, y: 3}
+  - name: hpiconnature
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 217
+      width: 60
+      height: 61
+    spriteID: 7edf72179efaf9245aab74400c2e61b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 217}
+    spritePosition: {x: 2, y: 3}
+  - name: hpteniconnature
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 282
+      width: 59
+      height: 45
+    spriteID: 11e7c680c16f1ec4c9318b4ee943003b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 282}
+    spritePosition: {x: 5, y: 0}
+  - name: hpiconnormal2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 214
+      width: 45
+      height: 60
+    spriteID: e214df50e3898304ebf596f06d460b73
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 214}
+    spritePosition: {x: 1, y: 3}
+  - name: hpiconnormal1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 392
+      width: 36
+      height: 60
+    spriteID: 9bc437b5cd7db5b4497e31366ac7068e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 392}
+    spritePosition: {x: 27, y: 3}
+  - name: hpiconnormal
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 4
+      width: 64
+      height: 60
+    spriteID: 4999a19359ac161489e5e88001339e15
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 4}
+    spritePosition: {x: 0, y: 3}
+  - name: hpicontennormal
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 286
+      width: 62
+      height: 59
+    spriteID: b408707458ff1ab44a7660454db3f712
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 286}
+    spritePosition: {x: 2, y: 0}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: hpiconcherep3
+    spriteName: hpiconcherep3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3244dc52ab25c3048b08d164de164c30
+    layerID: 39
+    mosaicPosition: {x: 39, y: 479}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconcherep2
+    spriteName: hpiconcherep2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8778e927541c5a142958f2d6ef20356a
+    layerID: 38
+    mosaicPosition: {x: 4, y: 479}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconcherep1
+    spriteName: hpiconcherep1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3d58cf8431353de40b8a09a26e844063
+    layerID: 37
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconcherep
+    spriteName: hpiconcherep
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0fb97c015cc1ae04a99a0fd974794f7d
+    layerID: 36
+    mosaicPosition: {x: 4, y: 76}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpteniconcherep
+    spriteName: hpteniconcherep
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2a08e28743260784c8d9b782a63c6a2f
+    layerID: 61
+    mosaicPosition: {x: 4, y: 418}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconghost
+    spriteName: hpiconghost
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 516d7233e31ad22478c7ab363c5ebb1b
+    layerID: 40
+    mosaicPosition: {x: 4, y: 148}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpteniconghost
+    spriteName: hpteniconghost
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2b0c0a0e34dabbf42b074e238dd87221
+    layerID: 58
+    mosaicPosition: {x: 4, y: 353}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpicondemon1
+    spriteName: hpicondemon1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f53e0a46c7d173a40a5ad44b3d9e562d
+    layerID: 41
+    mosaicPosition: {x: 75, y: 460}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpicondemon
+    spriteName: hpicondemon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 18eaa80d7f4087046b9ee45ec9aef6b7
+    layerID: 42
+    mosaicPosition: {x: 75, y: 72}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hptenicondemon
+    spriteName: hptenicondemon
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dd030f926dc15d84aa56d5013d03a635
+    layerID: 55
+    mosaicPosition: {x: 75, y: 144}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnature3
+    spriteName: hpiconnature3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1f185b3d3b436e04bac1711564f4b9d5
+    layerID: 44
+    mosaicPosition: {x: 75, y: 335}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnature2
+    spriteName: hpiconnature2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c58e95bb44bee7549a404ab946796a5d
+    layerID: 45
+    mosaicPosition: {x: 147, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnature1
+    spriteName: hpiconnature1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b695012f059013443bcd09a94f815362
+    layerID: 46
+    mosaicPosition: {x: 189, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnature
+    spriteName: hpiconnature
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7edf72179efaf9245aab74400c2e61b5
+    layerID: 43
+    mosaicPosition: {x: 4, y: 217}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpteniconnature
+    spriteName: hpteniconnature
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 11e7c680c16f1ec4c9318b4ee943003b
+    layerID: 52
+    mosaicPosition: {x: 75, y: 282}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnormal2
+    spriteName: hpiconnormal2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e214df50e3898304ebf596f06d460b73
+    layerID: 48
+    mosaicPosition: {x: 75, y: 214}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnormal1
+    spriteName: hpiconnormal1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9bc437b5cd7db5b4497e31366ac7068e
+    layerID: 47
+    mosaicPosition: {x: 75, y: 392}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpiconnormal
+    spriteName: hpiconnormal
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4999a19359ac161489e5e88001339e15
+    layerID: 35
+    mosaicPosition: {x: 75, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: hpicontennormal
+    spriteName: hpicontennormal
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b408707458ff1ab44a7660454db3f712
+    layerID: 50
+    mosaicPosition: {x: 4, y: 286}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
