@@ -32,6 +32,18 @@ namespace Ulf
     }
 
     [MessagePackObject]
+    public struct DamageAction : INextAction
+    {
+        [Key(0)]
+        public int damageAmount;
+
+        public void DoAction(Unit unit)
+        {
+            unit.Health.ChangeHealth(-damageAmount);
+        }
+    }
+
+    [MessagePackObject]
     public struct MovementAction : INextAction
     {
         [Key(0)]
@@ -50,6 +62,7 @@ namespace Ulf
     [Union(0, typeof(MovementAction))]
     [Union(1, typeof(StandAction))]
     [Union(2, typeof(UniversalAction))]
+    [Union(3, typeof(DamageAction))]
     public interface INextAction
     {
         void DoAction(Unit unit);

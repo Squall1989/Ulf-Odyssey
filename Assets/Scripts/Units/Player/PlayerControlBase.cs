@@ -3,7 +3,6 @@ using MsgPck;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ulf
 {
@@ -28,6 +27,8 @@ namespace Ulf
             {
                 _player = player;
             }
+
+            player.Actions.OnAttacked += CreateDamage;
 
             players.Add(player);
         }
@@ -62,6 +63,21 @@ namespace Ulf
             {
                 action = standAction,
                 guid = _player.GUID,
+                isPlayerAction = true
+            });
+        }
+
+        public void CreateDamage((int damage,int guid) damageParam)
+        {
+            DamageAction damageAction = new DamageAction()
+            {
+                 damageAmount = damageParam.damage,
+            };
+
+            OurPlayerAction(new ActionData()
+            {
+                action = damageAction,
+                guid = damageParam.guid,
                 isPlayerAction = true
             });
         }

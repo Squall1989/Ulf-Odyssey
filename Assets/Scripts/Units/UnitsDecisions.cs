@@ -3,12 +3,14 @@ using Zenject;
 using System;
 using System.Linq;
 using UnityEngine;
+using MsgPck;
 
 namespace Ulf
 {
     public class UnitsDecisions : IUnitsProxy, ITickable
     {
         protected List<UnitBrain> unitBrains = new();
+        protected List<Unit> units = new();
 
         public Action<int, INextAction> OnUnitAction;
         private readonly IPlayersProxy _playersProxy;
@@ -30,20 +32,10 @@ namespace Ulf
             unitBrain.OnUnitMove += CreateMovement;
             
             unitBrains.Add(unitBrain);
+            units.Add(unit);
+            unit.Actions.OnAttacked += CreateDamage;
         }
 
-        public void Tick()
-        {
-            float deltaTime = Time.deltaTime;
-
-            unitBrains[nextBrainNum].MakeDecision(deltaTime);
-
-            if(++nextBrainNum >= unitBrains.Count)
-            {
-                nextBrainNum = 0;
-            }
-        }
-            
         private void CreateMovement(Unit unit, int dir, float speed)
         {
             var move = new MovementAction() { 
@@ -57,6 +49,31 @@ namespace Ulf
             OnUnitAction?.Invoke(unit.GUID, move);
         }
 
+        public void CreateDamage((int amount, int guid) param)
+        {
+            DamageAction damage = new DamageAction()
+            {
+                damageAmount = param.amount,
+            };
+
+            Unit unit = units.FirstOrDefault(p => p.GUID == param.guid);
+
+            damage.DoAction(unit);
+
+            OnUnitAction?.Invoke(unit.GUID, damage);
+        }
+
+        public void Tick()
+        {
+            float deltaTime = Time.deltaTime;
+
+            unitBrains[nextBrainNum].MakeDecision(deltaTime);
+
+            if (++nextBrainNum >= unitBrains.Count)
+            {
+                nextBrainNum = 0;
+            }
+        }
     }
 
 

@@ -7,7 +7,8 @@ namespace Ulf
     {
         private SceneGenerator _sceneGenerator;
 
-        public PlayerControlSingle(SceneGenerator sceneGenerator, StatsScriptable[] stats) : base(stats) 
+        public PlayerControlSingle(SceneGenerator sceneGenerator, StatsScriptable[] stats) 
+            : base(stats) 
         {
             _sceneGenerator = sceneGenerator;
         }

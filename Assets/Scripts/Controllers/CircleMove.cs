@@ -5,8 +5,10 @@ using UnityEngine;
 namespace Ulf
 {
 
-    public class CircleMove : IMovable
+    public class CircleMove : IMovable, IKillable
     {
+        private bool isDead = false;
+
         protected float deltaTime;
         protected IRound _round;
         protected float radius;
@@ -88,6 +90,10 @@ namespace Ulf
 
         public virtual void MoveCommand(MovementAction action)
         {
+            if (isDead)
+            {
+                return;
+            }
             SetAngle(action.fromAngle);
             SetMoveDirect(action.direction);
             SetSpeed(action.speed);
@@ -121,6 +127,17 @@ namespace Ulf
                 SetSpeed(0);
             }
             _restrictDir = dir;
+        }
+
+        public void Kill()
+        {
+            isDead = true;
+            SetSpeed(0);
+        }
+
+        public void Ressurect()
+        {
+            isDead = false;
         }
     }
 }

@@ -16,13 +16,14 @@ namespace Ulf
         public float Degree => _movement.Degree;
         public CircleMove Move => _movement;
         public ActionUnit Actions => _action;
+        public Health Health => _health;
 
-        public Unit(ElementType elementType, CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, 
-            CircleMove circleMove, ActionUnit action)
+        public Unit(CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, 
+            CircleMove circleMove, ActionUnit action, Health health)
         {
             _defaultUnit = defaultUnit;
             _unitStruct = unitStruct;
-            _health = new Health(defaultUnit.Health, elementType);
+            _health = health;
             _movement = circleMove;
             _action = action;
         }

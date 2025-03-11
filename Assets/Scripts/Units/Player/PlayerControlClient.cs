@@ -9,7 +9,8 @@ namespace Ulf
         private string _playerId;
         private INetworkable _networkable;
 
-        public PlayerControlClient(INetworkable networkable, string playerId, StatsScriptable[] stats) : base(stats) 
+        public PlayerControlClient(INetworkable networkable, string playerId, StatsScriptable[] stats) 
+            : base(stats) 
         {
             _playerId = playerId;
             _networkable = networkable;
