@@ -35,7 +35,8 @@ namespace Ulf
             {
                 CircleMove, 
                 _action.Action,
-                _action
+                _action,
+                _movement,
             };
             return killables;
         }
