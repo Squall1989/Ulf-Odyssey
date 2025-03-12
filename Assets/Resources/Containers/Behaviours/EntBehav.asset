@@ -15,7 +15,7 @@ MonoBehaviour:
   behavId: entrog
   attackPatterns:
   - attackNum: 1
-    attackDist: 2.19
+    attackDist: 2.49
     conditions: 07000000
   - attackNum: 0
     attackDist: 2.37
