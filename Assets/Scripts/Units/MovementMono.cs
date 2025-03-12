@@ -84,6 +84,7 @@ namespace Ulf
         {
             if (IsEnemyLayer(collision))
             {
+                UnityEngine.Debug.Log("Stop");
                 _circleMove.RestrictMove(0);
             }
         }

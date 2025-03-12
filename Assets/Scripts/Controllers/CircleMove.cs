@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Ulf
 {
-
     public class CircleMove : IMovable, IKillable
     {
         private bool isDead = false;

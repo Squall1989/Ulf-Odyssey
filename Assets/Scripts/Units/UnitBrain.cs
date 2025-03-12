@@ -156,13 +156,6 @@ namespace Ulf
                 return false;
             }
 
-            float runSpeed = _unitStats.GetStatAmount(StatType.runSpeed);
-
-            if (_unit.Move.Speed == runSpeed)
-            {
-                return false;
-            }
-
             return IsUnitLookTo(treatPlayer.Move.Position);
         }
 
@@ -171,6 +164,14 @@ namespace Ulf
             direct = 0;
             if (treatPlayer != null)
             {
+
+                float runSpeed = _unitStats.GetStatAmount(StatType.runSpeed);
+
+                if (_unit.Move.Speed == runSpeed)
+                {
+                    return false;
+                }
+
                 bool lookToPlayer = LookAtPlayer(treatPlayer, out var dist);
 
                 if (lookToPlayer)
@@ -186,7 +187,8 @@ namespace Ulf
         public void MakeDecision(float deltaTime)
         {
             moveDecisionCooldown -= deltaTime;
-            if (_unit.Actions.IsActionInProcess)
+            if (_unit.Actions.IsActionInProcess
+                || _unit.Health.CurrHealth <= 0)
             {
                 return;
             }
@@ -195,12 +197,13 @@ namespace Ulf
             {
                 if (DecidesAttack(player, out int attackNum))
                 {
+
+                    UnityEngine.Debug.Log("Attack: " + attackNum);
+                    OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum +1);
                     if (_unit.Move.Speed > 0)
                     {
                         OnUnitMove?.Invoke(_unit, 0, 0);
                     }
-                    UnityEngine.Debug.Log("Attack: " + attackNum);
-                    OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum);
                 }
                 else if (DecidesRun(player, out int direct))
                 {
