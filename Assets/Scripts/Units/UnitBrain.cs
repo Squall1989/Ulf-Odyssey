@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ENet;
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,6 +11,7 @@ namespace Ulf
     /// </summary>
     public class UnitBrain
     {
+        private readonly BehaviourScriptable _behaviour;
         private readonly IPlayersProxy _playersProxy;
         private readonly Unit _unit;
         private readonly StatsScriptable _unitStats;
@@ -20,8 +22,10 @@ namespace Ulf
         public Action<Unit, int, float> OnUnitMove;
         public Action<Unit, ActionType, int> OnUnitAction;
 
-        public UnitBrain(IPlayersProxy playersProxy, Unit unit, StatsScriptable unitStats)
+        public UnitBrain(IPlayersProxy playersProxy, Unit unit, 
+            StatsScriptable unitStats, BehaviourScriptable behaviour)
         {
+            _behaviour = behaviour;
             _playersProxy = playersProxy;
             _unit = unit;
             _unitStats = unitStats;
@@ -35,6 +39,10 @@ namespace Ulf
             closestPlayer = null;
             foreach (var player in _playersProxy.PlayersList)
             {
+                if (player.Health.CurrHealth <= 0)
+                {
+                    continue;
+                }
                 if (player.Move.Round == planet)
                 {
                     float dist = math.distance(_unit.Move.Position, player.Move.Position);
@@ -85,22 +93,87 @@ namespace Ulf
             return lookToPoint;
         }
 
+        private bool DecidesAttack(Player treatPlayer, out int attackNum)
+        {
+            attackNum = -1;
+
+            if (!LookAtPlayer(treatPlayer, out var dist))
+            {
+                return false;
+            }
+
+            for(int i = 0; i < _behaviour.attackPatterns.Length; i++)
+            {
+                var pattern = _behaviour.attackPatterns[i];
+                bool isAttackAllow = true;
+
+                if (pattern.attackDist < dist)
+                {
+                    continue;
+                }
+
+                for (int j = 0; j < pattern.conditions.Length; j++)
+                {
+                    if (!SwitchConditions(pattern.conditions[j], dist))
+                    {
+                        isAttackAllow = false;
+                        break;
+                    }
+                }
+
+                if (isAttackAllow)
+                {
+                    attackNum = i;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool SwitchConditions(ConditionType condition, float dist)
+        {
+            float runSpeed = _unitStats.GetStatAmount(StatType.runSpeed);
+            switch (condition)
+            {
+                case ConditionType.notRunning:
+                    return _unit.Move.Speed < runSpeed;
+                case ConditionType.afterRun:
+                    return _unit.Move.Speed == runSpeed;
+
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        private bool LookAtPlayer(Player treatPlayer, out float playerDist)
+        {
+            playerDist = (treatPlayer.Move.Position - _unit.Move.Position).magnitude;
+            float lookDist = _unitStats.GetStatAmount(StatType.lookDist);
+
+            if (playerDist > lookDist)
+            {
+                return false;
+            }
+
+            float runSpeed = _unitStats.GetStatAmount(StatType.runSpeed);
+
+            if (_unit.Move.Speed == runSpeed)
+            {
+                return false;
+            }
+
+            return IsUnitLookTo(treatPlayer.Move.Position);
+        }
+
         private bool DecidesRun(Player treatPlayer, out int direct)
         {
             direct = 0;
             if (treatPlayer != null)
             {
-                float playerDist = (treatPlayer.Move.Position - _unit.Move.Position).magnitude;
-                float lookDist = _unitStats.GetStatAmount(StatType.lookDist);
+                bool lookToPlayer = LookAtPlayer(treatPlayer, out var dist);
 
-                if (playerDist > lookDist)
-                {
-                    return false;
-                }
-
-                bool lookToPlayer = IsUnitLookTo(treatPlayer.Move.Position);
-
-                if(lookToPlayer)
+                if (lookToPlayer)
                 {
                     direct = _unit.Move.Direct;
                     return true;
@@ -120,7 +193,16 @@ namespace Ulf
 
             if(FindPlayer(out var player))
             {
-                if (DecidesRun(player, out int direct))
+                if (DecidesAttack(player, out int attackNum))
+                {
+                    if (_unit.Move.Speed > 0)
+                    {
+                        OnUnitMove?.Invoke(_unit, 0, 0);
+                    }
+                    UnityEngine.Debug.Log("Attack: " + attackNum);
+                    OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum);
+                }
+                else if (DecidesRun(player, out int direct))
                 {
                     float speed = _unitStats.GetStatAmount(StatType.runSpeed);
                     OnUnitMove?.Invoke(_unit, direct, speed);

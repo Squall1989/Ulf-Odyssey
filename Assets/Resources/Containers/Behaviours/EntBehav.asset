@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef4327e3b54f4d44bce981bddc8cd27, type: 3}
+  m_Name: EntBehav
+  m_EditorClassIdentifier: 
+  behavId: entrog
+  attackPatterns:
+  - attackNum: 1
+    attackDist: 2.68
+    conditions: 07000000
+  - attackNum: 0
+    attackDist: 2.82
+    conditions: 08000000

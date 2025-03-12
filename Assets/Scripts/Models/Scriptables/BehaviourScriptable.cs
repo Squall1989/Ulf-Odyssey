@@ -4,6 +4,6 @@
 public class BehaviourScriptable : ScriptableObject
 {
     public string behavId;
-    public AttackPattern attackPattern;
+    public AttackCondition[] attackPatterns;
     public ItemId friendableItem;
 }

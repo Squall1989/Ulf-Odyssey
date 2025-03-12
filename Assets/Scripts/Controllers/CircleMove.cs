@@ -28,6 +28,7 @@ namespace Ulf
         public Vector2 Position => _position;
         public IRound Round => _round;
         public int Direct => _lookDirect;
+        public float Speed => speedLinear;
 
         public CircleMove()
         {

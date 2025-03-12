@@ -31,10 +31,12 @@ namespace Ulf
 
         public void ActionAnimEnd()
         {
-            var currAction = _action.CurrentAction;
-            if (currAction == ActionType.attack)
+            UnityEngine.Debug.Log("action anim end: " + _action.CurrentAction);
+
+            if (_action.CurrentAction == ActionType.attack)
             {
                 _animator.SetInteger("attack", 0);
+                UnityEngine.Debug.Log("attack set to zero");
             }
             _action.EndAction();
         }

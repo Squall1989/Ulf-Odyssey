@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using MsgPck;
+using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 
 namespace Ulf
 {
@@ -14,22 +15,26 @@ namespace Ulf
 
         public Action<int, INextAction> OnUnitAction;
         private readonly IPlayersProxy _playersProxy;
+        private readonly BehaviourScriptable[] _behaviours;
         private readonly StatsScriptable[] _stats;
 
         private int nextBrainNum = 0;
 
-        public UnitsDecisions(StatsScriptable[] stats, IPlayersProxy playersProxy)
+        public UnitsDecisions(StatsScriptable[] stats, BehaviourScriptable[] behaviours, IPlayersProxy playersProxy)
         {
             _playersProxy = playersProxy;
+            _behaviours = behaviours;
             _stats = stats;
         }
 
         public void Add(Unit unit)
         {
             var unitStats = _stats.FirstOrDefault(p => p.ID == unit.View);
+            var unitBehaviour = _behaviours.FirstOrDefault(p => p.behavId == unit.View);
             
-            UnitBrain unitBrain = new UnitBrain(_playersProxy, unit, unitStats);
+            UnitBrain unitBrain = new UnitBrain(_playersProxy, unit, unitStats, unitBehaviour);
             unitBrain.OnUnitMove += CreateMovement;
+            unitBrain.OnUnitAction += CreateAction;
             
             unitBrains.Add(unitBrain);
             units.Add(unit);
@@ -47,6 +52,19 @@ namespace Ulf
             move.DoAction(unit);
 
             OnUnitAction?.Invoke(unit.GUID, move);
+        }
+
+        private void CreateAction(Unit unit, ActionType actionType, int param)
+        {
+            var action = new UniversalAction()
+            {
+                 action = actionType,
+                 paramNum = param,
+            };
+
+            action.DoAction(unit);
+
+            OnUnitAction?.Invoke(unit.GUID, action);
         }
 
         public void CreateDamage((int amount, int guid) param)

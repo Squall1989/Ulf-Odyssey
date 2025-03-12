@@ -1,18 +1,3 @@
-
-[System.Serializable]
-public struct AttackPattern
-{
-    public InitiativeType initiative;
-    public AttackChoose[] attackChooses;
-}
-
-[System.Serializable]
-public struct AttackChoose
-{
-    public ConditionType condition;
-    public AttackType attackType;
-}
-
 public enum ConditionType
 {
     none,
@@ -22,14 +7,8 @@ public enum ConditionType
     distFight,
     bothFights,
     retreating,
-}
-
-public enum AttackType
-{
-    none,
-    first,
-    second,
-    third,
+    afterRun,
+    notRunning,
 }
 
 public enum InitiativeType

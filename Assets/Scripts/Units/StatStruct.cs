@@ -9,7 +9,7 @@ public enum StatType
 {
     none,
     lookDist,
-    attackDist,
+    _free_slot_,
     walkSpeed,
     runSpeed,
     patrolDist,

@@ -21,7 +21,9 @@ namespace Ulf
             options.OnGameTypeChange += SetGameType;
 
             var stats = Resources.LoadAll<StatsScriptable>("Containers/Stats"); 
+            var beahviours = Resources.LoadAll<BehaviourScriptable>("Containers/Behaviours"); 
             Container.Bind<StatsScriptable[]>().FromInstance(stats).AsSingle();
+            Container.Bind<BehaviourScriptable[]>().FromInstance(beahviours).AsSingle();
 
             Container.Bind<AllUnitsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();
             Container.Bind<AllPlanetsScriptable>().FromScriptableObjectResource("Containers/").AsSingle();

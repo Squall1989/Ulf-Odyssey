@@ -181,6 +181,7 @@ namespace Ulf
             {
                 View = defaultUnit.View,
                 Guid = unitNextId++,
+                Health = defaultUnit.Health,
             };
 
             return createUnit;
