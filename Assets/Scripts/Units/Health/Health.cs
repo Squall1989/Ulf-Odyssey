@@ -13,6 +13,7 @@ namespace Ulf
         private List<IKillable> _killables;
 
         public int CurrHealth => _health;
+        public ElementType Element => _element;
 
         public Health(int maxHealth, ElementType element)
         {

@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Ulf
 {
+
     public class GameplayInstaller : MonoInstaller
     {
         [Inject] GameOptions options;
