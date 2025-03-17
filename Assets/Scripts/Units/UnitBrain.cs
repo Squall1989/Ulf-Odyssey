@@ -66,7 +66,7 @@ namespace Ulf
 
             if(_unit.Move.Direct != 0 && unitAwayDist >= patrolDist)
             {
-                bool isUnitLookToStart = IsUnitLookTo(_startPos);
+                bool isUnitLookToStart = UnitUtils.IsUnitLookTo(_unit, _startPos);
 
                 if(isUnitLookToStart)
                 {
@@ -81,16 +81,6 @@ namespace Ulf
             {
                 return Random.Range(-1, 2);
             }
-        }
-
-        private bool IsUnitLookTo(Vector2 point)
-        {
-            Vector2 pointPlanetVector = point - _unit.Move.PlanetPosition;
-            Vector2 unitPlanetVector = _unit.Move.Position - _unit.Move.PlanetPosition;
-            bool pointRight = MathUtils.IsRightDir(unitPlanetVector, pointPlanetVector);
-
-            bool lookToPoint = pointRight == (_unit.Move.Direct == -1);
-            return lookToPoint;
         }
 
         private bool DecidesAttack(Player treatPlayer, out int attackNum)
@@ -156,7 +146,7 @@ namespace Ulf
                 return false;
             }
 
-            return IsUnitLookTo(treatPlayer.Move.Position);
+            return UnitUtils.IsUnitLookTo(_unit, treatPlayer.Move.Position);
         }
 
         private bool DecidesRun(Player treatPlayer, out int direct)

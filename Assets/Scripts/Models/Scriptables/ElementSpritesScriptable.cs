@@ -5,6 +5,18 @@ namespace Ulf
     public class ElementSpritesScriptable : ScriptableObject
     {
         [SerializeField] private SpriteElementBind[] elementBinds;
+
+        public Sprite GetByElement(ElementType elementType)
+        {
+            for (int i = 0; i < elementBinds.Length; i++)
+            {
+                if (elementBinds[i].element == elementType)
+                {
+                    return elementBinds[i].sprite;
+                }
+            }
+            throw new System.InvalidOperationException("Element type not found!");
+        }
     }
 
     [System.Serializable]

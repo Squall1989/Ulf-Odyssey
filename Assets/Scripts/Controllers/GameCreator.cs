@@ -69,9 +69,13 @@ namespace Ulf
             unitMono.gameObject.name = "Player";
             playerMono.Player.SetPlayerId(player.playerId);
             playerProxy.AddPlayer(playerMono.Player, ourPlayer);
-            
-            if(ourPlayer)
+
+            if (ourPlayer)
+            {
                 SetupControl(unitMono);
+                var container = ProjectContext.Instance.Container;
+                container.Bind<Player>().FromInstance(playerMono.Player).AsSingle();
+            }
 
         }
 

@@ -11,7 +11,7 @@ namespace Ulf
     public class UnitsDecisions : IUnitsProxy, ITickable
     {
         protected List<UnitBrain> unitBrains = new();
-        protected List<Unit> units = new();
+        protected List<Unit> _units = new();
 
         public Action<int, INextAction> OnUnitAction;
         private readonly IPlayersProxy _playersProxy;
@@ -37,7 +37,7 @@ namespace Ulf
             unitBrain.OnUnitAction += CreateAction;
             
             unitBrains.Add(unitBrain);
-            units.Add(unit);
+            _units.Add(unit);
             unit.Actions.OnAttacked += CreateDamage;
         }
 
@@ -74,7 +74,7 @@ namespace Ulf
                 damageAmount = param.amount,
             };
 
-            Unit unit = units.FirstOrDefault(p => p.GUID == param.guid);
+            Unit unit = _units.FirstOrDefault(p => p.GUID == param.guid);
 
             damage.DoAction(unit);
 
@@ -91,6 +91,11 @@ namespace Ulf
             {
                 nextBrainNum = 0;
             }
+        }
+
+        public List<Unit> GetUnits(IRound round)
+        {
+            return _units.Where(p => p.Move.Round == round).ToList();
         }
     }
 

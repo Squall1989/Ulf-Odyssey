@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Ulf
 {
+
     public class PlayerMovementMono : MovementMono
     {
         protected ExtendedCircleMove extendedCircleMove;

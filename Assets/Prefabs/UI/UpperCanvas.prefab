@@ -116,17 +116,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpImages:
-  - {fileID: 372157445825385544}
-  - {fileID: 5339014823896060429}
   - {fileID: 8071192702131745573}
   - {fileID: 6625254203699548826}
+  - {fileID: 5339014823896060429}
   - {fileID: 3003377926708936098}
+  - {fileID: 372157445825385544}
   - {fileID: 58661654546839521}
   oddRects:
-  - {fileID: 3270897707869533521}
-  - {fileID: 6141242062648956283}
   - {fileID: 7208698438023043154}
+  - {fileID: 6141242062648956283}
   - {fileID: 5904372742592229022}
+  - {fileID: 3270897707869533521}
   - {fileID: 521347783280847087}
 --- !u!1 &775737565749249301
 GameObject:
@@ -862,11 +862,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 378059565067900626}
-  - {fileID: 2599703888376410615}
   - {fileID: 6529352552421462042}
   - {fileID: 5296892665308942476}
+  - {fileID: 2599703888376410615}
   - {fileID: 6288883129598965920}
+  - {fileID: 378059565067900626}
   - {fileID: 2586412675378967992}
   m_Father: {fileID: 6142762045942683603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -938,10 +938,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3270897707869533521}
-  - {fileID: 6141242062648956283}
   - {fileID: 7208698438023043154}
+  - {fileID: 6141242062648956283}
   - {fileID: 5904372742592229022}
+  - {fileID: 3270897707869533521}
   - {fileID: 521347783280847087}
   m_Father: {fileID: 6142762045942683603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
