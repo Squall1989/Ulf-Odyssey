@@ -36,10 +36,13 @@ namespace Ulf
         private void AnimFly(Image piece, RectTransform tr, Vector2 deltaPos)
         {
             Vector2 pos = tr.position;
-            var flyDelta = deltaPos * 3f;
-            tr.DOMove(pos + flyDelta, 1.2f).onComplete += () => 
+            tr.DOMove(pos + deltaPos, .3f).onComplete += () => 
             {
-                _piecesPool.ReturnPiece(piece);
+                piece.DOFade(0, .1f).onComplete += () =>
+                {
+                    piece.DOFade(1, 0);
+                    _piecesPool.ReturnPiece(piece);
+                };
             };
         }
 

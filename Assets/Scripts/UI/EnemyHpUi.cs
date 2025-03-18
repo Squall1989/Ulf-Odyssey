@@ -74,11 +74,13 @@ namespace Ulf
 
         internal void ChangeHealth(int hp)
         {
-            for(int i = _currHp; i > hp; i--)
+            for(int i = _currHp -1; i >= hp; i--)
             {
                 hpImages[i].sprite = sprites.GetByElement(_currElement, false);
                 _animPieces.HealthDestroy(_currPoses[i], _currElement);
+                UnityEngine.Debug.Log("hp destroy: " + i);
             }
+            _currHp = hp;
         }
     }
 }

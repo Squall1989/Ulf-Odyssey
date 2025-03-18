@@ -31,7 +31,6 @@ namespace Ulf
             _health = Math.Clamp(_health + amount, 0, _maxHealth);
 
             OnHealthChange?.Invoke(_health);
-            UnityEngine.Debug.Log("Health: " +  _health);
             if(_health <= 0)
             {
                 OnDeath(true);
