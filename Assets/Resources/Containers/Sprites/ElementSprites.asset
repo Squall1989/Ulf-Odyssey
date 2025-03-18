@@ -15,11 +15,16 @@ MonoBehaviour:
   elementBinds:
   - element: 0
     sprite: {fileID: 7686174723170783459, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
+    back: {fileID: 2110551081188775953, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
   - element: 1
     sprite: {fileID: -728769418361316804, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
+    back: {fileID: -8439336491264078433, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
   - element: 3
     sprite: {fileID: 728672914259983570, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
+    back: {fileID: -1531819429600704612, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
   - element: 4
     sprite: {fileID: 8255126410143737052, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
+    back: {fileID: 6002418013853444081, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
   - element: 5
     sprite: {fileID: -9127078323869056304, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
+    back: {fileID: 56697656991909252, guid: 4a3b3da4905c4214d93a84e175ef4017, type: 3}
