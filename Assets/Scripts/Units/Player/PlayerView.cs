@@ -1,5 +1,4 @@
 ﻿using System;
-using Unity.Entities.UniversalDelegates;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +12,19 @@ namespace Ulf
         public Action<Unit> OnUnitSpotted;
 
         private Unit _currSpottedUnit = null;
+        private float _viewDist;
+
+        [Inject]
+        public void InitStats(StatsScriptable[] stats)
+        {
+            for (int i = 0; i < stats.Length; i++)
+            {
+                if (stats[i].ID == "player")
+                {
+                    _viewDist = stats[i].GetStatAmount(StatType.lookDist);
+                }
+            }
+        }
 
         public void Tick()
         {
@@ -22,7 +34,7 @@ namespace Ulf
             }
             var unitsOnPlanet = _unitsProxy.GetUnits(_playerControl.Value.Move.Round);
 
-            float bestDist = 999;
+            float bestDist = _viewDist;
             Unit bestUnit = null;
 
             Vector2 playerPos = _playerControl.Value.Move.Position;
@@ -41,10 +53,18 @@ namespace Ulf
                 }
             }
 
-            if(bestUnit != null && _currSpottedUnit != bestUnit)
+            if (bestUnit != null)
             {
-                _currSpottedUnit = bestUnit;
-                OnUnitSpotted?.Invoke(bestUnit);
+                if (_currSpottedUnit != bestUnit)
+                {
+                    _currSpottedUnit = bestUnit;
+                    OnUnitSpotted?.Invoke(bestUnit);
+                }
+            }
+            else if (_currSpottedUnit != null)
+            {
+                OnUnitSpotted?.Invoke(null);
+                _currSpottedUnit = null;
             }
         }
     }

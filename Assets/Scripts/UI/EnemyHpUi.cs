@@ -69,7 +69,6 @@ namespace Ulf
                 if(_currPoses.Length > i)
                     hpImages[i].transform.localPosition = _currPoses[i];
             }
-            
         }
 
         internal void ChangeHealth(int hp)
@@ -78,7 +77,6 @@ namespace Ulf
             {
                 hpImages[i].sprite = sprites.GetByElement(_currElement, false);
                 _animPieces.HealthDestroy(_currPoses[i], _currElement);
-                UnityEngine.Debug.Log("hp destroy: " + i);
             }
             _currHp = hp;
         }

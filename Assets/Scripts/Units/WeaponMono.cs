@@ -23,7 +23,6 @@ namespace Ulf
             var unit = collision.GetComponent<UnitMono>();
             if (unit != null)
             {
-                UnityEngine.Debug.Log("Unit damaged: " +  unit.name);
                 OnUnitTriggered?.Invoke(unit.Unit, 1);
             }
         }

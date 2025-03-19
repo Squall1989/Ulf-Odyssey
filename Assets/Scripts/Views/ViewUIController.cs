@@ -24,11 +24,18 @@ namespace Ulf
                 _unitLookAt.Health.OnHealthChange -= enemyHp.ChangeHealth;
             }
 
+            _unitLookAt = unit;
+
+            if (unit == null)
+            {
+                enemyHp.InitHealth(new Health(0, ElementType.death));
+                return;
+            }
+
             enemyHp.InitHealth(unit.Health);
 
             unit.Health.OnHealthChange += enemyHp.ChangeHealth;
 
-            _unitLookAt = unit;
         }
     }
 }

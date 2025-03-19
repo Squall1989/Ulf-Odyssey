@@ -36,7 +36,6 @@ namespace Ulf
         {
             piece.enabled = false;
             spritesStack.Push(piece);
-            UnityEngine.Debug.Log("spritesStack count: " + spritesStack.Count);
         }
     }
 }
