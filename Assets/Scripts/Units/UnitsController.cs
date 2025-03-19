@@ -33,5 +33,10 @@ namespace Ulf
         {
             _units.Add(unit);
         }
+
+        public List<Unit> GetUnits(IRound round)
+        {
+            return _units.Where(p => p.Move.Round ==  round).ToList();
+        }
     }
 }

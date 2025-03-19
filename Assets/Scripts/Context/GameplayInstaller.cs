@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Ulf
 {
+
     public class GameplayInstaller : MonoInstaller
     {
         [Inject] GameOptions options;
@@ -18,6 +19,9 @@ namespace Ulf
         public override void InstallBindings()
         {
             SwitchGameMode();
+            Container.BindInterfacesAndSelfTo<PlayerView>()
+                .FromNew().AsSingle();
+            // Prefab; ToDo: replace with player view ID
             Container.Bind<PlayerMono>().FromInstance(playerMono).AsSingle();
             Container.Bind<InputControl>().FromComponentInNewPrefab(input).AsSingle();
             Container.Bind<CinemachineVirtualCamera>().FromInstance(cameraControl).AsSingle();

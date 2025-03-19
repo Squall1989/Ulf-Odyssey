@@ -68,7 +68,6 @@ namespace Ulf
         {
             if(_action.IsActionInProcess)
             {
-                UnityEngine.Debug.LogError("Action In Progress!!!");
                 return;
             }
             switch(type)
