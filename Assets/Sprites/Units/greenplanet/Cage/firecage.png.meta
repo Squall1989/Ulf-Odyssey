@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 5640b034a832466489a5b070633c8030
+guid: 9172a8b14c5230241be1c082adae7fbd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3407922876979556010
-    second: Pl_0
-  - first:
-      213: 4980261093762322383
-    second: Pl_1
+      213: 621807007890815038
+    second: firecage_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,35 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pl_0
-      rect:
-        serializedVersion: 2
-        x: 1665
-        y: 1832
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aae2b48fccf5b4f20800000000000000
-      internalID: 3407922876979556010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pl_1
+      name: firecage_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3000
-        height: 1828
+        width: 14
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcfc66604117d1540800000000000000
-      internalID: 4980261093762322383
+      spriteID: e383e20ed2a11a800800000000000000
+      internalID: 621807007890815038
       vertices: []
       indices: 
       edges: []
