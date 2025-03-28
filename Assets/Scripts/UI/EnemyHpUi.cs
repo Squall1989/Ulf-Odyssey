@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace Ulf
         private Vector2[] oddPoses;
         private ElementType _currElement;
         private int _currHp;
+        private int _maxHp;
         private bool isEvenPoses = true;
         private Vector2[] _currPoses;
 
@@ -41,31 +43,42 @@ namespace Ulf
 
         public void InitHealth(Health unitHealth)
         {
-            int startCount = unitHealth.CurrHealth;
             _currElement = unitHealth.Element;
             _currHp = unitHealth.CurrHealth;
-            isEvenPoses = startCount % 2 == 0;
+            _maxHp = unitHealth.MaxHealth;
+            isEvenPoses = _maxHp % 2 == 0;
 
-            SetPoses(startCount);
-            SetSprites(startCount, _currElement);
+            SetPoses();
+            SetSprites();
         }
 
-        private void SetSprites(int startCount, ElementType element)
+        private void SetSprites()
         {
-            Sprite currSprite = sprites.GetByElement(element, true);
-            for(int i = 0;i < startCount; i++)
+            Sprite hpSprite = sprites.GetByElement(_currElement, true);
+            Sprite backSprite = sprites.GetByElement(_currElement, false);
+            for(int i = 0; i < _maxHp; i++)
             {
-                hpImages[i].sprite = currSprite;
+                if (i < _currHp)
+                {
+                    hpImages[i].sprite = hpSprite;
+                    // Alpha set to zero
+                    hpImages[i].color *= new Color(1, 1, 1, 0);
+                    hpImages[i].DOFade(1, .2f);
+                }
+                else
+                {
+                    hpImages[i].sprite = backSprite;
+                }
             }
         }
 
-        private void SetPoses(int startCount)
+        private void SetPoses()
         {
             _currPoses = isEvenPoses ? evenPoses : oddPoses;
 
             for (int i = 0; i < hpImages.Length; i++)
             {
-                hpImages[i].enabled = i < startCount;
+                hpImages[i].enabled = i < _maxHp;
                 if(_currPoses.Length > i)
                     hpImages[i].transform.localPosition = _currPoses[i];
             }

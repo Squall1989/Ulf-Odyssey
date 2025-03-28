@@ -12,6 +12,7 @@ namespace Ulf
         public Action<int> OnHealthChange;
         private List<IKillable> _killables;
 
+        public int MaxHealth => _maxHealth;
         public int CurrHealth => _health;
         public ElementType Element => _element;
 
