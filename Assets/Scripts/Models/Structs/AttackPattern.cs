@@ -9,6 +9,7 @@ public enum ConditionType
     retreating,
     afterRun,
     notRunning,
+    afterAttack,
 }
 
 public enum InitiativeType

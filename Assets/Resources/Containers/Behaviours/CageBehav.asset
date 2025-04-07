@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behavId: cage
   attackPatterns:
+  - attackNum: 1
+    attackDist: 4
+    conditions: 09000000
   - attackNum: 0
-    attackDist: 2.37
-    conditions: 08000000
+    attackDist: 3.12
+    conditions: 03000000

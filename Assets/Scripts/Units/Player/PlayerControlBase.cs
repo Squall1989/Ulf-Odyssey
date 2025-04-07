@@ -67,7 +67,7 @@ namespace Ulf
             });
         }
 
-        public void CreateDamage((int damage,int guid) damageParam)
+        public void CreateDamage((int damage,int guid, int attacker) damageParam)
         {
             DamageAction damageAction = new DamageAction()
             {

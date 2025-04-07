@@ -67,14 +67,14 @@ namespace Ulf
             OnUnitAction?.Invoke(unit.GUID, action);
         }
 
-        public void CreateDamage((int amount, int guid) param)
+        public void CreateDamage((int amount, int attacked, int attacker) param)
         {
             DamageAction damage = new DamageAction()
             {
                 damageAmount = param.amount,
             };
 
-            Unit unit = _units.FirstOrDefault(p => p.GUID == param.guid);
+            Unit unit = _units.FirstOrDefault(p => p.GUID == param.attacked);
 
             damage.DoAction(unit);
 
