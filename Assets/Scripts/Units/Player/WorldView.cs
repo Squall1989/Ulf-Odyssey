@@ -11,13 +11,21 @@ namespace Ulf
     public class WorldView 
     {
         public Action<(int damage, int attackable, int attacker)> OnUnitDamaged;
+        private IUnitsProxy _unitsProxy;
+        private IPlayersProxy _playersProxy;
 
         [Inject]
         public WorldView(IUnitsProxy unitsProxy, IPlayersProxy playersProxy)
         {
+            _unitsProxy = unitsProxy;
+            _playersProxy = playersProxy;
 
-            InitDamages(unitsProxy.GetUnits());
-            InitDamages(playersProxy.PlayersList.Select(p => p as Unit));
+        }
+
+        public void Init()
+        {
+            InitDamages(_unitsProxy.GetUnits());
+            InitDamages(_playersProxy.PlayersList.Select(p => p as Unit));
         }
 
         private void InitDamages(IEnumerable<Unit> units)

@@ -17,6 +17,7 @@ namespace Ulf
         {
             Application.targetFrameRate = 60;
             Container.Bind<GameOptions>().FromInstance(options).AsSingle();
+            Container.Bind<GameState>().FromNew().AsSingle();
             Container.Bind<ConnectHandler>().FromInstance(handlerConnect).AsSingle();
             options.OnGameTypeChange += SetGameType;
 

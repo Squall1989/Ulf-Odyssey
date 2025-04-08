@@ -23,18 +23,23 @@ namespace Ulf
         [Inject] protected InputControl inputControl;
         [Inject] protected CinemachineVirtualCamera cameraControl;
         [Inject] protected PlayerMono playerPrefab;
+        [Inject] protected GameState gameState;
 
         private List<PlanetMono> planetList = new();
         private List<BridgeMono> bridgeList = new();
 
         async void Start()
         {
+            gameState.Condition = GameCondition.preparing;
+
             var scene = await sceneProxy.GetSceneStruct();
             InstPlanets(scene);
             playerProxy.OnOtherPlayerSpawn += (playerStruct) => InstPlayer(playerStruct, false);
             var player = await playerProxy.SpawnPlayer();
             InstPlayer(player, true);
             ConnectBridges();
+
+            gameState.Condition = GameCondition.allIsReady;
         }
 
         private void ConnectBridges()
