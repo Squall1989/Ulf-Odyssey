@@ -67,5 +67,11 @@ namespace Ulf
             foreach (var player in players)
                 _networkable.Send(player, connection);
         }
+
+        public override void AddPlayer(Player player, bool isOurPlayer)
+        {
+            base.AddPlayer(player, isOurPlayer);
+            player.Actions.OnAttacked += CreateDamage;
+        }
     }
 }

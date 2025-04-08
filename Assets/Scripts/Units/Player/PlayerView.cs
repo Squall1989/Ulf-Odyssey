@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Ulf
 {
+
     public class PlayerView : ITickable
     {
         [Inject] private readonly LazyInject<Player> _playerControl;

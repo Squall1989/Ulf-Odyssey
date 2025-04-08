@@ -21,14 +21,12 @@ namespace Ulf
         }
 
 
-        public void AddPlayer(Player player, bool isOurPlayer)
+        public virtual void AddPlayer(Player player, bool isOurPlayer)
         {
             if (isOurPlayer)
             {
                 _player = player;
             }
-
-            player.Actions.OnAttacked += CreateDamage;
 
             players.Add(player);
         }
@@ -72,6 +70,7 @@ namespace Ulf
             DamageAction damageAction = new DamageAction()
             {
                  damageAmount = damageParam.damage,
+                 damager = damageParam.attacker,
             };
 
             OurPlayerAction(new ActionData()

@@ -72,6 +72,7 @@ namespace Ulf
             DamageAction damage = new DamageAction()
             {
                 damageAmount = param.amount,
+                damager = param.attacker,
             };
 
             Unit unit = _units.FirstOrDefault(p => p.GUID == param.attacked);
@@ -96,6 +97,11 @@ namespace Ulf
         public List<Unit> GetUnits(IRound round)
         {
             return _units.Where(p => p.Move.Round == round).ToList();
+        }
+
+        public List<Unit> GetUnits()
+        {
+            return _units;
         }
     }
 

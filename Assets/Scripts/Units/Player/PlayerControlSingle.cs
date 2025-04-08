@@ -17,5 +17,11 @@ namespace Ulf
         {
             return Task.FromResult(_sceneGenerator.SpawnPlayer());
         }
+
+        public override void AddPlayer(Player player, bool isOurPlayer)
+        {
+            base.AddPlayer(player, isOurPlayer);
+            player.Actions.OnAttacked += CreateDamage;
+        }
     }
 }

@@ -57,10 +57,10 @@ namespace Ulf
         /// <summary>
         /// ToDo: aggression back for units
         /// </summary>
-        private void AttackedFrom(int damage, int attackerGuid)
+        internal void AttackedFrom(int damage, int attackerGuid)
         {
             OnAttacked?.Invoke((damage, _guid, attackerGuid));
-            _attackLast = new(attackerGuid, 2f);
+            _attackLast = new(attackerGuid, 1f);
             AttackedTimer();
         }
 

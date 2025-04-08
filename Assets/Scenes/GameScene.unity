@@ -629,6 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpUiPfb: {fileID: 6955750034670095803, guid: deef04256edd36449ac7e35cde971bba, type: 3}
+  hpWorldUiPfb: {fileID: 1439255637738992604, guid: 95811e9c1cdcdd04ea2603894623a898, type: 3}
   viewUI: {fileID: 914034172}
 --- !u!4 &914034171
 Transform:
