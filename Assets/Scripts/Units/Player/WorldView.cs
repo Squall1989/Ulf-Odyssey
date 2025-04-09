@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
+using UnityEngine;
 using Zenject;
 
 namespace Ulf
@@ -12,12 +13,15 @@ namespace Ulf
     public class WorldView 
     {
         public Action<float2, float2, ElementType> OnUnitDamaged;
+        private AllUnitsScriptable _allUnitsMono;
         private IUnitsProxy _unitsProxy;
         private IPlayersProxy _playersProxy;
 
         [Inject]
-        public WorldView(IUnitsProxy unitsProxy, IPlayersProxy playersProxy)
+        public WorldView(IUnitsProxy unitsProxy, IPlayersProxy playersProxy, 
+            AllUnitsScriptable allUnitsMono)
         {
+            _allUnitsMono = allUnitsMono;
             _unitsProxy = unitsProxy;
             _playersProxy = playersProxy;
 
@@ -60,7 +64,20 @@ namespace Ulf
             Unit attackable = FindUnit(DamageParams.attackable);
 
             float2 pos = attackable.Move.Position;
-            float2 dir = pos + pos - (float2)damager.Move.Position;
+            float2 up = pos - (float2)attackable.Move.PlanetPosition;
+            float2 dir = pos - (float2)damager.Move.Position;
+
+            var unitMono = _allUnitsMono.AllUnitsMono.FirstOrDefault(p => p.DefaultUnit.View == attackable.View);
+            float height = 2f;
+            float width = 1f;
+
+            if(unitMono != null)
+            {
+                var collider = unitMono.GetComponent<CapsuleCollider2D>();
+                height = collider.offset.y;
+                width = collider.size.x;
+            }
+            pos += math.normalize(up) * height + math.normalize(dir) * width;
             ElementType element = attackable.Health.Element;
 
             OnUnitDamaged?.Invoke(pos, dir, element);

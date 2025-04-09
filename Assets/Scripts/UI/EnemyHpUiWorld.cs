@@ -21,7 +21,8 @@ namespace Ulf
 
         private void AnimDamageWorld(float2 startPos, float2 direct, ElementType type)
         {
-            HealthDestroy(startPos, type, true);
+            direct = math.normalize(direct);
+            HealthDestroy(startPos, type, direct, true);
         }
 
         private void GameStateChange(GameCondition condition)

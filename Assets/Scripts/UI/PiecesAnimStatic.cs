@@ -16,7 +16,7 @@ namespace Ulf
             _piecesPool = piecesPool;
         }
 
-        public void HealthDestroy(Vector2 pos, ElementType element, bool isWorldPos = false)
+        public void HealthDestroy(Vector2 pos, ElementType element, Vector2 flyImpulse = default, bool isWorldPos = false)
         {
             var pieces = LookForPieces(element);
 
@@ -47,7 +47,7 @@ namespace Ulf
                     tr.sizeDelta = pieces[i].size;
                 }
 
-                AnimFly(pieceImg, tr, piecPos);
+                AnimFly(pieceImg, tr, piecPos + flyImpulse);
             }
         }
 
