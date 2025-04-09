@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using Zenject;
 
 namespace Ulf
@@ -10,7 +11,7 @@ namespace Ulf
     /// </summary>
     public class WorldView 
     {
-        public Action<(int damage, int attackable, int attacker)> OnUnitDamaged;
+        public Action<float2, float2, ElementType> OnUnitDamaged;
         private IUnitsProxy _unitsProxy;
         private IPlayersProxy _playersProxy;
 
@@ -36,9 +37,33 @@ namespace Ulf
             }
         }
 
+        private Unit FindUnit(int id)
+        {
+            foreach (var unit in _unitsProxy.GetUnits())
+            {
+                if(id == unit.GUID) 
+                    return unit;
+            }
+
+            foreach (var player in _playersProxy.PlayersList)
+            {
+                if (id == player.GUID) 
+                    return player;
+            }
+
+            throw new Exception($"Unit with id {id} not found!");
+        }
+
         private void UnitDamaged((int damage, int attackable, int attacker) DamageParams)
         {
-            OnUnitDamaged?.Invoke(DamageParams);
+            Unit damager = FindUnit(DamageParams.attacker);
+            Unit attackable = FindUnit(DamageParams.attackable);
+
+            float2 pos = attackable.Move.Position;
+            float2 dir = pos + pos - (float2)damager.Move.Position;
+            ElementType element = attackable.Health.Element;
+
+            OnUnitDamaged?.Invoke(pos, dir, element);
         }
     }
 }
