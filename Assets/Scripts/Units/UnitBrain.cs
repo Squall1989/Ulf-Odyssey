@@ -195,8 +195,6 @@ namespace Ulf
             {
                 if (DecidesAttack(player, out int attackNum))
                 {
-
-                    UnityEngine.Debug.Log("Attack: " + attackNum);
                     OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum +1);
                     if (_unit.Move.Speed > 0)
                     {

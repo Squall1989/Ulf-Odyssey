@@ -12,7 +12,7 @@ namespace Ulf
     /// </summary>
     public class WorldView 
     {
-        public Action<float2, float2, ElementType> OnUnitDamaged;
+        public Action<Unit, Unit, CapsuleCollider2D> OnUnitDamaged;
         private AllUnitsScriptable _allUnitsMono;
         private IUnitsProxy _unitsProxy;
         private IPlayersProxy _playersProxy;
@@ -62,25 +62,16 @@ namespace Ulf
         {
             Unit damager = FindUnit(DamageParams.attacker);
             Unit attackable = FindUnit(DamageParams.attackable);
-
-            float2 pos = attackable.Move.Position;
-            float2 up = pos - (float2)attackable.Move.PlanetPosition;
-            float2 dir = pos - (float2)damager.Move.Position;
-
             var unitMono = _allUnitsMono.AllUnitsMono.FirstOrDefault(p => p.DefaultUnit.View == attackable.View);
-            float height = 2f;
-            float width = 1f;
-
-            if(unitMono != null)
+            
+            CapsuleCollider2D collider2D = null;
+            
+            if (unitMono != null)
             {
-                var collider = unitMono.GetComponent<CapsuleCollider2D>();
-                height = collider.offset.y;
-                width = collider.size.x;
+                collider2D = unitMono.GetComponent<CapsuleCollider2D>();
             }
-            pos += math.normalize(up) * height + math.normalize(dir) * width;
-            ElementType element = attackable.Health.Element;
 
-            OnUnitDamaged?.Invoke(pos, dir, element);
+            OnUnitDamaged?.Invoke(damager, attackable, collider2D);
         }
     }
 }

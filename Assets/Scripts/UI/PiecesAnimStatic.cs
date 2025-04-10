@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using Unity.Entities.UniversalDelegates;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,17 +10,19 @@ namespace Ulf
     {
         [Inject] private ElementPiecesScriptable[] elementPieces;
 
-        private PiecesPool _piecesPool;
+        protected PiecesPool _piecesPool;
 
         public void Init(PiecesPool piecesPool)
         {
             _piecesPool = piecesPool;
         }
 
-        public void HealthDestroy(Vector2 pos, ElementType element, Vector2 flyImpulse = default, bool isWorldPos = false)
+        public List<Image> HealthDestroy(Vector2 pos, ElementType element,
+            bool pieceAnimFly = false, bool isWorldPos = false)
         {
             var pieces = LookForPieces(element);
 
+            List<Image> result = new List<Image>();
 
             for (int i = 0; i < pieces.Length; i++)
             {
@@ -27,7 +30,7 @@ namespace Ulf
 
                 if (isWorldPos)
                 {
-                    piecPos *= .01f;
+                    piecPos *= .007f;
                 }
 
                 Image pieceImg = _piecesPool.GetPiece();
@@ -39,21 +42,27 @@ namespace Ulf
                 if (isWorldPos)
                 {
                     tr.localPosition = pos + piecPos;
-                    tr.sizeDelta = pieces[i].size * .01f;
+                    tr.sizeDelta = pieces[i].size * .007f;
                 }
                 else
                 {
                     tr.anchoredPosition = pos + piecPos;
                     tr.sizeDelta = pieces[i].size;
                 }
+                if(pieceAnimFly)
+                    AnimFly(pieceImg, piecPos);
 
-                AnimFly(pieceImg, tr, piecPos + flyImpulse);
+                result.Add(pieceImg);
             }
+
+            return result;
         }
 
-        protected virtual void AnimFly(Image piece, RectTransform tr, Vector2 deltaPos)
+        protected void AnimFly(Image piece, Vector2 deltaPos)
         {
+            RectTransform tr = piece.rectTransform;
             Vector2 pos = tr.position;
+            
             tr.DOMove(pos + deltaPos, .3f).onComplete += () => 
             {
                 piece.DOFade(0, .1f).onComplete += () =>
@@ -64,7 +73,7 @@ namespace Ulf
             };
         }
 
-        private ElementPieceStart[] LookForPieces(ElementType element)
+        protected ElementPieceStart[] LookForPieces(ElementType element)
         {
             for (int i = 0; i < elementPieces.Length; i++)
             {
