@@ -12,18 +12,14 @@ namespace Ulf
         protected List<Unit> _units = new();
 
         public Action<int, INextAction> OnUnitAction;
+        [Inject]
         private readonly IPlayersProxy _playersProxy;
+        [Inject]
         private readonly BehaviourScriptable[] _behaviours;
+        [Inject]
         private readonly StatsScriptable[] _stats;
 
         private int nextBrainNum = 0;
-
-        public UnitsDecisions(StatsScriptable[] stats, BehaviourScriptable[] behaviours, IPlayersProxy playersProxy)
-        {
-            _playersProxy = playersProxy;
-            _behaviours = behaviours;
-            _stats = stats;
-        }
 
         public void Add(Unit unit)
         {
