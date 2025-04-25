@@ -89,7 +89,7 @@ namespace Ulf
             for(int i = _currHp -1; i >= hp; i--)
             {
                 hpImages[i].sprite = sprites.GetByElement(_currElement, false);
-                _animPieces.HealthDestroy(_currPoses[i], _currElement);
+                _animPieces.HealthDestroy(_currPoses[i], _currElement, true);
             }
             _currHp = hp;
         }

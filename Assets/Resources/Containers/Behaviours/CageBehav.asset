@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c6bf4de374f44de9c032cc9d78898b, type: 3}
-  m_Name: Units
+  m_Script: {fileID: 11500000, guid: bef4327e3b54f4d44bce981bddc8cd27, type: 3}
+  m_Name: CageBehav
   m_EditorClassIdentifier: 
-  unitsMono:
-  - {fileID: 2746582215199746068, guid: dfc4626432496944db80db260a8786b3, type: 3}
-  - {fileID: 6936764701226521451, guid: 88385a8e2b581794d93e66cf69982734, type: 3}
+  behavId: cage
+  attackPatterns:
+  - attackNum: 1
+    attackDist: 4
+    conditions: 09000000
+  - attackNum: 0
+    attackDist: 3.12
+    conditions: 03000000

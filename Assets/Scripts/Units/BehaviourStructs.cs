@@ -36,6 +36,8 @@ namespace Ulf
     {
         [Key(0)]
         public int damageAmount;
+        [Key(1)]
+        public int damager;
 
         public void DoAction(Unit unit)
         {

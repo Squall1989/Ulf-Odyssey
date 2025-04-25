@@ -7,6 +7,7 @@ namespace Ulf
     public class ViewUIController : MonoBehaviour
     {
         [Inject] EnemyHpUi enemyHp;
+        [Inject] EnemyHpUiWorld hpUiWorld;
         [Inject] PlayerView playerView;
 
         Unit _unitLookAt = null;

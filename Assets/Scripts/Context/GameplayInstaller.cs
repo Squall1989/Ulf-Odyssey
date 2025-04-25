@@ -25,6 +25,7 @@ namespace Ulf
             Container.Bind<PlayerMono>().FromInstance(playerMono).AsSingle();
             Container.Bind<InputControl>().FromComponentInNewPrefab(input).AsSingle();
             Container.Bind<CinemachineVirtualCamera>().FromInstance(cameraControl).AsSingle();
+            Container.Bind<WorldView>().FromNew().AsSingle();
         }
 
         protected void SwitchGameMode()

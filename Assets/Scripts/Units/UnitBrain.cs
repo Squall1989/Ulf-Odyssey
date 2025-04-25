@@ -113,7 +113,7 @@ namespace Ulf
 
                 if (isAttackAllow)
                 {
-                    attackNum = i;
+                    attackNum = _behaviour.attackPatterns[i].attackNum;
                     return true;
                 }
             }
@@ -130,7 +130,10 @@ namespace Ulf
                     return _unit.Move.Speed < runSpeed;
                 case ConditionType.afterRun:
                     return _unit.Move.Speed == runSpeed;
-
+                case ConditionType.afterAttack:
+                    return _unit.Actions.Attacker > -1;
+                case ConditionType.closeFight:
+                    return dist < 5;
                 default:
                     throw new NotImplementedException();
             }
@@ -169,6 +172,11 @@ namespace Ulf
                     direct = _unit.Move.Direct;
                     return true;
                 }
+                else if (_unit.Actions.Attacker > -1)
+                {
+                    direct = -_unit.Move.Direct;
+                    return true;
+                }
             }
 
             return false;
@@ -187,13 +195,12 @@ namespace Ulf
             {
                 if (DecidesAttack(player, out int attackNum))
                 {
-
-                    UnityEngine.Debug.Log("Attack: " + attackNum);
                     OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum +1);
                     if (_unit.Move.Speed > 0)
                     {
                         OnUnitMove?.Invoke(_unit, 0, 0);
                     }
+                    return;
                 }
                 else if (DecidesRun(player, out int direct))
                 {

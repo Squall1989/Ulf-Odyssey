@@ -3,8 +3,6 @@ using Zenject;
 using System;
 using System.Linq;
 using UnityEngine;
-using MsgPck;
-using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 
 namespace Ulf
 {
@@ -14,18 +12,14 @@ namespace Ulf
         protected List<Unit> _units = new();
 
         public Action<int, INextAction> OnUnitAction;
+        [Inject]
         private readonly IPlayersProxy _playersProxy;
+        [Inject]
         private readonly BehaviourScriptable[] _behaviours;
+        [Inject]
         private readonly StatsScriptable[] _stats;
 
         private int nextBrainNum = 0;
-
-        public UnitsDecisions(StatsScriptable[] stats, BehaviourScriptable[] behaviours, IPlayersProxy playersProxy)
-        {
-            _playersProxy = playersProxy;
-            _behaviours = behaviours;
-            _stats = stats;
-        }
 
         public void Add(Unit unit)
         {
@@ -67,14 +61,15 @@ namespace Ulf
             OnUnitAction?.Invoke(unit.GUID, action);
         }
 
-        public void CreateDamage((int amount, int guid) param)
+        public void CreateDamage((int amount, int attacked, int attacker) param)
         {
             DamageAction damage = new DamageAction()
             {
                 damageAmount = param.amount,
+                damager = param.attacker,
             };
 
-            Unit unit = _units.FirstOrDefault(p => p.GUID == param.guid);
+            Unit unit = _units.FirstOrDefault(p => p.GUID == param.attacked);
 
             damage.DoAction(unit);
 
@@ -96,6 +91,11 @@ namespace Ulf
         public List<Unit> GetUnits(IRound round)
         {
             return _units.Where(p => p.Move.Round == round).ToList();
+        }
+
+        public List<Unit> GetUnits()
+        {
+            return _units;
         }
     }
 

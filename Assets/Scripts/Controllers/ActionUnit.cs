@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Threading.Tasks;
 
 namespace Ulf
 {
@@ -9,10 +11,14 @@ namespace Ulf
         public ActionType CurrentAction => _currAction;
         public bool IsActionInProcess => _currAction > ActionType.none;
          
-        public Action<(int damage, int attackerGuid)> OnAttacked;
+        public Action<(int damage, int attacked, int attacker)> OnAttacked;
         public Action<ActionType, int> OnAction;
         private bool _isDead = false;
         private int _guid;
+
+        private (int guid, float time) _attackLast;
+
+        public int Attacker => _attackLast.time > 0 ? _attackLast.guid : -1;
 
         public ActionUnit(int guid)
         {
@@ -51,9 +57,20 @@ namespace Ulf
         /// <summary>
         /// ToDo: aggression back for units
         /// </summary>
-        private void AttackedFrom(int damage, int attackerGuid)
+        internal void AttackedFrom(int damage, int attackerGuid)
         {
-            OnAttacked?.Invoke((damage, _guid));
+            OnAttacked?.Invoke((damage, _guid, attackerGuid));
+            _attackLast = new(attackerGuid, 1f);
+            AttackedTimer();
+        }
+
+        private async void AttackedTimer()
+        {
+            while (_attackLast.time > 0)
+            {
+                _attackLast.time -= .1f;
+                await Task.Delay(100);
+            }
         }
     }
 }

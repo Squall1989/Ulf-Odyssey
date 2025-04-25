@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ulf
 {
+    public enum GameCondition
+    {
+        none,
+        preparing,
+        allIsReady,
+    }
+
     public enum GameType
     {
         single = 0,
