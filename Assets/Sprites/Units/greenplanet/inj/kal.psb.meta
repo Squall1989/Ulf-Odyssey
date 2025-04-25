@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 1df5a5b7c90017d4e87a3a0a660b4075
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 438e8200cc72d2247b189cb4bf0edd65
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: svet
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 111
+      height: 227
+    spriteID: 42d27bef922a56e43b7b2fed304c2a52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 22, y: 61}
+  - name: k1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 123
+      y: 381
+      width: 39
+      height: 76
+    spriteID: a688daa843405124c81db1f8dd9681c7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 123, y: 381}
+    spritePosition: {x: 62, y: 84}
+  - name: k2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 123
+      y: 465
+      width: 22
+      height: 39
+    spriteID: cbb12f9d78043394fa9e6f4cf19b8739
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 123, y: 465}
+    spritePosition: {x: 79, y: 150}
+  - name: k3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 182
+      y: 252
+      width: 33
+      height: 78
+    spriteID: 1cc46f32b0399054ab87f79129c337dc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 182, y: 252}
+    spritePosition: {x: 71, y: 188}
+  - name: k4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 153
+      y: 465
+      width: 20
+      height: 35
+    spriteID: 9bd3aca8dd6202240a00afef003c82e2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 153, y: 465}
+    spritePosition: {x: 54, y: 180}
+  - name: luj6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 182
+      y: 171
+      width: 39
+      height: 73
+    spriteID: 1ed543a436637f54aa00f46522f42fc8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 182, y: 171}
+    spritePosition: {x: 56, y: 229}
+  - name: luj5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 182
+      y: 338
+      width: 34
+      height: 68
+    spriteID: a7a3b5ac64579004aafa64f0c3273f29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 182, y: 338}
+    spritePosition: {x: 87, y: 188}
+  - name: luj4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 123
+      y: 4
+      width: 90
+      height: 159
+    spriteID: 2eb97bd1f694daa4a98fcd6ac3ece991
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 123, y: 4}
+    spritePosition: {x: 30, y: 103}
+  - name: luj3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 123
+      y: 171
+      width: 51
+      height: 90
+    spriteID: c4f871e392eb5744e892d8a4c5ff44ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 123, y: 171}
+    spritePosition: {x: 68, y: 21}
+  - name: luj2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 123
+      y: 269
+      width: 41
+      height: 104
+    spriteID: ad231edd0d37bf44285bd35cb0ae94ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 123, y: 269}
+    spritePosition: {x: 46, y: 48}
+  - name: luj
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 461
+      width: 23
+      height: 3
+    spriteID: ab20d8ce8f3e273489b2dc501d3df72f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 461}
+    spritePosition: {x: 45, y: 151}
+  - name: back
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 239
+      width: 68
+      height: 214
+    spriteID: f9b95daa1ce63b0408a9c6f24bd39256
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 239}
+    spritePosition: {x: 39, y: 52}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: svet
+    spriteName: svet
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 42d27bef922a56e43b7b2fed304c2a52
+    layerID: 33
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: k1
+    spriteName: k1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a688daa843405124c81db1f8dd9681c7
+    layerID: 30
+    mosaicPosition: {x: 123, y: 381}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: k2
+    spriteName: k2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cbb12f9d78043394fa9e6f4cf19b8739
+    layerID: 31
+    mosaicPosition: {x: 123, y: 465}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: k3
+    spriteName: k3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1cc46f32b0399054ab87f79129c337dc
+    layerID: 32
+    mosaicPosition: {x: 182, y: 252}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: k4
+    spriteName: k4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9bd3aca8dd6202240a00afef003c82e2
+    layerID: 19
+    mosaicPosition: {x: 153, y: 465}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: luj6
+    spriteName: luj6
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1ed543a436637f54aa00f46522f42fc8
+    layerID: 35
+    mosaicPosition: {x: 182, y: 171}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: luj5
+    spriteName: luj5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a7a3b5ac64579004aafa64f0c3273f29
+    layerID: 36
+    mosaicPosition: {x: 182, y: 338}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: luj4
+    spriteName: luj4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2eb97bd1f694daa4a98fcd6ac3ece991
+    layerID: 37
+    mosaicPosition: {x: 123, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: luj3
+    spriteName: luj3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c4f871e392eb5744e892d8a4c5ff44ce
+    layerID: 39
+    mosaicPosition: {x: 123, y: 171}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: luj2
+    spriteName: luj2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ad231edd0d37bf44285bd35cb0ae94ce
+    layerID: 38
+    mosaicPosition: {x: 123, y: 269}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: luj
+    spriteName: luj
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ab20d8ce8f3e273489b2dc501d3df72f
+    layerID: 17
+    mosaicPosition: {x: 4, y: 461}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: back
+    spriteName: back
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f9b95daa1ce63b0408a9c6f24bd39256
+    layerID: 11
+    mosaicPosition: {x: 4, y: 239}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
