@@ -34,7 +34,7 @@ namespace Ulf
                     planetsSnapshot[i] = new SnapPlanetStruct()
                     {
                         createPlanet = planetsCreate[i],
-                        snapUnits = _sceneGenerator.StartSnapUnits(planetsCreate[i].createUnits),
+                        snapUnits = _sceneGenerator.StartSnapUnits(planetsCreate[i].createUnits, planetsCreate[i].builds),
                     };
                 }
 

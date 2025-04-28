@@ -73,34 +73,43 @@ namespace Ulf
 
             planetPoses[2] = new Vector2(findedX, findedY);
 
-            return CreatePlanetsFromPoses(ref planetPoses, ref planetSizes, element);
+            return CreatePlanets(ref planetPoses, ref planetSizes, element);
         }
 
-        private CreatePlanetStruct[] CreatePlanetsFromPoses(ref Vector2[] planetPoses, ref float[] planetSizes, ElementType element)
+        private CreatePlanetStruct[] CreatePlanets(ref Vector2[] planetPoses, ref float[] planetSizes, ElementType element)
         {
             int lenght = planetPoses.Length;
             var planetStructs = new CreatePlanetStruct[lenght];
 
             for (int p = 0; p < lenght; p++)
             {
+                float _planetSize = planetSizes[p];
                 int nextNum = p < lenght -1 ? p +1 : 0;
                 var bridgeAngle = calcAngle(planetPoses[p], planetPoses[nextNum]);
+
                 CreateBridgeStruct bridgeStruct = new CreateBridgeStruct()
                 {
                       angleStart = bridgeAngle,
-                       startPlanetId = p,
-                        endPlanetId = nextNum,
-                         mirrorLeft = p%2 ==0,
+                      startPlanetId = p,
+                      endPlanetId = nextNum,
+                      mirrorLeft = p%2 ==0,
                 };
+
+                List<CreateUnitStruct> freeUnits = GenerateUnits(element);
+
+                List<CreateBuildStruct> builds = GenerateBuilds(element, 1, _planetSize, bridgeAngle, out var createdUnits);
+
+                freeUnits.AddRange(createdUnits);
 
                 planetStructs[p] = new CreatePlanetStruct()
                 {
                     ElementType = element,
                     planetId = planetNextId++,
                     planetPos = planetPoses[p],
-                    planetSize = planetSizes[p],
-                    createUnits = GenerateUnits(element),
-                     bridges = new CreateBridgeStruct[] { bridgeStruct }
+                    planetSize = _planetSize,
+                    createUnits = freeUnits.ToArray(),
+                    builds = builds.ToArray(),
+                    bridges = new CreateBridgeStruct[] { bridgeStruct }
                 };
             }
 
@@ -170,7 +179,7 @@ namespace Ulf
                 {
                     createUnit = unitPlayer,
                     angle = Random.Range(0, 359f),
-                      health = unitPlayer.Health
+                    health = unitPlayer.Health
                 }
             };
         }
@@ -187,94 +196,95 @@ namespace Ulf
             return createUnit;
         }
 
-        private CreateUnitStruct[] GenerateUnits(ElementType elementType)
+        private List<CreateUnitStruct> GenerateUnits(ElementType elementType)
         {
             int unitCount = Random.Range(1, 6);
             var availableUnits = _allUnits.AllUnits.Where(u => u.ElementType == elementType);
 
-            var units = new CreateUnitStruct[unitCount];
+            var units = new List<CreateUnitStruct>(unitCount);
 
             for (int i = 0; i < unitCount; i++)
             {
                 var defaultUnit = availableUnits.RandomElement();
                 var createUnit = GenerateUnit(defaultUnit);
-                units[i] = createUnit;
+                units.Add(createUnit);
             }
 
             return units;
         }
 
-        //private CreatePlanetStruct GeneratePlanet(int id, ElementType elementType, Vector2 pos, int sizeNum)
-        //{
-        //    var planetId = id;
-        //    var elementSizes = _allPlanets.GetSizes(elementType);
+        const float freeSpaceBetween = 2f;
 
-        //    planetPoses.Add((pos, elementSizes[sizeNum]));
-
-
-
-        //    if (fromBridgeDeg != null)
-        //    {
-        //        fromBridgeDeg += 180f;
-        //        if (fromBridgeDeg >= 360f)
-        //            fromBridgeDeg -= 360f;
-
-        //        bridgedAngles.Add(fromBridgeDeg.Value);
-        //    }
-
-        //    List<CreateBuildStruct> createBuilds = new();
-
-        //    AddBuilds(elementType, bridgedAngles, ref createBuilds);
-
-        //    var planetStruct = new CreatePlanetStruct()
-        //    {
-        //        createUnits = units.ToArray(),
-        //        ElementType = elementType,
-        //        planetId = planetId,
-        //        planetSize = elementSizes[sizeNum],
-        //        planetPos = pos,
-        //    };
-
-        //    planetList.Add(planetStruct);
-
-        //    return planetStruct;
-        //}
-
-        private (float deg, bool success) GetFreeRandomAngle(List<float> angles)
+        private bool FindFreeAngleOnPlanet(List<(float deg, float width)> reservSpaces, float radius,
+            float nextWidth, out float angle)
         {
-            const float angleSpace = 90f;
-
-            int tryCount = 10;
-
-            while (tryCount-- > 0)
+            for (int deg = 15; deg < 360; deg += 5)
             {
-                float newAngle = Random.Range(0, 359f);
-                bool success = true;
-                foreach (int angle in angles)
+                bool isDegFree = true;
+
+                for(int r = 0; r < reservSpaces.Count; r++)
                 {
-                    if (MathUtils.GetMinAngleDiff(newAngle, angle) < angleSpace)
+                    float degDiff = Math.Abs(reservSpaces[r].deg - nextWidth);
+                    float arcLen = radius * (float)Math.PI * degDiff / 180f;
+
+                    float spaceNeed = (reservSpaces[r].width + nextWidth) * .5f + freeSpaceBetween;
+
+                    if(arcLen < spaceNeed)
                     {
-                        success = false;
+                        isDegFree = false;
                         break;
                     }
                 }
 
-                if(success)
-                    return (newAngle, success);
+                if(isDegFree)
+                {
+                    angle = deg;
+                    return true;
+                }
             }
 
-            return (0, false);
+            angle = -1;
+            return false;
         }
 
-        private void AddBuilds(ElementType element, List<float> buildAngles, ref List<CreateBuildStruct> createBuilds)
+        private List<CreateBuildStruct> GenerateBuilds(ElementType element, int buildsLimit, 
+            float planetSize, float bridgeAngle, out List<CreateUnitStruct> createdUnits)
         {
-            var angleRoll = GetFreeRandomAngle(buildAngles);
+            createdUnits = new();
+            List<CreateBuildStruct> createBuilds = new();
 
-            if(angleRoll.success)
+            List<(float angle, float width)> reservSpaces = new(buildsLimit +1) { (bridgeAngle, 4f) };
+
+            for(int b = 0; b < buildsLimit; b++)
             {
-                DefaultBuildStruct buildStruct = _allBuilds.Builds.Where(p => p.Element == element).RandomElement().DefaultBuild;
-                createBuilds.Add(new CreateBuildStruct() { Angle = angleRoll.deg, View = buildStruct.View, Guid = unitNextId++ });
+                var buildMono = _allBuilds.Builds.Where(p => p.Element == element).RandomElement();
+                float width = buildMono.size.x;
+
+                if (!FindFreeAngleOnPlanet(reservSpaces,planetSize,width, out float angle))
+                {
+                    break;
+                }
+
+                DefaultBuildStruct buildStruct = buildMono.DefaultBuild;
+                var spawnUnits = buildStruct.UnitsInside;
+
+                for (int u = 0; u < spawnUnits.Length; u++)
+                {
+                    DefaultUnitStruct unitStruct = _allUnits.AllUnits.First(p => p.View == spawnUnits[u]);
+                    CreateUnitStruct unit = GenerateUnit(unitStruct);
+
+                    createdUnits.Add(unit);
+                }
+
+                createBuilds.Add(new CreateBuildStruct()
+                { 
+                    Angle = angle, 
+                    View = buildStruct.View,
+                    UnitGuids = createdUnits.Select(p => p.Guid).ToArray()
+                });
             }
+
+            return createBuilds;
         }
 
         protected void CreateBridgeWithPlanet(ref CreatePlanetStruct planetStruct, int sizeNum, int nextSizeNum)
@@ -295,14 +305,29 @@ namespace Ulf
             }
         }
 
-        public SnapUnitStruct[] StartSnapUnits(CreateUnitStruct[] createUnits)
+        public SnapUnitStruct[] StartSnapUnits(CreateUnitStruct[] createUnits, CreateBuildStruct[] builds)
         {
             float arcPerUnit = 360f / createUnits.Length;
             SnapUnitStruct[] snapUnits = new SnapUnitStruct[createUnits.Length];
             for (int u = 0; u < createUnits.Length; u++)
             {
-                (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit + 1));
-                float startAngle = new System.Random().Next((int)freeArc.Item1, (int)freeArc.Item2);
+                float startAngle = 0;
+                bool isUnitFromBuild = false;
+                for (int a = 0; a < builds.Length; a++)
+                {
+                    if (builds[a].UnitGuids.Contains(createUnits[u].Guid))
+                    {
+                        startAngle = builds[a].Angle;
+                        isUnitFromBuild = true;
+                        break;
+                    }
+                }
+
+                if (!isUnitFromBuild)
+                {
+                    (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit + 1));
+                    startAngle = new System.Random().Next((int)freeArc.Item1, (int)freeArc.Item2);
+                }
 
                 snapUnits[u] = new SnapUnitStruct()
                 {

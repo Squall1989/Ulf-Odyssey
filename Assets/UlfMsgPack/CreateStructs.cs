@@ -16,6 +16,7 @@ namespace Ulf
     {
         public string View;
         public ElementType ElementType;
+        public string[] UnitsInside;
     }
 
     [MessagePackObject]
@@ -23,10 +24,10 @@ namespace Ulf
     {
         [Key(0)]
         public string View;
-        [Key(1)]
-        public int Guid;
         [Key(2)]
         public float Angle;
+        [Key(3)]
+        public int[] UnitGuids;
     }
 
     [MessagePackObject]
