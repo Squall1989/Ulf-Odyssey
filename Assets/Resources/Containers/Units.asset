@@ -15,4 +15,4 @@ MonoBehaviour:
   unitsMono:
   - {fileID: 2746582215199746068, guid: dfc4626432496944db80db260a8786b3, type: 3}
   - {fileID: 6936764701226521451, guid: 88385a8e2b581794d93e66cf69982734, type: 3}
-  - {fileID: 6936764701226521451, guid: e7e676d4d9f99cd4c9d4a8a78006cabc, type: 3}
+  - {fileID: -378491298764901114, guid: e7e676d4d9f99cd4c9d4a8a78006cabc, type: 3}

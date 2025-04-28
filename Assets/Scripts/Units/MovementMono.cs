@@ -11,6 +11,8 @@ namespace Ulf
 
         private Vector3 leftDir, rightDir;
 
+        private float _moveHeight;
+
         private int _enemyLayerMask;
 
         private Collider2D _collider;
@@ -38,6 +40,11 @@ namespace Ulf
             SetEnemyLayerMask(LayerMask.GetMask("player"));
         }
 
+        public void SetMoveHeight(float height)
+        {
+            _moveHeight = height;
+        }
+
         private void ChangeDirect(int direct)
         {
             if(direct == -1)
@@ -59,7 +66,7 @@ namespace Ulf
         private void Update()
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
-            transform.position = _circleMove.Position;
+            transform.position = (Vector3)_circleMove.Position + transform.up * _moveHeight;
             transform.Rotate(new Vector3(0,0,RotateUnit()));
         }
 
