@@ -47,7 +47,7 @@ namespace MessagePack.Resolvers
 
         static GeneratedResolverGetFormatterHelper()
         {
-            lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(22)
+            lookup = new global::System.Collections.Generic.Dictionary<global::System.Type, int>(25)
             {
                 { typeof(global::Ulf.CreateBridgeStruct[]), 0 },
                 { typeof(global::Ulf.CreateBuildStruct[]), 1 },
@@ -55,22 +55,25 @@ namespace MessagePack.Resolvers
                 { typeof(global::Ulf.CreateUnitStruct[]), 3 },
                 { typeof(global::Ulf.SnapUnitStruct[]), 4 },
                 { typeof(global::ElementType), 5 },
-                { typeof(global::MsgPck.IUnionMsg), 6 },
-                { typeof(global::Ulf.INextAction), 7 },
-                { typeof(global::MsgPck.ActionData), 8 },
-                { typeof(global::MsgPck.PlayerData), 9 },
-                { typeof(global::MsgPck.RequestPlayerSpawn), 10 },
-                { typeof(global::MsgPck.SnapSceneStruct), 11 },
-                { typeof(global::Ulf.CreateBridgeStruct), 12 },
-                { typeof(global::Ulf.CreateBuildStruct), 13 },
-                { typeof(global::Ulf.CreatePlanetStruct), 14 },
-                { typeof(global::Ulf.CreateSceneStruct), 15 },
-                { typeof(global::Ulf.CreateUnitStruct), 16 },
-                { typeof(global::Ulf.MovementAction), 17 },
-                { typeof(global::Ulf.SnapPlanetStruct), 18 },
-                { typeof(global::Ulf.SnapPlayerStruct), 19 },
-                { typeof(global::Ulf.SnapUnitStruct), 20 },
-                { typeof(global::Ulf.StandAction), 21 },
+                { typeof(global::Ulf.ActionType), 6 },
+                { typeof(global::MsgPck.IUnionMsg), 7 },
+                { typeof(global::Ulf.INextAction), 8 },
+                { typeof(global::MsgPck.ActionData), 9 },
+                { typeof(global::MsgPck.PlayerData), 10 },
+                { typeof(global::MsgPck.RequestPlayerSpawn), 11 },
+                { typeof(global::MsgPck.SnapSceneStruct), 12 },
+                { typeof(global::Ulf.CreateBridgeStruct), 13 },
+                { typeof(global::Ulf.CreateBuildStruct), 14 },
+                { typeof(global::Ulf.CreatePlanetStruct), 15 },
+                { typeof(global::Ulf.CreateSceneStruct), 16 },
+                { typeof(global::Ulf.CreateUnitStruct), 17 },
+                { typeof(global::Ulf.DamageAction), 18 },
+                { typeof(global::Ulf.MovementAction), 19 },
+                { typeof(global::Ulf.SnapPlanetStruct), 20 },
+                { typeof(global::Ulf.SnapPlayerStruct), 21 },
+                { typeof(global::Ulf.SnapUnitStruct), 22 },
+                { typeof(global::Ulf.StandAction), 23 },
+                { typeof(global::Ulf.UniversalAction), 24 },
             };
         }
 
@@ -90,22 +93,25 @@ namespace MessagePack.Resolvers
                 case 3: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.CreateUnitStruct>();
                 case 4: return new global::MessagePack.Formatters.ArrayFormatter<global::Ulf.SnapUnitStruct>();
                 case 5: return new MessagePack.Formatters.ElementTypeFormatter();
-                case 6: return new MessagePack.Formatters.MsgPck.IUnionMsgFormatter();
-                case 7: return new MessagePack.Formatters.Ulf.INextActionFormatter();
-                case 8: return new MessagePack.Formatters.MsgPck.ActionDataFormatter();
-                case 9: return new MessagePack.Formatters.MsgPck.PlayerDataFormatter();
-                case 10: return new MessagePack.Formatters.MsgPck.RequestPlayerSpawnFormatter();
-                case 11: return new MessagePack.Formatters.MsgPck.SnapSceneStructFormatter();
-                case 12: return new MessagePack.Formatters.Ulf.CreateBridgeStructFormatter();
-                case 13: return new MessagePack.Formatters.Ulf.CreateBuildStructFormatter();
-                case 14: return new MessagePack.Formatters.Ulf.CreatePlanetStructFormatter();
-                case 15: return new MessagePack.Formatters.Ulf.CreateSceneStructFormatter();
-                case 16: return new MessagePack.Formatters.Ulf.CreateUnitStructFormatter();
-                case 17: return new MessagePack.Formatters.Ulf.MovementActionFormatter();
-                case 18: return new MessagePack.Formatters.Ulf.SnapPlanetStructFormatter();
-                case 19: return new MessagePack.Formatters.Ulf.SnapPlayerStructFormatter();
-                case 20: return new MessagePack.Formatters.Ulf.SnapUnitStructFormatter();
-                case 21: return new MessagePack.Formatters.Ulf.StandActionFormatter();
+                case 6: return new MessagePack.Formatters.Ulf.ActionTypeFormatter();
+                case 7: return new MessagePack.Formatters.MsgPck.IUnionMsgFormatter();
+                case 8: return new MessagePack.Formatters.Ulf.INextActionFormatter();
+                case 9: return new MessagePack.Formatters.MsgPck.ActionDataFormatter();
+                case 10: return new MessagePack.Formatters.MsgPck.PlayerDataFormatter();
+                case 11: return new MessagePack.Formatters.MsgPck.RequestPlayerSpawnFormatter();
+                case 12: return new MessagePack.Formatters.MsgPck.SnapSceneStructFormatter();
+                case 13: return new MessagePack.Formatters.Ulf.CreateBridgeStructFormatter();
+                case 14: return new MessagePack.Formatters.Ulf.CreateBuildStructFormatter();
+                case 15: return new MessagePack.Formatters.Ulf.CreatePlanetStructFormatter();
+                case 16: return new MessagePack.Formatters.Ulf.CreateSceneStructFormatter();
+                case 17: return new MessagePack.Formatters.Ulf.CreateUnitStructFormatter();
+                case 18: return new MessagePack.Formatters.Ulf.DamageActionFormatter();
+                case 19: return new MessagePack.Formatters.Ulf.MovementActionFormatter();
+                case 20: return new MessagePack.Formatters.Ulf.SnapPlanetStructFormatter();
+                case 21: return new MessagePack.Formatters.Ulf.SnapPlayerStructFormatter();
+                case 22: return new MessagePack.Formatters.Ulf.SnapUnitStructFormatter();
+                case 23: return new MessagePack.Formatters.Ulf.StandActionFormatter();
+                case 24: return new MessagePack.Formatters.Ulf.UniversalActionFormatter();
                 default: return null;
             }
         }
@@ -147,6 +153,44 @@ namespace MessagePack.Formatters
         public global::ElementType Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
         {
             return (global::ElementType)reader.ReadInt32();
+        }
+    }
+}
+
+#pragma warning restore 168
+#pragma warning restore 414
+#pragma warning restore 618
+#pragma warning restore 612
+
+#pragma warning restore SA1403 // File may only contain a single namespace
+#pragma warning restore SA1649 // File name should match first type name
+
+// <auto-generated>
+// THIS (.cs) FILE IS GENERATED BY MPC(MessagePack-CSharp). DO NOT CHANGE IT.
+// </auto-generated>
+
+#pragma warning disable 618
+#pragma warning disable 612
+#pragma warning disable 414
+#pragma warning disable 168
+#pragma warning disable CS1591 // document public APIs
+
+#pragma warning disable SA1403 // File may only contain a single namespace
+#pragma warning disable SA1649 // File name should match first type name
+
+namespace MessagePack.Formatters.Ulf
+{
+
+    public sealed class ActionTypeFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.ActionType>
+    {
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.ActionType value, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            writer.Write((global::System.Int32)value);
+        }
+
+        public global::Ulf.ActionType Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            return (global::Ulf.ActionType)reader.ReadInt32();
         }
     }
 }
@@ -315,15 +359,19 @@ namespace MessagePack.Formatters.Ulf
 
         public INextActionFormatter()
         {
-            this.typeToKeyAndJumpMap = new global::System.Collections.Generic.Dictionary<global::System.RuntimeTypeHandle, global::System.Collections.Generic.KeyValuePair<int, int>>(2, global::MessagePack.Internal.RuntimeTypeHandleEqualityComparer.Default)
+            this.typeToKeyAndJumpMap = new global::System.Collections.Generic.Dictionary<global::System.RuntimeTypeHandle, global::System.Collections.Generic.KeyValuePair<int, int>>(4, global::MessagePack.Internal.RuntimeTypeHandleEqualityComparer.Default)
             {
                 { typeof(global::Ulf.MovementAction).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(0, 0) },
                 { typeof(global::Ulf.StandAction).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(1, 1) },
+                { typeof(global::Ulf.UniversalAction).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(2, 2) },
+                { typeof(global::Ulf.DamageAction).TypeHandle, new global::System.Collections.Generic.KeyValuePair<int, int>(3, 3) },
             };
-            this.keyToJumpMap = new global::System.Collections.Generic.Dictionary<int, int>(2)
+            this.keyToJumpMap = new global::System.Collections.Generic.Dictionary<int, int>(4)
             {
                 { 0, 0 },
                 { 1, 1 },
+                { 2, 2 },
+                { 3, 3 },
             };
         }
 
@@ -341,6 +389,12 @@ namespace MessagePack.Formatters.Ulf
                         break;
                     case 1:
                         global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.StandAction>(options.Resolver).Serialize(ref writer, (global::Ulf.StandAction)value, options);
+                        break;
+                    case 2:
+                        global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.UniversalAction>(options.Resolver).Serialize(ref writer, (global::Ulf.UniversalAction)value, options);
+                        break;
+                    case 3:
+                        global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.DamageAction>(options.Resolver).Serialize(ref writer, (global::Ulf.DamageAction)value, options);
                         break;
                     default:
                         break;
@@ -380,6 +434,12 @@ namespace MessagePack.Formatters.Ulf
                     break;
                 case 1:
                     result = (global::Ulf.INextAction)global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.StandAction>(options.Resolver).Deserialize(ref reader, options);
+                    break;
+                case 2:
+                    result = (global::Ulf.INextAction)global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.UniversalAction>(options.Resolver).Deserialize(ref reader, options);
+                    break;
+                case 3:
+                    result = (global::Ulf.INextAction)global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.DamageAction>(options.Resolver).Deserialize(ref reader, options);
                     break;
                 default:
                     reader.Skip();
@@ -674,10 +734,11 @@ namespace MessagePack.Formatters.Ulf
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.CreateBuildStruct value, global::MessagePack.MessagePackSerializerOptions options)
         {
             global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
-            writer.WriteArrayHeader(3);
+            writer.WriteArrayHeader(4);
             global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Serialize(ref writer, value.View, options);
-            writer.Write(value.Guid);
+            writer.WriteNil();
             writer.Write(value.Angle);
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<int[]>(formatterResolver).Serialize(ref writer, value.UnitGuids, options);
         }
 
         public global::Ulf.CreateBuildStruct Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -699,11 +760,11 @@ namespace MessagePack.Formatters.Ulf
                     case 0:
                         ____result.View = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<string>(formatterResolver).Deserialize(ref reader, options);
                         break;
-                    case 1:
-                        ____result.Guid = reader.ReadInt32();
-                        break;
                     case 2:
                         ____result.Angle = reader.ReadSingle();
+                        break;
+                    case 3:
+                        ____result.UnitGuids = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<int[]>(formatterResolver).Deserialize(ref reader, options);
                         break;
                     default:
                         reader.Skip();
@@ -868,14 +929,57 @@ namespace MessagePack.Formatters.Ulf
         }
     }
 
+    public sealed class DamageActionFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.DamageAction>
+    {
+
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.DamageAction value, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            writer.WriteArrayHeader(2);
+            writer.Write(value.damageAmount);
+            writer.Write(value.damager);
+        }
+
+        public global::Ulf.DamageAction Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (reader.TryReadNil())
+            {
+                throw new global::System.InvalidOperationException("typecode is null, struct not supported");
+            }
+
+            options.Security.DepthStep(ref reader);
+            var length = reader.ReadArrayHeader();
+            var ____result = new global::Ulf.DamageAction();
+
+            for (int i = 0; i < length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        ____result.damageAmount = reader.ReadInt32();
+                        break;
+                    case 1:
+                        ____result.damager = reader.ReadInt32();
+                        break;
+                    default:
+                        reader.Skip();
+                        break;
+                }
+            }
+
+            reader.Depth--;
+            return ____result;
+        }
+    }
+
     public sealed class MovementActionFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.MovementAction>
     {
 
         public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.MovementAction value, global::MessagePack.MessagePackSerializerOptions options)
         {
-            writer.WriteArrayHeader(2);
+            writer.WriteArrayHeader(3);
             writer.Write(value.direction);
             writer.Write(value.fromAngle);
+            writer.Write(value.speed);
         }
 
         public global::Ulf.MovementAction Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
@@ -898,6 +1002,9 @@ namespace MessagePack.Formatters.Ulf
                         break;
                     case 1:
                         ____result.fromAngle = reader.ReadSingle();
+                        break;
+                    case 2:
+                        ____result.speed = reader.ReadSingle();
                         break;
                     default:
                         reader.Skip();
@@ -1080,6 +1187,50 @@ namespace MessagePack.Formatters.Ulf
                         break;
                     case 1:
                         ____result.roundId = reader.ReadInt32();
+                        break;
+                    default:
+                        reader.Skip();
+                        break;
+                }
+            }
+
+            reader.Depth--;
+            return ____result;
+        }
+    }
+
+    public sealed class UniversalActionFormatter : global::MessagePack.Formatters.IMessagePackFormatter<global::Ulf.UniversalAction>
+    {
+
+        public void Serialize(ref global::MessagePack.MessagePackWriter writer, global::Ulf.UniversalAction value, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
+            writer.WriteArrayHeader(2);
+            global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.ActionType>(formatterResolver).Serialize(ref writer, value.action, options);
+            writer.Write(value.paramNum);
+        }
+
+        public global::Ulf.UniversalAction Deserialize(ref global::MessagePack.MessagePackReader reader, global::MessagePack.MessagePackSerializerOptions options)
+        {
+            if (reader.TryReadNil())
+            {
+                throw new global::System.InvalidOperationException("typecode is null, struct not supported");
+            }
+
+            options.Security.DepthStep(ref reader);
+            global::MessagePack.IFormatterResolver formatterResolver = options.Resolver;
+            var length = reader.ReadArrayHeader();
+            var ____result = new global::Ulf.UniversalAction();
+
+            for (int i = 0; i < length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        ____result.action = global::MessagePack.FormatterResolverExtensions.GetFormatterWithVerify<global::Ulf.ActionType>(formatterResolver).Deserialize(ref reader, options);
+                        break;
+                    case 1:
+                        ____result.paramNum = reader.ReadInt32();
                         break;
                     default:
                         reader.Skip();

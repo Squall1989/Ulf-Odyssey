@@ -9,6 +9,7 @@ namespace Ulf
     {
         [SerializeField] private DefaultBuildStruct defaultBuild;
 
+        public Vector2 size => GetComponent<BoxCollider2D>().size;
         public ElementType Element => defaultBuild.ElementType;
         public DefaultBuildStruct DefaultBuild => defaultBuild;
 
@@ -24,8 +25,8 @@ namespace Ulf
             transform.position = pos;
             gameObject.name = "Build " + createBuildStruct.Angle.ToString();
 
-            planet.RoundMono.LookAtCenter(transform);
-
+            float angle = planet.RoundMono.LookAtCenter(transform);
+            transform.Rotate(0, 0, angle);
         }
     }
 }
