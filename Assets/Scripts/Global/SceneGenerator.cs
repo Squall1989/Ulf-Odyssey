@@ -73,10 +73,10 @@ namespace Ulf
 
             planetPoses[2] = new Vector2(findedX, findedY);
 
-            return CreatePlanetsFromPoses(ref planetPoses, ref planetSizes, element);
+            return CreatePlanets(ref planetPoses, ref planetSizes, element);
         }
 
-        private CreatePlanetStruct[] CreatePlanetsFromPoses(ref Vector2[] planetPoses, ref float[] planetSizes, ElementType element)
+        private CreatePlanetStruct[] CreatePlanets(ref Vector2[] planetPoses, ref float[] planetSizes, ElementType element)
         {
             int lenght = planetPoses.Length;
             var planetStructs = new CreatePlanetStruct[lenght];
@@ -305,14 +305,29 @@ namespace Ulf
             }
         }
 
-        public SnapUnitStruct[] StartSnapUnits(CreateUnitStruct[] createUnits)
+        public SnapUnitStruct[] StartSnapUnits(CreateUnitStruct[] createUnits, CreateBuildStruct[] builds)
         {
             float arcPerUnit = 360f / createUnits.Length;
             SnapUnitStruct[] snapUnits = new SnapUnitStruct[createUnits.Length];
             for (int u = 0; u < createUnits.Length; u++)
             {
-                (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit + 1));
-                float startAngle = new System.Random().Next((int)freeArc.Item1, (int)freeArc.Item2);
+                float startAngle = 0;
+                bool isUnitFromBuild = false;
+                for (int a = 0; a < builds.Length; a++)
+                {
+                    if (builds[a].UnitGuids.Contains(createUnits[u].Guid))
+                    {
+                        startAngle = builds[a].Angle;
+                        isUnitFromBuild = true;
+                        break;
+                    }
+                }
+
+                if (!isUnitFromBuild)
+                {
+                    (float, float) freeArc = (u * arcPerUnit, u * (arcPerUnit + 1));
+                    startAngle = new System.Random().Next((int)freeArc.Item1, (int)freeArc.Item2);
+                }
 
                 snapUnits[u] = new SnapUnitStruct()
                 {
