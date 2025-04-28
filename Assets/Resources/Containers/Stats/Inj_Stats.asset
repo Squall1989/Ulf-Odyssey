@@ -9,9 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182cdbf8f896f1e4a801cb351d9bf2d9, type: 3}
-  m_Name: Builds
+  m_Script: {fileID: 11500000, guid: 170fc1923aba43f41ba11a370bb912b7, type: 3}
+  m_Name: Inj_Stats
   m_EditorClassIdentifier: 
-  builds:
-  - {fileID: 1842538005915364157, guid: 3f26b549aff294f4b8f79dee369a6800, type: 3}
-  - {fileID: 6643805784672820843, guid: 85a02e13920a9834bb671716e89beea6, type: 3}
+  unitId: inj
+  statStructs:
+  - stat: 3
+    amount: 0
+  - stat: 1
+    amount: 15
+  - stat: 5
+    amount: 0
+  - stat: 4
+    amount: 0
