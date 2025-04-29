@@ -11,8 +11,6 @@ namespace Ulf
 
         private Vector3 leftDir, rightDir;
 
-        private float _moveHeight;
-
         private int _enemyLayerMask;
 
         private Collider2D _collider;
@@ -40,11 +38,6 @@ namespace Ulf
             SetEnemyLayerMask(LayerMask.GetMask("player"));
         }
 
-        public void SetMoveHeight(float height)
-        {
-            _moveHeight = height;
-        }
-
         private void ChangeDirect(int direct)
         {
             if(direct == -1)
@@ -60,13 +53,12 @@ namespace Ulf
         protected virtual float RotateUnit()
         {
            return _circleMove.Round.RoundMono.LookAtCenter(transform);
-
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
-            transform.position = (Vector3)_circleMove.Position + transform.up * _moveHeight;
+            transform.position = _circleMove.Position;
             transform.Rotate(new Vector3(0,0,RotateUnit()));
         }
 

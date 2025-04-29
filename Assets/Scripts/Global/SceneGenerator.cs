@@ -95,7 +95,7 @@ namespace Ulf
                       mirrorLeft = p%2 ==0,
                 };
 
-                List<CreateUnitStruct> freeUnits = GenerateUnits(element);
+                List<CreateUnitStruct> freeUnits = new();// GenerateUnits(element);
 
                 List<CreateBuildStruct> builds = GenerateBuilds(element, 1, _planetSize, bridgeAngle, out var createdUnits);
 

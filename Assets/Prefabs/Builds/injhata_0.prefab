@@ -96,7 +96,8 @@ MonoBehaviour:
   defaultBuild:
     View: injhata
     ElementType: 0
-    UnitsInside: []
+    UnitsInside:
+    - inj
   unitPlatform: {fileID: 8646979058794603860}
 --- !u!1 &4065639943055238172
 GameObject:
