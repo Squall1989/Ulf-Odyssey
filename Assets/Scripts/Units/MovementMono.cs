@@ -53,10 +53,9 @@ namespace Ulf
         protected virtual float RotateUnit()
         {
            return _circleMove.Round.RoundMono.LookAtCenter(transform);
-
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _circleMove.SetDeltaTime(Time.deltaTime);
             transform.position = _circleMove.Position;

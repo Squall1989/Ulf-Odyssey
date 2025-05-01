@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Ulf
 {
+
     public class UnitMono : MonoBehaviour
     {
         [SerializeField] protected MovementMono _movement;
@@ -14,6 +15,7 @@ namespace Ulf
         
         public virtual Unit Unit => _unit;
         public DefaultUnitStruct DefaultUnit => defaultUnit;
+        public MovementMono MovementMono => _movement;
         public CircleMove CircleMove => _movement.CircleMove;
 
         public virtual void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)

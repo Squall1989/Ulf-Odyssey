@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182cdbf8f896f1e4a801cb351d9bf2d9, type: 3}
-  m_Name: Builds
+  m_Script: {fileID: 11500000, guid: bef4327e3b54f4d44bce981bddc8cd27, type: 3}
+  m_Name: InjBehav
   m_EditorClassIdentifier: 
-  builds:
-  - {fileID: 1842538005915364157, guid: 3f26b549aff294f4b8f79dee369a6800, type: 3}
-  - {fileID: 5605920908736009231, guid: 85a02e13920a9834bb671716e89beea6, type: 3}
+  behavId: inj
+  attackPatterns:
+  - attackNum: 1
+    attackDist: 4
+    conditions: 00000000
+  - attackNum: 0
+    attackDist: 8
+    conditions: 00000000

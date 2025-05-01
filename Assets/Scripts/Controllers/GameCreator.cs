@@ -129,17 +129,17 @@ namespace Ulf
                 }
                 var units = unitsContainer.GetUnits(planetStruct.createPlanet.createUnits);
 
-                planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
+                var unitMonoList = planetNew.InstUnits(units, planetStruct.snapUnits, unitsProxy);
 
                 var buildStructs = planetStruct.createPlanet.builds;
 
-                if (planetStruct.createPlanet.builds != null)
-                    if (planetStruct.createPlanet.builds.Length > 0)
-                    {
-                        planetNew.InstBuilds(buildContainer.GetBuilds(buildStructs), buildStructs);
-                    }
+                if (buildStructs != null && buildStructs.Length > 0)
+                {
+                    planetNew.InstBuilds(buildContainer.GetBuilds(buildStructs), unitMonoList, buildStructs);
+                }
                 sceneProxy.AddPlanet(planetNew.Planet);
             }
+
 
             foreach (var bridgeMono in bridgeList)
             {

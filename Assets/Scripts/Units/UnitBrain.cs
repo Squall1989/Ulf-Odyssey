@@ -134,6 +134,8 @@ namespace Ulf
                     return _unit.Actions.Attacker > -1;
                 case ConditionType.closeFight:
                     return dist < 5;
+                case ConditionType.none:
+                    return true;
                 default:
                     throw new NotImplementedException();
             }

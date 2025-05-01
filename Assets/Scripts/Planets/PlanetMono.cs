@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -46,21 +47,34 @@ namespace Ulf
             }
         }
 
-        public void InstBuilds(BuildMono[] builds, CreateBuildStruct[] createBuilds)
+        public void InstBuilds(BuildMono[] builds, List<UnitMono> unitMonoList, CreateBuildStruct[] createBuilds)
         {
             for (int u = 0; u < builds.Length; u++)
             {
                 var _buildMono = Instantiate(builds[u]);
                 _buildMono.Init(planet, createBuilds[u]);
+
+                if (_buildMono is TowerBuildMono tower)
+                {
+                    var guids = createBuilds[u].UnitGuids;
+
+                    for (int g = 0; g < guids.Length; g++)
+                    {
+                        var unitInTower = unitMonoList.First(p => p.Unit.GUID == guids[g]);
+                        (unitInTower.MovementMono as TowerMovementMono).StandTower(tower.UnitPlatform);
+                    }
+                }
             }
         }
 
-        public void InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits, IUnitsProxy unitsProxy)
+        public List<UnitMono> InstUnits(UnitMono[] unitsMono, SnapUnitStruct[] snapUnits, IUnitsProxy unitsProxy)
         {
+            var unitList = new List<UnitMono>(unitsMono.Length);
             for (int u = 0; u < unitsMono.Length; u++)
             {
-                InstUnit(unitsMono[u], snapUnits[u], unitsProxy);
+                unitList.Add(InstUnit(unitsMono[u], snapUnits[u], unitsProxy));
             }
+            return unitList;
         }
 
         public UnitMono InstUnit(UnitMono unitMono, SnapUnitStruct snapUnit, IUnitsProxy unitsProxy)
