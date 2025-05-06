@@ -87,7 +87,7 @@ namespace Ulf
         {
             attackNum = -1;
 
-            if (!LookAtPlayer(treatPlayer, out var dist))
+            if (!LookAtPlayer(treatPlayer, out float dist))
             {
                 return false;
             }
@@ -184,6 +184,21 @@ namespace Ulf
             return false;
         }
 
+        private float CalcAimAngle(Player treatPlayer)
+        {
+            Vector2 unitPlanetVect = _unit.Move.PlanetPosition - _unit.Move.Position;
+            Vector2 playerPlanetVect = treatPlayer.Move.PlanetPosition - treatPlayer.Move.Position;
+
+            if (unitPlanetVect.magnitude > playerPlanetVect.magnitude + 1f) // Stand on the Tower
+            {
+                return Vector2.Angle(unitPlanetVect, playerPlanetVect);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public void MakeDecision(float deltaTime)
         {
             moveDecisionCooldown -= deltaTime;
@@ -197,7 +212,13 @@ namespace Ulf
             {
                 if (DecidesAttack(player, out int attackNum))
                 {
+                    if (_unitStats.GetStatAmount(StatType.shootAngle) > 0)
+                    {
+                        OnUnitAction?.Invoke(_unit, ActionType.aim, (int)CalcAimAngle(player));
+                    }
+
                     OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum +1);
+
                     if (_unit.Move.Speed > 0)
                     {
                         OnUnitMove?.Invoke(_unit, 0, 0);
