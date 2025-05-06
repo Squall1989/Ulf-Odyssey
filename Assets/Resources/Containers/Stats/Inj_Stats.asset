@@ -18,7 +18,5 @@ MonoBehaviour:
     amount: 0
   - stat: 1
     amount: 15
-  - stat: 5
-    amount: 0
-  - stat: 4
-    amount: 0
+  - stat: 6
+    amount: 30

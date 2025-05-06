@@ -162,19 +162,22 @@ namespace Ulf
 
                 float runSpeed = _unitStats.GetStatAmount(StatType.runSpeed);
 
-                if (_unit.Move.Speed == runSpeed)
+                if (runSpeed != 0 && _unit.Move.Speed == runSpeed)
                 {
                     return false;
                 }
 
                 bool lookToPlayer = LookAtPlayer(treatPlayer, out var dist);
 
+                float lookDist = _unitStats.GetStatAmount(StatType.lookDist);
+
                 if (lookToPlayer)
                 {
                     direct = _unit.Move.Direct;
                     return true;
                 }
-                else if (_unit.Actions.Attacker > -1)
+                else if (_unit.Actions.Attacker > -1
+                    || dist < lookDist * .5f)
                 {
                     direct = -_unit.Move.Direct;
                     return true;

@@ -32,7 +32,9 @@ namespace Ulf
                 return;
             }
             OnAction?.Invoke(actionType, paramNum);
-            _currAction = actionType;
+
+            if(actionType != ActionType.aim)
+                _currAction = actionType;
         }
 
         public void EndAction()

@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5233978159542462632}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.5414147, w: 0.8407557}
-  m_LocalPosition: {x: 0.867, y: -0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.71166563, w: -0.7025184}
+  m_LocalPosition: {x: -0.41277862, y: 0.94087327, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7999968759629785513}
+  m_Father: {fileID: 8558741767381817844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 65.56}
 --- !u!1001 &2477971075206403708
 PrefabInstance:
@@ -90,8 +90,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5577176678820118485, guid: 1f59c200e60f24543861f8d0cca179e5, type: 3}
-      insertIndex: -1
+    - targetCorrespondingSourceObject: {fileID: 6099360276070092680, guid: 1f59c200e60f24543861f8d0cca179e5, type: 3}
+      insertIndex: 0
       addedObject: {fileID: 5035833177085823524}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4930700581812705259, guid: 1f59c200e60f24543861f8d0cca179e5, type: 3}
@@ -138,11 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTransform: {fileID: 5035833177085823524}
---- !u!4 &7999968759629785513 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5577176678820118485, guid: 1f59c200e60f24543861f8d0cca179e5, type: 3}
-  m_PrefabInstance: {fileID: 2477971075206403708}
-  m_PrefabAsset: {fileID: 0}
+  actionMono: {fileID: 3248280789531223560}
+  missilePrefab: {fileID: 2161684187787093080, guid: 8187bf5f919756b4396c08df5f334ed6, type: 3}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!4 &8558741767381817844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6099360276070092680, guid: 1f59c200e60f24543861f8d0cca179e5, type: 3}
