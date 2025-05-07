@@ -15,17 +15,15 @@ namespace Ulf
         public override void Init(Planet planet, CreateUnitStruct createUnit, float freeArc)
         {
             var action = new ActionUnit(createUnit.Guid);
-            var circleMove = new ExtendedCircleMove();
             var health = new Health(createUnit.Health, planet.Element);
 
+            _movement.Init(planet, freeArc);
+            _action.Init(action);
+
             _movementMono = _movement as PlayerMovementMono;
-            _player = new Player(createUnit, defaultUnit, circleMove, action, health);
+            _player = new Player(createUnit, defaultUnit, _movement.CircleMove, action, health);
             _unit = _player;
 
-            circleMove.OnLog += (log) => Debug.Log(log);
-
-            _movement.Init(planet, circleMove, freeArc);
-            _action.Init(action);
             health.SetKillables(GetKillables());
         }
 

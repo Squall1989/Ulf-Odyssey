@@ -1,6 +1,3 @@
-using System;
-using Assets.Scripts.Interfaces;
-
 namespace Ulf
 {
     public class Unit

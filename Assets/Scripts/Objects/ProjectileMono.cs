@@ -1,3 +1,5 @@
+using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ProjectileMono : MonoBehaviour
@@ -9,16 +11,21 @@ public class ProjectileMono : MonoBehaviour
     [SerializeField] private float flySpeed;
     [SerializeField] private LayerMask obstaclesMask;
 
+    private float _fallSpd;
     private float _fallDeg;
     private bool _isFly;
     private LayerMask _targetMask;
 
-    public void Launch(LayerMask targetMask)
+    public void Launch(LayerMask targetMask, Vector3 downVector)
     {
-        _fallDeg = 0;
         _targetMask = targetMask;
         _isFly = true;
         _spriteRender.sprite = _mainSprite;
+
+        float angle = Vector3.Angle(transform.right, downVector);
+        _fallDeg = angle;
+        _fallSpd = 0;
+        UnityEngine.Debug.Log("Missile fall angle: " + angle);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,8 +49,13 @@ public class ProjectileMono : MonoBehaviour
             return;
         }
 
-        _fallDeg += .01f;
+        _fallSpd += Time.deltaTime;
+
+        _fallDeg -= _fallSpd;
+
+        if(_fallDeg > 0)
+            transform.Rotate(new Vector3(0, 0, -_fallSpd));
+
         transform.position += transform.right * Time.deltaTime * flySpeed;
-        transform.Rotate(new Vector3(0, 0, -_fallDeg));
     }
 }

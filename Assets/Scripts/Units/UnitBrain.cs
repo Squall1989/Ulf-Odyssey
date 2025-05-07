@@ -190,11 +190,15 @@ namespace Ulf
         private float CalcAimAngle(Player treatPlayer)
         {
             Vector2 unitPlanetVect = _unit.Move.PlanetPosition - _unit.Move.Position;
-            Vector2 playerPlanetVect = treatPlayer.Move.PlanetPosition - treatPlayer.Move.Position;
+            Vector2 playerPlanetVect = treatPlayer.Move.Position - treatPlayer.Move.PlanetPosition;
 
             if (unitPlanetVect.magnitude > playerPlanetVect.magnitude + 1f) // Stand on the Tower
-            {
-                return Vector2.Angle(unitPlanetVect, playerPlanetVect);
+            { 
+                Vector2 unitPlayerVect = treatPlayer.Move.Position - _unit.Move.Position;
+
+                float angle = Vector2.Angle(unitPlanetVect, unitPlayerVect);
+                UnityEngine.Debug.Log("Shoot angle: " + angle);
+                return angle + 20f;
             }
             else
             {

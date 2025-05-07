@@ -22,16 +22,19 @@ namespace Ulf
             _collider = GetComponent<Collider2D>();
         }
 
-        public virtual void Init(Planet planet, CircleMove circleMove, float angle)
+        public virtual void Init(Planet planet, float angle)
         {
-            _circleMove = circleMove;
+            if(_circleMove ==  null)
+            {
+                _circleMove = new();
+            }
             _circleMove.ToLand(planet, angle);
             _circleMove.SetMoveDirect(0);
             _circleMove.OnChangeSpeed += SetSpeed;
 
             transform.position = _circleMove.Position;
 
-            circleMove.OnMoveDirect += ChangeDirect;
+            _circleMove.OnMoveDirect += ChangeDirect;
 
             rightDir = _visualTransform.localRotation.eulerAngles;
             leftDir = rightDir + new Vector3(0, 180f, 0);

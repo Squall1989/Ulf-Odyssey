@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Ulf
@@ -14,7 +15,7 @@ namespace Ulf
 
         public void Start()
         {
-            _startRotation = aimTransform.rotation;
+            _startRotation = aimTransform.localRotation;
             actionMono.Action.OnAction += ActionReceive;
         }
 
@@ -28,7 +29,7 @@ namespace Ulf
 
         public void Aim(float angle)
         {
-            aimTransform.rotation = _startRotation;
+            aimTransform.localRotation = _startRotation;
             aimTransform.Rotate(new Vector3(0,0, angle));
         }
 
@@ -37,7 +38,7 @@ namespace Ulf
             var missile = Instantiate(missilePrefab, null);
             missile.transform.position = aimTransform.position;
             missile.transform.rotation = aimTransform.rotation;
-            missile.Launch(targetMask);
+            missile.Launch(targetMask, -transform.up);
         }
     }
 }
