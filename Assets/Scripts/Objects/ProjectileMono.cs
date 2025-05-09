@@ -1,61 +1,73 @@
 using DG.Tweening;
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class ProjectileMono : MonoBehaviour
+namespace Ulf 
 {
-    [SerializeField] private SpriteRenderer _spriteRender;
-    [SerializeField] private Sprite _mainSprite;
-    [SerializeField] private Sprite _hitSprite;
-    [SerializeField] private CapsuleCollider2D _collider;
-    [SerializeField] private float flySpeed;
-    [SerializeField] private LayerMask obstaclesMask;
-
-    private float _fallSpd;
-    private float _fallDeg;
-    private bool _isFly;
-    private LayerMask _targetMask;
-
-    public void Launch(LayerMask targetMask, Vector3 downVector)
+    public class ProjectileMono : MonoBehaviour
     {
-        _targetMask = targetMask;
-        _isFly = true;
-        _spriteRender.sprite = _mainSprite;
+        [SerializeField] private SpriteRenderer _spriteRender;
+        [SerializeField] private Sprite _mainSprite;
+        [SerializeField] private Sprite _hitSprite;
+        [SerializeField] private CapsuleCollider2D _collider;
+        [SerializeField] private float flySpeed;
+        [SerializeField] private LayerMask obstaclesMask;
 
-        float angle = Vector3.Angle(transform.right, downVector);
-        _fallDeg = angle;
-        _fallSpd = 0;
-        UnityEngine.Debug.Log("Missile fall angle: " + angle);
-    }
+        private float _fallSpd;
+        private float _fallDeg;
+        private bool _isFly;
+        private LayerMask _targetMask;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        int layer = collision.gameObject.layer;
-        bool isTarget = ((1 << layer) & _targetMask.value) != 0;
-        bool isObstacle = ((1 << layer) & obstaclesMask.value) != 0;
+        public Action<Unit, int> OnDamage;
 
-        if (isTarget || isObstacle)
+        public void Launch(LayerMask targetMask, Vector3 downVector)
         {
-            transform.parent = collision.transform;
-            _spriteRender.sprite = _hitSprite;
-            _isFly = false;
-        }
-    }
+            _targetMask = targetMask;
+            _isFly = true;
+            _spriteRender.sprite = _mainSprite;
 
-    void Update()
-    {
-        if (!_isFly)
-        {
-            return;
+            float angle = Vector3.Angle(transform.right, downVector);
+            _fallDeg = angle;
+            _fallSpd = 0;
+            UnityEngine.Debug.Log("Missile fall angle: " + angle);
         }
 
-        _fallSpd += Time.deltaTime;
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            int layer = collision.gameObject.layer;
+            bool isTarget = ((1 << layer) & _targetMask.value) != 0;
+            bool isObstacle = ((1 << layer) & obstaclesMask.value) != 0;
 
-        _fallDeg -= _fallSpd;
+            if (isTarget || isObstacle)
+            {
+                transform.parent = collision.transform;
+                _spriteRender.sprite = _hitSprite;
+                _isFly = false;
 
-        if(_fallDeg > 0)
-            transform.Rotate(new Vector3(0, 0, -_fallSpd));
+                if (isTarget)
+                {
+                    UnitMono unit = collision.gameObject.GetComponent<UnitMono>();
+                    OnDamage?.Invoke(unit.Unit, 1);
+                }
+            }
+        }
 
-        transform.position += transform.right * Time.deltaTime * flySpeed;
+        void Update()
+        {
+            if (!_isFly)
+            {
+                return;
+            }
+
+            _fallSpd += Time.deltaTime;
+
+            _fallDeg -= _fallSpd;
+
+            if (_fallDeg > 0)
+                transform.Rotate(new Vector3(0, 0, -_fallSpd));
+
+            transform.position += transform.right * Time.deltaTime * flySpeed;
+        }
     }
 }

@@ -39,6 +39,11 @@ namespace Ulf
             missile.transform.position = aimTransform.position;
             missile.transform.rotation = aimTransform.rotation;
             missile.Launch(targetMask, -transform.up);
+            missile.OnDamage = (unit, dmg) =>
+            {
+                actionMono.Action.AttackUnit(unit, dmg);
+            };
         }
+
     }
 }
