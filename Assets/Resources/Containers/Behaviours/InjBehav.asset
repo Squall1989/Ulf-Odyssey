@@ -18,5 +18,5 @@ MonoBehaviour:
     attackDist: 4
     conditions: 00000000
   - attackNum: 0
-    attackDist: 8
+    attackDist: 12
     conditions: 00000000

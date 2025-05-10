@@ -17,12 +17,13 @@ namespace Ulf
             StartCoroutine(StandDirectCorout());
         }
 
-        public override void Init(Planet planet, CircleMove circleMove, float angle)
+        public override void Init(Planet planet, float angle)
         {
-            base.Init(planet, circleMove, angle);
+            _circleMove = new ExtendedCircleMove();
+            base.Init(planet, angle);
             SetEnemyLayerMask(LayerMask.GetMask("unit"));
 
-            extendedCircleMove = circleMove as ExtendedCircleMove;
+            extendedCircleMove = _circleMove as ExtendedCircleMove;
         }
 
         public void ControlStandDirect(int direct)

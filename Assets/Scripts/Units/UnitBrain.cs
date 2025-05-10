@@ -87,7 +87,7 @@ namespace Ulf
         {
             attackNum = -1;
 
-            if (!LookAtPlayer(treatPlayer, out var dist))
+            if (!LookAtPlayer(treatPlayer, out float dist))
             {
                 return false;
             }
@@ -162,19 +162,22 @@ namespace Ulf
 
                 float runSpeed = _unitStats.GetStatAmount(StatType.runSpeed);
 
-                if (_unit.Move.Speed == runSpeed)
+                if (runSpeed != 0 && _unit.Move.Speed == runSpeed)
                 {
                     return false;
                 }
 
                 bool lookToPlayer = LookAtPlayer(treatPlayer, out var dist);
 
+                float lookDist = _unitStats.GetStatAmount(StatType.lookDist);
+
                 if (lookToPlayer)
                 {
                     direct = _unit.Move.Direct;
                     return true;
                 }
-                else if (_unit.Actions.Attacker > -1)
+                else if (_unit.Actions.Attacker > -1
+                    || dist < lookDist * .5f)
                 {
                     direct = -_unit.Move.Direct;
                     return true;
@@ -182,6 +185,25 @@ namespace Ulf
             }
 
             return false;
+        }
+
+        private float CalcAimAngle(Player treatPlayer)
+        {
+            Vector2 unitPlanetVect = _unit.Move.PlanetPosition - _unit.Move.Position;
+            Vector2 playerPlanetVect = treatPlayer.Move.Position - treatPlayer.Move.PlanetPosition;
+
+            if (unitPlanetVect.magnitude > playerPlanetVect.magnitude + 1f) // Stand on the Tower
+            { 
+                Vector2 unitPlayerVect = treatPlayer.Move.Position - _unit.Move.Position;
+
+                float angle = Vector2.Angle(unitPlanetVect, unitPlayerVect);
+                UnityEngine.Debug.Log("Shoot angle: " + angle);
+                return angle + 20f;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public void MakeDecision(float deltaTime)
@@ -197,7 +219,13 @@ namespace Ulf
             {
                 if (DecidesAttack(player, out int attackNum))
                 {
+                    if (_unitStats.GetStatAmount(StatType.shootAngle) > 0)
+                    {
+                        OnUnitAction?.Invoke(_unit, ActionType.aim, (int)CalcAimAngle(player));
+                    }
+
                     OnUnitAction?.Invoke(_unit, ActionType.attack, attackNum +1);
+
                     if (_unit.Move.Speed > 0)
                     {
                         OnUnitMove?.Invoke(_unit, 0, 0);

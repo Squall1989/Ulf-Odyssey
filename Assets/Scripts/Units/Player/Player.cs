@@ -5,16 +5,14 @@ namespace Ulf
     public class Player : Unit
     {
         private string _playerId;
-        private ExtendedCircleMove circleMoveExtended;
-        public ExtendedCircleMove ExtendedCircleMove => circleMoveExtended;
+        public ExtendedCircleMove ExtendedCircleMove => Move as ExtendedCircleMove;
 
         public string PlayerID => _playerId;
         public Func<int, IRound> GetRoundFromId;
 
-        public Player(CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, ExtendedCircleMove circleMove, ActionUnit action, Health health) 
+        public Player(CreateUnitStruct unitStruct, DefaultUnitStruct defaultUnit, CircleMove circleMove, ActionUnit action, Health health) 
             : base(unitStruct, defaultUnit, circleMove, action, health)
         {
-            circleMoveExtended = circleMove;
         }
 
         internal void StandTo(int roundId, float degree)
@@ -26,7 +24,7 @@ namespace Ulf
 
             var round = GetRoundFromId.Invoke(roundId);
 
-            circleMoveExtended.ToLand(round, degree, round is Bridge);
+            ExtendedCircleMove.ToLand(round, degree, round is Bridge);
         }
 
         internal SnapPlayerStruct GetSnapshot()
@@ -36,7 +34,7 @@ namespace Ulf
             return new SnapPlayerStruct()
             {
                 snapUnitStruct = snapUnit,
-                planetId = circleMoveExtended.Round.ID,
+                planetId = ExtendedCircleMove.Round.ID,
                 playerId = _playerId,
             };
         }

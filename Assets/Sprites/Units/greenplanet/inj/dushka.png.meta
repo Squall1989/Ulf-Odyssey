@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dushka_0: -8270260307935490359
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

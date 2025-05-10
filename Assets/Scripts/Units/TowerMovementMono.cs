@@ -9,12 +9,14 @@ namespace Ulf
         public void StandTower(Transform platform)
         {
             _platform = platform;
+            (_circleMove as TowerMove).TowerStand((Vector2)platform.position);
         }
 
-        protected override void Update()
+
+        public override void Init(Planet planet, float angle)
         {
-            base.Update();
-            transform.position = _platform.position;
+            _circleMove = new TowerMove();
+            base.Init(planet, angle);
         }
     }
 }

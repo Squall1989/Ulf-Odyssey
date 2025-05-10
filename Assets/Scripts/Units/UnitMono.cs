@@ -24,7 +24,7 @@ namespace Ulf
             var health = new Health(defaultUnit.Health, defaultUnit.ElementType);
 
             _action.Init(action);
-            _movement.Init(planet, new CircleMove(), freeArc);
+            _movement.Init(planet, freeArc);
 
             _unit = new Unit(createUnit, defaultUnit, _movement.CircleMove, action, health);
 
