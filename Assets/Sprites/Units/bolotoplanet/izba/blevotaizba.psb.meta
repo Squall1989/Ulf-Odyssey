@@ -1,0 +1,776 @@
+fileFormatVersion: 2
+guid: 6b570d796d9a5cc40a990b878f903319
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: c712c60595cba664ab9263d615f9f44a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: rot
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 427
+      y: 282
+      width: 69
+      height: 189
+    spriteID: c9a5b2ac0547b3745814dd21ce3afe1d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 427, y: 282}
+    spritePosition: {x: 268, y: 154}
+  - name: svet2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 547
+      width: 241
+      height: 245
+    spriteID: 14736f1f097084b4ab32a37cd35863e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 547}
+    spritePosition: {x: 45, y: 0}
+  - name: svet1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 253
+      y: 547
+      width: 254
+      height: 195
+    spriteID: eb722bd536d7e6e42b7099c60ccf64b9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 253, y: 547}
+    spritePosition: {x: 14, y: 116}
+  - name: bottle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 445
+      y: 94
+      width: 47
+      height: 79
+    spriteID: 78fe423f765a2544d8e65a8b39b8b5da
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 445, y: 94}
+    spritePosition: {x: 195, y: 150}
+  - name: fish
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 445
+      y: 181
+      width: 52
+      height: 50
+    spriteID: b7ea173cd451f154a82f66cf38f50772
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 445, y: 181}
+    spritePosition: {x: 155, y: 198}
+  - name: glass
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 282
+      y: 122
+      width: 57
+      height: 85
+    spriteID: 6bb96e8b7e3416d4ba0018008238ec9b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 282, y: 122}
+    spritePosition: {x: 108, y: 123}
+  - name: bottle2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 282
+      y: 215
+      width: 40
+      height: 40
+    spriteID: 90b1a89ff5e5ecb4fb518c9b8d864bfa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 282, y: 215}
+    spritePosition: {x: 108, y: 80}
+  - name: graz
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 800
+      width: 190
+      height: 170
+    spriteID: 02fdc2758608e714183d5e40a68834d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 800}
+    spritePosition: {x: 61, y: 96}
+  - name: graz2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 269
+      y: 282
+      width: 150
+      height: 151
+    spriteID: c824c0f4d02350a469b879f4056d4c2e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 269, y: 282}
+    spritePosition: {x: 96, y: 102}
+  - name: fish2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 330
+      y: 215
+      width: 39
+      height: 40
+    spriteID: e83da8935401b8947895942183bc1ad9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 330, y: 215}
+    spritePosition: {x: 66, y: 135}
+  - name: fish3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 347
+      y: 122
+      width: 28
+      height: 39
+    spriteID: 6c6c91975771a3d40b02eaa6d9e98669
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 347, y: 122}
+    spritePosition: {x: 72, y: 59}
+  - name: nogaizba1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 427
+      y: 479
+      width: 70
+      height: 50
+    spriteID: 34741be26d49e704dacf44c72482c0dc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 427, y: 479}
+    spritePosition: {x: 95, y: 142}
+  - name: startizba
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 386
+      y: 4
+      width: 99
+      height: 82
+    spriteID: 6438856090b18ef4daa694b2675a87f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 386, y: 4}
+    spritePosition: {x: 175, y: 190}
+  - name: kapla1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 386
+      y: 196
+      width: 47
+      height: 40
+    spriteID: 84c12df0058857e4aafc2162210e554c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 386, y: 196}
+    spritePosition: {x: 41, y: 161}
+  - name: kapla2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 269
+      y: 441
+      width: 132
+      height: 76
+    spriteID: 2c36eb6faf9d7084592367d39e2213c0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 269, y: 441}
+    spritePosition: {x: 31, y: 190}
+  - name: kapla3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 282
+      width: 257
+      height: 257
+    spriteID: c9ea7844fa09324428366720503a9fc5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 282}
+    spritePosition: {x: 28, y: 15}
+  - name: kapla4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 386
+      y: 94
+      width: 51
+      height: 94
+    spriteID: e7a371471f09736469f4f21de45ea740
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 386, y: 94}
+    spritePosition: {x: 217, y: 126}
+  - name: kapla5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 282
+      y: 4
+      width: 96
+      height: 110
+    spriteID: 22838851f7ffc8e4790baa882d946625
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 282, y: 4}
+    spritePosition: {x: 152, y: 35}
+  - name: izbaback
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 270
+      height: 270
+    spriteID: 066ec856619a7284ca8ede8ffe1f925d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 11, y: 10}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: rot
+    spriteName: rot
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c9a5b2ac0547b3745814dd21ce3afe1d
+    layerID: 87
+    mosaicPosition: {x: 427, y: 282}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: svet2
+    spriteName: svet2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 14736f1f097084b4ab32a37cd35863e0
+    layerID: 85
+    mosaicPosition: {x: 4, y: 547}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: svet1
+    spriteName: svet1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: eb722bd536d7e6e42b7099c60ccf64b9
+    layerID: 11
+    mosaicPosition: {x: 253, y: 547}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: bottle
+    spriteName: bottle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 78fe423f765a2544d8e65a8b39b8b5da
+    layerID: 74
+    mosaicPosition: {x: 445, y: 94}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fish
+    spriteName: fish
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b7ea173cd451f154a82f66cf38f50772
+    layerID: 17
+    mosaicPosition: {x: 445, y: 181}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: glass
+    spriteName: glass
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6bb96e8b7e3416d4ba0018008238ec9b
+    layerID: 51
+    mosaicPosition: {x: 282, y: 122}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: bottle2
+    spriteName: bottle2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 90b1a89ff5e5ecb4fb518c9b8d864bfa
+    layerID: 49
+    mosaicPosition: {x: 282, y: 215}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: graz
+    spriteName: graz
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 02fdc2758608e714183d5e40a68834d5
+    layerID: 28
+    mosaicPosition: {x: 4, y: 800}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: graz2
+    spriteName: graz2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c824c0f4d02350a469b879f4056d4c2e
+    layerID: 20
+    mosaicPosition: {x: 269, y: 282}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fish2
+    spriteName: fish2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e83da8935401b8947895942183bc1ad9
+    layerID: 19
+    mosaicPosition: {x: 330, y: 215}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fish3
+    spriteName: fish3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6c6c91975771a3d40b02eaa6d9e98669
+    layerID: 18
+    mosaicPosition: {x: 347, y: 122}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: nogaizba1
+    spriteName: nogaizba1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 34741be26d49e704dacf44c72482c0dc
+    layerID: 16
+    mosaicPosition: {x: 427, y: 479}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: startizba
+    spriteName: startizba
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6438856090b18ef4daa694b2675a87f4
+    layerID: 10
+    mosaicPosition: {x: 386, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kapla1
+    spriteName: kapla1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 84c12df0058857e4aafc2162210e554c
+    layerID: 78
+    mosaicPosition: {x: 386, y: 196}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kapla2
+    spriteName: kapla2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2c36eb6faf9d7084592367d39e2213c0
+    layerID: 77
+    mosaicPosition: {x: 269, y: 441}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kapla3
+    spriteName: kapla3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c9ea7844fa09324428366720503a9fc5
+    layerID: 79
+    mosaicPosition: {x: 4, y: 282}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kapla4
+    spriteName: kapla4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e7a371471f09736469f4f21de45ea740
+    layerID: 75
+    mosaicPosition: {x: 386, y: 94}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: kapla5
+    spriteName: kapla5
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 22838851f7ffc8e4790baa882d946625
+    layerID: 76
+    mosaicPosition: {x: 282, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: izbaback
+    spriteName: izbaback
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 066ec856619a7284ca8ede8ffe1f925d
+    layerID: 80
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "\u0421\u043B\u043E\u0439 1"
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1d2f7501947f51749b24a8e268585655
+    layerID: 2
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: "\u0424\u043E\u043D"
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: aa5207d95910fb74bba7f8e6a89920c3
+    layerID: 1
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
