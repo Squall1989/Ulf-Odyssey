@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Ulf
 {
@@ -8,5 +9,10 @@ namespace Ulf
         private Transform unitPlatform;
 
         public Transform UnitPlatform => unitPlatform;
+
+        internal void InvokeAction(ActionUnit action)
+        {
+
+        }
     }
 }
