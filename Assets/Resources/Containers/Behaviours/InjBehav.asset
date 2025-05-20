@@ -15,8 +15,8 @@ MonoBehaviour:
   behavId: inj
   attackPatterns:
   - attackNum: 1
-    attackDist: 4
+    attackDist: 6.11
     conditions: 00000000
   - attackNum: 0
     attackDist: 12
-    conditions: 00000000
+    conditions: 04000000
