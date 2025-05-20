@@ -14,7 +14,7 @@ namespace Ulf
 
         private void Awake()
         {
-            DeactivateCollider();
+
         }
 
         public void DeactivateCollider()
