@@ -15,6 +15,7 @@ namespace Ulf
         
         public virtual Unit Unit => _unit;
         public DefaultUnitStruct DefaultUnit => defaultUnit;
+        public ActionsMono ActionsMono => _action;
         public MovementMono MovementMono => _movement;
         public CircleMove CircleMove => _movement.CircleMove;
 

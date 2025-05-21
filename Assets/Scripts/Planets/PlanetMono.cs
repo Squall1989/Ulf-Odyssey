@@ -62,6 +62,7 @@ namespace Ulf
                     {
                         var unitInTower = unitMonoList.First(p => p.Unit.GUID == guids[g]);
                         (unitInTower.MovementMono as TowerMovementMono).StandTower(tower.UnitPlatform);
+                        (unitInTower.ActionsMono as TowerActionsMono).Init(tower);
                     }
                 }
             }

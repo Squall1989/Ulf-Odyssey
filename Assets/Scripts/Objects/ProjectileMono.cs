@@ -3,7 +3,7 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Ulf 
+namespace Ulf
 {
     public class ProjectileMono : MonoBehaviour
     {

@@ -161,6 +161,10 @@ PrefabInstance:
       value: Inj
       objectReference: {fileID: 0}
     - target: {fileID: 2746582215199746068, guid: dfc4626432496944db80db260a8786b3, type: 3}
+      propertyPath: _action
+      value: 
+      objectReference: {fileID: 4173070093993924489}
+    - target: {fileID: 2746582215199746068, guid: dfc4626432496944db80db260a8786b3, type: 3}
       propertyPath: _movement
       value: 
       objectReference: {fileID: 3400821890780430408}
