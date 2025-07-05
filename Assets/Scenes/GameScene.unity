@@ -201,7 +201,7 @@ MonoBehaviour:
   bridgeExample: {fileID: 4711928879901467781, guid: d70cddaa8f6aeea48a093bef49c3136e, type: 3}
   input: {fileID: 2513441050255433824, guid: c9bf8ca8305e4be499c15e03725080dc, type: 3}
   cameraControl: {fileID: 1582470220}
-  playerMono: {fileID: 5121279730957933265, guid: 017eac6b6c58fbe4ca227dd5585ec3da, type: 3}
+  playerMono: {fileID: 4220879301603714542, guid: f7d2f5d429e484a4c9c71ffc4be83d72, type: 3}
 --- !u!1 &505790464
 GameObject:
   m_ObjectHideFlags: 3
