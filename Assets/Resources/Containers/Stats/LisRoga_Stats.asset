@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 170fc1923aba43f41ba11a370bb912b7, type: 3}
-  m_Name: Spearman_Stats
+  m_Name: LisRoga_Stats
   m_EditorClassIdentifier: 
-  unitId: spearman
+  unitId: lisRoga
   statStructs:
   - stat: 3
     amount: 35.2
