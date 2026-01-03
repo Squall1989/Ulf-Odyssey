@@ -1,0 +1,788 @@
+fileFormatVersion: 2
+guid: 7e2b26063e035964593592f925476ade
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 3c4abbd53a1a8fb47a1856da8ccecbb8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: beekeeperA29999
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 575
+      y: 283
+      width: 358
+      height: 230
+    spriteID: ed15236b44224b0498ab698e98f638bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 575, y: 283}
+    spritePosition: {x: 160, y: 166}
+  - name: beekeeperA27
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 364
+      y: 4
+      width: 346
+      height: 189
+    spriteID: bc091cc315574f3449f47a9fe7a6f8fc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 364, y: 4}
+    spritePosition: {x: 205, y: 164}
+  - name: beekeeperA2svet13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 633
+      width: 241
+      height: 321
+    spriteID: 8a90ab731003eae419f248f5f0278641
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 633}
+    spritePosition: {x: 382, y: 135}
+  - name: beekeeperA2svet12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 283
+      width: 273
+      height: 342
+    spriteID: 03cd697955ffdd947a65599c68aaae64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 283}
+    spritePosition: {x: 213, y: 114}
+  - name: beekeeperA2svet1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 285
+      y: 283
+      width: 282
+      height: 319
+    spriteID: 27f28d887896734418efbaeb2659a26f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 285, y: 283}
+    spritePosition: {x: 55, y: 114}
+  - name: beekeeperA2m2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 718
+      y: 4
+      width: 289
+      height: 165
+    spriteID: 8ba3d6549ad97dd42998441cc8d5f029
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 718, y: 4}
+    spritePosition: {x: 207, y: 215}
+  - name: beekeeperA2m15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 352
+      height: 271
+    spriteID: 4017df30e459d2641bed03e92f417135
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 147, y: 174}
+  - name: beekeeperA223
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 608
+      y: 831
+      width: 137
+      height: 179
+    spriteID: c6d7682b789685146a0e941a94aea866
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 608, y: 831}
+    spritePosition: {x: 298, y: 218}
+  - name: beekeeperA222
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 608
+      y: 633
+      width: 173
+      height: 190
+    spriteID: 62b75141aa946834b98b699139ee0a6d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 608, y: 633}
+    spritePosition: {x: 275, y: 202}
+  - name: beekeeperA221
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 253
+      y: 633
+      width: 191
+      height: 211
+    spriteID: 66b356d4e19e981448ef2292d2dbddb1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 253, y: 633}
+    spritePosition: {x: 235, y: 144}
+  - name: beekeeperA214
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 94
+      y: 962
+      width: 69
+      height: 55
+    spriteID: 6a9f856b846fd554480a23c4c44d8eb2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 94, y: 962}
+    spritePosition: {x: 166, y: 343}
+  - name: beekeeperA213
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 789
+      y: 633
+      width: 157
+      height: 189
+    spriteID: 7e27c3727041304498971aa4867a6e99
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 789, y: 633}
+    spritePosition: {x: 179, y: 203}
+  - name: beekeeperA212
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 753
+      y: 831
+      width: 127
+      height: 175
+    spriteID: 33bfdb62927886243a1c43df8b77e472
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 753, y: 831}
+    spritePosition: {x: 133, y: 192}
+  - name: beekeeperA211
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 888
+      y: 831
+      width: 109
+      height: 180
+    spriteID: 4c6c26e02fa7ec74b9fb7cee9a40d995
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 888, y: 831}
+    spritePosition: {x: 102, y: 150}
+  - name: beekeeperA25
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 962
+      width: 82
+      height: 57
+    spriteID: 4aadfd56c714cae4bbc21f5fcb742b71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 962}
+    spritePosition: {x: 429, y: 173}
+  - name: beekeeperA24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 852
+      width: 74
+      height: 127
+    spriteID: 5be344daf1c2ba5408fcfe695fa02806
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 852}
+    spritePosition: {x: 511, y: 244}
+  - name: beekeeperA246
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 452
+      y: 886
+      width: 119
+      height: 120
+    spriteID: 2940e73d72da8204baaab3e09cd6ace4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 452, y: 886}
+    spritePosition: {x: 355, y: 169}
+  - name: beekeeperA23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 452
+      y: 633
+      width: 148
+      height: 253
+    spriteID: 6c47f631175c68c4d87054a1e33c196e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 452, y: 633}
+    spritePosition: {x: 357, y: 173}
+  - name: beekeeperA22
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 253
+      y: 852
+      width: 108
+      height: 138
+    spriteID: 73a86110c32d3874c88a30bce1fcbe96
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 253, y: 852}
+    spritePosition: {x: 417, y: 239}
+  - name: beekeeperA21
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 941
+      y: 283
+      width: 79
+      height: 106
+    spriteID: 3473c58b9db2e084eb2e976bc6790e7f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 941, y: 283}
+    spritePosition: {x: 378, y: 313}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: beekeeperA29999
+    spriteName: beekeeperA29999
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ed15236b44224b0498ab698e98f638bd
+    layerID: 83
+    mosaicPosition: {x: 575, y: 283}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA27
+    spriteName: beekeeperA27
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bc091cc315574f3449f47a9fe7a6f8fc
+    layerID: 41
+    mosaicPosition: {x: 364, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA2svet13
+    spriteName: beekeeperA2svet13
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8a90ab731003eae419f248f5f0278641
+    layerID: 80
+    mosaicPosition: {x: 4, y: 633}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA2svet12
+    spriteName: beekeeperA2svet12
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 03cd697955ffdd947a65599c68aaae64
+    layerID: 79
+    mosaicPosition: {x: 4, y: 283}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA2svet1
+    spriteName: beekeeperA2svet1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 27f28d887896734418efbaeb2659a26f
+    layerID: 78
+    mosaicPosition: {x: 285, y: 283}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA2m2
+    spriteName: beekeeperA2m2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8ba3d6549ad97dd42998441cc8d5f029
+    layerID: 63
+    mosaicPosition: {x: 718, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA2m15
+    spriteName: beekeeperA2m15
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4017df30e459d2641bed03e92f417135
+    layerID: 82
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA223
+    spriteName: beekeeperA223
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c6d7682b789685146a0e941a94aea866
+    layerID: 46
+    mosaicPosition: {x: 608, y: 831}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA222
+    spriteName: beekeeperA222
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 62b75141aa946834b98b699139ee0a6d
+    layerID: 45
+    mosaicPosition: {x: 608, y: 633}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA221
+    spriteName: beekeeperA221
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 66b356d4e19e981448ef2292d2dbddb1
+    layerID: 7
+    mosaicPosition: {x: 253, y: 633}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA214
+    spriteName: beekeeperA214
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6a9f856b846fd554480a23c4c44d8eb2
+    layerID: 30
+    mosaicPosition: {x: 94, y: 962}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA213
+    spriteName: beekeeperA213
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7e27c3727041304498971aa4867a6e99
+    layerID: 49
+    mosaicPosition: {x: 789, y: 633}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA212
+    spriteName: beekeeperA212
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 33bfdb62927886243a1c43df8b77e472
+    layerID: 52
+    mosaicPosition: {x: 753, y: 831}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA211
+    spriteName: beekeeperA211
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4c6c26e02fa7ec74b9fb7cee9a40d995
+    layerID: 53
+    mosaicPosition: {x: 888, y: 831}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA25
+    spriteName: beekeeperA25
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4aadfd56c714cae4bbc21f5fcb742b71
+    layerID: 12
+    mosaicPosition: {x: 4, y: 962}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA24
+    spriteName: beekeeperA24
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5be344daf1c2ba5408fcfe695fa02806
+    layerID: 9
+    mosaicPosition: {x: 365, y: 852}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA246
+    spriteName: beekeeperA246
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2940e73d72da8204baaab3e09cd6ace4
+    layerID: 56
+    mosaicPosition: {x: 452, y: 886}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA23
+    spriteName: beekeeperA23
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6c47f631175c68c4d87054a1e33c196e
+    layerID: 59
+    mosaicPosition: {x: 452, y: 633}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA22
+    spriteName: beekeeperA22
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 73a86110c32d3874c88a30bce1fcbe96
+    layerID: 8
+    mosaicPosition: {x: 253, y: 852}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: beekeeperA21
+    spriteName: beekeeperA21
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3473c58b9db2e084eb2e976bc6790e7f
+    layerID: 10
+    mosaicPosition: {x: 941, y: 283}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
