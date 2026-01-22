@@ -5858,15 +5858,33 @@ AnimationClip:
         time: 0.5
         value: 140
         inSlope: 263.99997
-        outSlope: -297.77777
+        outSlope: -225.00002
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 125
+        inSlope: -225.00002
+        outSlope: 60.000057
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 126
+        inSlope: 60.000057
+        outSlope: -10.909091
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 6
-        inSlope: -297.77777
+        value: 122
+        inSlope: -10.909091
         outSlope: 268
         tangentMode: 69
         weightedMode: 0
@@ -5906,15 +5924,33 @@ AnimationClip:
         time: 0.5
         value: 134
         inSlope: 251.99997
-        outSlope: -286.6667
+        outSlope: -150.00002
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 124
+        inSlope: -150.00002
+        outSlope: 60.000057
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 125
+        inSlope: 60.000057
+        outSlope: -8.181818
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 5
-        inSlope: -286.6667
+        value: 122
+        inSlope: -8.181818
         outSlope: 258
         tangentMode: 69
         weightedMode: 0
@@ -5954,15 +5990,33 @@ AnimationClip:
         time: 0.5
         value: 119
         inSlope: 227.99997
-        outSlope: -257.77777
+        outSlope: 45.000004
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 122
+        inSlope: 45.000004
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 122
+        inSlope: -0
+        outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 3
-        inSlope: -257.77777
+        value: 122
+        inSlope: -0
         outSlope: 232
         tangentMode: 69
         weightedMode: 0
@@ -6002,15 +6056,33 @@ AnimationClip:
         time: 0.5
         value: 136
         inSlope: 263.99997
-        outSlope: -297.77777
+        outSlope: -225.00002
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 121
+        inSlope: -225.00002
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 121
+        inSlope: -0
+        outSlope: 2.7272727
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 2
-        inSlope: -297.77777
+        value: 122
+        inSlope: 2.7272727
         outSlope: 268
         tangentMode: 69
         weightedMode: 0
@@ -6243,6 +6315,93 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_Enabled
     path: bone_1/speara2/spearmana24
+    classID: 212
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4
+        inSlope: 0
+        outSlope: 208.23529
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 122
+        inSlope: 208.23529
+        outSlope: 120.000114
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 124
+        inSlope: 120.000114
+        outSlope: -5.4545455
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.95
+        value: 122
+        inSlope: -5.4545455
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SortingOrder
+    path: bone_1/speara2/spearmana24
+    classID: 212
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 210
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 120
+        inSlope: 210
+        outSlope: 5.2173915
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.95
+        value: 122
+        inSlope: 5.2173915
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SortingOrder
+    path: bone_1/speara2/spearmana2
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -7205,6 +7364,24 @@ AnimationClip:
       script: {fileID: 0}
       typeID: 212
       customType: 0
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 3132920717
+      attribute: 3762991556
+      script: {fileID: 0}
+      typeID: 212
+      customType: 26
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 1674574054
+      attribute: 3762991556
+      script: {fileID: 0}
+      typeID: 212
+      customType: 26
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
@@ -24257,15 +24434,33 @@ AnimationClip:
         time: 0.5
         value: 140
         inSlope: 263.99997
-        outSlope: -297.77777
+        outSlope: -225.00002
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 125
+        inSlope: -225.00002
+        outSlope: 60.000057
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 126
+        inSlope: 60.000057
+        outSlope: -10.909091
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 6
-        inSlope: -297.77777
+        value: 122
+        inSlope: -10.909091
         outSlope: 268
         tangentMode: 69
         weightedMode: 0
@@ -24305,15 +24500,33 @@ AnimationClip:
         time: 0.5
         value: 134
         inSlope: 251.99997
-        outSlope: -286.6667
+        outSlope: -150.00002
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 124
+        inSlope: -150.00002
+        outSlope: 60.000057
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 125
+        inSlope: 60.000057
+        outSlope: -8.181818
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 5
-        inSlope: -286.6667
+        value: 122
+        inSlope: -8.181818
         outSlope: 258
         tangentMode: 69
         weightedMode: 0
@@ -24353,15 +24566,33 @@ AnimationClip:
         time: 0.5
         value: 119
         inSlope: 227.99997
-        outSlope: -257.77777
+        outSlope: 45.000004
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 122
+        inSlope: 45.000004
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 122
+        inSlope: -0
+        outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 3
-        inSlope: -257.77777
+        value: 122
+        inSlope: -0
         outSlope: 232
         tangentMode: 69
         weightedMode: 0
@@ -24401,15 +24632,33 @@ AnimationClip:
         time: 0.5
         value: 136
         inSlope: 263.99997
-        outSlope: -297.77777
+        outSlope: -225.00002
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 121
+        inSlope: -225.00002
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 121
+        inSlope: -0
+        outSlope: 2.7272727
         tangentMode: 69
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
         time: 0.95
-        value: 2
-        inSlope: -297.77777
+        value: 122
+        inSlope: 2.7272727
         outSlope: 268
         tangentMode: 69
         weightedMode: 0
@@ -24759,6 +25008,93 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_Enabled
     path: bone_1/speara2/spearmana24
+    classID: 212
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4
+        inSlope: 0
+        outSlope: 208.23529
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 122
+        inSlope: 208.23529
+        outSlope: 120.000114
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 124
+        inSlope: 120.000114
+        outSlope: -5.4545455
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.95
+        value: 122
+        inSlope: -5.4545455
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SortingOrder
+    path: bone_1/speara2/spearmana24
+    classID: 212
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 210
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 120
+        inSlope: 210
+        outSlope: 5.2173915
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.95
+        value: 122
+        inSlope: 5.2173915
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_SortingOrder
+    path: bone_1/speara2/spearmana2
     classID: 212
     script: {fileID: 0}
     flags: 0
