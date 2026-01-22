@@ -1458,7 +1458,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5220567853073154928
+--- !u!1001 &8305930396926144235
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1511,7 +1511,8 @@ PrefabInstance:
       value: lisarch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3954668447948333495, guid: d92d7de774a51f94bb5393917ada4c8b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d92d7de774a51f94bb5393917ada4c8b, type: 3}
@@ -1525,4 +1526,4 @@ SceneRoots:
   - {fileID: 1862279340}
   - {fileID: 1963977236}
   - {fileID: 408113659}
-  - {fileID: 5220567853073154928}
+  - {fileID: 8305930396926144235}
