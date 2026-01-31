@@ -1,0 +1,812 @@
+fileFormatVersion: 2
+guid: 7448914fbd644714f9f5d9c1cd68981f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 110
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: ec3ab7ace88824448ace22512c586f20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: wisp1124
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 680
+      y: 359
+      width: 128
+      height: 91
+    spriteID: cea5ce9e156101e499571f4fa77ed420
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 680, y: 359}
+    spritePosition: {x: 84, y: 301}
+  - name: wispV1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 183
+      y: 368
+      width: 122
+      height: 123
+    spriteID: cf741261ddeaea94d8fe82fb91aee9f8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 183, y: 368}
+    spritePosition: {x: 42, y: 217}
+  - name: wispV2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 523
+      y: 359
+      width: 122
+      height: 123
+    spriteID: ceae5893f84925540869a6820e9257cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 523, y: 359}
+    spritePosition: {x: 41, y: 217}
+  - name: wispY1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 183
+      y: 193
+      width: 160
+      height: 165
+    spriteID: 0eeb6380c1144dd41bfa90c1742353a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 183, y: 193}
+    spritePosition: {x: 25, y: 194}
+  - name: wispY2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 353
+      y: 193
+      width: 160
+      height: 165
+    spriteID: 685ea01ab2de70140a3f8a577a1eef24
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 353, y: 193}
+    spritePosition: {x: 25, y: 194}
+  - name: wisp1121
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 980
+      y: 99
+      width: 33
+      height: 47
+    spriteID: cfb15f920534a3b479ab41556469dac2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 980, y: 99}
+    spritePosition: {x: 27, y: 218}
+  - name: wisp112
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 917
+      y: 99
+      width: 55
+      height: 63
+    spriteID: f280245a319f582418319c23009dad07
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 917, y: 99}
+    spritePosition: {x: 45, y: 269}
+  - name: wisp111
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 481
+      y: 368
+      width: 32
+      height: 36
+    spriteID: 9d85cb84131f96247bd8247c31367f06
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 481, y: 368}
+    spritePosition: {x: 123, y: 219}
+  - name: wisp19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 481
+      y: 412
+      width: 12
+      height: 39
+    spriteID: e62a26ad384f6d94c83194fd96cf89c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 481, y: 412}
+    spritePosition: {x: 193, y: 252}
+  - name: wispT1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 559
+      y: 4
+      width: 176
+      height: 167
+    spriteID: 5754ee89655bf264dba8cc28b528c406
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 559, y: 4}
+    spritePosition: {x: 20, y: 194}
+  - name: wispT2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 4
+      width: 176
+      height: 167
+    spriteID: e9c6f3895ae6213468febcae9a9751a7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 4}
+    spritePosition: {x: 20, y: 194}
+  - name: wispF1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 680
+      y: 193
+      width: 156
+      height: 156
+    spriteID: fb048c917a5062246b850f6730b470c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 680, y: 193}
+    spritePosition: {x: 43, y: 193}
+  - name: wispF2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 523
+      y: 193
+      width: 156
+      height: 156
+    spriteID: 51d626f2a9be8f0439debf38317cb0f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 523, y: 193}
+    spritePosition: {x: 41, y: 193}
+  - name: wisp16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 917
+      y: 4
+      width: 85
+      height: 87
+    spriteID: 4094339330a92b041a3085542db22022
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 917, y: 4}
+    spritePosition: {x: 63, y: 242}
+  - name: wisp15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 353
+      y: 368
+      width: 120
+      height: 112
+    spriteID: de342b0b70f9c92489cf282d3da01063
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 353, y: 368}
+    spritePosition: {x: 46, y: 221}
+  - name: wisp14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 4
+      width: 180
+      height: 179
+    spriteID: 96c7e1973a0570746a5c83b8561d1d0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 4}
+    spritePosition: {x: 15, y: 187}
+  - name: wisp13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 179
+      height: 181
+    spriteID: 6bd4d5ed326842d499f28292d9cf9023
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 19, y: 182}
+  - name: wispR1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 738
+      y: 4
+      width: 179
+      height: 172
+    spriteID: ad62606616dfcf34eb235643a111d8ba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 738, y: 4}
+    spritePosition: {x: 23, y: 189}
+  - name: wispR2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 193
+      width: 179
+      height: 173
+    spriteID: d08dc49eca0e3c149b3a5375e649ff8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 193}
+    spritePosition: {x: 23, y: 189}
+  - name: wisp1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 367
+      width: 165
+      height: 69
+    spriteID: 5e08f9101c8247f49a6341154de86e93
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 367}
+    spritePosition: {x: 28, y: 17}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: wisp1124
+    spriteName: wisp1124
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cea5ce9e156101e499571f4fa77ed420
+    layerID: 38
+    mosaicPosition: {x: 680, y: 359}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispV1
+    spriteName: wispV1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cf741261ddeaea94d8fe82fb91aee9f8
+    layerID: 47
+    mosaicPosition: {x: 183, y: 368}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispV2
+    spriteName: wispV2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ceae5893f84925540869a6820e9257cf
+    layerID: 91
+    mosaicPosition: {x: 523, y: 359}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispY1
+    spriteName: wispY1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0eeb6380c1144dd41bfa90c1742353a8
+    layerID: 45
+    mosaicPosition: {x: 183, y: 193}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispY2
+    spriteName: wispY2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 685ea01ab2de70140a3f8a577a1eef24
+    layerID: 89
+    mosaicPosition: {x: 353, y: 193}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp1121
+    spriteName: wisp1121
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cfb15f920534a3b479ab41556469dac2
+    layerID: 26
+    mosaicPosition: {x: 980, y: 99}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp112
+    spriteName: wisp112
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f280245a319f582418319c23009dad07
+    layerID: 27
+    mosaicPosition: {x: 917, y: 99}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp111
+    spriteName: wisp111
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9d85cb84131f96247bd8247c31367f06
+    layerID: 30
+    mosaicPosition: {x: 481, y: 368}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp19
+    spriteName: wisp19
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e62a26ad384f6d94c83194fd96cf89c4
+    layerID: 31
+    mosaicPosition: {x: 481, y: 412}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispT1
+    spriteName: wispT1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5754ee89655bf264dba8cc28b528c406
+    layerID: 17
+    mosaicPosition: {x: 559, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispT2
+    spriteName: wispT2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e9c6f3895ae6213468febcae9a9751a7
+    layerID: 88
+    mosaicPosition: {x: 379, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispF1
+    spriteName: wispF1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fb048c917a5062246b850f6730b470c8
+    layerID: 11
+    mosaicPosition: {x: 680, y: 193}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispF2
+    spriteName: wispF2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 51d626f2a9be8f0439debf38317cb0f0
+    layerID: 87
+    mosaicPosition: {x: 523, y: 193}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp16
+    spriteName: wisp16
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4094339330a92b041a3085542db22022
+    layerID: 23
+    mosaicPosition: {x: 917, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp15
+    spriteName: wisp15
+    isGroup: 0
+    parentIndex: -1
+    spriteID: de342b0b70f9c92489cf282d3da01063
+    layerID: 25
+    mosaicPosition: {x: 353, y: 368}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp14
+    spriteName: wisp14
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 96c7e1973a0570746a5c83b8561d1d0f
+    layerID: 14
+    mosaicPosition: {x: 191, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp13
+    spriteName: wisp13
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6bd4d5ed326842d499f28292d9cf9023
+    layerID: 13
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispR1
+    spriteName: wispR1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ad62606616dfcf34eb235643a111d8ba
+    layerID: 80
+    mosaicPosition: {x: 738, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wispR2
+    spriteName: wispR2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d08dc49eca0e3c149b3a5375e649ff8a
+    layerID: 49
+    mosaicPosition: {x: 4, y: 193}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: wisp1
+    spriteName: wisp1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5e08f9101c8247f49a6341154de86e93
+    layerID: 79
+    mosaicPosition: {x: 4, y: 367}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639052238232683239
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
